@@ -18,6 +18,11 @@
 
 function fizzbuzz(num) {
   const vessel = [];
+
+  if (num === undefined || num === NaN) {
+    return 'Please enter a number';
+  }
+
   for (let i = 1; i <= num; i++) {
     if (i % 15 === 0) {
       vessel.push('fizzbuzz');

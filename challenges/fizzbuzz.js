@@ -30,6 +30,7 @@ function fizzbuzz(num) {
       if (i % 5 === 0) result.push('buzz');
       else result.push(i);
     }
+    
   }
 
   return result;

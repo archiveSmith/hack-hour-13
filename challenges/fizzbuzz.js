@@ -15,9 +15,32 @@
 //                     14,
 //                     'fizzbuzz',
 //                     16 ]
-
 function fizzbuzz(num) {
-
+  // test if input type if number
+  if (typeof num !== 'number') return undefined;
+  const result = [];
+  // Edge case for negative numbers
+  let newNum = num;
+  if (newNum < 0) {
+    newNum *= -1;
+    result.unshift(1, 0);
+  }
+  for (let i = 1; i <= newNum; i += 1) {
+    if (i % 3 === 0 && i % 5 === 0) {
+      result.push('fizzbuzz');
+    } else if (i % 5 === 0) {
+      result.push('buzz');
+    } else if (i % 3 === 0) {
+      result.push('fizz');
+    } else if (num < 0) {
+      result.push(-i);
+    } else {
+      result.push(i);
+    }
+  }
+  return result;
 }
+
+console.log(fizzbuzz(-16))
 
 module.exports = fizzbuzz;

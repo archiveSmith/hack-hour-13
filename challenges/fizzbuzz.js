@@ -19,7 +19,7 @@
 function fizzbuzz(num) {
   var resArr = [];
   for(var i=1; i<=num; i++){
-    if(i % 3 === 0 && i % 5 === 0){
+    if(i % 15 === 0){
       resArr.push('fizzbuzz');
     }else if( i % 3 === 0){
       resArr.push('fizz');

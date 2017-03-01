@@ -17,7 +17,23 @@
 //                     16 ]
 
 function fizzbuzz(num) {
-
+  if (typeof num != "number") {
+	console.log("Please enter a number!");
+  } else {
+  		let array = [];
+  		for (let i = 1; i <= num; i++) {
+  			if ((i % 3 === 0) && (i % 5 === 0)) {
+  				array.push('fizzbuzz');
+  			} else if (i % 5 === 0) {
+  				array.push('buzz');
+  			} else if (i % 3 === 0) {
+  				array.push('fizz')
+  			} else {
+  			array.push(i);
+  			}
+  		}
+  		return array;
+	}
 }
 
 module.exports = fizzbuzz;

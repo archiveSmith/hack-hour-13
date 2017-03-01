@@ -17,23 +17,26 @@
 //                     16 ]
 
 function fizzbuzz(num) {
-  const arr = [];
-  for (let i = 1; i <= num; i++) {
-    arr.push(i);
+  if (typeof num === "number") {
+    const arr = [];
+    for (let i = 1; i <= num; i++) {
+      arr.push(i);
+    }
+    let result = arr.map(function(number) {
+      if (number % 15 === 0) {
+        return 'fizzbuzz';
+      } else if (number % 3 === 0) {
+        return 'fizz';
+      } else if (number % 5 === 0) {
+        return 'buzz';
+      }
+      else {
+        return number;
+      }
+    })
+    return result;
   }
-  let result = arr.map(function(number) {
-    if (number % 15 === 0) {
-      return 'fizzbuzz';
-    } else if (number % 3 === 0) {
-      return 'fizz';
-    } else if (number % 5 === 0) {
-      return 'buzz';
-    }
-    else {
-      return number;
-    }
-  })
-  return result;
+  return NaN;
 }
 console.log(fizzbuzz(16))
 module.exports = fizzbuzz;

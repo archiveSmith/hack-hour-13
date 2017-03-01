@@ -17,7 +17,31 @@
 //                     16 ]
 
 function fizzbuzz(num) {
+  if (num < 0 || num === undefined || num === null || isNaN(num)) return false;
 
+  const output = [];
+  if (num === 0) output.push('fizzbuzz');
+
+  for (let i = 1; i <= num; i += 1) {
+    if (i % 3 === 0 && i % 5 === 0) {
+      output.push('fizzbuzz')
+    } else if (i % 3 === 0) {
+      output.push('fizz')
+    } else if (i % 5 === 0) {
+      output.push('buzz');
+    } else {
+      output.push(i);
+    }
+  }
+  return output;
 }
+
+// Test Cases
+// fizzbuzz(0);
+// fizzbuzz(16);
+// fizzbuzz(null);
+// fizzbuzz('hello');
+// fizzbuzz('{}');
+// fizzbuzz(undefined);
 
 module.exports = fizzbuzz;

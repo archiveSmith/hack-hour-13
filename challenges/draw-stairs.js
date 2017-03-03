@@ -14,8 +14,22 @@
 */
 
 function drawStairs(n) {
+	let stairs = '';
+	for (let i = 0; i < n; i++){
+		stairs += '*'
+		let spaces = '';
 
+		for (let j = 0; j < n-stairs.length; j++){
+			spaces+=" ";
+		}
+		//combine correct amount of spaces with current stair count
+		spaces+=stairs;
+
+		//draw stairs
+		console.log(spaces);
+	}
 }
 
+drawStairs(100);
 
 module.exports = drawStairs;

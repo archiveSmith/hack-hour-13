@@ -11,7 +11,20 @@
 
 
 function modemean(array) {
-
+  const modeCache = {};
+  const mean = Math.floor(array.reduce((a,b) => a+b, 0) / array.length);
+  array.forEach((el) => {
+    modeCache[el] ? modeCache[el]++ : modeCache[el] = 1;
+  });
+  var max = -Infinity;
+  var mode = -Infinity;
+  for (var key in modeCache) {
+    if (modeCache[key] >= max && parseInt(key, 10) > mode) {
+      max = parseInt(modeCache[key], 10);
+      mode = parseInt(key);
+    }
+  }
+  return mode === mean;
 }
 
 module.exports = modemean;

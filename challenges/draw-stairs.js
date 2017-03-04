@@ -14,7 +14,18 @@
 */
 
 function drawStairs(n) {
+  
+  if (n > 100) {
+    console.log("Forgive me, but I cannot climb that many stairs.");
+    return;
+  }
 
+  let line = '';
+
+  for (let i = 1; i <= n; i++) {
+  	line += ' '.repeat(n - i) + '*'.repeat(n - (n - i)) + '\n';
+  }
+  console.log(line);
 }
 
 

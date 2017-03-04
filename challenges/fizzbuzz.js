@@ -61,5 +61,8 @@ function fizzbuzz(num) {
     return outputArr;
 }
 
-console.log(fizzbuzz(16));
+// console.log(fizzbuzz(16));
+var y;
+var x = 2;
+console.log(typeof y);
 module.exports = fizzbuzz;

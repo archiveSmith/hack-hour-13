@@ -45,7 +45,7 @@ function modemean(array) {
     })
     let mode = multiplemode[0];
 
-    if (mean === mode) {
+    if (mean === +mode) {
         return true;
     } else {
         return false;

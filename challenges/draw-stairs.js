@@ -14,6 +14,7 @@
 */
 
 function drawStairs(n) {
+<<<<<<< HEAD
 	if(n<1 || n>100){
 		return 'number has to be beween 1 and 100 inclusive'
 	}
@@ -23,6 +24,9 @@ function drawStairs(n) {
 		console.log(output);
 		space--;
 	}
+=======
+
+>>>>>>> c095199114a334e809751a77ffe5a1a6b48ebf57
 }
 
 

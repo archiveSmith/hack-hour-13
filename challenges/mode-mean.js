@@ -36,7 +36,4 @@ function modemean(array) {
     return mean == mode;
 }
 
-let arr = [8,8]
-console.log(modemean(arr));
-
 module.exports = modemean;

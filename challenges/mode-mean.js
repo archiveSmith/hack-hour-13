@@ -10,8 +10,30 @@
  */
 
 
-function modemean(array) {
+ function modemean(array) {
+   const mean;
+   const mode;
+   let cache = {};
 
-}
+   let sum = array.reduce((prev, curr) => {
+     return prev + curr;
+   });
+
+   mean = Math.floor(sum/array.length);
+
+   array.forEach((elem) => {
+     if (!cache.hasOwnProperty(elem)) {
+       cache[elem] = 1;
+     } else {
+       cache[elem]++;
+     }
+   });
+
+   mode = Object.keys(cache).reduce((prev, curr) => {
+     return cache[prev] > cache[curr] ? prev : curr;
+   });
+
+   return mode === mean ? true : false;
+ }
 
 module.exports = modemean;

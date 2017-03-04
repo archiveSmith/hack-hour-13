@@ -17,9 +17,8 @@ function modemean(array) {
 	} 
 
 	// Determine avg
-	let avg = Math.floor(
-		array.reduce( (lastAvg, num, index) => (index*lastAvg + num) / (index + 1) )
-	);
+	let sum = array.reduce( (lastAvg, num) => lastAvg + num );
+	let avg = Math.floor( sum/(array.length) );
 
 	// Determine mode(s)
 	let highestOccur = 0;
@@ -45,11 +44,11 @@ function modemean(array) {
 	return modes.indexOf(avg) !== -1;
 }
 
-// let results = [
-// 	modemean([1,50,100,100]),
-// 	modemean([1,1,2,2,3,3]),
-// 	modemean([70,5,5,5,-60]),
-// ];
-// console.log(...results)
+let results = [
+	modemean([1,50,100,100]),
+	modemean([1,1,2,2,3,3]),
+	modemean([70,5,5,5,-60]),
+];
+console.log(...results)
 
 module.exports = modemean;

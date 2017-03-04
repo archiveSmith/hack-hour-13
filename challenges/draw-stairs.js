@@ -13,15 +13,18 @@
 
 */
 
-function drawStairs(n) {
-  let string = '';
+function drawStairs(n) {  
+  let answer = '';
   const symbol = '*';
+  let space = ' ';
+  const newLine = '\n';
+  let whiteSpaces;
   for (let i = 1; i <= n; i += 1) {
-    string += symbol;
-    console.log(string)
+    whiteSpaces = n - i;
+    answer += space.repeat(whiteSpaces) + symbol.repeat(i) + newLine;
   }
-}
-drawStairs(3);
-
+  console.log(answer)
+ }
+drawStairs(8)
 
 module.exports = drawStairs;

@@ -16,17 +16,11 @@ function modemean(array) {
   });
   mean = mean/array.length;
   const obj = {};
-  const arr = []
   for (let i = 0; i < array.length; i += 1) {
     if (!obj[array[i]]) {
       obj[array[i]] = 1;
     } else {
       obj[array[i]] += 1;
-    }
-    if (!arr[array[i]]) {
-      arr[array[i]] = 1;
-    } else {
-      arr[array[i]] += 1;
     }
   }
 let mode;

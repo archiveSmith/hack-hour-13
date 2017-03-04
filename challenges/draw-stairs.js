@@ -14,11 +14,15 @@
 */
 
 function drawStairs(n) {
+<<<<<<< HEAD
 	for (let i = n; i > 0; i -= 1) {
 		let spc = i - 1;
 		let ast = n - spc;
 		console.log(' '.repeat(spc) + '*'.repeat(ast) + '\r');
 	}
+=======
+
+>>>>>>> c095199114a334e809751a77ffe5a1a6b48ebf57
 }
 
 

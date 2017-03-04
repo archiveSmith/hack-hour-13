@@ -14,14 +14,14 @@
 */
 
 function drawStairs(n) {
-  let staircase = "";
-  let blankSpace = " ";
-  let newLine = "\n";
-  let asterisk = "*";
-  for (let i = n - 1; i > 0; i--) {
-    staircase += blankSpace.repeat(i -1) + asterisk.repeat(n - i) + newLine;
+  let staircase = '';
+  const blankSpace = ' ';
+  const newLine = '\n';
+  const asterisk = '*';
+  for (let i = n - 1; i > 0; i -= 1) {
+    staircase += blankSpace.repeat(i - 1) + asterisk.repeat(n - i) + newLine;
   }
-  return staircase
+  console.log(staircase);
 }
-
+drawStairs(100);
 module.exports = drawStairs;

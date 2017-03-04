@@ -19,10 +19,11 @@
 function fizzbuzz(num) {
   if (num < 0 || num === undefined || num === null || isNaN(num)) return false;
 
+  let i = 1;
   const output = [];
-  if (num === 0) output.push('fizzbuzz');
+  if (num === 0) i = 0;
 
-  for (let i = 1; i <= num; i += 1) {
+  for (i; i <= num; i += 1) {
     if (i % 3 === 0 && i % 5 === 0) {
       output.push('fizzbuzz')
     } else if (i % 3 === 0) {

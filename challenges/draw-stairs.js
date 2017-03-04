@@ -14,10 +14,12 @@
 */
 
 function drawStairs(n) {
-	var lines = [], numSpaces;
-	for (var numStars = 1; numStars <= n; numStars += 1) {
+	let lines = [], numSpaces;
+	for (let numStars = 1; numStars <= n; numStars += 1) {
 		numSpaces = n - numStars;
-		lines.push(' '.repeat(numSpaces) + '*'.repeat(numStars));
+		let line = ' '.repeat(numSpaces) + '*'.repeat(numStars);
+		console.log(line);
+		lines.push(line);
 	}
 	return lines.join('\n');
 }

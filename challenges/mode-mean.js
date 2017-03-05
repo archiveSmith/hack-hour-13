@@ -32,7 +32,6 @@ function modemean(array) {
       //counting how many times array[i] is in array
       if (uniqArray[i] === array[j]) {
         currCount++;
-        console.log('currCount:' + currCount);
       }
     }
     

@@ -22,7 +22,26 @@ function Node(val) {
 }
 
 function kthToLastNode(k, head) {
-
+//calcualte the length of the linked list
+//the kth to the last node will be the length - k + 1
+	var theLength = 0;
+	var theLocation;
+	var position=0;
+	var currentNode = head;
+	while(currentNode){
+		theLength++;
+		currentNode = currentNode.next;
+	}
+	theLocation = theLength - k +1;
+	
+	currentNode = head;
+	while(currentNode){
+		position++;
+		if(position === theLocation){
+			return currentNode.value;
+		}
+		currentNode = currentNode.next;
+	}
 }
 
 module.exports = {Node: Node, kthToLastNode: kthToLastNode};

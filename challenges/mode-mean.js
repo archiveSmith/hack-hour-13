@@ -1,3 +1,4 @@
+
 /*
  * Given an array of numbers, determine if the mode and mean of the array are equivalent
  *
@@ -18,23 +19,32 @@ function modemean(array) {
   let counter = {};
 
   array.forEach(n => {
-    counter[n] ? counter[n]++ : counter[n] = 1
+    counter.hasOwnProperty(n) ? counter[n]++ : counter[n] = 1
   })
 
   console.log(counter);
   var count = 0;
   var mode = 0;
  
-  for (key in counter) {
+  Object.keys(counter).forEach(key => {
     if (counter[key] > count) {
       mode = key;
       count = counter[key];
-    } 
-  }
+    } if (counter[key] === count && Number(key) > Number(mode) ) {
+      mode = key;
+    }
+  })
+
+  // for (key in counter) {
+  //   if (counter[key] > count) {
+  //     mode = key;
+  //     count = counter[key];
+  //   } 
+  // }
   
   console.log(mean);
   console.log(mode);
-  return mode == mean;   
+  return mode == Math.floor(mean);   
 }
 
 
@@ -59,3 +69,6 @@ compare
 
 
 module.exports = modemean;
+
+
+

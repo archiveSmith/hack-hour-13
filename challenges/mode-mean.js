@@ -9,12 +9,15 @@
  *
  */
 
-
+//
 function modemean(array) {
     var sum = 0;
-    for(var i = 0 ; i < array.length ; i++){
-        sum++
-    }
+
+    var sum = array.reduce(function(sum,x){ 
+        return sum + x;
+    });
+
+    console.log("sum is"+sum);
     var average = sum/array.length;
 
     var isMode = {};

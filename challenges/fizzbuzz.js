@@ -31,10 +31,9 @@ function fizzbuzz(num) {
         }
         if(i % 5 === 0 && i % 3 !== 0) {
             newArr.push('buzz');
-        } 
-        
+        }    
     }
     return newArr;
 }
-
+console.log(fizzbuzz(30));
 module.exports = fizzbuzz;

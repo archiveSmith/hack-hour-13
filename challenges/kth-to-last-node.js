@@ -23,15 +23,17 @@ function Node(val) {
 
 function kthToLastNode(k, head) {
   let length = 1;
-  head = this;
-  let myVal = this.value;
-  for (let i = head; i !== null; this.next) {
+  let desiredNode = head;
+  let counter = 1;
+  for (let currNode = head; currNode; currNode = currNode.next) {
     length++;
   }
-  while ((length - (k - 1))) {
-    myVal = this.value;
+  let stopPoint = length - k - 1;
+  if (k > length + 2 || !head) return undefined;
+  while (counter < stopPoint) {
+    desiredNode = desiredNode.next;
   }
-  return myVal;
+  return desiredNode.value;
 }
 
 module.exports = {Node: Node, kthToLastNode: kthToLastNode};

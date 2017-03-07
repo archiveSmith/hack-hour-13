@@ -19,16 +19,19 @@
 function Node(val) {
   this.value = val;
   this.next = null;
+  this.index = 0;
 }
 
-let index = 1;
+let store = {};
 
 function kthToLastNode(k, head) {
-	if (head.next !== null && k !== (index - k)) {
-		index += 1;
+	if (head.next !== null) {
+	  store[head.index] = head.value;
+	  head.next.index = head.index + 1;
 		return kthToLastNode(k, head.next);
-	} else if (k === (index - k)) {
-		return head.value;
+	} else {
+	  store[head.index] = head.value;
+		return store[head.index + 1 - k];
 	}
 	return undefined;
 }

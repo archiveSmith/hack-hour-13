@@ -17,10 +17,10 @@ function drawStairs(n) {
   var stairs = '';
   for (let i = 1; i <= n; i += 1) {
     // console.log(new Array(n - i).join(' ') + new Array(i+2).join('*'))
-    // console.log(' '.repeat(n-i) + '*'.repeat(i));
-    stairs += ' '.repeat(n-i) + '*'.repeat(i) + '\n';
+    console.log(' '.repeat(n-i) + '*'.repeat(i));
+    // stairs += ' '.repeat(n-i) + '*'.repeat(i) + '\n';
   }
-  return stairs;
+  // return stairs;
 }
 
 

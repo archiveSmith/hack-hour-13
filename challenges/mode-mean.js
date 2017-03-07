@@ -36,4 +36,34 @@
    return mode === mean ? true : false;
  }
 
+ // Hack Hour Solution
+ // function modemean(array) {
+ //   const mean = Math.floor(array.reduce((sum, curr) => return sum + curr, 0) / array.length);
+ //   const mode = {
+ //     currenMode: null,
+ //     count: 0
+ //   }
+ //   const table = {};
+ //
+ //   array.forEach((num) => {
+ //     if (table.hasOwnProperty(num)) table[num]++;
+ //     else table[num] = 1;
+ //     }
+ //   });
+ //
+ //   Object.keys(table).forEach((num) => {
+ //     if (table[num] > mode.count) {
+ //       mode.currentMode = num;
+ //       mode.count = table[num];
+ //     }
+ //
+ //     if (table[num] === mode.count) {
+ //       if (Number(num) > Number(mode.currentMode)) {
+ //         mode.currentMode = num;
+ //       }
+ //     }
+ //   });
+ //   return mean === Number(mode.currentMode);
+ // }
+
 module.exports = modemean;

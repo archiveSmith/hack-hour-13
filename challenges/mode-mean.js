@@ -41,6 +41,8 @@ function modemean(array) {
 	}
 	mode =  Math.max.apply(null, final);
 	return Math.max(mode, mean);
+
+	// writed in english... loop 
 }
 
 module.exports = modemean;

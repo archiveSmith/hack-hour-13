@@ -22,7 +22,19 @@ function Node(val) {
 }
 
 function kthToLastNode(k, head) {
+  head = head.next;
+  let count = 0;
 
+  //Traverse down the list while the curr node is not null
+  //Set the next node as the head and increment the count through each pass.
+  //When the count is equal to the k value being passed in then return the value of that node.
+  while (head.next !== null){
+    head.next = head;
+    head[count++];
+    if (head[count] === head[k] ){
+      return head.value;
+    }
+  }
 }
 
 module.exports = {Node: Node, kthToLastNode: kthToLastNode};

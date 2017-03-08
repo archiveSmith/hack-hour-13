@@ -3,7 +3,8 @@
  */
 
 function pow(base, power) {
-
+  if (typeof base !== 'number') return 'NOT A NUMBER';
+  if (power === 2) return base * base;
+  return base * pow(base, power - 1);
 }
-
 module.exports = pow;

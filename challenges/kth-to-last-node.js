@@ -19,21 +19,24 @@
 function Node(val) {
   this.value = val;
   this.next = null;
+  this.index = 0;
 }
+let obj = {};
 
 function kthToLastNode(k, head) {
   head = head.next;
-  let count = 0;
+  this
 
   //Traverse down the list while the curr node is not null
   //Set the next node as the head and increment the count through each pass.
   //When the count is equal to the k value being passed in then return the value of that node.
-  while (head.next !== null){
-    head.next = head;
-    head[count++];
-    if (head[count] === head[k] ){
-      return head.value;
-    }
+  if (head.next !== null){
+    obj[head.index] = head.value;
+    obj[head.index] = obj[head.index + 1];
+    return kthToLastNode(k, head.next);
+  }else{
+    obj[head.index] = head.value;
+    return obj[head.index + 1 - k];
   }
 }
 

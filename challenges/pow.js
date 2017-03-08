@@ -3,7 +3,13 @@
  */
 
 function pow(base, power) {
-
+    // use an accumulator that is the product of the answers so far and y-1
+    // 2^3 --> 2^2 --> 2^1 --> 1
+    // console.log("pow is executing, base is "+base+" power is "+power);
+    if(power === 0) return 1;
+    // var product;
+    return base * pow(base, power - 1);
 }
 
+console.log(pow(5,3));
 module.exports = pow;

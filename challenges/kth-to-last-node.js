@@ -31,7 +31,7 @@ function kthToLastNode(k, head) {
   var counter = [];
   var curr = head;
   while (curr !== null) {
-    counter.push(curr);
+    counter.push(curr.value);
     curr = curr.next;
   } 
   return counter[counter.length - k];

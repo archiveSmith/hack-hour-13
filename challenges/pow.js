@@ -8,8 +8,14 @@ function pow(base, power) {
     // console.log("pow is executing, base is "+base+" power is "+power);
     if(power === 0) return 1;
     // var product;
-    return base * pow(base, power - 1);
+    if(power > 0){
+        return base * pow(base, power - 1);
+    }
+    else{
+        return 1/pow(base, -power);
+    }
+    
 }
 
-console.log(pow(5,3));
+console.log(pow(2,-3));
 module.exports = pow;

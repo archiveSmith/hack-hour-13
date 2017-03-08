@@ -3,19 +3,25 @@
  */
 
 function pow(base, power) {
-  if (power <= 1) {return base}
-  return base * pow(base, power - 1)
+  if (power >= 0) {
+    if (power === 0) {return 1}
+    if (power === 1) {return base}
+    return base * pow(base, power - 1)
+  } else {
+    power = Math.abs(power);
+    if (power === 0) {return 1}
+    if (power === 1) {return base}
+    return 1 / (base * pow(base, power - 1));
+  }
 }
+
+function tester(base, power) {
+  console.log('my way', pow(base,power))
+  console.log('standard', Math.pow(base,power))
+}
+
+tester(13, 2);
+
 
 module.exports = pow;
 
-/*
-
-2^3 === 2 * 2 * 2
-
-2 * 2
-
-*/
-
-
-console.log(pow(2,3))

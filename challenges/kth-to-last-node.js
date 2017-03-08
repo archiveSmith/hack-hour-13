@@ -22,6 +22,15 @@ function Node(val) {
 }
 
 function kthToLastNode(k, head) {
+	let results = [];
+
+	while (head !== null) {
+		results.push(head);
+		head = head.next;
+	}
+	
+	let location = results.length - k;
+	return results[location].value;
 
 }
 

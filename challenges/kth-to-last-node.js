@@ -34,14 +34,41 @@ function Node(val) {
 // }
 
 function kthToLastNode(k, head) {
-  counter = 1;
-  while(head.next !== null){
-    counter ++;
-    head.next = head.next.next;
-    console.log("head", head.next)
+  const result = [];
+  let newHead = head;
+  while (newHead !== null) {
+    result.push(newHead);
+    newHead = newHead.next;
   }
-  console.log(counter);
+
+  const valueLocation = result.length - k;
+  // console.log(result[valueLocation].value);
+  return result[valueLocation].value;
+  // console.log(valueLocation)
+  //
+  // while(head !== null){
+  //   head = head.next;
+  //   counter += 1
+  //   if(counter === valueLocation){
+  //     console.log(head.value)
+  //     return (head.value)
+  //   }
 }
+
+  //console.log(result)
+  // counter += 1;
+  // console.log(counter - k)
+  // counter = 0;
+  // while(head.next !== null){
+  //   counter += 1;
+  //   console.log("this is a line", head.next.value)
+  //   if(counter === k) result = head.next.value;
+  //   head.next = head.next.next;
+  // }
+
+
+
+
 
  const a = new Node('A');
  const b = new Node('B');
@@ -53,5 +80,5 @@ function kthToLastNode(k, head) {
  b.next = c;
  c.next = d;
  d.next = e;
- kthToLastNode(3, a)
+ kthToLastNode(4, a)
 module.exports = {Node: Node, kthToLastNode: kthToLastNode};

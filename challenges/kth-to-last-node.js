@@ -30,9 +30,7 @@ function kthToLastNode(k, head) {
   }
   if (k > count) return 'list is not long enough to return kth from last';
   currentNode = head;
-  for (let i = 1; i <= count - k; i += 1) {
-    currentNode = currentNode.next;
-  }
+  for (let i = 1; i <= count - k; i += 1) currentNode = currentNode.next;
   return currentNode.value;
 }
 

@@ -21,6 +21,7 @@ function Node(val) {
   this.next = null;
 }
 
+<<<<<<< HEAD
 const a = new Node("A");
 const b = new Node("B");
 const c = new Node("C");
@@ -59,6 +60,10 @@ while (currentNode.next !== null){
 
 //return that currentNode's value.
   return currentNode.value;
+=======
+function kthToLastNode(k, head) {
+
+>>>>>>> 28fc9225fc5dbce349e63f4331ec0a1ebcf7ba5a
 }
 
 module.exports = {Node: Node, kthToLastNode: kthToLastNode};

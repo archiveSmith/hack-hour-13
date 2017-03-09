@@ -26,6 +26,7 @@ function pow(base, power) {
   if (power === 0) return 1;
   if (power < 0) return 1 / pow(base, -power);
   if (!Number.isInteger(power)) {
+    if (base < 0) return 'Invalid entry: negative base with to a fractional power';
     const fraction = new Fraction(power);
     return nthRoot(pow(base, fraction.numerator), fraction.denominator);
   }
@@ -33,6 +34,6 @@ function pow(base, power) {
 
 }
 
-console.log(pow(2,.5));
+console.log(pow(250,6));
 
 module.exports = pow;

@@ -29,8 +29,6 @@ function pow(base, power) {
 
   // return result;
 }
-
-
 // function nthroot(x, n) {
 //   try {
 //     var negate = n % 2 == 1 && x < 0;

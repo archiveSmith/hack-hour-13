@@ -30,7 +30,7 @@ function kthToLastNode(k, head) {
     currentNode = currentNode.next;
   }
 
-  if (k > length) {
+  if (k > length || k <= 0) {
     return undefined;
   } else {
     index = length - k;

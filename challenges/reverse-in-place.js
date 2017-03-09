@@ -15,9 +15,11 @@
 
 function reverseInPlace(array) {
     if (!Array.isArray(array)) return 'Input is not an array';
-    for (let i = 0; i < Math.ceil(array.length / 2); i++) {
-        [array[i], array[array.length - 1 - i]] = [array[array.length - 1 - i], array[i]];
-    }
+    array.forEach((value, index) => { 
+        if (index < Math.ceil(array.length / 2)) {
+            [array[index], array[array.length - 1 - index]] = [array[array.length - 1 - index], array[index]];
+        }
+    })
     return array;
 }
 

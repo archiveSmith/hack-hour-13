@@ -17,6 +17,17 @@ function isSubstring(s1, s2) {
 
 function stringRotation(s1, s2) {
 
+  //grab the first letter of our non-rotated input string
+  let firstLetter = s1[0];
+
+  //figure out the index of that first letter in the rotated string so we can un-reverse
+  let rotationLength = s2.indexOf(firstLetter);
+
+  //unreverse the second string
+  s2 = s2.slice(rotationLength, s2.length) + s2.slice(0, rotationLength);
+
+  //check to see if the input string and the unreversed second input string are equal (must be equal length as well)
+  return isSubstring(s1,s2) && s1.length === s2.length;
 }
 
 module.exports = {isSubstring: isSubstring, stringRotation: stringRotation};

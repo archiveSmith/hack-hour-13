@@ -14,12 +14,16 @@
  */
 
 function reverseInPlace(array) {
+<<<<<<< HEAD
 	for (let i = 0; i < Math.floor(array.length / 2); i += 1) {
 		const val = array[i];
 		array[i] = array[array.length - i - 1];
 		array[array.length - i - 1] = val;
 	}
 	return array;
+=======
+
+>>>>>>> 7ae73ed04afdae654b22fcfcfd347cca47f22134
 }
 
 module.exports = reverseInPlace;

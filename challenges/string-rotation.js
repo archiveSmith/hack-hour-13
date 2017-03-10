@@ -20,6 +20,7 @@
    // if it is, return false
    if (typeof s1 !== 'string' || typeof s2 !== 'string') return 'try entering a string';
    if (isSubstring(s1, s2)) return false;
+   if (s1 === s2) return true;
 
    // find the 'index' of s2 that holds the first letter of s1
    // from that, create a new string that is concatentated based upon

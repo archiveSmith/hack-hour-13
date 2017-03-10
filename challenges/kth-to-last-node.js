@@ -22,17 +22,18 @@ function Node(val) {
 }
 
 function kthToLastNode(k, head) {
-  let length = 1;
+  let length = 0;
   let counter = 1;
   let desiredNode = head;
   
   for (let currNode = head; currNode; currNode = currNode.next) {
     length++;
   } //loop through each node to find number of nodes in linked list
-  let stopPoint = length - k - 1;//set point to stop on specific node
+  let stopPoint = length - k + 1;//set point to stop on specific node
   if (k > length + 2 || !head) return undefined;//
   while (counter < stopPoint) {
     desiredNode = desiredNode.next;
+    counter++;
   }
   return desiredNode.value;
 }

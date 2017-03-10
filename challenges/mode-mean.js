@@ -11,26 +11,20 @@
 
 
 function modemean(array) {
-  let mean = Math.floor(array.reduce((acc, curr) => {return acc + curr}, 0)/array.length);
+  const mean = Math.floor(array.reduce((acc, curr) => { return acc + curr; }, 0) / array.length);
 
-  let mode = array.reduce((acc, curr) => {
-    if(acc.hasOwnProperty(curr)) {
-      acc[curr] = acc[curr]+1;
+  let mode = 0;
+
+  let newArr = array.reduce((acc, curr) => {
+    if (acc.hasOwnProperty(curr)) {
+      acc[curr] = acc[curr] + 1;
     } else {
       acc[curr] = 1;
     }
     return acc;
   }, {});
 
-  let modeArr = [];
-
-  for(var key in mode) {
-    modeArr.push([key, mode[key]]);
-  }
-
-  mode = +modeArr.sort((a, b) => {
-    return b[1] - a[1];
-  })[0][0];
+  newArr.forEach((element) => { element[Object.keys(element)] > mode ? mode = element : mode; });
 
   return mode === mean;
 }

@@ -27,6 +27,7 @@
 function balancedParens(input){
   let index = 0;
   let char = '';
+  let store = '';
 
   let pcount = 0;
   let bcount = 0;
@@ -34,15 +35,33 @@ function balancedParens(input){
 
   while (index < input.length) {
     char = input.charAt(index);
-    if (char === '(') pcount += 1;
-    if (char === '[') bcount += 1;
-    if (char === '{') ccount += 1;
-    if (char === ')' && pcount === 0) return false;
-    else if (char === ')' && pcount !== 0) pcount -= 1;
-    if (char === ']' && bcount === 0) return false;
-    else if (char === ']' && bcount !== 0) bcount -= 1;
-    if (char === '}' && ccount === 0) return false;
-    else if (char === '}' && ccount !== 0) ccount -= 1;
+    if (char === '(') {
+      store += char;
+      pcount += 1;
+    }
+    if (char === '[') {
+      store += char;
+      bcount += 1;
+    }
+    if (char === '{') {
+      store += char;
+      ccount += 1;
+    }
+    if (char === ')' && store.charAt(store.length-1) !== '(') return false;
+    else if (char === ')' && pcount !== 0) {
+      pcount -= 1;
+      store = store.slice(0, -1);
+    }
+    if (char === ']' && store.charAt(store.length-1) !== '[') return false;
+    else if (char === ']' && bcount !== 0) {
+      bcount -= 1;
+      store = store.slice(0, -1);
+    }
+    if (char === '}' && store.charAt(store.length-1) !== '{') return false;
+    else if (char === '}' && ccount !== 0) {
+      ccount -= 1;
+      store = store.slice(0, -1);
+    }
     index += 1;
   }
   if (pcount === 0 && bcount === 0 && ccount === 0 ) return true;

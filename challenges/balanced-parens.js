@@ -40,20 +40,83 @@ function balancedParens(input){
   return flag; 
 }
 
+//============================SECOND SOLUTION ==========================
+
+var result = ''
+var index;
+var curr;
+var text;
+
+function moveToNext() {
+  curr = text.charAt(index);
+  index++;
+  return curr;
+}
+
+function paren(){
+  if (curr === '(') {
+    moveToNext();
+    result += '(';
+    value();
+  } else if (curr === ')') {
+    moveToNext();      
+    result += ')';
+    value();
+  } else {
+    value();
+  } 
+}
+
+function value() {
+  switch(curr) {
+    case '(':
+    case ')':
+      return paren();  
+    case '[':
+    case ']':
+      return bracket();  
+    case '{':
+    case '}':
+      return curley();  
+    default: 
+      return '';  
+  }
+}
+
+function balancedParens2(input){
+  text = input;
+  index = 1;
+  curr = text.charAt(0);
+  value();
+  return result; 
+}
 
 
-/*
-replace all non parens with nothing 
-count how many char there are with a filter (test).length
-*/
+
+
+console.log(balancedParens2('(()('))
+
+
+
+
+
+
+
+
+
 
 //---------------------TESTING----------------------------------
+console.log(balancedParens('('));  // false
+console.log(balancedParens('()')); // true
+console.log(balancedParens(')('));  // false
+console.log(balancedParens('(())'));  // true
+console.log('----------')
 console.log(balancedParens('[](){}')); // true
 console.log(balancedParens('[({})]'));   // true
 console.log(balancedParens('[(]{)}')); // false
+console.log('----------')
 console.log( balancedParens(' var wow  = { yo: thisIsAwesome() }') ); // true
 console.log( balancedParens(' var hubble = function() { telescopes.awesome();') ); // false
-//console.log( number('new )', ')') )
 
 
 

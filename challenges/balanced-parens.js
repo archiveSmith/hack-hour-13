@@ -25,7 +25,17 @@
  */
 
 function balancedParens(input){
-
+  let arr = [];
+  // Step1
+  //push on stack and when you see ')' needs to be same like on the top of the stack
+  for (var i=0; i<input.length; i++){
+    arr.push(input[i]);
+  }
+  if(arr.pop() === ')'){
+      return true;
+  } else {
+    return false;
+  }
 }
 
 module.exports = balancedParens;

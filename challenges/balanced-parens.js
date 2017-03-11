@@ -24,8 +24,38 @@
  *
  */
 
-function balancedParens(input){
-
+function number(input, paren){
+  return input.split('').filter(x => 
+    x === paren
+  ).length
 }
+
+function balancedParens(input){
+  let clean = input.replace(/[^\[\]\(\)\{\}]/gi, '')
+  var flag = true;
+  if ( number(clean, '(') !== number(clean, ')') ) flag = false;
+  if ( number(clean, '{') !== number(clean, '}') ) flag = false;
+  if ( number(clean, '[') !== number(clean, ']') ) flag = false;
+
+  return flag; 
+}
+
+
+
+/*
+replace all non parens with nothing 
+count how many char there are with a filter (test).length
+*/
+
+//---------------------TESTING----------------------------------
+console.log(balancedParens('[](){}')); // true
+console.log(balancedParens('[({})]'));   // true
+console.log(balancedParens('[(]{)}')); // false
+console.log( balancedParens(' var wow  = { yo: thisIsAwesome() }') ); // true
+console.log( balancedParens(' var hubble = function() { telescopes.awesome();') ); // false
+//console.log( number('new )', ')') )
+
+
+
 
 module.exports = balancedParens;

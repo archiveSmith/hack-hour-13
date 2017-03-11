@@ -40,15 +40,18 @@ function balancedParens(input){
 
 		// if c has a matching bracket i.e. is a bracket
 		if (matchingBracket[c]) {
-			bracketQ.unshift(c);
+			bracketQ.push(c);
 		// if c matches first bracket on queue
-		} else if (c === matchingBracket[ bracketQ[0] ]) {
-			bracketQ.shift();
+		} else if (bracketQ && c === matchingBracket[ bracketQ[bracketQ.length-1] ]) {
+			bracketQ.pop();
 		}
 	}
 
 	return !bracketQ.length;
 
 }
+
+// var res = balancedParens('[({})]');
+// console.log(res);
 
 module.exports = balancedParens;

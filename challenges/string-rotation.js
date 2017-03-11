@@ -16,11 +16,11 @@ function isSubstring(s1, s2) {
 }
 
 function stringRotation(s1, s2) {
-  compare = s1
   if (s1.length !== s2.length){
     return false;
   } else {
     for (var i = 0; i < s1.length; i++){
+      console.log(s2);
       newLet = s2[0]
       var s2 = s2.slice(1)+newLet;
       if (s1 === s2){

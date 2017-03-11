@@ -23,19 +23,11 @@ function stringRotation(s1, s2) {
   if (s1.length != s2.length) return false;
   var concatFirst = s1 + s1;
 
-  if (concatFirst.concat(s2)){
+  if (isSubstring(concatFirst,s2)){
     return true;
   }else {
     return false;
   }
-
-
-  // s1 = s1.split("");
-  // s2 = s2.split("");
-
-  // for(var i=0; i < s1.length; i++){
-  //   if(s1.slice(0, s1.le))
-  // }
 
 }
 

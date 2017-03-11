@@ -25,6 +25,7 @@
  */
 
 function balancedParens(input){
+  if (typeof input !== 'string') return 'Please input a string';
   let array = input.split('');
   let brackets = [];
   let result = true;

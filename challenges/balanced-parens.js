@@ -33,101 +33,27 @@ function balancedParens(input){
     const closers = [')', ']', '}']
 
     function inParens(str) {
+        let first = str[0];
         for (let i = 1; i < str.length; i += 1) {
             let char = str.charAt(i);
             if (openers.indexOf(char) !== -1) {
-                if (char === openers[0]) {
-                    let check = inParens(str.substring(i));
-                    if (check) i += check;
-                    else return false;
-
-                } else if (char === openers[1]) {
-                    let check = inBrackets(str.substring(i))
-                    if (check) i += check;
-                    else return false;
-                } else if (char === openers[2]) {
-                    let check = inBraces(str.substring(i))
-                    if (check) i += check;
-                    else return false;
-                }
+                let check = inParens(str.substring(i));
+                if (check) i += check;
+                else return false;                
             } else if (closers.indexOf(char) !== -1) {
-                if (char === closers[0]) return i;
-                else if (char === closers[1]) return false;
-                else if (char === closers[2]) return false;
+                if (char === closers[openers.indexOf(first)]) return i;
+                return false;
             }             
         }
     }
-
-    function inBrackets(str) {
-        for (let i = 1; i < str.length; i += 1) {
-            let char = str.charAt(i);
-            if (openers.indexOf(char) !== -1) {
-                if (char === openers[0]) {
-                    let check = inParens(str.substring(i));
-                    if (check) i += check;
-                    else return false;
-
-                } else if (char === openers[1]) {
-                    let check = inBrackets(str.substring(i))
-                    if (check) i += check;
-                    else return false;
-                } else if (char === openers[2]) {
-                    let check = inBraces(str.substring(i))
-                    if (check) i += check;
-                    else return false;
-                }
-            } else if (closers.indexOf(char) !== -1) {
-                if (char === closers[0]) return false;
-                else if (char === closers[1]) return i;
-                else if (char === closers[2]) return false;
-            }             
-        }
-    }
-
-    function inBraces(str){
-        for (let i = 1; i < str.length; i += 1) {
-            let char = str.charAt(i);
-            if (openers.indexOf(char) !== -1) {
-                if (char === openers[0]) {
-                    let check = inParens(str.substring(i));
-                    if (check) i += check;
-                    else return false;
-
-                } else if (char === openers[1]) {
-                    let check = inBrackets(str.substring(i))
-                    if (check) i += check;
-                    else return false;
-                } else if (char === openers[2]) {
-                    let check = inBraces(str.substring(i))
-                    if (check) i += check;
-                    else return false;
-                }
-            } else if (closers.indexOf(char) !== -1) {
-                if (char === closers[0]) return false;
-                else if (char === closers[1]) return false;
-                else if (char === closers[2]) return i;
-            }             
-        }        
-    }
-
 
     for (let i = 0; i < input.length; i += 1) {
         let char = input.charAt(i);
         if (openers.indexOf(char) !== -1) {
-            if (char === openers[0]) {
-                let check = inParens(input.substring(i));
-                if (check) i += check;
-                else return false;
-            } else if (char === openers[1]) {
-                let check = inBrackets(input.substring(i))
-                if (check) i += check;
-                else return false;
-            } else if (char === openers[2]) {
-                let check = inBraces(input.substring(i))
-                if (check) i += check;
-                else return false;
-            }
-        }      
+            let check = inParens(input.substring(i));
+            if (check) i += check;
+            else return false;
+        } else if (closers.indexOf(char) !== -1) return false;
     }
     return true;
 }

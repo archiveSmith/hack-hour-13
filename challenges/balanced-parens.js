@@ -25,6 +25,16 @@
  */
 
 function balancedParens(input){
+	let j = string.length - 1;
+  for (let i = 0; i < string.length / 2; i ++) {
+    if (string[i] === "(" && string[j] === ")") {
+      j--;
+    continue;
+  } else {
+    return false;
+  }
+  }
+  return true;
 
 }
 

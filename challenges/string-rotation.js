@@ -27,7 +27,7 @@ function isSubstring(s1, s2) {
 
 function stringRotation(s1, s2) {
   if (typeof s1 !== 'string' || typeof s2 !== 'string') {return 'error'}
-  if (s1.length === 0 || s2.length === 0) {return true}
+  if (s1.length === 0 && s2.length === 0) {return true}
 
   var arr1 = [];
   var arr2 = [];
@@ -54,6 +54,13 @@ function stringRotation(s1, s2) {
 
   return flag; 
 }
+
+
+function stringRotation2(s1, s2) {
+  return s1.length === s2.length && isSubstring(
+  s1.concat(s1), s2)
+}
+
 
 /*
 RETURN BOOLEAN

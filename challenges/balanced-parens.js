@@ -24,8 +24,32 @@
  *
  */
 
-function balancedParens(input){
-
+function balancedParens(str){
+	let openOpp  = {
+		"{":"}",
+		"[":"]",
+		"(":")"
+	};
+	let closed = {
+		"}":true,
+		")":true,
+		"]":true
+	};
+	var stack =[];
+	var cr, last;
+	for(let index=0; index < str.length; index++){
+		cr = str[index];
+		if(cr in openOpp){
+			stack.push(cr);
+		}
+		else{
+			if(cr in closed){
+				last = stack.pop();
+				if(openOpp[last] !== cr) return false;
+			}
+		}
+	}
+	return stack.length === 0;
 }
 
 module.exports = balancedParens;

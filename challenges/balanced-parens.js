@@ -28,25 +28,42 @@ function balancedParens(input){
 	let counterP = 0;
 	let counterB = 0;
 	let counterC = 0;
+
 	for (let i = 0; i < input.length; i += 1) {
-		let c = input.charAt(i);
-		switch (c) {
-			case '\(':
+		let curr = input.charAt(i);
+
+		const parse = function(c) {
+			let str = '';
+			for (let index = i + 1; index < input.length; index += 1) {
+			  if (input.charAt(index) !== c) {
+				  str += input.charAt(index);
+			  } else {
+			    break;
+			  }
+			}
+			return str;
+		}
+	
+		switch (curr) {
+			case '(':
 				counterP += 1;
+				if (!balancedParens(parse(')'))) return false;
 				break;
-			case '\[':
+			case '[':
 				counterB += 1;
+				if (!balancedParens(parse(']'))) return false;
 				break;
-			case '\{':
+			case '{':
 				counterC += 1;
+				if (!balancedParens(parse('}'))) return false;
 				break;
-			case '\)':
+			case ')':
 				counterP -= 1;
 				break;
-			case '\]':
+			case ']':
 				counterB -= 1;
 				break;
-			case '\}':
+			case '}':
 				counterC -= 1;
 				break;
 		}

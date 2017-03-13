@@ -24,8 +24,42 @@
  *
  */
 
-function balancedParens(input){
+ function balancedParens(input) {
+  // with regexp, test if the input even has any parenthetical notation
+  if (!/\(|\)|\[|\]|\{|\}/.test(input)) return false;
 
+  // test as to whether a set of parentheses are balancedParens
+  const indOfLeftPar = input.indexOf('(');
+  const indOfRightPar = input.indexOf(')');
+
+  const indOfLeftSq = input.indexOf('[');
+  const indOfRightSq = input.indexOf(']');
+
+  const indOfLeftCurl = input.indexOf('{');
+  const indOfRightCurl = input.indexOf('}');
+
+  if (/[\(\)]/g.test(input) && /[\[\]]/g.test(input) && /[\{\}]/g.test(input)) {
+    return (indOfLeftPar < indOfRightPar && indOfLeftSq < indOfRightSq
+    && indOfLeftCurl < indOfRightCurl);
+  }
+
+  if (/[\(\)]/g.test(input) && /[\[\]]/g.test(input)) {
+    return indOfLeftPar < indOfRightPar && indOfLeftSq < indOfRightSq;
+  }
+
+  if (/[\[\]]/g.test(input) && /[\{\}]/g.test(input)) {
+    return indOfLeftSq < indOfRightSq && indOfLeftCurl < indOfRightCurl;
+  }
+
+  if (/[\(\)]/g.test(input) && /[\{\}]/g.test(input)) {
+    return indOfLeftPar < indOfRightPar && indOfLeftCurl < indOfRightCurl;
+  }
+
+  if (indOfLeftPar < indOfRightPar
+    || indOfLeftSq < indOfRightSq
+  || indOfLeftCurl < indOfRightCurl) return true;
+
+  return false;
 }
 
 module.exports = balancedParens;

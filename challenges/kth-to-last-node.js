@@ -24,28 +24,31 @@ function Node(val) {
 function kthToLastNode(k, head) {
 
     // check whether head.next is null, if so, return the value of head
-    if(!head.next) return head.value;
+  if (!head) return undefined;
+  if (!head.next) return head.value;
 
-    // check the length of the linkedList by a while loop that iterates for as long as the value of next is not null
-    // in order to not change the value of head, create a new node that holds the values of head
+// check the length of the linkedList by a while loop that iterates
+// for as long as the value of next is not null in order to not change the value of head,
+// create a new node that holds the values of head
 
-    let node = head;
+  let node = head;
 
-    let linkedListLength = 1;
+  let linkedListLength = 1;
 
-    while(node.next) {
-      node = node.next;
-      linkedListLength++;
-    }
+  while (node.next) {
+    node = node.next;
+    linkedListLength += 1;
+  }
 
-   // now we have the length of the linkedList, iterate through the linked list for as long as i < linkedListLength - k
-   // when this happens, return the value of the kth node
-   let kthLastNode = head;
+ // now we have the length of the linkedList, iterate through the linked
+ // list for as long as i < linkedListLength - k
+ // when this happens, return the value of the kth node
+  let kthLastNode = head;
 
-   for(let i = 0; i < linkedListLength - k; i += 1) {
-     kthLastNode = kthLastNode.next;
-   }
-   return kthLastNode.value;
+  for (let i = 0; i < linkedListLength - k; i += 1) {
+    kthLastNode = kthLastNode.next;
+  }
+  return kthLastNode.value;
 }
 
 module.exports = {Node: Node, kthToLastNode: kthToLastNode};

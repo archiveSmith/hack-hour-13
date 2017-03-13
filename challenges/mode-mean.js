@@ -10,29 +10,20 @@
  */
 
 
-function modemean(array) {
-  let mean = Math.floor(array.reduce((acc, curr) => {return acc + curr}, 0)/array.length);
+ function modemean(array) {
 
-  let mode = array.reduce((acc, curr) => {
-    if(acc.hasOwnProperty(curr)) {
-      acc[curr] = acc[curr]+1;
-    } else {
-      acc[curr] = 1;
-    }
-    return acc;
-  }, {});
+   const mean = Math.floor(array.reduce((acc, curr) => { return acc + curr; }, 0) / array.length);
 
-  let modeArr = [];
+   let mode = 0;
 
-  for(var key in mode) {
-    modeArr.push([key, mode[key]]);
-  }
+   const newArr = array.reduce((acc, curr) => {
+     return acc[curr] ? acc.concat(acc[curr] = acc[curr] + 1) : acc.concat(acc[curr] = 1);
+   }, []);
 
-  mode = +modeArr.sort((a, b) => {
-    return b[1] - a[1];
-  })[0][0];
+   newArr.forEach((element) => { if (element > mode) mode = newArr.indexOf(element); });
+    // if greater, reassign mode to the current element
 
-  return mode === mean;
-}
+   return mode === mean;
+ }
 
 module.exports = modemean;

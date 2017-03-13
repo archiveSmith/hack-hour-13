@@ -25,17 +25,35 @@
  */
 
 function balancedParens(input){
-  let arr = [];
   // Step1
   //push on stack and when you see ')' needs to be same like on the top of the stack
-  for (var i=0; i<input.length; i++){
-    arr.push(input[i]);
+  // for (var i=0; i<input.length; i++){
+  //   arr.push(input[i]);
+  // }
+  // if(arr.pop() === ')'){
+  //     return true;
+  // } else {
+  //   return false;
+  // }
+  var array = [];
+  var openParens = { '(': ')',
+                '[': ']', 
+                '{': '}'
+              };
+  var closedParens = { ')': true ,
+                      ']': true, 
+                      '}': true
+                      };
+  
+  for (var i = 0; i < input.length; i ++) {
+    if (openParens[input[i]]) {
+      array.push(input[i]);
+    } else if (closedParens[input[i]]) {
+      if (openParens[array.pop()] !== input[i]) return false;
+    }
   }
-  if(arr.pop() === ')'){
-      return true;
-  } else {
-    return false;
-  }
+  
+  return array.length === 0;
 }
 
 module.exports = balancedParens;

@@ -34,21 +34,31 @@ function balancedParens(input){
 		'(': ')',
 		'{': '}'
 	};
+	var closingBrackets = [']', '}', ')'];
 
 	for (var i = 0; i < input.length; i += 1) {
 		var c = input[i];
 
-		// if c has a matching bracket i.e. is a bracket
-		if (matchingBracket[c]) {
-			bracketQ.unshift(c);
-		// if c matches first bracket on queue
-		} else if (c === matchingBracket[ bracketQ[0] ]) {
-			bracketQ.shift();
+		if (closingBrackets.indexOf(c) >= 0) {
+			// if encounter closing bracket that is the first or doesn't match top of stack
+			if (bracketQ && c !== matchingBracket[ bracketQ[bracketQ.length-1] ]) {
+				return false;
+			}
+			bracketQ.pop();
 		}
+		// if c has a matching bracket i.e. is a bracket
+		else if (matchingBracket[c]) {
+			bracketQ.push(c);
+		// if c matches first bracket on queue
+		} 
 	}
 
+	// if still any on stack
 	return !bracketQ.length;
 
 }
+
+var res = balancedParens('fsdfd{}')
+console.log(res); // true
 
 module.exports = balancedParens;

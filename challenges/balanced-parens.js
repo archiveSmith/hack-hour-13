@@ -25,6 +25,7 @@
  */
 
 function balancedParens(input){
+<<<<<<< HEAD
 	let counterP = 0;
 	let counterB = 0;
 	let counterC = 0;
@@ -74,6 +75,9 @@ function balancedParens(input){
 	else {
 		return false;
 	}
+=======
+
+>>>>>>> b133e5e4005e0172488919a7d32a1eb65c26ab23
 }
 
 module.exports = balancedParens;

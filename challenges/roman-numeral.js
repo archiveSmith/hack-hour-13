@@ -22,6 +22,7 @@ function romanNumeral(n) {
 	const roman = ['M', 'CM','D','CD','C', 'XC', 'L', 'XL', 'X','IX','V','IV','I'];
 	let result = '';
 	
+	//loop through array
 	if (typeof n === 'number') {
 		for (let i = 0; i <= arabic.length; i++) {
 		    while(n % arabic[i] < n) {

@@ -38,12 +38,12 @@ function reverseInPlace(array) {
   // if array is not even, keep the middle, start from both sides
   let frontStart = Math.floor(array.length/2)-1;
   let backStart = array.length % 2 === 0 ? frontStart +1 : frontStart + 2;
-  
+
   for (let i = frontStart; i > -1; i -= 1) {
     [array[i], array[backStart]] = [array[backStart], array[i]];
     backStart += 1;
   }
-  return array;
+  return array.length < 1 ? []: array;
 }
 
 module.exports = reverseInPlace;

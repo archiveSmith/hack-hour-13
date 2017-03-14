@@ -25,6 +25,7 @@
  */
 
 function balancedParens(input){
+<<<<<<< HEAD
     let stack = [];
     let last;
     const closing = {
@@ -53,6 +54,8 @@ function balancedParens(input){
       return false;
     }
     return true;
+=======
+>>>>>>> 982b5f4f0fadd6f168ccde4257e9a17882ddc00a
 
 }
 

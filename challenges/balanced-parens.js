@@ -24,11 +24,11 @@
  *
  */
 
- function balancedParens(input) {
-  // with regexp, test if the input even has any parenthetical notation
+function balancedParens(input) {
+// with regexp, test if the input even has any parenthetical notation
   if (!/\(|\)|\[|\]|\{|\}/.test(input)) return false;
 
-  // test as to whether a set of parentheses are balancedParens
+// test as to whether a set of parentheses are balancedParens
   const indOfLeftPar = input.indexOf('(');
   const indOfRightPar = input.indexOf(')');
 
@@ -40,7 +40,7 @@
 
   if (/[\(\)]/g.test(input) && /[\[\]]/g.test(input) && /[\{\}]/g.test(input)) {
     return (indOfLeftPar < indOfRightPar && indOfLeftSq < indOfRightSq
-    && indOfLeftCurl < indOfRightCurl);
+   && indOfLeftCurl < indOfRightCurl);
   }
 
   if (/[\(\)]/g.test(input) && /[\[\]]/g.test(input)) {
@@ -56,8 +56,8 @@
   }
 
   if (indOfLeftPar < indOfRightPar
-    || indOfLeftSq < indOfRightSq
-  || indOfLeftCurl < indOfRightCurl) return true;
+  || indOfLeftSq < indOfRightSq
+|| indOfLeftCurl < indOfRightCurl) return true;
 
   return false;
 }

@@ -21,6 +21,8 @@ function romanNumeral(n) {
   // using recursion... going to do it later
 
   // non recursive way
+  if (typeof n !== 'number') return false;
+
   const modernNums = [1, 4, 5, 9, 10, 40, 50, 90, 100, 400, 500, 900, 1000];
   const romanNums = ['I', 'IV', 'V', 'IX', 'X', 'XL', 'L', 'XC', 'C', 'CD', 'D', 'CM', 'M'];
 

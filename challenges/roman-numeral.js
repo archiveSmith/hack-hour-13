@@ -26,20 +26,20 @@ function romanNumeral(n) {
   if (n[thousands] < 4) output += 'M'.repeat(n[thousands]);
   if (n[thousands] == 4) output += 'MV';
   if (n[thousands] == 5) output += 'V';
-  if (n[thousands] > 5 && n[thousands] < 9) output = 'V' + 'M'.repeat(n[thousands] - 5);
+  if (n[thousands] > 5 && n[thousands] < 9) output += 'V' + 'M'.repeat(n[thousands] - 5);
 
   let hundreds = n.length - 3;
   if (n[hundreds] < 4) output += 'C'.repeat(n[hundreds]);
   if (n[hundreds] == 4) output += 'CD';
   if (n[hundreds] == 5) output += 'D';
-  if (n[hundreds] > 5 && n[hundreds] < 9) output = 'D' + 'C'.repeat(n[hundreds] - 5);
+  if (n[hundreds] > 5 && n[hundreds] < 9) output += 'D' + 'C'.repeat(n[hundreds] - 5);
   if (n[hundreds] == 9) output += 'XC';
 
   let tens = n.length - 2;
   if (n[tens] < 4) output += 'X'.repeat(n[tens]);
   if (n[tens] == 4) output += 'XL';
   if (n[tens] == 5) output += 'L';
-  if (n[tens] > 5 && n[tens] < 9) output = 'L' + 'X'.repeat(n[tens] - 5);
+  if (n[tens] > 5 && n[tens] < 9) output += 'L' + 'X'.repeat(n[tens] - 5);
   if (n[tens] == 9) output += 'XC';
 
   let ones = n.length - 1;

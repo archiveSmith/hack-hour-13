@@ -18,9 +18,6 @@
  */
 
 function romanNumeral(n) {
-  // using recursion... going to do it later
-
-  // non recursive way
   if (typeof n !== 'number') return false;
 
   const modernNums = [1, 4, 5, 9, 10, 40, 50, 90, 100, 400, 500, 900, 1000];
@@ -28,10 +25,23 @@ function romanNumeral(n) {
 
   let startNum = n;
   let romanAns = '';
+  let index = modernNums.length - 1;
 
+  // // recursive function
+  // function toRoman(ind, value) {
+  //   if (value - modernNums[ind] >= 0) {
+  //     startNum = value - modernNums[ind];
+  //     romanAns += toRoman(ind, startNum);
+  //     if (startNum === 0) return '';
+  //     else return romanNums[ind];
+  //   } else romanAns += toRoman(ind - 1, value)
+  // }
+
+  // romanAns += toRoman(index, startNum);
+
+  // non recursive way
   // loop through the modernNums array and decrement the amount each time
   // if less than -1, then move on to next number and do not decrement, else stay on this number
-  let index = modernNums.length - 1;
   while(startNum > 0) {
     if (startNum - modernNums[index] >= 0) {
       startNum = startNum - modernNums[index]; // subtract the modernNum from the startNum

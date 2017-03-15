@@ -9,7 +9,17 @@
  */
 
 function subsetSum(array, target) {
-
+	let mySet = [[]], temp, currentSum=0;
+	
+	for(let i = 0; i < array.length; i += 1){
+		for (let next = 0, setLen=mySet.length; next < setLen; next +=1){
+			temp = mySet[next].concat(array[i]);
+			mySet.push(temp);
+			currentSum = temp.reduce((a, n) => a + n);
+			if(currentSum === target) return true;
+		}
+	}
+	return false;
 }
 
 module.exports = subsetSum;

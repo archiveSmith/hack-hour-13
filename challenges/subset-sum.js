@@ -9,7 +9,25 @@
  */
 
 function subsetSum(array, target) {
-
+  // Check all 2 digit combos then all 3 digit combos up to max then move to next number
+  let sum = 0;
+  let counter = 0;
+  for (let i = 0; i < array.length; i += 1) {
+    sum = array[i];
+    if (sum === target) return true;
+    counter = 1;
+    for (let j = i + counter; j < array.length; j += 1) {
+      if (sum + array[j] === target) return true
+      if (j === array.length - 1) {
+        counter += 1;
+        j = counter;
+        sum += array[j];
+      }
+    }
+  }
+  return false;
 }
+
+//console.log(subsetSum([8, -2, 1, -3], 6));
 
 module.exports = subsetSum;

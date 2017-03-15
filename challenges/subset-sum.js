@@ -10,6 +10,8 @@
 
 function subsetSum(array, target) {
   // Check all 2 digit combos then all 3 digit combos up to max then move to next number
+  console.log(array);
+  console.log(target);
   let sum = 0;
   let counter = 0;
   for (let i = 0; i < array.length; i += 1) {
@@ -28,6 +30,6 @@ function subsetSum(array, target) {
   return false;
 }
 
-//console.log(subsetSum([8, -2, 1, -3], 6));
+//console.log(subsetSum([0,1,2,3,4,5,6,7], 6));
 
 module.exports = subsetSum;

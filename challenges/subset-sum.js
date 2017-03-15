@@ -9,7 +9,11 @@
  */
 
 function subsetSum(array, target) {
-
+    if (!Array.isArray(array) || isNaN(target)) return "Invalid input(s).  Must be an array and an integer."
+    for (let i = 0; i < array.length; i++) {
+        if (target === array[i] || (array[i] < target && subsetSum(array.slice(0, i).concat(array.slice(i + 1)), target - array[i]))) return true;
+    }
+    return false;
 }
 
 module.exports = subsetSum;

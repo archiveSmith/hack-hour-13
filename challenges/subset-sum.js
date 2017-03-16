@@ -9,6 +9,23 @@
  */
 
 function subsetSum(array, target) {
+	//doesn't quite work yet
+//edge case
+  if(array === 'undefined' || array.length === 0) return false;
+  
+  array.sort(function(a,b) {
+    return a - b;
+  });
+  
+target = target - array[0];
+
+ if (target === 0) {
+   return true;
+ }
+ 
+  array.shift();
+  
+ return subsetSum(array, target);
 
 }
 

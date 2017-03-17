@@ -10,4 +10,7 @@ function pow(base, power, powerInputAsZero=true) {
   if(power < 0) return 1 / pow(base, power + 1, false);
 }
 
+console.log(pow(4,-1));
+console.log(pow(4,0));
+
 module.exports = pow;

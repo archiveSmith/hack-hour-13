@@ -18,6 +18,7 @@
  */
 
 function romanNumeral(n) {
+<<<<<<< HEAD
     let str = "";
     let roman = ['M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I'];
     let arabic = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
@@ -29,6 +30,9 @@ function romanNumeral(n) {
         }
     }
     return str;
+=======
+
+>>>>>>> 81af29f3158cbf4019b8aa015138e765ded5142c
 }
 
 module.exports = romanNumeral;

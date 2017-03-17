@@ -31,5 +31,21 @@ function subsetSum(array, target) {
   }
   return false;
 }
+[] 1 
+[ 1 ] 1 
+[ 1 ] 2 
+[ 1, 6, 3 ] 5 
+[ 2, 4, 1, 8 ] 16 
+[ -1, 5, -2, 6 ] 1 
+[ 1, 6, 3 ] 10 [ 5, 11, 21, 13 ] 18 [ 5, 3, 1, 7, 11 ] 15 
+[ 8, 1, 4, 2 ] 11 
+[ 1, -6, 3 ] -2 
+[ 11, 4, -4, 2, -3 ] 9 
+[ 1, -5, 11, 2, -1 ] -3 
+[ 5, 11, 21, -13 ] -11
 
-module.exports = subsetSum;
+console.log(subsetSum([], 6))
+
+//module.exports = subsetSum;
+
+

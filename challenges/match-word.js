@@ -8,7 +8,42 @@
 // matchWord('');  -> true
 
 function matchWord(str) {
+  if (typeof str !== 'string') return false;
+  let history = ['%save'];
+  let saver = '';
+  str = str.toLowerCase();
+
+  for (let i = 0; i < str.length + 1; i += 1) {
+    if (str[i] && str[i].match(/[a-zA-Z]/i)) {
+      saver += str[i];
+      // console.log(str[i]);
+    } else if (saver.length > 0) {
+      let reverseSaver = saver.split('').reverse().join('');
+      // console.log(reverseSaver);
+      for (let i = 0; i < history.length; i += 1) {
+        if (history[i] === reverseSaver) {
+          history.pop();
+          saver = '';
+          break;
+        } else if (i === history.length - 1) {
+          history.push(saver);
+          saver = '';
+          break;
+        }
+      }
+    }
+  }
+
+  if (history.length === 1) return true;
+  return false;
 
 }
+
+console.log(matchWord('__END_DNE-----'));// -> true
+console.log(matchWord('__ENDDNE__')); //  -> false       (not separated by a space)
+console.log(matchWord('IF()()fi[]')); //  -> true        (should be case-insensitive)
+console.log(matchWord('for__if__rof__fi')); // -> false     not properly closed. like ( [) ] 
+console.log(matchWord('%%$@$while  try ! yrt  for if_fi rof #*#  elihw')); // -> true
+console.log(matchWord('')); // -> true
 
 module.exports = matchWord;

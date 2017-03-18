@@ -25,20 +25,11 @@ function binToDec(binary) {
 
   // return bin2Dec(binary, startPos);
 
-
-  // convert to Hexadecimal - Recursion // not complete
-  binary = binary.split('').reverse().join('');
-  let startPos = -1;
-
-  function bin2Dec(bin, start) {
-    if (!bin.length) return 0;
-    return bin[0] * Math.pow(2, start + 1) + bin2Dec(bin.slice(1), start + 1);
-  }
-
-  return bin2Dec(binary, startPos);
+  // convert using parseInt
+  // return parseInt(binary, 2);
 }
 
-
+// Test Cases
 console.log(binToDec('0'));   
 console.log(binToDec('11')); 
 console.log(binToDec('100'));

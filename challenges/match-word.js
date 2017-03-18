@@ -9,25 +9,28 @@
 // matchWord('%%$@$while  try ! yrt  for if_fi rof #*#  elihw');  -> true
 // matchWord('');  -> true
 
-
 function matchWord(str) {
     if (str.length === 0) return true;
 
-    return Object.keys(str.toLowerCase().replace(/[^a-z]+/g, ' ').split(' ').reduce(function (all, item, index) {
-        if (item.length > 0) {
-            let revEle = item.split('').reverse().join('');
-            if (all[item]) {
-                delete all[item];
+    let strippedStr = str.toLowerCase().replace(/[^a-z]+/g, ' ').split(' ');
+    let wordCheck = {};
+    let stack = [];
+
+    for (let i = 0; i < strippedStr.length; i += 1) {
+        if (strippedStr[i].length > 0) {
+            let revEle = strippedStr[i].split('').reverse().join('');
+            if (stack[stack.length-1] === strippedStr[i]) {
+                stack.pop();
+                delete wordCheck[strippedStr[i]];
             } else {
-                all[revEle] = item;
+                wordCheck[revEle] = strippedStr[i];
+                stack.push(revEle);
             }
         }
-        return all;
-    }, {})).length === 0;
+    }
+    return stack.length === 0;
 }
 
-
-
-console.log(matchWord('%%$@$while  try ! yrt  for if_fi rof #*#  elihw'))
+console.log(matchWord('for__if__rof__fi'));
 
 module.exports = matchWord;

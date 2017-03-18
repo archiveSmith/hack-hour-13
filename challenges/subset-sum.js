@@ -9,14 +9,35 @@
  */
 
 function subsetSum(array, target) {
-  if (target === 0) return true;
-  if (target < 0 || array.length === 0) return false;
-  
-  for (let i = 0; i < array.length; i += 1) {
-    if (target === array[i]) return true;
-  }
-  
-  return subsetSum(array.slice(0, array.length - 1), target - array[array.length - 1]);
+  // const subsets = [[]];
+  // for (let i = 0; i < array.length; i += 1) {
+  //   for (let j = 0, len = subsets.length; j < len; j += 1) {
+  //     const subset = array[i].concat(subset[j]);
+  //     if (subset.reduce((a, b) => a + b) === target) {
+  //       return true;
+  //     }
+  //     subsets.push(subset);
+  //   }
+  // }
+  // return false;
+
+
+  // for (let i = 0; i < array.length; i += 1) {
+  //   if (target === array[i]) return true;
+  //   if (array[i] < target) {
+  //     const newArr = array.slice(i + 1);
+  //     const newTarget = target - array[i];
+  //     if (subsetSum(newArr, newTarget)) {
+  //       return true;
+  //     }
+  //   }
+  // }
+  // return false;
+
+
+  if (!target) return true;
+  if (!array.length) return false;
+  return subsetSum(array.slice(1), target - array[0]) || subsetSum(array.slice(1), target);
 }
 
 module.exports = subsetSum;

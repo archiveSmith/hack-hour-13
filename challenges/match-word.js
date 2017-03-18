@@ -8,7 +8,34 @@
 // matchWord('');  -> true
 
 function matchWord(str) {
-
+  str = str.toLowerCase();
+  
+  function isLetter(x) {
+    return x.toLowerCase() !== x.toUpperCase();
+  }
+  
+  let letterarray = [];
+  let holder = [];
+  for (let i = 0; i < str.length; i += 1) {
+    if (isLetter(str.charAt(i))) {
+      letterarray.push(str.charAt(i));
+      if (!isLetter(str.charAt(i + 1))) {
+        letterarray.push(" ");
+      }
+    }
+  }
+  letterarray = letterarray.join("").split(" ");
+  if (letterarray.length % 2 === 0) return false;
+  let stack = [];
+  for (let i = 0; i < letterarray.length - 1; i += 1) {
+    stack.push(letterarray[i]);
+    if (stack[stack.length - 1] === letterarray[i + 1].split("").reverse().join("")) {
+      stack.pop();
+      stack.pop();
+    }
+  }
+  if (stack.length === (letterarray.length - 1) / 2) return true;
+  return false;
 }
 
 module.exports = matchWord;

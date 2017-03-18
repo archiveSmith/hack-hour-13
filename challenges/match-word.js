@@ -8,7 +8,17 @@
 // matchWord('');  -> true
 
 function matchWord(str) {
-
+    str = str.replace(/[\W_]/g, ' ').replace(/ +/g," ").trim().toLowerCase().split(' ');
+    let testArr = [];
+    for (let i = 0; i < str.length; i += 1) {
+        if (testArr.length === 0) {
+        testArr.push(str[i].split('').reverse().join(''))
+        } else if (testArr[testArr.length - 1] !== str[i]) {
+          testArr.push(str[i].split('').reverse().join(''))  
+        } else if (testArr[testArr.length - 1] == str[i]) {
+          testArr.pop();
+        }
+    }
+    return testArr.length === 0;
 }
-
-module.exports = matchWord;
+// module.exports = matchWord;

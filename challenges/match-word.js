@@ -1,4 +1,7 @@
-// Some languages have "if" statements that are closed by "fi" instead of curly brackets. Or they close a "case" with "esac", i.e. the same keyword backwards. for this problem we'll check that all words in a string are "closed". Write a function that takes a string and returns true if every word is closed by its backwards counterpart. Words must be separated by space or punctuation.
+// Some languages have "if" statements that are closed by "fi" instead of curly brackets. 
+//Or they close a "case" with "esac", i.e. the same keyword backwards. for this problem we'll check 
+//that all words in a string are "closed". Write a function that takes a string and returns true if 
+//every word is closed by its backwards counterpart. Words must be separated by space or punctuation.
 
 // matchWord('__END_DNE-----');  -> true
 // matchWord('__ENDDNE__');  -> false       (not separated by a space)
@@ -8,7 +11,25 @@
 // matchWord('');  -> true
 
 function matchWord(str) {
-
+    if (typeof str !== 'string') return 'Input needs to be a string';
+    const wordsArr = [];
+    for (let i = 0; i < str.length;) {
+        let word = '';
+        while (str.charAt(i).toUpperCase() !== str.charAt(i).toLowerCase()) {
+            word += str.charAt(i);
+            i += 1;
+        }
+        if (word.length !== 0) {
+            if (wordsArr.length !== 0 && 
+            word.toLowerCase() === wordsArr[wordsArr.length - 1].split('').reverse().join('').toLowerCase()) {
+                wordsArr.pop();
+            } else {
+                wordsArr.push(word);
+            }
+        } else i += 1;
+    }
+    return wordsArr.length === 0;
 }
+
 
 module.exports = matchWord;

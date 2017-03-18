@@ -8,6 +8,7 @@
 // matchWord('');  -> true
 
 function matchWord(str) {
+    if (str == '') return true;
     str = str.replace(/[\W_]/g, ' ').replace(/ +/g," ").trim().toLowerCase().split(' ');
     let testArr = [];
     for (let i = 0; i < str.length; i += 1) {

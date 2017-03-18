@@ -17,6 +17,29 @@ function binToDec(binary) {
   return parseInt(Number(binary), 2)
 }
 
+function binToDec2(binary) {
+  //modifier to augment multiple
+  let modifer = 1;
+  //must hold running total 
+  let total = 0; 
+  for(let i = binary.length - 1; i >= 0; i--) {
+    total = total + parseInt(binary[i]) * modifier;
+    modifier *= 2;
+  }
+  //total will be given sum of itself and current position
+  return total;
+  //modifer becomes a multiple of itself 
+}
+
+
+function binToDec3(binary) {
+  return binary.split('').reverse().reduce((acc, curr) => {
+    acc += curr * modifier;
+    modifier *= 2;
+    return acc;
+  }, 0)
+}
+
 function decToBin(dec) {
   return dec.toString(2);
 }

@@ -8,15 +8,14 @@
 // matchWord('');  -> true
 
 function matchWord(str) {
-  const words = str.split(/[^a-zA-Z]/ig).filter((elm) => elm !== '').map((elem) => elem.toLowerCase());
-  console.log(words);
+  if (typeof str !== 'string') return false;
+  const words = str.split(/[^a-zA-Z]/ig).filter(val => val !== '').map(elm => elm.toLowerCase());
   const stack = [];
   for (let i = 0; i < words.length; i += 1) {
     if (words[i] === stack[stack.length - 1]) {
       stack.pop();
     } else {
-      let char = words[i].split('').reverse().join('');
-      stack.push(char);
+      stack.push(words[i].split('').reverse().join(''));
     }
   }
   return stack.length === 0;

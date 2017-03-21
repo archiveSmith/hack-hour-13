@@ -21,6 +21,12 @@ function highestProduct(array) {
         tempNeg = negatives[0] * negatives[1];
         console.log(tempNeg);
     }
+    else if (negatives.length === array.length) {
+      negatives.sort(function(a, b) {
+        return a-b;
+      })
+      return negatives[0] * negatives[1] * negatives[array.length - 1];
+    }
 
     if (tempNeg > tempPos) {
         return tempNeg * maxArr[0];

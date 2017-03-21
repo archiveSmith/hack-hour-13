@@ -3,7 +3,7 @@
 // matchWord('__END_DNE-----');  -> true
 // matchWord('__ENDDNE__');  -> false       (not separated by a space)
 // matchWord('IF()()fi[]');  -> true        (should be case-insensitive)
-// matchWord('for__if__rof__fi');  -> false     not properly closed. like ( [) ] 
+// matchWord('for__if__rof__fi');  -> false     not properly closed. like ( [) ]
 // matchWord('%%$@$while  try ! yrt  for if_fi rof #*#  elihw');  -> true
 // matchWord('');  -> true
 
@@ -13,13 +13,14 @@ function matchWord(str) {
     let testArr = [];
     for (let i = 0; i < str.length; i += 1) {
         if (testArr.length === 0) {
-        testArr.push(str[i].split('').reverse().join(''))
+        testArr.push(str[i].split('').reverse().join(''));
         } else if (testArr[testArr.length - 1] !== str[i]) {
-          testArr.push(str[i].split('').reverse().join(''))  
+          testArr.push(str[i].split('').reverse().join(''));
         } else if (testArr[testArr.length - 1] == str[i]) {
           testArr.pop();
         }
     }
     return testArr.length === 0;
 }
+console.log(matchWord('IF()()fi[]'))
 // module.exports = matchWord;

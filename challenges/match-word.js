@@ -9,7 +9,7 @@
 
 function matchWord(str) {
   if (typeof str !== 'string') return false;
-  let history = ['%save'];
+  let history = ['P14C3H01D3R'];
   let saver = '';
   str = str.toLowerCase();
 
@@ -45,5 +45,6 @@ console.log(matchWord('IF()()fi[]')); //  -> true        (should be case-insensi
 console.log(matchWord('for__if__rof__fi')); // -> false     not properly closed. like ( [) ] 
 console.log(matchWord('%%$@$while  try ! yrt  for if_fi rof #*#  elihw')); // -> true
 console.log(matchWord('')); // -> true
+
 
 module.exports = matchWord;

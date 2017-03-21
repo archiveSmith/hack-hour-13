@@ -3,6 +3,10 @@
  */
 
 function highestProduct(array) {
+    if (array.length < 3) {
+        return 0;
+    }
+    
     let maxArr = array.sort(function (a, b) {
         return b-a;
     });
@@ -20,6 +24,12 @@ function highestProduct(array) {
         negatives.sort(function (a, b) {return a - b;})
         tempNeg = negatives[0] * negatives[1];
         console.log(tempNeg);
+    }
+    else if (negatives.length === array.length) {
+      negatives.sort(function(a, b) {
+        return a-b;
+      })
+      return negatives[0] * negatives[1] * negatives[array.length - 1];
     }
 
     if (tempNeg > tempPos) {

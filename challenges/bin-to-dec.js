@@ -26,7 +26,7 @@ function binToDec(binary) {
   // return bin2Dec(binary, startPos);
 
   // convert using parseInt
-  // return parseInt(binary, 2);
+  return parseInt(Number(binary), 2); // maybe
 }
 
 // Test Cases

@@ -49,7 +49,7 @@ function highestProduct (array) {
     });
 
     let first = array[0] * array[1] * array[array.length - 1];
-    let second = array[array.length - 2] * array[array.length - 3];
+    let second = array[array.length - 1] * array[array.length - 2] * array[array.length - 3];
 
     return Math.max(first, second);
 }

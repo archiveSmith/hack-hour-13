@@ -8,6 +8,8 @@
 // matchWord('');  -> true
 
 function matchWord(str) {
+  if (str.length === 0) return true;
+
   let cleanStr = str.replace(/[^a-zA-Z/ ]/gi, " ").replace(/ +/g, " ").trim().toLowerCase().split(' ');
   let testArr = [];
 

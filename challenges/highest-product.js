@@ -3,7 +3,7 @@
  */
 
 function highestProduct(array) {
-  if (array.length < 3) return 0;
+  if (Array.isArray(array) || array.length < 3) return 0;
   let negnum = [];
   array.forEach(integer => {
     if (integer < 0) negnum.push(integer);

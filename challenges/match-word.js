@@ -1,0 +1,40 @@
+// Some languages have "if" statements that are closed by "fi" instead of curly brackets. Or they close a "case" with "esac", i.e. the same keyword backwards. for this problem we'll check that all words in a string are "closed". Write a function that takes a string and returns true if every word is closed by its backwards counterpart. Words must be separated by space or punctuation.
+
+// matchWord('__END_DNE-----');  -> true
+// matchWord('__ENDDNE__');  -> false       (not separated by a space)
+// matchWord('IF()()fi[]');  -> true        (should be case-insensitive)
+// matchWord('for__if__rof__fi');  -> false     not properly closed. like ( [) ]
+// matchWord('%%$@$while  try ! yrt  for if_fi rof #*#  elihw');  -> true
+// matchWord('');  -> true
+
+function matchWord(str) {
+  if(!str.length) return true;
+
+  const arrOps = ['try', 'while', 'end', 'for', 'if'];
+
+  let bool = false;
+
+  const newArr = str.split(/[^A-Za-z\(()\[\]]/g).reduce((acc, curr) => {
+
+    if(!curr || !arrOps.includes(curr.toLowerCase())) return acc;
+
+    const reversedCurr = curr.split('').reverse().join('').toLowerCase();
+
+    if (acc[acc.length - 1] === '()'
+    || acc[acc.length - 1] === '[]'
+    || acc[acc.length - 1] === reversedCurr
+    || !acc.length && curr.length) {
+      acc.push(curr.toLowerCase());
+      bool = true;
+      return acc;
+    }
+    bool = false;
+    return acc;
+  }, []);
+  console.log(newArr);
+  return bool;
+}
+
+console.log(matchWord('IF()()fi[]'));
+
+module.exports = matchWord;

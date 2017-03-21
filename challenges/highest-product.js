@@ -3,12 +3,8 @@
  */
 
 function highestProduct(array) {
-  // array length >= 3
-  if (!array.length) return 0;
-  
-  // arrow function for getting product of array
-  var toProd = (prod, num) => prod * num;
-  if (array.length <= 3) return array.reduce(toProd);
+
+  if (array.length < 3) return 0;
 
   // sort by value
   var sorted = array.sort((a, b) => a - b);
@@ -22,7 +18,7 @@ function highestProduct(array) {
   }
 
   // product of three last items
-  var threeLastProd = array.slice(-3).reduce(toProd);
+  var threeLastProd = array.slice(-3).reduce((prod, num) => prod * num);
   return (negProd === undefined) ?
     threeLastProd :
     Math.max(threeLastProd, negProd * sorted[sorted.length - 1]);
@@ -31,10 +27,7 @@ function highestProduct(array) {
 // var my = require('./myLibrary');
 
 // // edge cases
-// my.testCase(highestProduct([]), 0);
-// my.testCase(highestProduct([4]), 4);
-// my.testCase(highestProduct([4,4]), 16);
-// my.testCase(highestProduct([4,4,4]), 64);
+// my.testCase(highestProduct([4,4]), 0);
 
 // // only nonnegative
 // my.testCase(highestProduct([2,3,0,1,6]), 36);

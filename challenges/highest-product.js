@@ -3,7 +3,7 @@
  */
 
  function highestProduct(array) {
-   return array.sort((a, b) => { return b - a; })[1] + Math.max(...array);
+   return array.sort((a, b) => { return b - a; })[1] * Math.max(...array);
  }
 
 module.exports = highestProduct;

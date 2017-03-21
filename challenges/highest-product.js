@@ -5,7 +5,7 @@
 function highestProduct(array) {
   //check for array 
   if (!Array.isArray(array)) return "Please give me an array"
-  if (array.length < 2) return 0;
+  if (array.length < 3) return 0;
   let positiveResult = 1;
   let negativeResult = 1;
   //sort array from greatest to least 
@@ -31,3 +31,4 @@ highestProduct([-100, -2, 45, 2, 89]) // 17800
 highestProduct([6, -3, -10, 0, 2]) // 180
 highestProduct([-1, -3, -10, 0, 60])// 1800
 module.exports = highestProduct;
+console.log([1,2,3].length)

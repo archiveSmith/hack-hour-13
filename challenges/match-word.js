@@ -18,6 +18,40 @@ function matchWord(str) {
   return stack.length === 0; 
 }
 
+
+
+function matchWord2(str) {
+  function isChar(el) {
+    return (el >= 'A' && el <= 'Z' || el >= 'a' && el <= 'z');
+  }
+
+  const stack = [];
+  const words = [];
+  let i = 0; 
+  while (i < str.length) {
+    if (isChar(str[i])) {
+      let word = '';
+      while(isChar(str[i])) {
+        word += str[i].toLowerCase();
+        i++;
+      }
+      words.push(word)
+    }
+    i++
+  }
+  if (words.length % 2 === 1) return false;
+
+  i = 0;
+  while(i < words.length) {
+    if (stack[stack.length -1] === words[i].split('').reverrse().join('')) {
+      stack.pop();
+    } else {
+      stack.push(words[i])
+    }
+  }
+}
+
+
 /*
 identify all the words used
 put them and their reverse in an object. only go thru half of words 

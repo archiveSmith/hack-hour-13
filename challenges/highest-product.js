@@ -3,24 +3,31 @@
  */
 
 function highestProduct(array) {
-    if (array.length === 0) {
+    
+    if (array.length < 3 || !Array.isArray(array)) {
       return 0;
     }
-    if (array.length === 1) {
-      return array[0];
-    }
-    if (array.length === 2) {
-      return array[0] * array[1];
-    }
-    let arr = array.sort(function(a, b) {
-      return a - b;
-    });
-
-    let x = arr.pop();
-    let y = arr.pop();
-    let z = arr.pop();
     
-    return x * y * z;
+    let newArr = array.filter((num) => { return num < 0 });
+    if (newArr.length === array.length) {
+      newArr.sort((a, b) => { return b - a });
+      let allNeg = newArr[0] * newArr[1] * newArr[2];
+      return allNeg;
+    }
+    
+    array.sort((a, b) => { return a - b });
+    let neg = array[0] * array[1] * array[array.length - 1];
+    console.log(neg);
+    
+    array.sort((a, b) => { return b - a });
+    let pos = array[0] * array[1] * array[2];
+    console.log(pos);
+
+    if (neg > pos) {
+      return neg;
+    } else {
+      return pos;
+    }
 }
 
 

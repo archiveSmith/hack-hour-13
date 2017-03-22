@@ -3,9 +3,7 @@
  */
 
 function highestProduct(array) {
-  let sorted = array.sort((a,b) => b - a);
-  let firstThree = sorted.slice(0, 3);
-  return firstThree.reduce((acc, curr) => acc * curr, 1);  
+  
 }
 
 
@@ -13,11 +11,18 @@ function highestProduct(array) {
 console.log( highestProduct([3,4,5,1,9]) )
 console.log( highestProduct([1,2,3]) )
 console.log( highestProduct([9]) )
-console.log( highestProduct([-9,3,4,9,-2]) )
+console.log( highestProduct([-9,3,4,9,-9]) )
+
+
+//GETS YOU THE HIGHEST WITH 1 OR NO NEGATIVES
+  // let sorted = array.sort((a,b) => b - a);
+  // let firstThree = sorted.slice(0, 3);
+  // return firstThree.reduce((acc, curr) => acc * curr, 1);  
+//get highest of 2 smallest and 1 biggest
+//compare those two and return the bigger value;   
 
 /*
-sort array
-calculate product of 3 highest
+either take 0 negatives or 2 smallest and 1 biggest 
 */
 
 

@@ -8,7 +8,27 @@
 // matchWord('');  -> true
 
 function matchWord(str) {
-
+    let nonLetters = /[\W_]+/g;
+    let arr = str.toLowerCase().replace(nonLetters, ' ').trim().split(' ');
+    let stack = [];
+    
+    for (let i = 0; i < arr.length; i++) {
+      let word = arr[i];
+      let reversed = word.split('').reverse().join('');
+      
+      if (stack.includes(reversed) && reversed === stack.pop()) {
+        stack.pop();
+      } else if (stack.includes(reversed) && reversed !== stack.pop()) {
+        return false;
+      } else {
+        stack.push(word);
+        console.log(stack);
+      }
+    }
+    if (stack.length !== 0) {
+      return false;
+    }
+    return true;
 }
 
 module.exports = matchWord;

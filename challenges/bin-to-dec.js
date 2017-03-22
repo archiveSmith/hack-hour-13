@@ -14,8 +14,12 @@
  */
 
 function binToDec(binary) {
+<<<<<<< HEAD
     var dec = parseInt(binary, 2);
     return dec;
+=======
+
+>>>>>>> 17f8b91331b30b3f92b58ffca3f5c13cadf1c0e2
 }
 
 module.exports = binToDec;

@@ -5,7 +5,7 @@
 function highestProduct(array) {
     //Edge Cases
     if (!Array.isArray(array)) return "Input needs to be an array"
-    if (array.length < 3) return "Array needs to have 3 or more entries";
+    if (array.length < 3) return 0;
     array.forEach((val) => {if (!isNaN(val)) return "All array values need to be integers"})
 
     let highest;

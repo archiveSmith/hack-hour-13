@@ -2,8 +2,9 @@
  * Given an array of integers, find the highest product you can get from three of the integers.
  */
 
+ //BRUTE FORCE SOLUTION
 function highestProduct(array) {
-  if (array.length < 3) return 0;
+  if (array.length < 3 || array === null || array === undefined) return 0;
   combos = [];
   for (let i = 0; i < array.length; i += 1) {
     for (let j = i+1; j < array.length; j +=1) {
@@ -19,6 +20,7 @@ function highestProduct(array) {
   }, combos[0][0]*combos[0][1]*combos[0][2])
   return highest
 }
+
 
 //console.log(highestProduct([1,2, 27, 10]))
 

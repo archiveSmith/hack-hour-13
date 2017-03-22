@@ -3,15 +3,12 @@
  */
 
  function highestProduct(array) {
-   if (array.length < 3) return 0;
+   if (array.length < 3 || !Array.isArray(array)) return 0;
 
-   const negatives = array.filter((el) => { return el < 0; });
+   const arr = array.sort((a, b) => { return b - a; });
+   const len = arr.length;
 
-   if (negatives.length > 1) {
-     return negatives.sort((a, b) => { return a - b; })[1] * Math.min(...negatives);
-   }
-
-   return array.sort((a, b) => { return b - a; })[1] * Math.max(...array);
- }
+   return Math.max(arr[0] * arr[1] * arr[2], arr[0] * arr[len - 1] * arr[len - 2]);
+}
 
 module.exports = highestProduct;

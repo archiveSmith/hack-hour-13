@@ -9,30 +9,35 @@
 
 
 function matchWord(str) {
-    if (str === '') return true;
-    
-    const reverse = str.split('').reverse();
-    console.log(reverse);
-    
-    for (let i = str.length - 1; i > 1; i--) {
-      if (reverse.indexOf(str[i]) === -1) {
-        return false;
-      }
-    }
-    return true;
+ 
+
+  if (typeof str !== 'string') return 'Please give me a valid string';
+  if (str === '') return true;
+
+  // Make alphabetic characters lowercase to be case insensitive
+  const lowerCaseStr = str.toLowerCase();
+
+  // Collect words
+  const words = lowerCaseStr.match(/[a-z]+/g);
+  if (words.length % 2 === 1) return false;
+
+  // Create array to build up unmatched words
+  const stack = [];
+
+  // Loop through all words
+  words.forEach(word => {
+    const reversedWord = word.split('').reverse().join('');
+    const topOfStack = stack[stack.length - 1];
+
+    // If current word reversed does NOT match last word pushed into stack, push current word.
+    if (reversedWord !== topOfStack) stack.push(word);
+
+    // Else if they do match, pop off the word stack to show that pair has matched!
+    else stack.pop();
+  });
+
+  // If wordStack is empty, all matches were found! Otherwise, all words were not matched.
+  return !wordStack.length;
 }
-
-// for (let i = 0; i < str.length; i++) {
-//   for (let j = reverse.length - 1; j > i; j--) {
-//     console.log(str[i], 'i');
-//     console.log(reverse[j], 'j');
-//     if (str[i] !== reverse[j]) {
-//       return false;
-//     }
-//   }
-// }
-// return true;
-
-// }
 
 module.exports = matchWord;

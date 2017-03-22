@@ -3,10 +3,8 @@
  */
 
 function highestProduct(array) {
-	// if the array is less then 3 then return empty array or message
-	// then loop with two nested loops and.start max at 0 and then comopare to product
-	if(array.length < 3) return 'You need at least 3 integers';
-	let max = 0;
+	if(array.length < 3) return 0;
+	let max = array[0] * array[1] * array[2];
 	let list =[], current;
 	for(let i = 0; i < array.length-2; i++){
 		for(let next = i+1; next < array.length -1; next++){

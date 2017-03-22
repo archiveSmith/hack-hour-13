@@ -9,6 +9,7 @@ function highestProduct(array) {
   vessel = array.sort((a,b) => a-b);
   console.log(vessel)
   //console.log(array.sort((a,b) => b-a))
+  if (array.length < 3) return 0;
   
   //edge case where all nums are negative
   if (array.every(element => element < 0)) {

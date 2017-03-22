@@ -11,6 +11,7 @@ function matchWord(str) {
   let newStr = str.toLowerCase().replace(/[_]/g, " ");
   let filtered = newStr.match(/([a-z])\w+/g);
   let wordCheck = {};
+  if (str === '') return true;
   
   for (let i = 0; i < filtered.length; i += 1) {
     //if the reverse is already present && last item of object, delete that key:value
@@ -30,3 +31,4 @@ function matchWord(str) {
 }
 
 module.exports = matchWord;
+

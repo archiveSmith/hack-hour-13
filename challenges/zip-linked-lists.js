@@ -11,6 +11,26 @@ function Node(val) {
 }
 
 function zip(l1, l2) {
+	let l3 = new Node;
+
+while (l1.next) {
+
+	let temp1 = l1.next;
+
+	l3.next = l1;
+
+	let temp2 = l2.next;
+
+	l3.next = l2;
+
+	l3.next = temp1;
+
+	l3.next = temp2;
+}
+
+	//I have no idea
 };
 
 module.exports = {Node: Node, zip: zip};
+
+// and how to test?

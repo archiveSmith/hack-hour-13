@@ -11,6 +11,25 @@ function Node(val) {
 }
 
 function zip(l1, l2) {
-};
+	var merged = new Node(null);
+	var prev = merged;
+	if(l1){
+		while(l1 !== null && l2 !== null){
+			prev.next = l1;
+			l1 = l1.next;
+			prev.next = l2;
+			l2 = l2.next;
+		}
+		return merged.next;
+	} else{
+		while(l2 !== null && l1 !== null){
+			prev.next = l2;
+			l2 = l2.next;
+			prev.next = l1;
+			l1 = l1.next;
+		}
+		return merged.next;
+	}
+}
 
 module.exports = {Node: Node, zip: zip};

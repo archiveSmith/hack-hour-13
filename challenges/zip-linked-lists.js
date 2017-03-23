@@ -55,4 +55,6 @@ function zip(l1, l2) {
 // let link2 = new Node(7);
 // link2.next = new Node (4);
 
-zip(link1, link2);
+// zip(link1, link2);
+
+module.exports = {Node: Node, zip: zip};

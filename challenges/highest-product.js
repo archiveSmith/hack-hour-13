@@ -32,3 +32,5 @@ function highestProduct(array) {
 
 
 module.exports = highestProduct;
+
+//not complete. Doesn't work for [-2,-1,1,3,4] for example

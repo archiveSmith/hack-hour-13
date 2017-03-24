@@ -10,17 +10,19 @@ function Stack() {
   this.stack = [];
 }
 
-Stack.prototype.push = function (element) {
+Stack.prototype.push = function(element) {
+
   this.stack[this.stack.length] = element;
   return this.stack.length;
 };
 
-Stack.prototype.pop = function () {
+Stack.prototype.pop = function() {
+  this.stack = this.stack.slice(0, -1);
   return this.stack.slice(-1);
 };
 
-Stack.prototype.getMax = function () {
+Stack.prototype.getMax = function() {
   return Math.max(...this.stack);
-};
+}
 
 module.exports = Stack;

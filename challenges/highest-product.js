@@ -3,6 +3,7 @@
  */
 
 function highestProduct(array) {
+<<<<<<< HEAD
   //return array.sort((a,b) =>  b - a).slice(0,3).reduce((accum, curr) => accum*curr)
   let vessel = [];
   
@@ -26,6 +27,9 @@ function highestProduct(array) {
   }
 
   return highest * remaining;
+=======
+
+>>>>>>> b95a68f37cd4a57e4722ac9f4605e2b3aebcf3d4
 }
 
 

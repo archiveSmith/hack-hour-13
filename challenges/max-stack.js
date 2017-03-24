@@ -11,7 +11,7 @@ function Stack() {
   this.length = 0;
   this.max;
 
-  this.push = function(value) {
+  Stack.prototype.push = function(value) {
     if (this.max < value || !this.max) {
       this.max = value;
     }
@@ -20,14 +20,14 @@ function Stack() {
     return this.length;
   }
 
-  this.pop = function() {
+  Stack.prototype.pop = function() {
     let poppedElement = this.stack[this.length - 1];
     delete this.stack[this.length.toString()];
     this.length -= 1;
     return poppedElement;
   }
 
-  this.getMax = function() {
+  Stack.prototype.getMax = function() {
     return this.max;
   }
 }

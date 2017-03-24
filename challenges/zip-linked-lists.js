@@ -10,6 +10,19 @@ function Node(val) {
   this.next = null;
 }
 
+//recursive solution
+function zip2(list1, list2) {
+  if (!list1) return list2;
+  if (!list2) return list1;
+
+  list1.next = zip2(list2, list1.next);
+  return list1;
+
+  //also can do this: 
+  //return new Node(list1.value, zip(list2, list1.next))
+}
+
+//iterative solution 
 function zip(list1, list2) {
   //if either list is empty
   if (!list1) return list2;
@@ -33,6 +46,26 @@ function zip(list1, list2) {
 
   return head; 
 }
+
+//thai's way
+function zip3(list1, list2) {
+  let curr1 = temp1 = list1;
+  let curr2 = temp2 = list2;
+
+  while(curr1 && curr2) {
+    if (temp1) temp1 = temp1.next;
+    if (temp2) temp2 = temp2.next;
+
+    curr1.next = curr2;
+    if (temp1) curr1.next = temp1;
+    
+    //move current pointer 
+    [curr1, curr2] = [temp1, temp2];
+  }
+    return list1 ? list1 : list2;
+
+}
+
 
 /*
 merge two linked lists alternating each node 

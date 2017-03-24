@@ -11,11 +11,11 @@ function Stack(element) {
 
   this.push = (element) => {
     if (stack.length === 0) {stack[0] = element; return stack.length;}
-    else {stack[stack.length] = element; return stack.length;}
+    else {stack[stack.length] = element; stack.length++; return stack.length;}
   }
 
   this.pop = () => {
-    if (stack.length === 0) {return stack.length;}
+    if (stack.length === 0) {return undefined;}
     else {let removed = stack.splice(stack.length - 1, 1); return removed;}
   }
 

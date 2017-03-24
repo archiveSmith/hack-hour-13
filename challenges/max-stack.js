@@ -7,7 +7,30 @@
  */
 
 function Stack() {
-  // body...
+  this.length = 0;
+  this.entries = {};
+  this.max = -Infinity;
+  this.push = (item) => {
+    if (item > this.max) this.max = item;
+    this.entries[this.length] = item;
+    return ++this.length;
+  };
+  this.pop = () => {
+    if (this.length > 0) {
+      const removed = this.entries[this.length - 1];
+      if (removed === this.max) {
+        this.max = -Infinity;
+        Object.keys(this.entries).forEach((key) => {
+          if (this.entries[key] > this.max) this.max = this.entries[key];
+        });
+      }
+      delete this.entries[--this.length];
+      return removed;
+    }
+  };
+  this.getMax = () => {
+    return this.length === 0 ? undefined : this.max;
+  };
 }
 
 module.exports = Stack;

@@ -9,9 +9,12 @@
 function Stack() {
   this.stack = new Array();
   this.length = 0;
-  this.max = undefined;
+  this.max;
 
   this.push = function(value) {
+    if (this.max < value || !this.max) {
+      this.max = value;
+    }
     this.stack[this.length] = value;
     this.length += 1;
     return this.length;
@@ -24,11 +27,7 @@ function Stack() {
   }
 
   this.getMax = function() {
-    const maxInArr = Math.max(...this.stack);
-    if ((!this.max || this.max < maxInArr) && this.length > 0) {
-      this.max = maxInArr;
-    }
-    return maxInArry;
+    return this.max;
   }
 }
 

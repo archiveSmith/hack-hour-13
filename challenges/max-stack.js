@@ -7,7 +7,7 @@
  */
 
 function Stack() {
-  this.stack = new Array();
+  this.stack = new Object();
   this.length = 0;
   this.max;
 
@@ -22,6 +22,7 @@ function Stack() {
 
   this.pop = function() {
     let poppedElement = this.stack[this.length - 1];
+    delete this.stack[this.length.toString()];
     this.length -= 1;
     return poppedElement;
   }

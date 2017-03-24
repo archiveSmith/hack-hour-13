@@ -7,7 +7,24 @@
  */
 
 function Stack() {
-  // body...
+  this.stack = new Array();
+  this.length = 0;
+
+  this.push = function(value) {
+    this.stack[this.length] = value;
+    this.length += 1;
+    return this.length;
+  }
+
+  this.pop = function() {
+    let poppedElement = this.stack[this.length - 1];
+    this.length -= 1;
+    return poppedElement;
+  }
+
+  this.getMax = function() {
+    return Math.max(...this.stack);
+  }
 }
 
 module.exports = Stack;

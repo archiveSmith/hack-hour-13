@@ -14,6 +14,8 @@ function Node(value) {
 }
 
 function reverseLinkedList(head) {
+    if (head === null) return undefined;
+    if (head.next === null) return head;
     var myStack = [];
     var newHead;
     currNode = head;

@@ -11,7 +11,7 @@ function Stack(element) {
 
   this.push = (element) => {
     if (stack.length === 0) {stack[0] = element; return stack.length;}
-    else {stack[stack.length] = element; stack.length++; return stack.length;}
+    else {stack[stack.length] = element; return stack.length;}
   }
 
   this.pop = () => {

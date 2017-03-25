@@ -1,3 +1,4 @@
+
 /*
  * Create a stack with the push, pop, and getMax methods.
  * push should return the new length of the stack.
@@ -34,6 +35,8 @@ Stack.prototype.getMax = function() {
   return max; 
 }
 
+//O1 time: use push() and pop() methods, make storage an array and make a max=[]; in Stack();
+//keep a max value in Stack(), each new push compares its value against the current max in Stack(); pop off top of max array as well in Stack();
 
 
 //==================TESTING============================

@@ -11,7 +11,10 @@ function Node(val) {
 }
 
 function zip(l1, l2) {
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 2b19459e8d9979050387f88caf7f161c7e1f0a15
 };
 
 module.exports = {Node: Node, zip: zip};

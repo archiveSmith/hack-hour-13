@@ -15,7 +15,8 @@ function Node(value) {
 
 // Basic Method
 function reverseLinkedList(head) {
-  if (typeof head === 'string' || typeof head === 'number' || head === null || head === undefined) return 'Input node for head';
+  if (head === null || head === undefined) return null;
+  if (typeof head === 'string' || typeof head === 'number') return 'Input node for head';
 
   if (head.next === null) return head;
 

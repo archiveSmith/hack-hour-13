@@ -1,3 +1,4 @@
+
 /*
  * Create a stack with the push, pop, and getMax methods.
  * push should return the new length of the stack.

@@ -15,6 +15,7 @@ function Stack() {
     if (this.index === 0) return undefined;
     const elem = this.stac[this.index - 1];
     delete this.stac[this.index - 1];
+    this.index -= 1;
     return elem;
   };
 

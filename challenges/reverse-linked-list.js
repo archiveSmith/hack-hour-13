@@ -17,7 +17,7 @@ function reverseLinkedList(head) {
     if (!head) return null;
     let current = head;
     let trailer = head;
-    let NodeCount = 1;
+    let nodeCount = 1;
 
     while (current.next) {
         if (nodeCount > 1) trailer = trailer.next;

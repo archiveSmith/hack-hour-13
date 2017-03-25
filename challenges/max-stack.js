@@ -25,11 +25,9 @@ function Stack() {
   };
 
   this.getMax = () => {
-    const stacKeys = Object.keys(this.stac);
-
-    return stacKeys.reduce((acc, curr) => {
-      return this.stac[acc] > this.stac[curr] ? acc : curr;
-    });
+    const arr = Object.values(this.stac);
+    const max = Math.max(...arr);
+    return max;
   };
 }
 

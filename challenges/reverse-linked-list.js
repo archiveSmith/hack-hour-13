@@ -14,12 +14,15 @@ function Node(value) {
 }
 
 function reverseLinkedList(head) {
+    // edge cases
     if (head === null) return undefined;
     if (head.next === null) return head;
+    // initialize storage of nodes
     var myStack = [];
     var newHead;
     currNode = head;
     myStack.push(currNode);
+    // add all nodes to storage
     while (currNode) {
         currNode = currNode.next;
         myStack.push(currNode);
@@ -28,18 +31,16 @@ function reverseLinkedList(head) {
             break;
         }
     }
-    // console.log(myStack);
+    // move through storage backwards
     myStack.reverse();
-    // console.log(myStack);
     for (let i = 0; i < myStack.length; i += 1) {
         myStack[i].next = myStack[i + 1];
         if (i === myStack.length - 1) {
             myStack[i].next = null;
         }
     }
-    // console.log(myStack);
-    return myStack[0];
     // return new head (which was the last tail)
+    return myStack[0];
 }
 
 module.exports = { Node: Node, reverseLinkedList: reverseLinkedList };

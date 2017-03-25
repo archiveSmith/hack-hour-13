@@ -8,14 +8,14 @@
 
 function Stack() {
   // body...
-  let stack = [], length = stack.length;
+  this.stack = [], length = stack.length;
 
-  stack.push = function(val){
+  Stack.prototype.push = function(val){
     stack[length] = val;
     length += 1;
     return length;
   };
-  stack.pop = function(){
+  Stack.prototype.pop = function(){
     let last = stack[length - 1];
     let stackCopy = [];
     for (let i = 0; i < stack.length - 1; i += 1) {
@@ -23,7 +23,7 @@ function Stack() {
     }
     return last;
   };
-  stack.getMax = function(){
+  Stack.prototype.getMax = function(){
     let result = 0;
     for (let i = 0; i < stack.length; i += 1) {
       if (stack[i] <= stack[i + 1]) {

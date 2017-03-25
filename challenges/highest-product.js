@@ -3,12 +3,14 @@
  */
 
 function highestProduct(array) {
+<<<<<<< HEAD
   //return array.sort((a,b) =>  b - a).slice(0,3).reduce((accum, curr) => accum*curr)
   let vessel = [];
   
   vessel = array.sort((a,b) => a-b);
   console.log(vessel)
   //console.log(array.sort((a,b) => b-a))
+  if (array.length < 3) return 0;
   
   //edge case where all nums are negative
   if (array.every(element => element < 0)) {
@@ -25,6 +27,9 @@ function highestProduct(array) {
   }
 
   return highest * remaining;
+=======
+
+>>>>>>> b95a68f37cd4a57e4722ac9f4605e2b3aebcf3d4
 }
 
 

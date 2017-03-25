@@ -6,6 +6,7 @@
  * BONUS: The getMax method should retrieve the maximum value from the stack in O(1) time.
  */
 
+<<<<<<< HEAD
 class Stack {
 	constructor() {
 		this.store = {};
@@ -39,6 +40,10 @@ class Stack {
     return Math.max.apply(null, values);
   }
 
+=======
+function Stack() {
+  // body...
+>>>>>>> 2b19459e8d9979050387f88caf7f161c7e1f0a15
 }
 
 module.exports = Stack;

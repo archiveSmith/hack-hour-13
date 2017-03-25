@@ -9,7 +9,6 @@
 function Stack() {
   this.stac = {};
   this.index = 0;
-  this.max;
 
   this.pop = () => {
     if (this.index === 0) return undefined;
@@ -20,20 +19,47 @@ function Stack() {
   };
 
   this.push = (val) => {
-    if (this.stac[this.index] < val) {
-      this.max = val;
-    } else {
-      this.max = this.stac[this.index];
-    }
-
     this.stac[this.index] = val;
     this.index += 1;
     return this.index;
   };
 
   this.getMax = () => {
-    return this.max;
+    const stacKeys = Object.keys(this.stac);
+
+    return stacKeys.reduce((acc, curr) => {
+      return this.stac[acc] > this.stac[curr] ? acc : curr;
+    });
   };
 }
 
 module.exports = Stack;
+
+// function Stack() {
+//   this.stac = {};
+//   this.index = 0;
+//   this.max;
+//
+//   this.pop = () => {
+//     if (this.index === 0) return undefined;
+//     const elem = this.stac[this.index - 1];
+//     delete this.stac[this.index - 1];
+//     this.index -= 1;
+//     return elem;
+//   };
+//
+//   this.push = (val) => {
+//     if (this.stac[this.index - 1][this.max] < val) {
+//       this.stac[this.index - 1] = this.max = val;
+//     } else {
+//       this.stac[this.index] = this.max
+//     }
+//     this.stac[this.index] = this.max = val;
+//     this.index += 1;
+//     return this.index;
+//   };
+//
+//   this.getMax = () => {
+//     this.max;
+//   };
+// }

@@ -8,28 +8,30 @@
 
 function Stack() {
   this.stack = new Object();
+  this.max = new Object();
   this.length = 0;
-  this.max;
+}
 
-  Stack.prototype.push = function(value) {
-    if (this.max < value || !this.max) {
-      this.max = value;
-    }
-    this.stack[this.length] = value;
-    this.length += 1;
-    return this.length;
-  }
+Stack.prototype.push = function (value) {
+  let max = value > this.max[this.length - 1] ? value : this.max[this.length - 1];
+  this.max[this.length] = max;
 
-  Stack.prototype.pop = function() {
-    let poppedElement = this.stack[this.length - 1];
-    delete this.stack[this.length.toString()];
-    this.length -= 1;
-    return poppedElement;
-  }
+  this.stack[this.length] = value;
+  this.length += 1;
+  return this.length;
+}
 
-  Stack.prototype.getMax = function() {
-    return this.max;
-  }
+Stack.prototype.pop = function () {
+  delete this.max[this.length.toString()];
+
+  let poppedElement = this.stack[this.length - 1];
+  delete this.stack[this.length.toString()];
+  this.length -= 1;
+  return poppedElement;
+}
+
+Stack.prototype.getMax = function () {
+  return this.max;
 }
 
 module.exports = Stack;

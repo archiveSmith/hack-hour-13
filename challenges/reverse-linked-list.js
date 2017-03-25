@@ -15,20 +15,13 @@ function Node(value) {
 
 function reverseLinkedList(head) {
     let previous = null;
-    let storage;
-
-    // this.head = head;
-
-    // while (this.head) {
-    //     temp = this.head.next;
-    //     this.head.next = previous;
-    //     previous
-    // }
+    let storage = null;
 
     while (head) {
         storage = head.next;
         head.next = previous;
         previous = head;
+        head = storage;
     }
     return previous;
 }

@@ -14,7 +14,7 @@ function Node(value) {
 }
 
 function reverseLinkedList(head) {
-	if (head === undefined) return null;
+	if (!head) return null;
 	//set current node to head
 	let curr = head;
 	//make array to stash values of list as we iterate through

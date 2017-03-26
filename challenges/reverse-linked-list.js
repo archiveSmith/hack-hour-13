@@ -23,6 +23,8 @@ function reverseLinkedList(head) {
         if (node.next.next === null) return node;
         return find2ndToLast(node.next);
     }
+
+    if (!head) return null;
     let tail = findTail(head);
     function recurse(node) {
         if (!node) return;

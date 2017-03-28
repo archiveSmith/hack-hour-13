@@ -12,8 +12,19 @@
  *  Return 0 if no profit is possible OR if input is invalid.
  */
 
-function bestProfit(stock_prices_yesterday) {
-
+function bestProfit(arr) {
+//asssuming that the collection of stock prices does not have undefined elements. This would mean that each minute the stock will have a value;
+if(!arr) return 0;	
+var profitList=[];
+	for(var i=0; i<arr.length; i++){
+		for(var g=i+1; g<arr.length; g++){
+			if(arr[i]<arr[g]){
+				profitList.push(arr[g]-arr[i]);
+			}
+		}s
+	}
+	if(profitList.length === 0) return 0;
+	return Math.max.apply(Math, profitList);
 }
 
 module.exports = bestProfit;

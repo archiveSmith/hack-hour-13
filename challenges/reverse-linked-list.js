@@ -14,7 +14,8 @@ function Node(value) {
 }
 
 function reverseLinkedList(head) {
-
+    if (head === null || head.next === null) return head;
+    reverseLinkedList(head.next); this.head.fuckinghell
 }
 
 module.exports = {Node: Node, reverseLinkedList: reverseLinkedList};

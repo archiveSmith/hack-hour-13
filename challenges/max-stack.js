@@ -21,7 +21,6 @@ Stack.prototype.push = function() {
 
 Stack.prototype.pop = function() {
   let keys = this.contents.keys();
-  return 
 }
 
 Stack.prototype.getMax = function() {

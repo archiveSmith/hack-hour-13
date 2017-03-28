@@ -9,15 +9,16 @@
  */
 
 function Node(value) {
-    this.value = value;
-    this.next = null;
+	this.value = value;
+	this.next = null;
 }
 
 function reverseLinkedList(head) {
 	if (!head) return null;
 	if (!head.next) return head;
 
-	let prev = new Node(head.value); 
+	// not in place, iterative
+	let prev = new Node(head.value);
 	head = head.next;
 
 	for (let i = head; i; i = i.next) {
@@ -27,6 +28,37 @@ function reverseLinkedList(head) {
 	}
 
 	return prev;
+
+	// iterative
+	function reverseLinkedList(head) {
+		var prev = null;
+		var curr = head;
+		var next;
+
+		while (curr) {
+			next = curr.next;
+			curr.next = prev;
+			prev = curr;
+			curr = next;
+		}
+
+		head = prev;
+		return head;
+	}
+
+	// recursive
+	function reverseLinkedList(head) {
+		if (!head || !head.next) return head;
+
+		var h = head;
+		var t = h.next;
+		var end = reverseLinkedList(t);
+
+		h.next.next = h;
+		h.next = null;
+
+		return end;
+	}
 }
 
 // var a = new Node(5);
@@ -41,4 +73,4 @@ function reverseLinkedList(head) {
 
 // reverseLinkedList(a);
 
-module.exports = {Node: Node, reverseLinkedList: reverseLinkedList};
+module.exports = { Node: Node, reverseLinkedList: reverseLinkedList };

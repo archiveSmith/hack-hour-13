@@ -12,7 +12,7 @@
  *  Return 0 if no profit is possible OR if input is invalid.
  */
 
-function bestProfit(stockPricesYesterday) {
+function bestProfit(stockPricesYesterday) { console.log(stockPricesYesterday);
   if (stockPricesYesterday.length === 1 || !Array.isArray(stockPricesYesterday)) return 0;
 
   const maxStockPrice = Math.max(...stockPricesYesterday);

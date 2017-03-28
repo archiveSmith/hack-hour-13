@@ -17,7 +17,7 @@ function reverseLinkedList(head) {
   let curr = head;
   let prev = null;
   let next = null;
-  while(curr != null) {
+  while(curr !== null) {
     next = curr.next;
     curr.next = prev;
     prev = curr;
@@ -26,6 +26,12 @@ function reverseLinkedList(head) {
   head = prev;
   return head;
 
+}
+
+function reverseRecursion(head, prev = null) {
+  if (!head) {return null};
+  const forward = head.next;
+  head.next = prev
 }
 
 var list = new Node(3);

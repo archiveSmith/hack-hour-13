@@ -12,8 +12,23 @@
  *  Return 0 if no profit is possible OR if input is invalid.
  */
 
-function bestProfit(stock_prices_yesterday) {
+function bestProfit(stockPricesYesterday) {
+  if (stockPricesYesterday.length === 1 || !Array.isArray(stockPricesYesterday)) return 0;
 
+  const maxStockPrice = Math.max(...stockPricesYesterday);
+  const maxStockTime = stockPricesYesterday.indexOf(maxStockPrice);
+
+  const minStockPrice = Math.min(...stockPricesYesterday);
+  const minStockTime = stockPricesYesterday.indexOf(minStockPrice);
+
+  if (maxStockTime < minStockTime) {
+    stockPricesYesterday.splice(maxStockTime, 1);
+    return bestProfit(stockPricesYesterday);
+  }
+
+  const maxReturnOnStock = (maxStockPrice - minStockPrice).toFixed(2);
+
+  return maxReturnOnStock;
 }
 
 module.exports = bestProfit;

@@ -31,8 +31,9 @@ function bestProfit(stock_prices_yesterday) {
       }
     }
   }
-  return biggestDiff * - 1;
+  if(biggestDiff < 0 ) return biggestDiff * -1;
+  return 0; 
 }
 
 module.exports = bestProfit;
-bestProfit([100, 180, 260, 310, 40, 535, 695])
+bestProfit(["a", "b"])

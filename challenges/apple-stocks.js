@@ -44,4 +44,4 @@ function bestProfit(stock_prices_yesterday) {
 // console.log(bestProfit(stock4));
 // console.log(bestProfit(stock5));
 
-// module.exports = bestProfit;
+module.exports = bestProfit;

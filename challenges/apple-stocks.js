@@ -14,6 +14,19 @@
 
 function bestProfit(stock_prices_yesterday) {
 
+    if(!Array.isArray(stock_prices_yesterday) || stock_prices_yesterday.length <2) return 'Please provide yesterday\'s stock prices';
+    
+    let profit = 0;
+    let currMin = stock_prices_yesterday[0];
+
+    for(let i = 1; i< stock_prices_yesterday.length; i += 1) {
+        if(stock_prices_yesterday[i] < currMin) currMin = stock_prices_yesterday[i];
+        if(stock_prices_yesterday[i] - currMin > profit) profit = stock_prices_yesterday[i] - currMin;
+    }
+
+    return profit;
 }
 
+
+console.log(bestProfit([500,501,555,400,450,555]));
 module.exports = bestProfit;

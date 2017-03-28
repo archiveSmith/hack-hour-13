@@ -11,7 +11,6 @@ function Stack() {
 }
 
 Stack.prototype.push = function(element) {
-
   this.stack[this.stack.length] = element;
   return this.stack.length;
 };

@@ -14,6 +14,7 @@
 
 function bestProfit(stock_prices_yesterday) {
   if (stock_prices_yesterday.length < 1) return 0;
+  if(!Array.isArray(stock_prices_yesterday)) return 0;
   //buy low and sell high; 
   //find the greatest difference with the lowest value first and the highest value second 
   //iterate through the array and subtract subsequent values 

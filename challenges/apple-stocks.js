@@ -13,7 +13,26 @@
  */
 
 function bestProfit(stock_prices_yesterday) {
-
+  if (stock_prices_yesterday.length < 1) return 0;
+  //buy low and sell high; 
+  //find the greatest difference with the lowest value first and the highest value second 
+  //iterate through the array and subtract subsequent values 
+  //if that value is smaller than the previous value 
+  //then store the buying time and the selling time (indecies in an array)
+  let biggestDiff = 0;
+  let buy;
+  let sell;
+  for (let i = 0; i < stock_prices_yesterday.length; i++) {
+    for (let j = i + 1; j < stock_prices_yesterday.length; j++) {
+      if (stock_prices_yesterday[i] - stock_prices_yesterday[j] < biggestDiff) {
+        biggestDiff = stock_prices_yesterday[i] - stock_prices_yesterday[j];
+        buy = i;
+        sell = j;
+      }
+    }
+  }
+  return biggestDiff * - 1;
 }
 
 module.exports = bestProfit;
+bestProfit([100, 180, 260, 310, 40, 535, 695])

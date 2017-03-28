@@ -13,6 +13,7 @@
  */
 
 function bestProfit(stock_prices_yesterday) {
+  console.log('                ', stock_prices_yesterday);
   let maxProfit = 0;
   let lowest;
 

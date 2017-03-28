@@ -18,8 +18,8 @@ function bestProfit(stock_prices_yesterday) {
   let maxProfit = 0;
   const array = stock_prices_yesterday;
   for (let i = 0; i < array.length; i += 1) {
-    const newArray = array.slice(i+1).sort((a, b) => a-b);
-    const diff = array[i] - newArray[0];
+    const newArray = array.slice(i+1).sort((a, b) => b-a);
+    const diff = newArray[0] - array[i];
     if (diff > maxProfit) {
       maxProfit = diff;
     }

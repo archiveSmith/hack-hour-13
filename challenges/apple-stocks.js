@@ -12,6 +12,7 @@
  *  Return 0 if no profit is possible OR if input is invalid.
  */
 
+
 class stockDiffObj {
   constructor(min, max) {
     this.min = min;
@@ -39,6 +40,7 @@ function bestProfit(stock_prices_yesterday) {
   });
   
   return (profitObj.max - profitObj.min);
+
 }
 
 module.exports = bestProfit;

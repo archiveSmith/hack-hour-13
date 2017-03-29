@@ -13,6 +13,7 @@
  */
 
 function bestProfit(stock_prices_yesterday) {
+<<<<<<< HEAD
     let largest = 0;
     let smallest;
     let profit = 0;
@@ -31,6 +32,9 @@ function bestProfit(stock_prices_yesterday) {
         }
     }
     return profit;
+=======
+
+>>>>>>> f1d7fa8b9b536fbd9a876724b4681a9fa33c14a0
 }
 
 module.exports = bestProfit;

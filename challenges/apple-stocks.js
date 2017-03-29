@@ -21,10 +21,16 @@ var profitList=[];
 			if(arr[i]<arr[g]){
 				profitList.push(arr[g]-arr[i]);
 			}
-		}s
+		}
 	}
 	if(profitList.length === 0) return 0;
 	return Math.max.apply(Math, profitList);
 }
 
 module.exports = bestProfit;
+
+/*
+
+
+*/
+

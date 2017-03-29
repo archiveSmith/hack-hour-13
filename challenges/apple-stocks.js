@@ -13,6 +13,7 @@
  */
 
 function bestProfit(stock_prices_yesterday) {
+
   let arr = stock_prices_yesterday;
   
   let min = arr[0];

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**
  *  I have an array stock_prices_yesterday where:
  *
@@ -56,7 +57,15 @@ subtract highest from smallest
 */
 
 
-
+function bestProfit2(prices) {
+  let buy = prices[0];
+  let profit = 0;
+  for (let i = 0; i < prices.length; i++) {
+    buy = Math.min(buy, prices[i]);
+    profit = Math.max(profit, prices[i] - buy);
+  }
+  return profit;
+}
 
 
 
@@ -65,3 +74,25 @@ subtract highest from smallest
 
 
 module.exports = bestProfit;
+||||||| merged common ancestors
+=======
+/**
+ *  I have an array stock_prices_yesterday where:
+ *
+ *    - The indices are the time in minutes past trade opening time, which was 9:30am local time
+ *    - The values are the prices in dollars of Apple stock at the time
+ *
+ *  For example, the stock cost $500 at 10:30am, so stock_prices_yesterday[60] = 500;
+ *
+ *  Write an efficient algorithm for computing the best profit I could have made from 1 purchase
+ *  and 1 sale of 1 Apple stock yesterday
+ *
+ *  Return 0 if no profit is possible OR if input is invalid.
+ */
+
+function bestProfit(stock_prices_yesterday) {
+
+}
+
+module.exports = bestProfit;
+>>>>>>> f1d7fa8b9b536fbd9a876724b4681a9fa33c14a0

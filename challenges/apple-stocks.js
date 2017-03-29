@@ -22,7 +22,7 @@ function bestProfit(stockPricesYesterday) { console.log(stockPricesYesterday);
   const minStockTime = stockPricesYesterday.indexOf(minStockPrice);
 
   if (maxStockTime < minStockTime) {
-    stockPricesYesterday.splice(maxStockTime, 1);
+    stockPricesYesterday.splice(minStockTime, 1);
     return bestProfit(stockPricesYesterday);
   }
 
@@ -30,5 +30,7 @@ function bestProfit(stockPricesYesterday) { console.log(stockPricesYesterday);
 
   return maxReturnOnStock;
 }
+
+bestProfit([450, 500, 440, 450]);
 
 module.exports = bestProfit;

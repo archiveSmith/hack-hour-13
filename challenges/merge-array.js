@@ -25,8 +25,8 @@ function mergeArrays(arr1, arr2) {
       }
     }
     
-    if (arr1.length) newArr.push(arr1.shift());
-    if (arr2.length) newArr.push(arr2.shift());
+    if (arr1.length) newArr.concat(arr1);
+    if (arr2.length) newArr.concat(arr2);
     return newArr;
 }
 

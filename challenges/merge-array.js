@@ -27,6 +27,7 @@ function mergeArrays(arr1, arr2) {
     
     if (arr1.length) newArr.concat(arr1);
     if (arr2.length) newArr.concat(arr2);
+    
     return newArr;
 }
 

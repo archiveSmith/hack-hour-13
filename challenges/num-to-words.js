@@ -13,7 +13,40 @@
  */
 
 function numToWords(num) {
+    let a = [
+    '', 'one', 'two', 'three', 'four',
+    'five', 'six', 'seven', 'eight', 'nine',
+    'ten', 'eleven', 'twelve', 'thirteen', 'fourteen',
+    'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'
+  ];
+  let b = [
+    '', '', 'twenty', 'thirty', 'forty',
+    'fifty', 'sixty', 'seventy', 'eighty', 'ninety'
+  ];
+  let g = [
+    '', 'thousand', 'million', 'billion', 'trillion', 'quadrillion',
+    'quintillion', 'sextillion', 'septillion', 'octillion', 'nonillion'
+  ];
+  
+  let makeGroup = ([ones,tens,huns]) => {
+    return [
+      num(huns) === 0 ? '' : a[huns] + ' hundred ',
+      num(ones) === 0 ? b[tens] : b[tens] && b[tens] + '-' || '',
+      a[tens+ones] || a[ones]
+    ].join('');
+  };
+  
+  let thousand = (group,i) => group === '' ? group : `${group} ${g[i]}`;
+ 
+  if (typeof num === 'number') return numToWords(String(num));
+  if (num === '0')             return 'zero';
+  return comp (chunk(3)) (reverse) (arr(num))
+    .map(makeGroup)
+    .map(thousand)
+    .filter(comp(not)(isEmpty))
+    .reverse()
+    .join(' ');
+};
 
-}
 
 module.exports = numToWords;

@@ -12,8 +12,17 @@
  * numToWords(92120000000000000) -> 'NintyTwoQuadrillionOneHundredTwentyTrillion'
  */
 
-function numToWords(num) {
+ function numToWords(num) {
+   if (!Number.isInteger(num)) return "input value is incorrect";
 
-}
+   const degree = ["Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"];
+   const teens = ["Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"];
+   const tens = ["Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"];
+
+   for (let i = 0; i <= 10; i += 1) {
+
+   };
+
+ }
 
 module.exports = numToWords;

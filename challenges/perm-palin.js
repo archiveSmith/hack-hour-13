@@ -10,21 +10,14 @@
  */
 
 function permPalin(str) {
+  if (typeof str !== 'string') return false;
 	const arr = str.split('');
   let counter = 0;
   while (arr.length) {
     const val = arr.shift();
-    if (val.toLowerCase() === val.toUpperCase()) {
-      arr.indexOf(val) === -1 ? counter += 1 : arr.splice(arr.indexOf(val), 1);
-    }
+    arr.indexOf(val) === -1 ? counter += 1 : arr.splice(arr.indexOf(val), 1);
   }
   return counter < 2;
 }
 
 module.exports = permPalin;
-
-
-console.log(permPalin('abab'), true);
-console.log(permPalin('cbaba'), true);
-console.log(permPalin('cbac'), false);
-console.log(permPalin('a'), true);

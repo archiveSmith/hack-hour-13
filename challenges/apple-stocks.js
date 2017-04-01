@@ -13,6 +13,7 @@
  */
 
 function bestProfit(stock_prices_yesterday) {
+<<<<<<< HEAD
     let currMin = stock_prices_yesterday[0];
     let bestProfit = 0;
     
@@ -28,6 +29,9 @@ function bestProfit(stock_prices_yesterday) {
     }
 
    return bestProfit;
+=======
+
+>>>>>>> 10e8084d1e97d47927e1eb90180a3a1cc425513e
 }
 
 module.exports = bestProfit;

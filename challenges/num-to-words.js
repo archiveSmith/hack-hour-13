@@ -14,6 +14,18 @@
 
 function numToWords(num) {
 
+	//a starting idea...
+    function chunk(number) {
+ 
+      let chunks = [];
+
+      	while(number > 0) {
+    			chunks.push(number % 1000);
+    			number = Math.floor(number / 1000);
+  			}
+
+  	return chunks;
+	}
 }
 
 module.exports = numToWords;

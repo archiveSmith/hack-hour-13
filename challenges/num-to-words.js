@@ -110,62 +110,62 @@ function parseEverythingElse(arr) {
 
 
 
-function numToWords(num) {
-  const tens = {
-    '2': 'Thousand',
-    '3': 'Million',
-    '4': 'Billion',
-    '5': 'Trillion',
-    '6': 'Quadrillion',
-    '7': 'Quintillion'
-  };
+// function numToWords(num) {
+//   const tens = {
+//     '2': 'Thousand',
+//     '3': 'Million',
+//     '4': 'Billion',
+//     '5': 'Trillion',
+//     '6': 'Quadrillion',
+//     '7': 'Quintillion'
+//   };
 
-  const dred = {
-    '3': 'Hundred'
-  }
+//   const dred = {
+//     '3': 'Hundred'
+//   }
 
-  const ty = {
-    '0': 'Zero',
-    '10': 'Ten',
-    '11': 'Eleven',
-    '12': 'Twelve',
-    '13': 'Thirteen',
-    '14': 'Fourteen',
-    '15': 'Fifteen',
-    '16': 'Sixteen',
-    '17': 'Seventeen',
-    '18': 'Eighteen',
-    '19': 'Ninetheen',
-    '20': 'Twenty',
-    '30': 'Thirty',
-    '40': 'Forty',
-    '50': 'Fifty',
-    '60': 'Sixty',
-    '70': 'Seventy',
-    '80': 'Eighty',
-    '90': 'Ninety',
-  }
+//   const ty = {
+//     '0': 'Zero',
+//     '10': 'Ten',
+//     '11': 'Eleven',
+//     '12': 'Twelve',
+//     '13': 'Thirteen',
+//     '14': 'Fourteen',
+//     '15': 'Fifteen',
+//     '16': 'Sixteen',
+//     '17': 'Seventeen',
+//     '18': 'Eighteen',
+//     '19': 'Ninetheen',
+//     '20': 'Twenty',
+//     '30': 'Thirty',
+//     '40': 'Forty',
+//     '50': 'Fifty',
+//     '60': 'Sixty',
+//     '70': 'Seventy',
+//     '80': 'Eighty',
+//     '90': 'Ninety',
+//   }
 
-  function chunk(number) {
-    var number = 23456098325,
-      thousands = [];
+//   function chunk(number) {
+//     var number = 23456098325,
+//       thousands = [];
 
-    while (number > 0) {
-      thousands.push(number % 1000);
-      number = Math.floor(number / 1000);
-    }
+//     while (number > 0) {
+//       thousands.push(number % 1000);
+//       number = Math.floor(number / 1000);
+//     }
 
-    return thousands;
-  }
+//     return thousands;
+//   }
 
-  let input = chunk(num); // returns in chunk backwards so 5,000,032 = [032, 000, 5]
+//   let input = chunk(num); // returns in chunk backwards so 5,000,032 = [032, 000, 5]
 
 
-  for (let i = input.length; i <= 0; i -= 1) {
+//   for (let i = input.length; i <= 0; i -= 1) {
 
-  }
+//   }
 
-  return toString;
-}
+//   return toString;
+// }
 
 module.exports = numToWords;

@@ -14,14 +14,21 @@ function Node(value) {
 }
 
 function reverseLinkedList(head) {
-  let curr = head;
-  let prev = null;
-  let next = null;
-  while(curr !== null) {
+  if (!head || !head.next) return head;
+
+  var curr = head;
+  var prev = null;
+  var next;
+  while(curr) {
+    console.log('ROUND---------------')
     next = curr.next;
+    console.log('NEXT', next)
     curr.next = prev;
+    console.log('CURR.NEXT', curr.next)
     prev = curr;
+    console.log('PREV', prev)
     curr = next;
+    console.log('CURR', curr);
   }
   head = prev;
   return head;
@@ -34,12 +41,21 @@ function reverseRecursion(head, prev = null) {
   head.next = prev
 }
 
-var list = new Node(3);
-list.next = new Node(4);
-list.next.next = new Node(5);
-//console.log(list); 
+var list = new Node(1);
+list.next = new Node(2);
+list.next.next = new Node(3);
+console.log('ORIGINAL', list); 
 
-console.log( reverseLinkedList(list) )
+// var bird = new Node('dodo');
+// var cat = new Node('felix');
+// var dog = new Node('gruffy');
+// var duck = new Node('daffy');
+// bird.next = cat;
+// cat.next = dog;
+// dog.next = duck;
+// console.log('ORIGINAL', bird);
+
+console.log( 'REVERSED', reverseLinkedList(list) )
 
 
 

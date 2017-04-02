@@ -46,6 +46,38 @@ function mergeArrays2(arr1, arr2) {
   
 }
 
+//O(n log n)
+function mergeArrays3(arr1, arr2) {
+  const merged = [];
+  while(arr1.length && arr2.length) {
+    if (arr1[0] < arr2[0]) {
+      merged.push(arr1.shift());
+    } else {
+      merged.push(arr2.shift());
+    }
+  }
+  return merged.concat(arr1, arr2);
+}
+
+//most optimal way O(n)
+function mergeArray4(arr1, arr2) {
+  const merged = [];
+  let i = 0;
+  let j = 0;
+  while(arr1[i] && arr2[j]) {
+    if (arr1[i] < arr2[j]) {
+      merged.push(arr1[i]);
+      i += 1;
+    } else if (arr1[i] >= arr2[j]) {
+      merged.push(arr2[j])
+      j += 1;
+    } else {
+      merged.push(arr1[i++] || arr2[j++])
+    }
+  }
+  return merged;
+}
+
 
 
 //==========================TESTING========================

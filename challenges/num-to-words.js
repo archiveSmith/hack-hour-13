@@ -13,6 +13,37 @@
  */
 
 function numToWords(num) {
+  const a = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten',
+             'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen'];
+  const b = ['Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
+  const c = ['Hundred', 'Thousand', 'Million', 'Billion', 'Trillion', 'Quadrillion'];
+
+  const str = num.toString();
+
+  const chunks = [];
+  while ( str.length > 0 ) {
+    chunks.push(str.slice((str.length = Math.max(0, str.length - 3)), str.length));
+  };
+
+  const chunkWords = chunks.map(chunk => {
+    let chunkArr = chunk.split('');
+    let chunkWord = '';
+    if (chunkArr.length === 3 && chunkArr[0] > 0) {
+      chunkWord += `${a[chunkArr[0]]Hundred`;
+    }
+    if (chunk.length === 2 || chunk.slice(0, 1) === '0') {
+
+    } else {
+      
+      for (let i = 0; i < 3; i += 1) {
+        chunkWord += `${}Hundred`
+      }
+    }
+  });
+
+  for (let i = 0; i < chunks.length; i += 1) {
+    if (n.length)
+  }
 
 }
 

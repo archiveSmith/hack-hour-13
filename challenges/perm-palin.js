@@ -10,7 +10,19 @@
  */
 
 function permPalin(str) {
-	
+  var counts = {};
+  for (var i = 0; i < str.length; ++i) {
+    counts[str[i]] = !counts[str[i]] ? 1 : counts[str[i]] + 1;
+  }
+  
+  var countOdd = 0;
+  for (var j in counts) {
+    if (counts[j] % 2) {
+      countOdd++;
+    }
+  }
+  
+  return countOdd <= 1;
 }
 
 module.exports = permPalin;

@@ -10,7 +10,20 @@
  */
 
 function permPalin(str) {
-	
+  if (str.length === 0) return false;
+  let singles = 0;
+  let array = str.split('');
+  array.sort();
+  for (let i = 0; i < array.length - 1; i += 1) {
+    if (array[i] !== array[i + 1]) {
+      singles += 1;
+    }
+    if (singles > 1) return false;
+    if (array[i] === array[i + 1]) {
+      i += 1;
+    }
+  }
+  return true;
 }
 
 module.exports = permPalin;

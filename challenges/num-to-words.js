@@ -13,7 +13,17 @@
  */
 
 function numToWords(num) {
+    //pad zeroes until length is divisible by 3
+    let stringNum = num.toString().split('');;
 
+    while(stringNum.length % 3 !== 0) {
+        stringNum.unshift('0');
+    }
+
+    //split array into sub array of 3's
+    
 }
+
+console.log(numToWords(6000))
 
 module.exports = numToWords;

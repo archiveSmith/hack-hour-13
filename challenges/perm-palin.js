@@ -44,14 +44,28 @@ function findPerms(string) {
 }
 
 console.log( 'SOME A PALINDRONE_true', permPalin('abba') ) 
+console.log( 'SOME A PALINDRONE_true', permPalin2('abba') ) 
 console.log( 'SOME A PALINDRONE_true', permPalin('cbaba') ) 
 console.log( 'SOME A PALINDRONE_false', permPalin('cbac') ) 
 console.log( 'SOME A PALINDRONE_true', permPalin('a') ) 
 //console.log( findPerms('abba') );
 
-
+//see if odd match 
 function permPalin2(str) {
-  if (str.length < 2) return true
+  
+    var letterCounts = {};
+    var letter;
+    var palindromeSum = 0;
+    for (var i = 0; i < str.length; i++) {
+        letter = str[i];
+        letterCounts[letter] = letterCounts[letter] || 0;
+        letterCounts[letter]++;
+    }
+    for (var letterCount in letterCounts) {
+        palindromeSum += letterCounts[letterCount] % 2;
+    }
+
+    return palindromeSum < 2;
 }
 
 

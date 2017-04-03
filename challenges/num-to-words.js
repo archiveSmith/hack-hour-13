@@ -13,7 +13,11 @@
  */
 
 function numToWords(num) {
+	let smallNums = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
+	let tens = ['twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+	let largeNums = ['hundred', 'thousand', 'million', 'billion'];
 
+	if (num === 0) return smallNums[0];
 }
 
 module.exports = numToWords;

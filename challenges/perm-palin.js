@@ -10,6 +10,8 @@
  */
 
 function permPalin(str) {
+  if (str.length < 2) return true
+  
   return findPerms(str).some(perm => 
     isPalindron(perm)
   )
@@ -26,13 +28,13 @@ function findPerms(string) {
   var permutations = [];
 
   for (var i=0; i<string.length; i++) {
-      var char = string[i];
+    var char = string[i];
 
     //avoids duplicates: if char was already used, skip it
     if (string.indexOf(char) !== i) 
         continue;        
 
-    var remainingString = string.slice(0,i) + string.slice(i+1,string.length); 
+    var remainingString = string.slice(0,i) + string.slice(i+1); 
 
     for (var subPermutation of findPerms(remainingString))
         permutations.push(char + subPermutation)
@@ -44,10 +46,13 @@ function findPerms(string) {
 console.log( 'SOME A PALINDRONE_true', permPalin('abba') ) 
 console.log( 'SOME A PALINDRONE_true', permPalin('cbaba') ) 
 console.log( 'SOME A PALINDRONE_false', permPalin('cbac') ) 
+console.log( 'SOME A PALINDRONE_true', permPalin('a') ) 
 //console.log( findPerms('abba') );
 
 
-
+function permPalin2(str) {
+  if (str.length < 2) return true
+}
 
 
 

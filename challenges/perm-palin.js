@@ -11,14 +11,19 @@
 
 function permPalin(str) {
     if (typeof str !== 'string' || str.length === 0) return false;
-    if (str.length === 1) return true;
+    let letterCount = {};
 
-    for (let i = 1; i < str.length; i += 1) {
-        if (str[i - 1] === str[i]) return true;
-        if (str[i + 1] && str[i + 1] === str[i - 1]) return true;
+    for (let i = 0; i < str.length; i += 1) {
+        if(!letterCount[str[i]]) letterCount[str[i]] = 1;
+        else letterCount[str[i]] += 1;
     }
+    let oddCount = 0;
 
-    return false;
+    for(key in letterCount) {
+        if( letterCount[key] % 2 !== 0) oddCount += 1;
+        if(oddCount > 1) return false;
+    }
+    return true;
 }
 
 module.exports = permPalin;

@@ -16,8 +16,56 @@
  * BONUS: Do this in place
  */
 
+// first column becomes first row
+// second column becomes second row
+// third column becomes third row
 function rotateGrid(grid, n) {
+  // check to see if array
+  if (!Array.isArray(grid)) return false;
+  // check to see if the grid is actually (N x N) 
+  if (grid.length !== n) return false; // checks the rows
+  // checks the columns
+  for (let i = 0; i < grid.length; i += 1) {
+    if (grid[i].length !== n || !Array.isArray(grid[i])) return false;
+  }
+  
+  let rotatedArr = [];
+  let subRow = [];
+  let row = 0;
+  // first loop is 3 rows
+  // second loop will be each column in the row
 
+  // ***** ClockWise **********************
+  while (grid[n - 1].length > 0) {
+    subRow.unshift(grid[row].shift())
+
+    // if we are on the last row, remove it and resent the row to 1
+    if (row === n - 1) {
+      rotatedArr.push(subRow);
+      subRow = [];
+      row = 0;
+    } else {
+      row += 1;
+    }
+  }
+  // ***** ClockWise **********************
+
+  // ***** CounterClockWise Lol **********************
+  // while (grid[n - 1].length >= 0) {
+  //   subRow.push(grid[row].pop())
+
+  //   // if we are on the last row, remove it and resent the row to 1
+  //   if (row === n - 1) {
+  //     rotatedArr.push(subRow);
+  //     subRow = [];
+  //     row = 0;
+  //   } else {
+  //     row += 1;
+  //   }
+  // }
+  // ***** CounterClockWise Lol **********************
+
+  return rotatedArr;
 }
 
 module.exports = rotateGrid;

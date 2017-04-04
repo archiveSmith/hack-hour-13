@@ -10,7 +10,8 @@
  */
 
 function permPalin(str) {
-	
+  if (str.length === 1) return true
+  console.log();
 }
 
 module.exports = permPalin;

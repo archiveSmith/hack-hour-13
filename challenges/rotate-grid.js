@@ -30,13 +30,23 @@ function rotateGrid(grid, n) {
 
 const grid =  [ [1, 2, 3], [4, 5, 6], [7, 8, 9] ]
 
-console.log( rotateGrid(grid, 3) )
+console.log( rotateGrid2(grid, 3) )
 
+///////////////////////////////////////////////////////////////////////////////
 
-/*
-  
+function rotateGrid2(grid, n) {
+  var newGrid = [];
+  for(var i = 0; i < n; i++) {
+    var newRow = [];
+    //get all rows from column starting with bottom row 
+    for (var j = n - 1; j >= 0; j--) {
+      newRow.push(grid[j][i])
+    }
+    newGrid.push(newRow)
+  }
+  return newGrid;
+}
 
-*/
 
 
 module.exports = rotateGrid;

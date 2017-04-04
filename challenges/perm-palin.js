@@ -20,29 +20,27 @@
   // check if the count is less than 2. If less than 2 return ture, else return fasle.
 
 
-function permPalin(str) {
-	if (typeof str !== 'string') return false;
-	if (str.length === 0) return false;
+	function permPalin(str) {
+		if (typeof str !== 'string') return false;
+		if (str.length === 0) return false;
 
-	const lettersHolder = {};
-  let letter;
-  let count = 0;
+		const lettersHolder = {};
+	  let letter;
+	  let count = 0;
 
-  for (let i = 0; i < str.length; i += 1) {
-      letter = str[i];
-      // set letter value to zero
-      lettersHolder[letter] = 0;
-      // increment letter number each time occurs
-      lettersHolder[letter] += 1;
-  }
+	  for (let i = 0; i < str.length; i += 1) {
+	      letter = str[i];
+	      // set letter value to zero
+	      lettersHolder[letter] = lettersHolder[letter] || 0;
+	      // increment letter number each time occurs
+	      lettersHolder[letter] += 1;
+	  }
 
-  const lettersArr = Object.keys(lettersHolder);
-
-  for (let i = 0; i < lettersArr.length; i += 1) {
-      // setting count to each letters value / 2 remainder.
-      count += lettersHolder[lettersArr[i]] % 2;
-  }
-  return count < 2;
-}
+	  for (let letters in lettersHolder) {
+	      // setting count to each letters value / 2 remainder.
+	      count += lettersHolder[letters] % 2;
+	  }
+	  return count < 2;
+	}
 
 module.exports = permPalin;

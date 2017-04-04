@@ -28,8 +28,8 @@ function Queue() {
       inbox.push.apply(inbox, arguments);
   };
   this.dequeue = function() {
-      if (outbox.size() === 0) {
-          while (inbox.size())
+      if (outbox.length === 0) {
+          while (inbox.length)
               outbox.push(inbox.pop());
       }
       return outbox.pop();

@@ -17,14 +17,14 @@
  */
 
 function rotateGrid(grid, n) {
-    //create as many arrays as the length of each row
-    //loop through each row and add each element to a next  
+    //collect all the rows from the column
+    //starting with the bottom 
     let newGrid = [];
 
     for (let i = 0; i < grid.length; i++) {
-        var row = grid[i];
+        let newRow = [];
         for (let j = 0; j < n; j++) {
-
+            newRow.push(grid[j][i])
         }
     }
 }

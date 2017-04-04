@@ -14,6 +14,7 @@
  */
 
 function mergeArrays(arr1, arr2) {
+<<<<<<< HEAD
     let newArr = [];
     
     while (arr1.length && arr2.length) {
@@ -27,7 +28,11 @@ function mergeArrays(arr1, arr2) {
     
     if (arr1.length) newArr.concat(arr1);
     if (arr2.length) newArr.concat(arr2);
+    
     return newArr;
+=======
+
+>>>>>>> 10e8084d1e97d47927e1eb90180a3a1cc425513e
 }
 
 module.exports = mergeArrays;

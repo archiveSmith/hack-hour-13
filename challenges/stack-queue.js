@@ -8,11 +8,12 @@ function Stack() {
 }
 
 Stack.prototype.push = function (value) {
-    this.stack.push(value);
+    return this.stack.push(value);
 }
 
 Stack.prototype.pop = function (value) {
-  this.stack.pop(value);
+  if (!this.stack) return undefined;
+  return this.stack.pop(value);
 }
 
 /**
@@ -21,17 +22,18 @@ Stack.prototype.pop = function (value) {
 
 
 function Queue() {
-  this.Queue = [];
+  this.queue = [];
 }
 
-Queue.prototype.push = function (stack) {
+Queue.prototype.enqueue = function (stack) {
  //add them to end, take from front
  //OR add them to beginning and take from end
-  this.queue.push(stack);
+  return this.queue.push(stack);
 }
 
-Queue.prototype.shift = function (stack) {
-  this.queue.shift(stack);
+Queue.prototype.dequeue = function (stack) {
+  if (!this.queue) return undefined;
+  return this.queue.shift(stack);
 }
 
 module.exports = {Stack: Stack, Queue: Queue};

@@ -20,7 +20,7 @@ function reverseLinkedList(head) {
     // initialize storage of nodes
     var myStack = [];
     var newHead;
-    currNode = head;
+    var currNode = head;
     myStack.push(currNode);
     // add all nodes to storage
     while (currNode) {
@@ -42,5 +42,14 @@ function reverseLinkedList(head) {
     // return new head (which was the last tail)
     return myStack[0];
 }
+
+var node1 = new Node(1);
+var node2 = new Node(2);
+var node3 = new Node(3);
+var node4 = new Node(4);
+node1.next = node2;
+node2.next = node3;
+node3.next = node4;
+console.log(node1);
 
 module.exports = { Node: Node, reverseLinkedList: reverseLinkedList };

@@ -32,8 +32,6 @@ class Stack {
 
 class Queue {
   constructor() {
-    this.storage = {};
-    this.index = 0;
     this.inbox = new Stack();
     this.outbox = new Stack();
   }

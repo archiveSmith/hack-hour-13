@@ -4,9 +4,13 @@
 
 
 function Stack() {
+<<<<<<< HEAD
 	let stack = [];
 	this.pop = () => { return this.stack.pop(); }
 	this.push = () => { return this.stack.push(item); }
+=======
+
+>>>>>>> 6f456d06b55786161000e84b4c619f4a8e98c11e
 }
 
 
@@ -16,6 +20,7 @@ function Stack() {
 
 
 function Queue() {
+<<<<<<< HEAD
 	let stack1 = [];
 	let stack2 = [];
 
@@ -45,3 +50,9 @@ function Queue() {
 }
 
 module.exports = { Stack: Stack, Queue: Queue };
+=======
+
+}
+
+module.exports = {Stack: Stack, Queue: Queue};
+>>>>>>> 6f456d06b55786161000e84b4c619f4a8e98c11e

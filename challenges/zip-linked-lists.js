@@ -57,40 +57,40 @@ function zip(l1, l2) {
 
 };
 
-// let A1 = new Node(1);
-// let A2 = new Node(2);
-// A1.next = A2;
-// let A3 = new Node(3);
-// A2.next = A3;
-// // let A4 = new Node(4);
-// // A3.next = A4;
+let A1 = new Node(1);
+let A2 = new Node(2);
+A1.next = A2;
+let A3 = new Node(3);
+A2.next = A3;
+// let A4 = new Node(4);
+// A3.next = A4;
 
-// let B1 = new Node('a');
-// let B2 = new Node('b');
-// B1.next = B2;
-// let B3 = new Node('c');
-// B2.next = B3;
-// let B4 = new Node('d');
-// B3.next = B4;
+let B1 = new Node('a');
+let B2 = new Node('b');
+B1.next = B2;
+let B3 = new Node('c');
+B2.next = B3;
+let B4 = new Node('d');
+B3.next = B4;
 
-// function printLinkedList(node){
-//   let str = '';
-//   while(node.next){
-//     str+=node.value+" ";
-//     node = node.next;
-//   }
-//   str+=node.value;
-//   console.log(str);
-// }
+function printLinkedList(node){
+  let str = '';
+  while(node.next){
+    str+=node.value+" ";
+    node = node.next;
+  }
+  str+=node.value;
+  console.log(str);
+}
 
-// printLinkedList(A1);
-// printLinkedList(B1);
+printLinkedList(A1);
+printLinkedList(B1);
 
-// //let zipped = zip(A1, B1);
-// //printLinkedList(zipped);
+//let zipped = zip(A1, B1);
+//printLinkedList(zipped);
 
-// //edge-case if one of the linked lists is empty or undefined;
-// let zipped = zip(A1, undefined);
-// printLinkedList(zipped);
+//edge-case if one of the linked lists is empty or undefined;
+let zipped = zip(A1, B1);
+printLinkedList(zipped);
 
 module.exports = {Node: Node, zip: zip};

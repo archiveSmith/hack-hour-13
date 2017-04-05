@@ -13,7 +13,68 @@
  */
 
 function numToWords(num) {
+  const numbers = {
+    "0": "zero",
+    "1": "one",
+    "2": "two",
+    "3": "three",
+    "4": "four",
+    "5": "five",
+    "6": "six",
+    "7": "seven",
+    "8": "eight",
+    "9": "nine",
+    "10": "ten",
+    "11": "eleven",
+    "12": "twelve",
+    "13": "thirteen",
+    "14": "fourteen",
+    "15": "fifteen",
+    "16": "sixteen",
+    "17": "seventeen",
+    "18": "eighteen",
+    "19": "nineteen"
+  }
 
+  const multiples = {
+    "2": "twenty",
+    "3": "thirty",
+    "4": "forty",
+    "5": "fifty",
+    "6": "sixty",
+    "7": "seventy",
+    "8": "eighty",
+    "9": "ninety"
+  }
+
+  const places = {
+    "3": "hundred",
+    "4": "thousand",
+    "7": "million",
+    "10": "billion",
+    "13": "trillion",
+    "16": "quadrillion"
+  }
+
+  let numStr = num.toString()
+  let numLength = numStr.length;
+  let primKeys = Object.keys(numbers);
+
+  let ansStr = '';
+  if (numLength <= 2) {
+    if (primKeys.indexOf(numStr) > -1) {
+      return numbers[primKeys.indexOf(numStr)];
+    } else {
+      ansStr+= multiples[numStr[0]] + numbers[numStr[1]];
+      return ansStr; 
+    }
+  }else if(numLength === 3){
+    ansStr += numbers[numStr[0]] + places[numLength] + numToWords(parseInt(numStr.substring(1, numStr.length)));
+    return ansStr;
+  }
 }
+
+
+console.log(numToWords(563));
 
 module.exports = numToWords;

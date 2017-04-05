@@ -39,13 +39,14 @@ function rotateGrid2(grid, n) {
   for(var i = 0; i < n; i++) {
     var newRow = [];
     //get all rows from column starting with bottom row 
-    for (var j = n - 1; j >= 0; j--) {
+    for (var j = n - 1; j >= 0; j-= 1) {
       newRow.push(grid[j][i])
     }
     newGrid.push(newRow)
   }
   return newGrid;
 }
+
 
 
 

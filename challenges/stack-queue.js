@@ -40,6 +40,21 @@ Queue.prototype.remove = function() {
   delete this.storage[this.index - 1];
   return removed;
 }
+//////////////////////////////////////////////////////////////////
+
+function Queue() {
+  this.inbox = new Stack();
+  this.outbox = new Stack();
+}
+
+Queue.prototype.enqueue = function(value) {
+  this.inbox.push(value)
+  return value;
+}
+
+
+
+
 
 
 //////////////////////////////////////////////////////

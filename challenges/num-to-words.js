@@ -13,7 +13,9 @@
  */
 
 function numToWords(num) {
-
+  const singleDigit = {
+    0: 'Zero'
+  }
 }
 
 module.exports = numToWords;

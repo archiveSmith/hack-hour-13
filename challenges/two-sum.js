@@ -3,6 +3,16 @@
  */
 
 function twoSum(arr, n) {
+    if(!Array.isArray(arr) || arr.length <= 1) return false;
+
+    for(let i = 0 ; i<arr.length; i += 1) {
+        for(let j = 0; j<arr.length; j += 1) {
+            if(j !== i) {
+                if(arr[j] + arr[i] === n) return true;
+            }
+        }
+    }
+    return false;
 
 }
 

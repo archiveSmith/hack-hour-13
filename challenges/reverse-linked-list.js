@@ -14,7 +14,21 @@ function Node(value) {
 }
 
 function reverseLinkedList(head) {
-
+    if (head === null) return undefined;
+    if (head.next === null) return head;
+    let arr = [];
+    for (let i = head; i; i = i.next) {
+        arr.push(i);
+    }
+		arr.reverse();
+    head = arr[0];
+    for (let j = 0; i < arr.length; i++) {
+        arr[i].next = arr[i + 1];
+        if (i === arr.length - 1) {
+            arr[i].next = null;
+        }
+    }
+    return head;
 }
 
-module.exports = {Node: Node, reverseLinkedList: reverseLinkedList};
+module.exports = { Node: Node, reverseLinkedList: reverseLinkedList };

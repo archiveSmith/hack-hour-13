@@ -33,20 +33,18 @@ Stack.prototype.pop = function() {
 
 // First in first out (FIFO);
 function Queue() {
-  this.new = new Stack();
-  this.old = new Stack();
+  this.inbox = new Stack();
+  this.outbox = new Stack();
 }
-
-Queue.prototype.size = function() {
-
-}
-
-Queue.prototype.enqueue = function() {
-
+Queue.prototype.enqueue = function(data) {
+  this.inbox.push(data);
 }
 
 Queue.prototype.dequeue = function() {
-
+  if (this.inbox.size === 0) return undefined;
+  while(this.inbox.size > 0) {
+    this.inbox.pop();
+  }
 }
 
 let testStack = new Stack();

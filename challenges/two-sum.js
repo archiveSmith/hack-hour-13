@@ -5,7 +5,7 @@
 function twoSum(arr, n) {
   if (!Array.isArray(arr) || typeof n !== 'number') return false
   for (let j = 0; j < arr.length; j++) {
-    for (let i = j + 1; j < arr.length; j++) {
+    for (let i = j + 1; i < arr.length; i++) {
       if (arr[i] + arr[j] === n) return true;
     }
   }

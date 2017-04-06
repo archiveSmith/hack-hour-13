@@ -12,7 +12,31 @@ function BinaryTree(val) {
 }
 
 function validBST(tree) {
+    let left;
+    let right;
+    if (tree.left === null && tree.right === null) return true;  
 
+    if (tree.left === null); 
+    else if (tree.left.value <= tree.value) {left = validBST(tree.left)}
+    else return false;
+
+    if (tree.right === null); 
+    else if (tree.right.value > tree.value) {right = validBST(tree.left)}
+    else return false;
+
+    return (left && right);
 }
 
 module.exports = {BinaryTree: BinaryTree, validBST: validBST};
+
+// let first = new BinaryTree(5); // left true 
+// first.left = new BinaryTree(3); // left true
+// first.right = new BinaryTree(6); 
+// first.left.left = new BinaryTree(1); // base case true
+// first.left.right = new BinaryTree(9);
+// first.right.left = new BinaryTree(6);
+// first.right.right = new BinaryTree(9);
+
+// console.log(validBST(first));
+
+

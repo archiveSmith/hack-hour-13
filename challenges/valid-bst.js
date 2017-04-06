@@ -15,7 +15,7 @@ function BinaryTree(val) {
 function validBST(tree, leftCompare = null, rightCompare = null) {
     if (leftCompare !== null && tree.value > leftCompare) return false;
     if (rightCompare !== null && tree.value <= rightCompare) return false;
-    if (tree.left && !validBST(tree.left, tree.value, rightCompare))) return false;
+    if (tree.left && !validBST(tree.left, tree.value, rightCompare)) return false;
     if (tree.right && !validBST(tree.right, leftCompare, tree.value)) return false;
     return true;
 }

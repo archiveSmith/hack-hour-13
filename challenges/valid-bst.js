@@ -11,11 +11,11 @@ function BinaryTree(val) {
 	this.right = null;
 }
 
-function validBST(tree) {
+function validBST(tree, value = tree.value) {
 	if (!tree || !tree.left && !tree.right) return true; 
-	if ((tree.left && tree.left.value > tree.value) || (tree.right && tree.right.value <= tree.value)) return false;
-  
-	return validBST(tree.left) && validBST(tree.right)
+	if ((tree.left && (tree.left.value > tree.value || tree.left.value > value)) || (tree.right && tree.right.value <= tree.value)) return false;
+
+	return validBST(tree.left, value) && validBST(tree.right, value)
 }
 
 // let a = new BinaryTree(5);

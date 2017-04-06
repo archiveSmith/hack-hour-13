@@ -16,8 +16,14 @@ function validBST(tree) {
   const val = tr.value;
   return (function check(BST) {
     if (BST === null) return true;
-    if ((BST.left !== null && (BST.left.value > BST.value || BST.right.value > val)) ||
-      (BST.right !== null && (BST.right.value < BST.value || BST.left.value < val))) return false;
+    if (BST.value === val) {
+      if ((BST.left !== null && BST.left.value > BST.value) ||
+        (BST.right !== null && BST.right.value < BST.value)) return false;
+    }
+    if (BST.value !== val) {
+      if ((BST.left !== null && (BST.left.value > BST.value || BST.right.value > val)) ||
+        (BST.right !== null && (BST.right.value < BST.value || BST.left.value < val))) return false;
+    }
     return check(BST.left) && check(BST.right);
   }(tr));
 }

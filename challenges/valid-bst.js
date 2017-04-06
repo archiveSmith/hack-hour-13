@@ -17,23 +17,25 @@ function BinaryTree(val) {
 //Values that are greater go down the right side of the tree 
 // Values that are lesser go down the left side of the tree
 
-function validBST(tree) {
-
+function validBST(val) {
+    let originalTree = val; 
     //   check to see if the end of the tree has been reached 
     //   break case in the recursive solution 
+    function makeRecurse(tree){
     if (tree === null) return true;
     //check if the tree has a left and if the value of the left is greater than the tree value this is incorrect
     //greater values should be on the right of the tree. The tree is incorrect 
-    if (tree.left != undefined && tree.left.value > tree.value) {
+    if (tree.left !== undefined && tree.left.value > tree.value || tree.left.value > val.value) {
         return false;
     }
     //check if the tree has a right value and if the right value is less than or equal to the current value
     //less than values should be to the left. The tree is incorrect. Exit and return false
-    if (tree.right != undefined && tree.right.value <= tree.value) {
+    if (tree.right !== undefined && tree.right.value <= tree.value || tree.right.value <= val.value) {
         return false;
     }
     // make a recursive call to move down the tree
     return validBST(tree.left) && validBST(tree.right);
+    }
 }
 
 

@@ -34,19 +34,21 @@ BinaryTree.prototype.insert = function (Insert) {
 function validBST(tree) {
     if (tree === null) return true;
 
+    if (tree.left === null && tree.right === null) return true;
+
     if (tree.left !== null) {
       console.log(tree.left, 'hi im tree.lefts value')
-        validBST(tree.left);
+        tree.left = validBST(tree.left);
     }
     if (tree.right !== null) {
       console.log(tree.right, 'hi im tree.rights value');
-        validBST(tree.right);
+        tree.right = validBST(tree.right);
     }
 
-    if (tree.left > tree.value) {
+    if (tree.left >= tree.value) {
         return false;
     }
-    else if (tree.right < tree.value) {
+    else if (tree.right <= tree.value) {
         return false;
     }
     else {

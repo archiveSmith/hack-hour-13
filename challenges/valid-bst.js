@@ -30,8 +30,8 @@ function BinaryTree(val) {
 
 function validBST(node, min = Number.NEGATIVE_INFINITY, max = Number.POSITIVE_INFINITY) {
   if (node === null) return true;
-  if (node.value > min && node.value < max && 
-    validBST(node.left, min, node.value && validBST(node.right, node.value, max))) return true;
+  if (node.value > min && node.value < max &&
+    validBST(node.left, min, node.value) && validBST(node.right, node.value, max)) return true;
   return false;
 }
 

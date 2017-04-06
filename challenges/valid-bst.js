@@ -11,9 +11,12 @@ function BinaryTree(val) {
     this.right = null;
 }
 
-function validBST(tree) {
-    if (tree.left && (tree.left.value > tree.value || !validBST(tree.left))) return false;
-    if (tree.right && (tree.right.value <= tree.value || !validBST(tree.right))) return false;
+
+function validBST(tree, leftCompare = null, rightCompare = null) {
+    if (leftCompare !== null && tree.value > leftCompare) return false;
+    if (rightCompare !== null && tree.value <= rightCompare) return false;
+    if (tree.left && !validBST(tree.left, tree.value, rightCompare))) return false;
+    if (tree.right && !validBST(tree.right, leftCompare, tree.value)) return false;
     return true;
 }
 

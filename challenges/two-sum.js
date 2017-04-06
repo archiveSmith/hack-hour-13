@@ -13,6 +13,26 @@ function twoSum(arr, n) {
   return false;
 }
 
+//--------------------------------------
+function twoSum2(arr, n) {
+  for (let i = 0; i < arr.length; i += 1) {
+    for (let j = i + 1; j < arr.length; j += 1) {
+      if (arr[i] + arr[j] === n) return true;
+    }
+  }
+  return false; 
+}
+
+//build hash of subtractions from n, if find it in hash then you know two values equal n; 
+function twoSum3(arr, n) {
+  const hash = {};
+  for (let i = 0; i < arr.length; i += 1) {
+    if (hash[n - arr[i]]) return true;
+    hash[arr[i]] = 1;
+  }
+  return false;
+}
+
 /*
 loop to check each number in array 
 slice out number checking and add that number to each other to see if equal n 

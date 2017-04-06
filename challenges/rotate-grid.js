@@ -17,7 +17,30 @@
  */
 
 function rotateGrid(grid, n) {
-
+  if (n <= 1) return grid;
+  let toptemp = [];
+  let righttemp = [];
+  let bottemp = [];
+  let lefttemp = [];
+  for (let i = 0; i < n; i += 1) {
+    toptemp.push(grid[0][i]);
+    righttemp.push(grid[i][n - 1]);
+    bottemp.push(grid[n - 1][i]);
+    lefttemp.push(grid[i][0]);
+  }
+  lefttemp.forEach((num, i) => {
+    grid[0][i] = num;
+  });
+  toptemp.forEach((num, i) => {
+    grid[i][n - 1] = num;
+  });
+  righttemp.forEach((num, i) => {
+    grid[n - 1][n - 1 - i] = num;
+  });
+  bottemp.forEach((num, i) => {
+    grid[i][0] = num;
+  });
+  return rotateGrid(grid, n - 2);
 }
 
 module.exports = rotateGrid;

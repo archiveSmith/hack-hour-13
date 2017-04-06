@@ -3,7 +3,7 @@
  */
 
 function twoSum(arr, n) {
-
+  for (let i = 0; i <= arr.length; )
 }
 
 module.exports = twoSum;

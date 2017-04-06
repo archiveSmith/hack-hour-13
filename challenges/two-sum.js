@@ -12,11 +12,15 @@ function twoSum(arr, n) {
 
   // check each num to see if they have their complement in obj
   // using isNaN for cases where complement is 0
-  return arr.some(num => !isNaN(complements[num]));
+  // also check if num is half of n
+  console.log(complements);
+  return arr.some(num => complements[num] !== undefined && complements[num] !== n/2);
+
+  // however, soln doesn't currently take care of duplicates
 }
 
-// var nums = [2, 3, 4, 10, -1];
-// var res = twoSum(nums, 1);
-// console.log(res);
+var nums = [2, 3, 4, 10, -1];
+var res = twoSum(nums, 6);
+console.log(res);
 
 module.exports = twoSum;

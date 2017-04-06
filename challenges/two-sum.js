@@ -23,7 +23,7 @@ function twoSum2(arr, n) {
   return false; 
 }
 
-//build hash of subtractions from n, if find it in hash then you know two values equal n; 
+//build hash of result from  n - arr[i] , then on next number if find that number in hash then you know two values equal n; 
 function twoSum3(arr, n) {
   const hash = {};
   for (let i = 0; i < arr.length; i += 1) {

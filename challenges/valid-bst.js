@@ -11,14 +11,18 @@ function BinaryTree(val) {
     this.right = null;
 }
 
-function validBST(tree) {
+function validBST(tree, valArr = []) {
     if(!tree.left) return true;
     if(!tree.right) return true;
     
-    if(tree.left.value > tree.value) return false;
-    if(tree.right.value <= tree.value) return false;
+    valArr.push(tree.val);
 
-    return validBST(tree.left) && validBST(tree.right); 
+    for(let i = 0; i <= valArr.length; i += 1){
+        if(i === valArr.length-1 && tree.right.value <= tree.value) return false;
+        if(tree.left.value > valArr[i] && tree.right.value > valArr[i]) return false;
+    }
+
+    return validBST(tree.left, valArr) && validBST(tree.right, valArr); 
 
 }
 

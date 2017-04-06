@@ -21,7 +21,7 @@ function validBST(val) {
     let originalTree = val; 
     //   check to see if the end of the tree has been reached 
     //   break case in the recursive solution 
-    function makeRecurse(tree){
+    (function makeRecurse(tree){
     if (tree === null) return true;
     //check if the tree has a left and if the value of the left is greater than the tree value this is incorrect
     //greater values should be on the right of the tree. The tree is incorrect 
@@ -34,8 +34,8 @@ function validBST(val) {
         return false;
     }
     // make a recursive call to move down the tree
-    return validBST(tree.left) && validBST(tree.right);
-    }
+    return makeRecurse(tree.left) && makeRecurse(tree.right);
+    }(originalTree));
 }
 
 

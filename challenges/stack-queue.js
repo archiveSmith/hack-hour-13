@@ -4,14 +4,14 @@
 
 
 function Stack() {
-  this.storage = {};
+  this.storage = [];
   this.index = 0;
 }
 
 Stack.prototype.push = function(value) {
   this.storage[this.index] = value;
-  return this.storage[this.index]
   this.index++;
+  return value
 }
 
 Stack.prototype.pop = function() {
@@ -23,33 +23,23 @@ Stack.prototype.pop = function() {
 
 ////////////////////////////
 function Queue() {
-  this.storage = {};
-  this.index = 0;
-}
-
-Queue.prototype.push = function(value) {
-  this.storage[this.index] = value;
-  this.index++;
-}
-
-Queue.prototype.remove = function() {
-  let removed = this.storage[0];
-  for (let i = 0; i < this.index; i += 1) {
-    this.storage[i] = this.storage[i + 1]
-  }
-  delete this.storage[this.index - 1];
-  return removed;
-}
-//////////////////////////////////////////////////////////////////
-
-function Queue() {
   this.inbox = new Stack();
-  this.outbox = new Stack();
+  this.outbox = new Stack(); 
 }
 
 Queue.prototype.enqueue = function(value) {
-  this.inbox.push(value)
+  this.inbox.push(value);
   return value;
+}
+
+Queue.prototype.dequeue = function() {
+  if (this.outbox.index === 0) {
+    if (this.inbox.index === 0) return undefined;
+    while(this.inbox.index > 0) {
+      this.outbox.push(this.inbox.pop())
+    }
+  }
+  return this.outbox.pop();
 }
 
 

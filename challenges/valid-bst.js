@@ -3,16 +3,18 @@
  *      at any given node, the value of all the nodes in its left tree must be <= its value
  *      at any given node, the value of all the nodes in its right tree must be > its value
  */
- 
+
 
 function BinaryTree(val) {
-    this.value = val;
-    this.left = null;
-    this.right = null;
+  this.value = val;
+  this.left = null;
+  this.right = null;
 }
 
 function validBST(tree) {
-
+  if ((tree.value.left && tree.value.left > tree.value) ||
+    (tree.value.right && tree.value.right < tree.value)) return false;
+  return validBST(tree.value.left) && validBST(tree.value.right);
 }
 
 module.exports = {BinaryTree: BinaryTree, validBST: validBST};

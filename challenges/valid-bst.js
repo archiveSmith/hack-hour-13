@@ -11,23 +11,6 @@ function BinaryTree(val) {
   this.right = null;
 }
 
-// function validBST(tree) {
-//   const tr = tree;
-//   const val = tr.value;
-//   return (function check(BST) {
-//     if (BST === null) return true;
-//     if (BST.value === val) {
-//       if ((BST.left !== null && BST.left.value > BST.value) ||
-//         (BST.right !== null && BST.right.value < BST.value)) return false;
-//     }
-//     if (BST.value !== val) {
-//       if ( (BST.left !== null && (BST.left.value > BST.value || (BST.value < val && BST.right.value > val))) ||
-//         (BST.right !== null && (BST.right.value < BST.value || (BST.value > val && BST.left.value < val))) ) return false;
-//     }
-//     return check(BST.left) && check(BST.right);
-//   }(tr));
-// }
-
 function validBST(node, min = Number.NEGATIVE_INFINITY, max = Number.POSITIVE_INFINITY) {
   if (node === null) return true;
   if (node.value > min && node.value < max &&

@@ -8,7 +8,13 @@
  */
 
 function gcd(a, b) {
-
+  let result = 1;
+  for (let i = 2; i <= Math.min(a, b); i += 1) {
+    if (a % i === 0 && b % i === 0) {
+      result = i;
+    }
+  }
+  return result;
 }
 
 module.exports = gcd;

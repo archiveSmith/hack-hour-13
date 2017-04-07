@@ -11,15 +11,20 @@ function BinaryTree(val) {
   this.right = null;
 }
 
-function validBST(tree) {
-  if (!tree.left || !tree.right) {
-    return true;
-  }
-  if (tree.left.value <= tree.value && tree.value < tree.right.value ) {
-    return tree.left ? validBST(tree.left) : validBST(tree.right)
+function validBST(BST) {
+  if (BST instanceof BinaryTree === false) {return 'wrong data given'}
 
+  function recurse (tree, min, max) {
+    if (!tree) return true;
+
+    if (tree.value <= min || tree.value >= max) return false;
+    
+    let left = recurse(tree.left, min, tree.value)
+    let left = recurse(tree.right, tree.value, max)
+
+    return left && right;
   }
-  return false;
+  return recurse(BST, -Infinity, Infinity); 
 }
 
 //////////////////////TESTING////////////////////////////////////

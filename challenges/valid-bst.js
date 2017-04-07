@@ -5,12 +5,17 @@
  */
  
 
+<<<<<<< HEAD
 function BinaryTree(value) {
+=======
+function BinaryTree(val) {
+>>>>>>> 46a8a24d5bec493555b5c9012bf7e36ab6f04a86
     this.value = val;
     this.left = null;
     this.right = null;
 }
 
+<<<<<<< HEAD
 function validBST(node, min, max) {
     if (node === null) {
         return true;
@@ -22,6 +27,10 @@ function validBST(node, min, max) {
         return false;
     };
     return true;
+=======
+function validBST(tree) {
+
+>>>>>>> 46a8a24d5bec493555b5c9012bf7e36ab6f04a86
 }
 
 module.exports = {BinaryTree: BinaryTree, validBST: validBST};

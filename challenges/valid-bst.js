@@ -6,31 +6,16 @@
 
 
  function BinaryTree(val) {
-     this.value = val;
-     this.left = null;
-     this.right = null;
- }
+    this.value = val;
+    this.left = null;
+    this.right = null;
+}
 
- function validBST(tree) {
-   // traverse down the binary tree in postorder and test if its left is <= value, and its right is greater than value
-   // create a variable to hold whether the right branch returns true
-   let rightBranch = false;
-   // create a variable to hold whether the left branch returns true
-   let leftBranch = false;
+function validBST(tree, max = Infinity, min = -Infinity) {
+  if (!tree) return true;
+  if (tree.value > max || tree.value <= min) return false;
 
-   if (tree.right) {
-     rightBranch = validBST(tree.right);
-   }
-
-   if (tree.left) {
-     leftBranch = validBST(tree.left);
-   }
-
-   // if the branch has no branch to left or right, return the value
-   if (!tree.left && !tree.right) return true;
-
-   return (tree.left.value <= tree.value && tree.right.value > tree.value) &&
-   (leftBranch && rightBranch);
- }
+  return validBST(tree.left, tree.value, min) && validBST(tree.right, max, tree.value);
+}
 
 module.exports = {BinaryTree: BinaryTree, validBST: validBST};

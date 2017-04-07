@@ -8,20 +8,20 @@
  */
 
 function gcd(a, b) {
-  let max; 
+  let min; 
   let result;
-  if(a > b) max = a; 
-  else max = b; 
+  if(a > b) min = b; 
+  else min = a; 
   if (a < 0) a *= -1;
   if (b < 0) b *= -1;
-  for(let i = 0; i < Math.round(max/2); i ++){
+  for(let i = 0; i <= min; i ++){
     if(a % i === 0 && b % i === 0) result = i;
   }
-  return console.log(result)
+  return typeof result === 'number' ? result : 1; 
 }
 
 module.exports = gcd;
 
-gcd(10, 8) //-> 2
+gcd(44, 8) //-> 4
 gcd(9, 10) //-> 1
- 
+gcd(5,7) // ->1 

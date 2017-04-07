@@ -8,7 +8,7 @@
  */
 
 function gcd(a, b) {
-  if (typeof a !== number || typeof b !== number) return false;
+  if (typeof a !== 'number' || typeof b !== 'number') return false;
 
   let min = Math.min(a, b);
   let divisor = 1;
@@ -19,7 +19,7 @@ function gcd(a, b) {
     }
   }
 
-  return devisor;
+  return divisor;
 }
 
 module.exports = gcd;

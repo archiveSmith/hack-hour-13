@@ -9,8 +9,8 @@
 
 function gcd(a, b) {
   if (isNaN(a) || isNaN(b)) return 'not a number';
-  let result = 0;
-  for (let i = Math.min(a, b); i <= Math.max(a, b); i += 1) {
+  let result = 1;
+  for (let i = Math.min(a, b, 0); i <= Math.max(a, b); i += 1) {
     if (a % i === 0 && b % i === 0) {
       result = i;
     }

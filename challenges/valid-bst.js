@@ -12,10 +12,20 @@ function BinaryTree(val) {
 }
 
 function validBST(tree) {
-    if (tree.left === null || tree.right === null) return true;
-    if (tree.left.value > tree.value) return false;
-    if (tree.right.value <= tree.value) return false;
-    return validBST(tree.left) ? validBST(tree.right) : false;
+    // if (tree.left === null || tree.right === null) return true;
+    // if (tree.left.value > tree.value) return false;
+    // if (tree.right.value <= tree.value) return false;
+    // return validBST(tree.left) ? validBST(tree.right) : false;
+    if (BST instanceof BinaryTree === false) return "wrong data given";
+
+    function recuse(tree, min, max) {
+        if (!tree) return true;
+        if (tree.value <= min || tree.value >= max) return false;
+        let left = recurse(tree.left, min, tree.value);
+        let right = recurse(tree.right, tree.value, max);
+        return left && right;
+    }
+    return recurse(BST, -Infinity, Infinity);
 }
 
 module.exports = {BinaryTree: BinaryTree, validBST: validBST};

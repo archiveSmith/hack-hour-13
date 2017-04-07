@@ -16,7 +16,7 @@ function validBST(tree) {
     // if (tree.left.value > tree.value) return false;
     // if (tree.right.value <= tree.value) return false;
     // return validBST(tree.left) ? validBST(tree.right) : false;
-    if (BST instanceof BinaryTree === false) return "wrong data given";
+    if (tree instanceof BinaryTree === false) return "wrong data given";
 
     function recuse(tree, min, max) {
         if (!tree) return true;
@@ -25,7 +25,7 @@ function validBST(tree) {
         let right = recurse(tree.right, tree.value, max);
         return left && right;
     }
-    return recurse(BST, -Infinity, Infinity);
+    return recurse(tree, -Infinity, Infinity);
 }
 
 module.exports = {BinaryTree: BinaryTree, validBST: validBST};

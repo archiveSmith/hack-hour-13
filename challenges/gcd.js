@@ -8,7 +8,13 @@
  */
 
 function gcd(a, b) {
-
+ let c = a % b;
+ while(c > 0) {
+  a = b;
+  b = c;
+  c = a % b;
+ }
+ return b;
 }
 
 module.exports = gcd;

@@ -11,27 +11,29 @@ function Node(val) {
 }
 
 //Iterative
-function zip (l1, l2) {
-  if (!l1) {
-    return l2;
-  }
-  if (!l2) {
-    return l1;
-  }
+function zip(l1, l2) {
+ let templ1 = {};
+ let templ2 = {};
+ let dest = l1;
+ while (l2 != null) {
+   templ1 = dest.next;  //templ1 = 3
+   if (dest.next === null) {
+     dest.next = l2
+     break;
+   }
+   else {
+     dest.next = l2; // dest.next = 2
+     templ2 = l2.next; //
+     l2.next = templ1;
+     l2 = templ2;
+     dest = templ1;
+   }
+ }
+ return l1;
+};
 
-  let head = l1, temp = l1, l1 = l1.next;
-  while (l1 & l2) {
-    temp.next = l2;
-    l2 = l2.next;
-    temp = temp.next;
-
-    temp.next = l1;
-    l1 = l1.next;
-    temp = temp.next;
-  }
-  temp.next = l2 ? l2 : l1;
-  return head;
-}
+let l1t = {value:"1", next: {value:"3", next:{value:"5", next:{value:"6", next:null}}}};
+let l2t = {value:"2", next: {value:"4", next:null}};
 
 
 //Recursion

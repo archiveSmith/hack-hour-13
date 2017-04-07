@@ -7,8 +7,27 @@
  *
  */
 
-function gcd(a, b) {
-
+function gcd (a,b) {
+  var divisorsOfA = [];
+  for (var i=0; i<=a; i++){
+    if( a % i === 0){
+      divisorsOfA.push(i);
+    }
+  }
+  var divisorsOfB = [];
+  for (var j=0; j<=b; j++){
+    if (b % j === 0){
+      divisorsOfB.push(j);
+    }
+  }
+  for (var z = divisorsOfA.length-1; z>=0; z--){
+    for (var k = divisorsOfB.length-1; k>=0; k--){
+      if(divisorsOfA[z] === divisorsOfB[k]){
+        return divisorsOfA[z];
+      }
+    }
+  }
 }
+
 
 module.exports = gcd;

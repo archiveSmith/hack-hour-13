@@ -6,31 +6,40 @@
  * BONUS: The getMax method should retrieve the maximum value from the stack in O(1) time.
  */
 
-function Stack() {
-  let stack = [];
-  let length = 0;
-  
-  let push = function(val) {
-    stack[stack.length] = val; 
-    length++;
-    return length;
+class Stack {
+
+  constructor() {
+    this.storage = {};
+    this.index = 0;
+  }
+
+  push(value) {
+    this.storage[this.index] = value;
+    this.index++;
+    return this.index;
   };
-  
-  let pop = function() {
-    let result = stack[stack.length - 1];
-    delete stack[stack.length - 1];
-    length--;
-    return result;
+
+  pop() {
+    if (this.storage.hasOwnProperty('0')) {
+      let popValue = this.storage[this.index - 1];
+      delete popValue;
+      this.index--;
+      return popValue;
+    } else {
+      return undefined;
+    }
   };
-  
-  let getMax = function() {
-    return stack.reduce((max, curr) => {
-      if (curr > max) {
-        max = curr;
+
+  getMax() {
+    let max = this.storage[0];
+    if (!this.storage.hasOwnProperty('0')) return undefined;
+    for (key in this.storage) {
+      if (this.storage[key] > max) {
+        max = this.storage[key];
       }
-      return max;
-    }, 0);
-  };
+    }
+    return max;
+  }
 }
 
 module.exports = Stack;

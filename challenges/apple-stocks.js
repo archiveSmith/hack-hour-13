@@ -11,28 +11,25 @@
  *
  *  Return 0 if no profit is possible OR if input is invalid.
  */
-
 function bestProfit(stock_prices_yesterday) {
-    let largest = 0;
+    let stocks = stock_prices_yesterday;
+    let largest = stocks[1];
     let smallest;
     let profit = 0;
-    let stock = stock_prices_yesterday;
 
-    for (let i = 1; i < stock.length; i++) {
-        if (stock[i] > largest) {
-            largest = stock[i];
-        }
-        for (let j = i - 1; j < stock.indexOf(largest); j++) {
-            let smallest = largest; 
-            if (stock[j] < smallest) {
-                smallest = stock[j];
-            }
-            if(largest - smallest > profit) {
-            profit = largest - smallest;
-              
-            }
+    for (let i = 1; i < stocks.length; i++) {
+        if (stocks[i] > largest) {
+            largest = stocks[i];
         }
     }
+    smallest = largest;
+    for (let j = 0; j < stocks.indexOf(largest); j++) {
+      if (stocks[j] < smallest) {
+        smallest = stocks[j];
+        console.log(smallest);
+      }
+    }
+    profit = largest - smallest;
     return profit;
 }
 

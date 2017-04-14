@@ -13,28 +13,27 @@
  */
 
 function bestProfit(stock_prices_yesterday) {
-<<<<<<< HEAD
     let largest = 0;
     let smallest;
     let profit = 0;
-    let stocks = stock_prices_yesterday;
+    let stock = stock_prices_yesterday;
 
-    for (let i = 0; i < stocks.length; i++) {
-        if (stocks[i] > largest) {
-            largest = stocks[i];
+    for (let i = 1; i < stock.length; i++) {
+        if (stock[i] > largest) {
+            largest = stock[i];
         }
-        for (let j = 0; j < indexOf(largest); j++) {
+        for (let j = i - 1; j < stock.indexOf(largest); j++) {
             let smallest = largest; 
-            if (stocks[j] < smallest) {
-                smallest = stocks[j];
+            if (stock[j] < smallest) {
+                smallest = stock[j];
             }
+            if(largest - smallest > profit) {
             profit = largest - smallest;
+              
+            }
         }
     }
     return profit;
-=======
-
->>>>>>> f1d7fa8b9b536fbd9a876724b4681a9fa33c14a0
 }
 
 module.exports = bestProfit;

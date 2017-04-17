@@ -13,6 +13,7 @@ function BinaryTree(val) {
 
 // BFS METHOD
 function validBST(tree) {
+  // keep a min & a max value
   const toVisit = [];
   const visited = [];
   toVisit.push(tree);

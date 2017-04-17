@@ -7,8 +7,18 @@
 // countTwos(11420);  -> 4483
 
 
-function countTwos(num) {
-
+function countTwos(n) {
+	var twoCount = 0;
+	var tempCount;
+	var str;
+	for(let i=1; i<=n; i += 1){
+		str = JSON.stringify(i);
+		if(str.includes('2')){
+			twoCount += str.match(/2/gi).length;
+		}
+		
+	}
+	return twoCount;
 }
 
 module.exports = countTwos;

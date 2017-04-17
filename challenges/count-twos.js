@@ -7,12 +7,11 @@
 // countTwos(11420);  -> 4483
 
 const cache = {
-  '0': 0
+  0: 0
 };
 
 function countTwos(num) {
-  if (cache[num]) return cache[num];
-  let count = 0;
+  if (cache[num] !== undefined) return cache[num];
   return cache[num] = countTwos(num - 1) + num.toString().split('').reduce((count, curr) => curr === '2' ? count + 1 : count, 0);
 }
 

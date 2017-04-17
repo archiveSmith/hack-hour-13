@@ -8,7 +8,24 @@
 
 
 function countTwos(num) {
+  if (typeof num !== 'number') {
+    return false;
+  }
 
+  let numOfTwos = 0;
+
+  for (let i = 1; i <= num; i += 1) {
+    const numbified = i.toString();
+    for (let j = 0; j < numbified.length; j += 1) {
+      if (numbified.charAt(j) === '2') {
+        numOfTwos += 1;
+      }
+    }
+  }
+
+  return numOfTwos;
 }
+
+// console.log(countTwos(11420));  //-> 300
 
 module.exports = countTwos;

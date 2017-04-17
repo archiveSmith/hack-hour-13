@@ -8,7 +8,18 @@
 
 
 function countTwos(num) {
-
+  let counter = twoCounter = 0;
+  while (counter <= num) {
+    counter.toString().split('').forEach(e => { if (e === '2') twoCounter++; });
+    counter++;
+  }
+  return twoCounter;
 }
+
+//TEST
+let testArr = [1, 3, 13, 1000, 11420];
+testArr.forEach(e => {
+  console.log(countTwos(e));
+})
 
 module.exports = countTwos;

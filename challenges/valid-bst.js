@@ -18,7 +18,7 @@ function validBST(tree) {
     // return validBST(tree.left) ? validBST(tree.right) : false;
     if (tree instanceof BinaryTree === false) return "wrong data given";
 
-    function recuse(tree, min, max) {
+    function recurse(tree, min, max) {
         if (!tree) return true;
         if (tree.value <= min || tree.value >= max) return false;
         let left = recurse(tree.left, min, tree.value);

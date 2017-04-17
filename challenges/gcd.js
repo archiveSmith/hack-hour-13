@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**
  * Given two integers, return the greatest common divisor(factor).
  *
@@ -48,3 +49,20 @@ Note that we ignored the quotient in each step except to notice when the remaind
 
 */
 module.exports = gcd;
+||||||| merged common ancestors
+=======
+/**
+ * Given two integers, return the greatest common divisor.
+ *
+ * Example:
+ * gcd(10, 8) -> 2
+ * gcd(10, 9) -> 1
+ *
+ */
+
+function gcd(a, b) {
+
+}
+
+module.exports = gcd;
+>>>>>>> ad3da829b2309194f0aabe33886c7aa140efb800

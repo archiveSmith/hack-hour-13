@@ -11,28 +11,11 @@ function BinaryTree(val) {
     this.right = null;
 }
 
-// function validBST(tree, min, max) {
-//   console.log('min < tree value < max:', min + ' < ' + tree.value + ' < ' + max);
-//   if (tree === null) return true;
-//   if (tree.value < min || tree.value >= max) return false;
-//
-//   let leftValid = true;
-//   let rightValid = true;
-//
-//   if (tree.left && tree.left.value > tree.value) leftValid = false;
-//   if (tree.right && tree.right.value <= tree.value) rightValid = false;
-//
-//   return leftValid && rightValid && validBST(tree.left, min, tree.value) && validBST(tree.right, tree.value, max);
-// }
 
-function validBST(tree, min, max) {
+
+function validBST(tree, min = -Infinity, max = Infinity) {
   if (tree === null) return true;
-
-  if (min === undefined) min = -Infinity;
-  if (max === undefined) max = Infinity;
-
   if (tree.value <= min || tree.value > max) return false;
-
   return validBST(tree.left, min, tree.value) && validBST(tree.right, tree.value, max);
 }
 

@@ -3,9 +3,7 @@
  */
 
 function twoSum(arr, n) {
-  if (n === 0) return true;
-  if (!arr.length) return false;
-  return twoSum(arr.slice(1), n) || arr.slice(1).includes(n - arr[0]);
+  return arr.length && (twoSum(arr.slice(1), n) || arr.slice(1).includes(n - arr[0]));
 }
 
 module.exports = twoSum;

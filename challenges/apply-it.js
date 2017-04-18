@@ -26,11 +26,7 @@
  */
 
 function applyIt(func, args) {
-  let name = args[0];
-  let age = args[1];
-  let location = args[2];
-  
-  return func(name, age, location);
+  return func(...args);
 }
 
 module.exports = applyIt;

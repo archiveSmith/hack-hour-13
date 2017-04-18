@@ -26,7 +26,11 @@
  */
 
 function applyIt(func, args) {
-
+  let arr = Array.from(args);
+  function innerfunc () {
+    return func(arr[0], arr[1], arr[2]);
+  }
+  return innerfunc;
 }
 
 module.exports = applyIt;

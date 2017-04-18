@@ -25,8 +25,14 @@
  *  DO NOT USE THE BUILT IN APPLY METHOD OR THE SPREAD OPERATOR
  */
 
-function applyIt(func, args) {
-
+function applyIt(func, array) {
+	return function(){
+		return func(...array);
+		// return array.reduce((acum, next) => {
+		// 	return func(acum, next);
+		// });
+		
+	};
 }
 
 module.exports = applyIt;

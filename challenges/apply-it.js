@@ -26,7 +26,7 @@
  */
 
 function applyIt(func, args) {
-
+  return args.reduce((accum, curr) => {return accum.bind(null, curr)}, func);
 }
 
 module.exports = applyIt;

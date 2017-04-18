@@ -25,8 +25,28 @@
  *  DO NOT USE THE BUILT IN APPLY METHOD OR THE SPREAD OPERATOR
  */
 
+var jasmine = function (name, age) {
+    if (!age) {
+        return "We don't know how old " + name + " is!";
+    }
+
+    else {
+        return name + " is " + age + " years old!";
+    }
+};
+
+var jmoney = applyIt(jasmine, ["Jasmine"]);
+
 function applyIt(func, args) {
 
+    let first, second, third, fourth;
+
+    if (args[0]) first = args[0];
+    if (args[1]) second = args[1];
+    if (args[2]) third = args[2];
+    if (args[3]) fourth = args[3];
+
+    return func(first, second, third, fourth);
 }
 
 module.exports = applyIt;

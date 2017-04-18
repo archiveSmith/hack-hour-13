@@ -22,10 +22,4 @@ function countTwos(num) {
   return twoCount;
 }
 
-console.log(countTwos(1));
-console.log(countTwos(3));
-console.log(countTwos(13));
-console.log(countTwos(1000));
-console.log(countTwos(11420));
-
 module.exports = countTwos;

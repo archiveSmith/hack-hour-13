@@ -8,7 +8,15 @@
  */
 
 function gcd(a, b) {
-
+  let divisor = Math.min(a, b);
+  let divident = Math.max(a, b);
+  let remainder = divident - (divisor * Math.floor((divident/divisor)));
+  while(remainder) {
+    divident = divisor;
+    divisor = remainder;
+    remainder = divident - (divisor * Math.floor((divident/divisor)));
+  }
+  return divisor;
 }
 
 module.exports = gcd;

@@ -25,8 +25,12 @@
  *  DO NOT USE THE BUILT IN APPLY METHOD OR THE SPREAD OPERATOR
  */
 
-function applyIt(func, args) {
-
-}
+ function applyIt(func, args) {
+   const argString = args.map(el => "'" + el + "'");
+   const funcCall = arguments[0].name + '(' + argString + ')';
+   return function() {
+     return eval(funcCall);
+   };
+ }
 
 module.exports = applyIt;

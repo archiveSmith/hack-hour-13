@@ -14,7 +14,13 @@
  */
 
 function binToDec(binary) {
-
+  if (!binary) return 'please input binary number only';
+  let result = 0;
+  for (let i = 0 ; i < binary.length; i += 1) {
+    if (binary[i] === '1') result += Math.pow(2, binary.length - i - 1);
+    if (binary[i] !== '1' && binary[i] !== '0') return 'please input binary number only';
+  }
+  return result;
 }
 
 module.exports = binToDec;

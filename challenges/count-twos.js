@@ -26,6 +26,7 @@ function countTwos(num) {
   return numOfTwos;
 }
 
+
 // console.log(countTwos(11420));  //-> 300
 
 module.exports = countTwos;

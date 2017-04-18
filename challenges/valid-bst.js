@@ -25,17 +25,14 @@ function validBST(tree, leftMin = -Infinity, rightMax = Infinity) {
         (
             tree.right &&
             (tree.right.value <= tree.value || tree.right.value >= rightMax)
-        ) ||
-        // if valid left and right values,
-        // call validBST again to check left and right's children
-        !validBST(tree.left, leftMin, tree.value) ||
-        !validBST(tree.right, tree.value, rightMax)
+        )
     ) {
         return false;
     }
 
     // node and its children have valid left and right vals
-    return true;
+    return validBST(tree.left, leftMin, tree.value) &&
+           validBST(tree.right, tree.value, rightMax);
 }
 
 // // valid tree

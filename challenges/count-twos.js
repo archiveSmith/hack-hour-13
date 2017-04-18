@@ -8,6 +8,7 @@
 
 
 function countTwos(num) {
+<<<<<<< HEAD
   let counter = 0;
   if (num < 2) {
     return 0;
@@ -21,6 +22,9 @@ function countTwos(num) {
     }
   }
   return counter;
+=======
+
+>>>>>>> d81e5762557e96617a64e0e126144961d11e9247
 }
 
 module.exports = countTwos;

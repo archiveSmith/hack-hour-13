@@ -26,8 +26,16 @@
  */
 
 function applyIt(func, args) {
-  return function() {
-    return func.apply(this, args);
+  let functionCall = func.name + "(";
+
+  for (let i = 0; i < args.length; i += 1) {
+    functionCall += "\"" + args[i] + "\"";
+    if (i < args.length - 1) functionCall += ",";
+  }
+  functionCall += ")";
+
+  return () => {
+    return eval(functionCall);
   }
 }
 

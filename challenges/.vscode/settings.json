@@ -1,4 +1,6 @@
 // Place your settings in this file to overwrite default and user settings.
 {
     "editor.fontFamily": "Menlo, Monaco, 'Courier New', monospace",
+    "angulardoc.repoId": "61b68f79-49a9-4013-aec3-4911d137d4c9",
+    "angulardoc.lastSync": 0,
 }

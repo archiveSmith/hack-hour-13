@@ -26,8 +26,12 @@
  */
 
  function applyIt(func, args) {
-   const argString = args.map(el => "'" + el + "'");
-   const funcCall = arguments[0].name + '(' + argString + ')';
+  //  const argString = args.map((el, i) => {
+  //    return 'args[${i}]';
+  //  })
+   const argString = args.map(el => (typeof el === 'string') ? "'" + el + "'" : el);
+  //  const funcCall = 'func(' + argString + ');';
+   const funcCall = arguments[0].name + '(' + argString + ');';
    return function() {
      return eval(funcCall);
    };

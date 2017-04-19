@@ -26,6 +26,25 @@ function countTwos(num) {
   return numOfTwos;
 }
 
+// reg-ex solution
+// function countTwos(num) {
+//   let count = 0;
+
+//   for (let i = 2; i <= num; i += 1) {
+//     i.toString().replace(/2/g, function() {
+//       count += 1;
+//     })
+//   }
+
+//   return count;
+// }
+
+// recursive solution
+// function countTwos(num, counter = 0) {
+//   if (num === 0) return counter;
+//   return countTwos(num - 1, counter += num.toString().split('').filter(digit => digit === '2').length) // missing something
+// }
+
 // console.log(countTwos(11420));  //-> 300
 
 module.exports = countTwos;

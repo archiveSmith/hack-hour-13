@@ -18,7 +18,32 @@ function Node(val) {
 }
 
 function addLinkedList(l1, l2) {
-
+  let curr1 = l1;
+  let curr2 = l2;
+  let mult = 1;
+  let sum = 0;
+  while (curr1 || curr2) {
+    if (curr1 && curr2) {
+      sum += (mult * (curr1.value + curr2.value));
+      curr1 = curr1.next;
+      curr2 = curr2.next;
+    } else if (curr1) {
+      sum += (mult * curr1.value);
+      curr1 = curr1.next;
+    } else if (curr2) {
+      sum += (mult * curr2.value);
+      curr2 = curr2.next;
+    }
+    mult *= 10;
+  }
+  const sumStr = sum.toString();
+  const output = new Node(sumStr.charAt(sumStr.length - 1));
+  let curr = output;
+  for (let i = sumStr.length - 2; i >= 0; i -= 1) {
+    curr.next = new Node(sumStr.charAt(i));
+    curr = curr.next;
+  }
+  return output;
 }
 
 module.exports = {Node: Node, addLinkedList: addLinkedList};

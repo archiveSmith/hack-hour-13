@@ -6,13 +6,16 @@
 // countTwos(1000);  -> 300
 // countTwos(11420);  -> 4483
 
-
+//TWO WAYS TO DO THIS...ONE IS COMMENTED OUT 
 function countTwos(num) {
-  let string = '';
+  //let string = '';
+  let count = 0;
   for (let i = 1; i <= num; i += 1) {
-    string += i;
+    //string += i;
+    i.toString().replace(/2/g, () => count++ )
   }
-  return string.split('').filter(num => num === '2').length;
+  return count
+  //return string.split('').filter(num => num === '2').length;
 }
 
 //////////////////////////TESTING////////////////////////

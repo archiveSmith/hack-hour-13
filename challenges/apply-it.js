@@ -27,6 +27,11 @@
 
 function applyIt(func, args) {
 
+  function f() {
+    
+    return func();
+  }
+  return f;
 }
 
 module.exports = applyIt;

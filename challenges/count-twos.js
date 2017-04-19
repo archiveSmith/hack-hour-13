@@ -6,9 +6,26 @@
 // countTwos(1000);  -> 300
 // countTwos(11420);  -> 4483
 
-
+//TWO WAYS TO DO THIS...ONE IS COMMENTED OUT 
 function countTwos(num) {
-
+  //let string = '';
+  let count = 0;
+  for (let i = 1; i <= num; i += 1) {
+    //string += i;
+    i.toString().replace(/2/g, () => count++ )
+  }
+  return count
+  //return string.split('').filter(num => num === '2').length;
 }
+
+//////////////////////////TESTING////////////////////////
+console.log( countTwos(13), 'should equal 2' )
+console.log( countTwos(11420), 'should equal 4483' )
+console.log( countTwos(1000), 'should equal 300' )
+
+/*
+write all numbers in a string, split string by each number, filter for 2, length,
+odd numbers will also have a 2 
+*/
 
 module.exports = countTwos;

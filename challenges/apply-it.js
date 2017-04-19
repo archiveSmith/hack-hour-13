@@ -1,3 +1,4 @@
+
 /**
  * applies the invoked array to the function's parameter list
  * Example:
@@ -26,7 +27,30 @@
  */
 
 function applyIt(func, args) {
-
+  let funcStr = 'func(';
+  const argList = args.map((element, i) => `args[${i}]`);
+  funcStr += argList.join(',') + ');';
+  return function inner() {
+    return eval(funcStr);
+  }
+  //normal way; also need ...args in parameters
+  //return func.apply(this, ...args)
 }
+
+//////////////////////////TESTING/////////////////////////////////////
+var jae = function(name, age, location) {
+  return name + " is " + age + " and he lives in " + location;
+};
+var jaero = applyIt(jae, ["Jae", 19, "South Carolina"]);
+/////////////////////////////////////////////////////////////////////
+console.log( jaero() );
+//console.log( applyIt(jae, ['Jae', 19, 'SC']))
+
+/*
+get arguments 2 to the end and invoke the function with them 
+*/
+
+
+
 
 module.exports = applyIt;

@@ -17,7 +17,37 @@
  */
 
 function rotateGrid(grid, n) {
-
+  let temp = new Array(n)
+  for (let i = 0; i < temp.length; i += 1) {
+    temp[i] = new Array(n); 
+    for (let j = 0; j < n; j += 1) {
+      temp[i][j] = grid[i][n - j - 1];
+    }
+  }
+  grid = temp;
+  return grid;
 }
+
+const grid =  [ [1, 2, 3], [4, 5, 6], [7, 8, 9] ]
+
+console.log( rotateGrid2(grid, 3) )
+
+///////////////////////////////////////////////////////////////////////////////
+
+function rotateGrid2(grid, n) {
+  var newGrid = [];
+  for(var i = 0; i < n; i++) {
+    var newRow = [];
+    //get all rows from column starting with bottom row 
+    for (var j = n - 1; j >= 0; j-= 1) {
+      newRow.push(grid[j][i])
+    }
+    newGrid.push(newRow)
+  }
+  return newGrid;
+}
+
+
+
 
 module.exports = rotateGrid;

@@ -26,7 +26,14 @@
  */
 
 function applyIt(func, args) {
-  return func(...args);
+  let funcStr = 'func';
+  const argList = args.map((element, i) => {
+    return `args[${i}]`;
+  });
+  funcStr += argList.join(',') + ');';
+  return function() {
+    return eval(funcStr);
+  }
 }
 
 module.exports = applyIt;

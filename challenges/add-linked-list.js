@@ -51,9 +51,11 @@ function addLinkedList(l1, l2) {
       prevNode.next = currNode;
       prevNode = currNode;
     }
-
   }
-
+  
+  if (tempVal > 0) {
+    prevNode.next = new Node(tempVal);
+  }
   return head;
 }
 

@@ -20,18 +20,22 @@
  */
 
 function applyIt(func, args) {
+  
   let calledFunc = (func()).split(" ")
   for(let i = 0; i <args.length; i ++){
+  //console.log(func().bind(args[i]))
     let index = calledFunc.indexOf('undefined'); 
     calledFunc[index] = args[i]
   }
+  return func.bind(args)
+  console.log(func("Jae", 19, "South Carolina"))
   return calledFunc.join(" ");
 }
 
 module.exports = applyIt;
 
-// var jae = function (name, age, location) {
-//   return name + " is " + age + " and he lives in " + location;
-// };
-// applyIt(jae, ["Jae", 19, "South Carolina"]);
+var jae = function (name, age, location) {
+   return name + " is " + age + " and he lives in " + location;
+ };
+applyIt(jae, ["Jae", 19, "South Carolina"]);
 //jaero(); //Returns "Jae is 19 and he lives in South Carolina"

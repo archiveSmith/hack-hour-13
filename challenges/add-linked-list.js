@@ -31,7 +31,7 @@ function addLinkedList(l1, l2) {
     l2 = l2.next;
   }
   const resultArr = (num1 + num2).toString().split('');
-  let lSum = new Node();
+  const lSum = new Node();
   resultArr.forEach((n) => {
     lSum.value = Number(n);
     lSum.next = lSum;

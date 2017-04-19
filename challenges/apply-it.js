@@ -30,8 +30,8 @@
   //    return 'args[${i}]';
   //  })
    const argString = args.map(el => (typeof el === 'string') ? "'" + el + "'" : el);
-  //  const funcCall = 'func(' + argString + ');';
-   const funcCall = arguments[0].name + '(' + argString + ');';
+   const funcCall = 'func(' + argString + ');';
+  //  const funcCall = arguments[0].name + '(' + argString + ');';
    return function() {
      return eval(funcCall);
    };

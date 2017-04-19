@@ -17,8 +17,24 @@ function Node(val) {
   this.next = null;
 }
 
-function addLinkedList(l1, l2) {
 
+
+function addLinkedList(l1, l2) {
+  let arr1 = []; 
+  let arr2 = []; 
+  let l1Val = l1;
+  let l2Val = l2;
+  while(l1Val.val !== null){
+    arr1.push(l1Val.val)
+    l1Val = this.next;
+  }
+  while(l2Val.val !== null){
+    arr2.push(l2Val.val)
+    l2Val = this.next;
+  }
+  let list1 = l1Val.reverse().join("");
+  let list2 = l2Val.reverse().join("");
+  return list1 + list2; 
 }
 
 module.exports = {Node: Node, addLinkedList: addLinkedList};

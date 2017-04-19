@@ -26,9 +26,13 @@
  */
 
 function applyIt(func, args) {
+<<<<<<< HEAD
   let argsArr = Array.prototype.slice.call(arguments, 1);
 
   return func(argsArr[0][0], argsArr[0][1], argsArr[0][2]);
+=======
+
+>>>>>>> 3225658d2b53457d421f9f70300d01e25bc12ac4
 }
 
 module.exports = applyIt;

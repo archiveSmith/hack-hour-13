@@ -26,7 +26,31 @@
  */
 
 function applyIt(func, args) {
+  // just pass args into the function
+  let thefunc = func.toString();
+  let callback = '';
 
+  // grab only the function name
+  for (let i = 9; thefunc[i] !== '('; i += 1) {
+    callback += thefunc[i];
+  }
+
+  // add the opening parens to the callback
+  callback += '(';
+
+  // convert arguments to string, and add to the string
+  for (let i = 0; i < args.length; i += 1) {
+    // if it is the first arg
+    if (i === args.length - 1) {
+      callback += args[i];
+      callback += ')';
+    } else {
+      callback += `${args[i]},`;
+    }
+  }
+
+  // eval the function
+  return () => eval(callback);
 }
 
 module.exports = applyIt;

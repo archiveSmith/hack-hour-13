@@ -25,18 +25,20 @@
  *  DO NOT USE THE BUILT IN APPLY METHOD OR THE SPREAD OPERATOR
  */
 
-function applyIt(func, args) {
-  let argsArr = arguments['1'];
-  let result = func + '(';
+ function applyIt(func, args) {
+   let argsArr = arguments[1];
+   let result = func + '(';
 
-  for (let i = 0; i < argsArr.length; i += 1) {
-    result += `${argsArr[i]}`;
-    if (i < argsArr.length - 1) {
-     result += ',';
-    }
-  }
-  result += ')';
-  eval(result);
-}
+   for (let i = 0; i < argsArr.length; i += 1) {
+     result += `${argsArr[i]}`;
+     if (i < argsArr.length - 1) {
+      result += ',';
+     }
+   }
+   result += ')';
+   return () => {
+     return eval(result);
+   };
+ }
 
 module.exports = applyIt;

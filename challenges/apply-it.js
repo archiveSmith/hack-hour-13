@@ -26,16 +26,22 @@
  */
 
 function applyIt(func, args) {
-  let functionCall = func.name + "(";
+  // let funcStr = func.name + "(";
 
-  for (let i = 0; i < args.length; i += 1) {
-    functionCall += "\"" + args[i] + "\"";
-    if (i < args.length - 1) functionCall += ",";
-  }
-  functionCall += ")";
+  // for (let i = 0; i < args.length; i += 1) {
+  //   funcStr += "\"" + args[i] + "\"";
+  //   if (i < args.length - 1) funcStr += ",";
+  // }
+  // funcStr += ");";
+
+  let funcStr = 'func(';
+  const argList = args.map(function (element, i) {
+    return `args[${i}]`;
+  });
+  funcStr += argList.join(',') + ');';
 
   return () => {
-    return eval(functionCall);
+    return eval(funcStr);
   }
 }
 

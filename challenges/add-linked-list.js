@@ -18,18 +18,18 @@ function Node(val) {
 }
 
 function addLinkedList(l1, l2) {
-  const str1 = '';
-  const str2 = '';
-  let num1;
-  let num2;
+  let str1 = '';
+  let str2 = '';
   while (l1) {
-    num1 = Number((str1 + l1.value).split('').reverse().join(''));
+    str1 += l1.value;
     l1 = l1.next;
   }
   while (l2) {
-    num2 = Number((str2 + l2.value).split('').reverse().join(''));
+    str2 += l2.value;
     l2 = l2.next;
   }
+  const num1 = Number(str1.split('').reverse().join(''));
+  const num2 = Number(str2.split('').reverse().join(''));
   const resultArr = (num1 + num2).toString().split('');
   const lSum = new Node();
   resultArr.forEach((n) => {

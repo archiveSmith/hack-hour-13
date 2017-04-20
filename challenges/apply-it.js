@@ -26,11 +26,14 @@
  */
 
 function applyIt(func, args) {
-  let name = args[0];
-  let age = args[1];
-  let location = args[2];
-  
-  return func(name, age, location);
+  let funcStr = 'func';
+  const argList = args.map((element, i) => {
+    return `args[${i}]`;
+  });
+  funcStr += argList.join(',') + ');';
+  return function() {
+    return eval(funcStr);
+  }
 }
 
 module.exports = applyIt;

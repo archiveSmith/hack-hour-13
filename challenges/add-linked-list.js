@@ -18,15 +18,30 @@ function Node(val) {
 }
 
 function addLinkedList(l1, l2) {
-<<<<<<< HEAD
-  let l3 = new Node(val);
-  //get the sum of l1 node and l2 node
-  //if l3 doesn't have a head, set its head and value to sum
-  //else, set l3.next to sum
-  //if sum is greater than 9, carry extra digits to next sum
-=======
 
->>>>>>> 6a27eb23ac8fdbd43025d02751fd0f3e74d97a01
+  let num1 = '', num2 = '';
+  let zero = new Node(0);
+
+  while (list1 !== zero || list2 !== zero) {
+    num1 = list1.value.toString() + num1;
+    num2 = list2.value.toString() + num2;
+
+    list1 = list1.next || zero;
+    list2 = list2.next || zero;
+  }
+
+  let sum = parseInt(num1) + parseInt(num2);
+  sum = sum.toString().split('');
+
+  let head = new Node(parseInt(sum.pop()));
+  let node = head;
+
+  while (sum.length) {
+    node.next = new Node(parseInt(sum.pop()));
+    node = node.next;
+  }
+
+  return head;
 }
 
-module.exports = {Node: Node, addLinkedList: addLinkedList};
+module.exports = { Node: Node, addLinkedList: addLinkedList };

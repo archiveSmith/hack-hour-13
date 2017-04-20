@@ -13,17 +13,18 @@ function BinaryTree(value) {
   this.right = null;
 }
 
-function maxDepth(node){
-  return 1 + Math.max(maxDepth(node.left), maxDepth(node.right))
-}
-
-function minDepth(node){
-  return 1 + Math.min(minDepth(node.left), minDepth(node.right));
+function getHeight(node) {
+  const right = getHeight(node.right)
+  const left = getHeight(node.left)
+  return Math.max(left, right) + 1;
 }
 
 
 function superbalanced(tree) {
-  return maxDepth(tree) - minDepth(root) <= 1; 
+  const heightRight = getHeight(tree.right);
+  const heightLeft = getHeight(tree.left);
+  const diff = Math.abs(heightRight - heightLeft);
+  return diff > 1 ? true : false;
 }
 
-module.exports = {BinaryTree: BinaryTree, superbalanced: superbalanced};
+module.exports = { BinaryTree: BinaryTree, superbalanced: superbalanced };

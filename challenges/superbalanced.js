@@ -13,8 +13,19 @@ function BinaryTree(value) {
   this.right = null;
 }
 
-function superbalanced(tree) {
+function minHeight(node) {
+  if (node === null) return true;
+  return 1 + Math.min(minHeight(node.left), minHeight(node.right));
+}
 
+function maxHeight(node) {
+  if (node === null) return true;
+  return 1 + Math.max(maxHeight(node.left), maxHeight(node.right));
+}
+
+function superbalanced(tree) {
+  if (tree === null) return true;
+  return maxHeight(tree) - minHeight(tree) <= 1;
 }
 
 module.exports = {BinaryTree: BinaryTree, superbalanced: superbalanced};

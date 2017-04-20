@@ -31,7 +31,7 @@ function superbalanced(tree) {
     }
   }
   recursion(tree);
-  if (depthLeft.length === depthRight.length || depthLeft.length - depthRight.length <= 1) return true;
+  if (depthLeft.length === depthRight.length || Math.abs(depthLeft.length - depthRight.length) <= 1) return true;
   return false;
 }
 

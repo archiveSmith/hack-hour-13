@@ -1,3 +1,4 @@
+
 /**
  * applies the invoked array to the function's parameter list
  * Example:
@@ -26,10 +27,11 @@
  */
 
 function applyIt(func, args) {
-  let arr = Array.from(arguments)[1];
+  let funcStr = 'func(';
+  const argList = args.map((element, i) => `args[${i}]`);
+  funcStr += argList.join(',') + ');';
   return function inner() {
-    return func(...args)
-    // return func(...arr)
+    return eval(funcStr);
   }
   //normal way; also need ...args in parameters
   //return func.apply(this, ...args)

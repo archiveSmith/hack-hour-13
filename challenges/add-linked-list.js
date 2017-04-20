@@ -18,7 +18,55 @@ function Node(val) {
 }
 
 function addLinkedList(l1, l2) {
-
+  var l1_val = "";
+  var l2_val = "";
+  // Convert Linked List into values
+  while (l1) {
+    l1_val += l1.value.toString();
+    l1 = l1.next;
+  }
+  while (l2) {
+    l2_val += l2.value.toString();
+    l2 = l2.next;
+  }
+  // Find numeric sum
+  var sum = Number(l1_val) + Number(l2_val);
+  // console.log(sum);
+  // Create new Linked List
+  var sumStr = sum.toString();
+  var lastChar = sumStr.slice(-1);
+  // console.log(lastChar);
+  // console.log(sumStr);
+  var firstNode = new Node(lastChar);
+  var currNode = firstNode;
+  // console.log(currNode);
+  for (let i = sumStr.length - 2; i >= 0; i--) {
+    // console.log("***");
+    // console.log(sumStr[i]);
+    var newNode = new Node(sumStr[i]);
+    currNode.next = newNode;
+    // console.log(currNode);
+    currNode = newNode;
+    // console.log(currNode);
+    // nodeName = new Node(sumStr[i]);
+    // console.log(nodeName);
+  }
+  console.log(firstNode);
+  return firstNode;
 }
 
-module.exports = {Node: Node, addLinkedList: addLinkedList};
+var n1 = new Node(2);
+var n2 = new Node(1);
+var n3 = new Node(5);
+n1.next = n2;
+n2.next = n3;
+
+var n4 = new Node(5);
+var n5 = new Node(9);
+var n6 = new Node(2);
+n4.next = n5;
+n5.next = n6;
+
+console.log(addLinkedList(n1, n4));
+
+module.exports = { Node: Node, addLinkedList: addLinkedList };

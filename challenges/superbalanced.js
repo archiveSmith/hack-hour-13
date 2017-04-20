@@ -13,8 +13,32 @@ function BinaryTree(value) {
   this.right = null;
 }
 
-function superbalanced(tree) {
+BinaryTree.prototype.add = function (value) {
+    if (value < this.value) {
+        if (!this.left) {
+            this.left = new BinaryTree(value);
+        }
+        else {
+            return this.left.add(value);
+        }
+    }
+    else {
+        if (!this.right) {
+            this.right = new BinaryTree(value);
+        }
+        else {
+            return this.right.add(value);
+        }
+    }
+};
 
-}
+function superbalanced(tree) {}
 
-module.exports = {BinaryTree: BinaryTree, superbalanced: superbalanced};
+var binarySearchTree = new BinaryTree(5);
+binarySearchTree.add(2);
+binarySearchTree.add(3);
+binarySearchTree.add(7);
+binarySearchTree.add(6);
+console.log(binarySearchTree);
+
+module.exports = { BinaryTree: BinaryTree, superbalanced: superbalanced };

@@ -31,27 +31,16 @@ function addLinkedList(l1, l2) {
   }
   // Find numeric sum
   var sum = Number(l1_val) + Number(l2_val);
-  // console.log(sum);
-  // Create new Linked List
   var sumStr = sum.toString();
   var lastChar = sumStr.slice(-1);
-  // console.log(lastChar);
-  // console.log(sumStr);
   var firstNode = new Node(lastChar);
   var currNode = firstNode;
-  // console.log(currNode);
+  // Create new Linked List
   for (let i = sumStr.length - 2; i >= 0; i--) {
-    // console.log("***");
-    // console.log(sumStr[i]);
     var newNode = new Node(sumStr[i]);
     currNode.next = newNode;
-    // console.log(currNode);
     currNode = newNode;
-    // console.log(currNode);
-    // nodeName = new Node(sumStr[i]);
-    // console.log(nodeName);
   }
-  console.log(firstNode);
   return firstNode;
 }
 

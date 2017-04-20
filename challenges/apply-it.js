@@ -26,18 +26,14 @@
  */
 
  function applyIt(func, args) {
-   let argsArr = arguments[1];
-   let result = func + '(';
-
-   for (let i = 0; i < argsArr.length; i += 1) {
-     result += `${argsArr[i]}`;
-     if (i < argsArr.length - 1) {
-      result += ',';
-     }
-   }
-   result += ')';
+   let resultFunc = 'func(';
+   let argsArr = args.map((el, i) => {
+     return `args[${i}]`;
+   });
+   resultFunc += argsArr.join(',');
+   resultFunc += ')';
    return () => {
-     return eval(result);
+     return eval(resultFunc);
    };
  }
 

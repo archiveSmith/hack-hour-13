@@ -14,8 +14,28 @@
 */
 
 function drawStairs(n) {
-
+	let lines = [], numSpaces;
+	for (let numStars = 1; numStars <= n; numStars += 1) {
+		numSpaces = n - numStars;
+		let line = ' '.repeat(numSpaces) + '*'.repeat(numStars);
+		console.log(line);
+		lines.push(line);
+	}
+	return lines.join('\n');
 }
 
 
 module.exports = drawStairs;
+
+// const my = require('./myLibrary');
+// my.testCase(drawStairs(3),
+// 	  '  *\n'
+// 	+ ' **\n'
+// 	+ '***');
+// my.testCase(drawStairs(6),
+//   	  '     *\n'
+//   	+ '    **\n'
+//   	+ '   ***\n'
+//   	+ '  ****\n'
+//   	+ ' *****\n'
+//   	+ '******');

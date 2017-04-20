@@ -3,7 +3,7 @@
  *      at any given node, the value of all the nodes in its left tree must be <= its value
  *      at any given node, the value of all the nodes in its right tree must be > its value
  */
- 
+
 
 function BinaryTree(val) {
     this.value = val;
@@ -11,8 +11,47 @@ function BinaryTree(val) {
     this.right = null;
 }
 
-function validBST(tree) {
+function validBST(tree, leftMin = -Infinity, rightMax = Infinity) {
+    // check if tree is null or not
+    if (!tree) return true;
 
+    if (
+        // check if current node's left and right values are out of order
+        // with tree's val or grandparent values
+        (
+            tree.left && 
+            (tree.left.value >= tree.value || tree.left.value <= leftMin)
+        ) ||
+        (
+            tree.right &&
+            (tree.right.value <= tree.value || tree.right.value >= rightMax)
+        )
+    ) {
+        return false;
+    }
+
+    // node and its children have valid left and right vals
+    return validBST(tree.left, leftMin, tree.value) &&
+           validBST(tree.right, tree.value, rightMax);
 }
 
-module.exports = {BinaryTree: BinaryTree, validBST: validBST};
+// // valid tree
+// var validTree = new BinaryTree(4);
+// validTree.left = new BinaryTree(2);
+// validTree.left.left = new BinaryTree(1);
+// validTree.left.left.left = new BinaryTree(0);
+// validTree.left.right = new BinaryTree(3);
+// validTree.right = new BinaryTree(5);
+
+// invalid tree
+// var invalidTree = new BinaryTree(4);
+// invalidTree.left = new BinaryTree(2);
+// invalidTree.left.right = new BinaryTree(5);
+// invalidTree.right = new BinaryTree(5);
+// invalidTree.right.left = new BinaryTree(0);
+// invalidTree.right.right = new BinaryTree(7);
+
+// var res = validBST(invalidTree);
+// console.log(res);
+
+module.exports = { BinaryTree: BinaryTree, validBST: validBST };

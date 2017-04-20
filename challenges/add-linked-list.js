@@ -18,11 +18,15 @@ function Node(val) {
 }
 
 function addLinkedList(l1, l2) {
+<<<<<<< HEAD
   let l3 = new Node(val);
   //get the sum of l1 node and l2 node
   //if l3 doesn't have a head, set its head and value to sum
   //else, set l3.next to sum
   //if sum is greater than 9, carry extra digits to next sum
+=======
+
+>>>>>>> 6a27eb23ac8fdbd43025d02751fd0f3e74d97a01
 }
 
 module.exports = {Node: Node, addLinkedList: addLinkedList};

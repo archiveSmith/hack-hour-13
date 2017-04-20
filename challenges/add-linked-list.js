@@ -12,43 +12,75 @@
  *
  */
 
-function Node(val) {
-  this.value = val;
-  this.next = null;
-}
+// my solution, console.log correct but not correct idk
+// function Node(val) {
+//   this.value = val;
+//   this.next = null;
+// }
+
+// function addLinkedList(l1, l2) {
+//   let l1_String = '';
+//   let l2_String = '';
+//   let headList;
+//   let tailList;
+
+//   while (l1) {
+//     l1_String += l1.value;
+//     l1 = l1.next;
+//   }
+
+//   while (l2) {
+//     l2_String += l2.value;
+//     l2 = l2.next;
+//   }
+
+//   // add them together and turn whole number into string again so that we can 
+//   added_List = (Number(l1_String) + Number(l2_String)).toString().split('');
+
+//   for (let i = added_List.length - 1; i >= 0; i -= 1) {
+//     if (i === added_List.length - 1) {
+//       newList = new Node(added_List[i]);
+//       tailList = newList;
+//     } else {
+//       tailList.next = new Node(Number(added_List[i]));
+//       tailList = tailList.next;
+//     }
+//   }
+
+//   return newList;
+// }
+
+
+
+// =============================================
 
 function addLinkedList(l1, l2) {
-  let l1_String = '';
-  let l2_String = '';
-  let headList;
-  let tailList;
+  let num1 = '', num2 = '';
+  let zero = new Node(0);
 
-  while (l1) {
-    l1_String += l1.value;
-    l1 = l1.next;
+  while(list1 !== zero || list2 !== zero) {
+    num1 = list1.value.toString() + num1;
+    num2 = list2.value.toString() + num2;
+    
+    list1 = list1.next || zero;
+    list2 = list2.next || zero;
   }
 
-  while (l2) {
-    l2_String += l2.value;
-    l2 = l2.next;
+  let sum = parseInt(num1) + parseInt(num2);
+  sum = sum.toString().split('');
+
+  let head = new Node(parseInt(sum.pop()));
+  let node = head;
+
+  while(sum.length) {
+    node.next = new Node(parseInt(sum.pop()));
+    node = node.next;
   }
 
-  // add them together and turn whole number into string again so that we can 
-  added_List = (Number(l1_String) + Number(l2_String)).toString().split('');
-
-  for (let i = added_List.length - 1; i >= 0; i -= 1) {
-    if (i === added_List.length - 1) {
-      newList = new Node(added_List[i]);
-      tailList = newList;
-    } else {
-      tailList.next = new Node(Number(added_List[i]));
-      tailList = tailList.next;
-    }
-  }
-
-  return newList;
+  return head;
 }
 
+// test cases
 // var list1 = new Node(2);
 // list1.next = new Node(1);
 // list1.next.next = new Node(5);
@@ -60,25 +92,5 @@ function addLinkedList(l1, l2) {
 // console.log(addLinkedList(list1, list2));
 
 
-// function addLinkedList(l1, l2) {
-//   let carried = 0;
-//   let tail = new Node(l1.value + l2.value);
-
-//   l1 = l1.next;
-//   l2 = l2.next;
-
-//   // while both the linked list still exist
-//   while (l1 || l2) {
-//     let addedNum = l1.value + l2.value;
-//     // check to see if the added nums are greater than eqal to 10, if so, carry it over
-//     if (addedNum > 9) {
-//       carried = addedNum - 9;
-//       addedNum = carried
-//     }
-
-//     tail.next = new Node(addedNum);
-//   }
-
-// }
 
 module.exports = { Node: Node, addLinkedList: addLinkedList };

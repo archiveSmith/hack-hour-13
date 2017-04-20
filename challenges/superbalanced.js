@@ -14,25 +14,27 @@ function BinaryTree(value) {
 }
 
 function superbalanced(tree) {
-
-  let depthLeft = [];
-  let depthRight = [];
+  
+ let depthLeft = [];
+ let depthRight = [];
   const recursion = (tree, leftLevel = 0, rightLevel = 0) => {
     if (tree === null) return true;
-    if (!tree.left && !tree.right) return true;
-
+    // if (!tree.left && !tree.right) return true;
+    
     if (tree.left) {
-      depthLeft.push(leftLevel);
-      recursion(tree.left, leftLevel, rightLevel);
-    }
-    if (tree.right) {
-      depthRight.push(rightLevel);
-      recursion(tree.right, leftLevel, rightLevel);
-    }
+    //leftLevel++;
+    depthLeft.push(leftLevel);
+    recursion(tree.left, leftLevel, rightLevel);
+  }
+  if (tree.right) {
+    //rightLevel++;
+    depthRight.push(rightLevel);
+    recursion(tree.right, leftLevel, rightLevel);
+  }
   }
   recursion(tree);
-  if (depthLeft.length === depthRight.length || Math.abs(depthLeft.length - depthRight.length) <= 1) return true;
-  return false;
+  if (Math.abs(depthLeft.length - depthRight.length) > 1) return false;
+  return true;
 }
 
 // const tree = new BinaryTree(5);

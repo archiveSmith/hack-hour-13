@@ -14,7 +14,33 @@ function BinaryTree(value) {
 }
 
 function superbalanced(tree) {
-
+  if (tree.left === null && tree.right === null) return true;
+  let max = 0;
+  let min;
+  const recurse = (tree, level = 0) => {
+    if (tree === null) {
+      if (min === undefined) min = level;
+      if (level > max) max = level;
+      if (level < min) min = level;
+      return level
+    }
+    let left = recurse(tree.left, level + 1);
+    let right = recurse(tree.right, level + 1);
+  }
+  recurse(tree);
+  return Math.abs(max - min) < 2;
 }
 
-module.exports = {BinaryTree: BinaryTree, superbalanced: superbalanced};
+// const tree = new BinaryTree(5);
+// tree.left = new BinaryTree(3);
+// tree.left.left = new BinaryTree(2);
+// tree.left.right = new BinaryTree(4);
+// tree.right = new BinaryTree(7);
+// tree.right.left = new BinaryTree(6);
+// tree.right.right = new BinaryTree(8);
+// tree.right.right.right = new BinaryTree(9);
+// tree.right.right.right.right = new BinaryTree(10);
+
+// console.log(superbalanced(tree));
+
+module.exports = { BinaryTree: BinaryTree, superbalanced: superbalanced };

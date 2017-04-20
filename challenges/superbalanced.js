@@ -18,7 +18,7 @@ function maxDepth(node){
 }
 
 function minDepth(node){
-  return 1 + Math.min(minDepth(node.left), minDetph(node.right));
+  return 1 + Math.min(minDepth(node.left), minDepth(node.right));
 }
 
 

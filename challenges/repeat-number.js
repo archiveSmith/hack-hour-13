@@ -11,7 +11,14 @@
  */
 
 function repeatNumbers(array) {
-
+	let counter = {};
+	array.forEach(number => {
+		if(number in counter) counter[number] += 1;
+		else counter[number] = 1;
+	});
+	for(let key in counter){
+		if(counter[key] === 2) return parseInt(key);
+	}
 }
 
 module.exports = repeatNumbers;

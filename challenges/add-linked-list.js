@@ -18,12 +18,24 @@ function Node(val) {
 }
 
 function addLinkedList(l1, l2) {
-  const initial = l1.value + l2.value;
-  const l3 = new Node(initial);
+  let l3 = new Node(l1.value + l2.value);
 
-  if (l1.next === null && l2.next === null) return l3;
+  let curr1 = l1, curr2 = l2, curr3 = l3;
 
-  return addLinkedList(l1.next, l2.next);
+  console.log(curr1)
+
+  while(curr1 && curr2) {
+    if(curr1.next !== null && curr2.next !== null) {
+      curr3.next = new Node( (curr1.next.value + curr2.next.value) % 10 );
+
+      curr1 = curr1.next;
+      curr2 = curr2.next;
+      curr3 = curr3.next;
+    } else {
+      break;
+    }
+  }
+  return l3;
 }
 
 module.exports = {Node: Node, addLinkedList: addLinkedList};

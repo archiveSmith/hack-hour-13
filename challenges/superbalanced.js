@@ -13,8 +13,20 @@ function BinaryTree(value) {
   this.right = null;
 }
 
-function superbalanced(tree) {
-
+function superbalanced(tree, count = 0) {
+  console.log(count);
+  if (!tree) return count;
+  count += 1
+  return Math.abs(superbalanced(tree.left, count), superbalanced(tree.right, count)) <= 1;
 }
+
+
+let bt = new BinaryTree(1);
+// bt.left = new BinaryTree(1);
+bt.right = new BinaryTree(1);
+bt.right.right = new BinaryTree(1);
+bt.right.right.right = new BinaryTree(1);
+
+console.log(superbalanced(bt));
 
 module.exports = {BinaryTree: BinaryTree, superbalanced: superbalanced};

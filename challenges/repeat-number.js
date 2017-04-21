@@ -11,7 +11,18 @@
  */
 
 function repeatNumbers(array) {
+let countObj = {};
 
+    for (let i = 0; i < array.length; i += 1) {
+        if(!countObj[array[i]]) {
+            countObj[array[i]] = 1;
+        } else {
+            return array[i];
+        }
+    }
+    return 'No repeating numbers';
 }
+
+console.log(repeatNumbers([1,2,3]));
 
 module.exports = repeatNumbers;

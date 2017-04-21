@@ -37,7 +37,7 @@ var jasmine = function (name, age) {
 
 var jmoney = applyIt(jasmine, ["Jasmine"]);
 
-function applyIt(func, args) {
+function applyIt1(func, args) {
 
 
     if (args.length === 0) {
@@ -60,5 +60,30 @@ function applyIt(func, args) {
         return func(args[0], args[1], args[2], args[3]);
     }
 }
+
+
+
+//solution
+
+function applyIt2 (func, args) {
+    return function () {
+        return func(...args);
+    }
+}
+
+function applyIt (func, args) {
+    let funcStr = 'func(';
+
+    const argList = args.map(function (element, i){
+        return `args[${i}]`
+    });
+    funcStr += argList.join(',') + ');';
+
+    return function () {
+        return eval(funcStr);
+    }
+}
+
+
 
 module.exports = applyIt;

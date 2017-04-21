@@ -18,7 +18,33 @@ function Node(val) {
 }
 
 function addLinkedList(l1, l2) {
-
+  function traverse(node, num = '') {
+    num += node.value.toString();
+    if (node.next === null) return num;
+    return traverse(node.next, num);
+  }
+  let num1 = traverse(l1).split('').reverse().join('');
+  let num2 = traverse(l2).split('').reverse().join('');
+  let result = parseInt(num1) + parseInt(num2);
+  result = result.toString().split('');
+  // console.log(result);
+  let head = new Node(parseInt(result.pop()));
+  let node = head;
+  while(result.length) {
+    node.next = new Node(parseInt(result.pop()));
+    node = node.next;
+  }
+  return head;
 }
+
+// var list1 = new Node(5);
+// list1.next = new Node(6);
+// list1.next.next = new Node(7);
+
+// var list2 = new Node(8);
+// list2.next = new Node(9);
+// list2.next.next = new Node(0);
+
+// addLinkedList(list1, list2);
 
 module.exports = {Node: Node, addLinkedList: addLinkedList};

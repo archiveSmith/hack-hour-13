@@ -18,6 +18,33 @@ function Node(val) {
 }
 
 function addLinkedList(l1, l2) {
+  let num1 = '', num2 = '';
+  let zero = new Node(0);
+
+  while(l1 !== zero || l2 !== zero) {
+    num1 = l1.value.toString() + num1;
+    num2 = l2.value.toString() + num2;
+
+    l1 = l1.next || zero;
+    l2 = l2.next || zero;
+  }
+
+  let sum = parseInt(num1) + parseInt(num2);
+  sum = sum.toString().split('');
+
+  let head = new Node(parseInt(sum.pop()));
+  let node = head;
+
+  while(sum.length) {
+    node.next = new Node(parseInt(sum.pop()));
+    node = node.next;
+  }
+  return head;
+}
+
+module.exports = {Node: Node, addLinkedList: addLinkedList};
+
+function addLinkedList(l1, l2) {
   let l1Arr = [];
   let l2Arr = [];
   let current1 = l1;
@@ -51,5 +78,3 @@ function addLinkedList(l1, l2) {
   }
   return result;
 }
-
-module.exports = {Node: Node, addLinkedList: addLinkedList};

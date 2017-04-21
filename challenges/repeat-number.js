@@ -11,7 +11,13 @@
  */
 
 function repeatNumbers(array) {
-
+  if (!Array.isArray(array)) return 'Invalid input';
+  let output;
+  array.reduce((acc, cur) => {
+    if (acc === cur) output = cur;
+    return cur;
+  });
+  return output;
 }
 
 module.exports = repeatNumbers;

@@ -26,7 +26,7 @@
  */
 
 function applyIt(func, args) {
-  // let funcStr = func.name + "(";
+  // let funcStr = "func(";
 
   // for (let i = 0; i < args.length; i += 1) {
   //   funcStr += "\"" + args[i] + "\"";

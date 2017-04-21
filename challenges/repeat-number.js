@@ -11,17 +11,18 @@
  */
 
  function repeatNumbers(array) {
-   let min;
-   const objOfNums = array.reduce((acc, curr) => {
+   let twoTimes;
+   array.reduce((acc, curr) => {
      if (acc[+curr]) {
        acc[curr] = acc[curr] + 1;
+       if (acc[curr] === 2) twoTimes = curr;
+       if (twoTimes === curr && acc[curr] > 2) twoTimes = null;
      } else {
-       min = curr;
        acc[curr] = 1;
      }
      return acc;
    }, {});
-   return min;
+   return twoTimes;
  }
 
 module.exports = repeatNumbers;

@@ -40,6 +40,17 @@ function superbalanced(tree) {
   return heightCheck(tree, 0);
 }
 
+// optimized solution. instead of keeping track of the maxHeight, this solution just checks each level to see if the left and right tree height are the same
+// function height(tree) {
+//   if (tree === null) return 0;
+//   return 1 + Math.max(height(tree.left), height(tree.right));
+// }
+
+// function superbalanced(tree) {
+//   if (tree === null) return true;
+//   return Math.abs(height(tree.left) - height(tree.right)) <= 1 && superbalanced(tree.left) && superbalanced(tree.right);
+// }
+
 // var a = new BinaryTree(20);
 // var b = new BinaryTree(10);
 // var c = new BinaryTree(15);
@@ -52,6 +63,7 @@ function superbalanced(tree) {
 // c.right = e;
 
 // console.log(superbalanced(a));
+
 
 
 module.exports = {BinaryTree: BinaryTree, superbalanced: superbalanced};

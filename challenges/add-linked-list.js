@@ -17,7 +17,7 @@ function Node(val) {
   this.next = null;
 }
 
-function addLinkedList(l1, l2) {
+function addLinkedList1(l1, l2) {
   let sum = l1.value + l2.value;
   let remainder = sum >= 10 ? sum - 10 : null
   if (remainder) {
@@ -42,8 +42,34 @@ function addLinkedList(l1, l2) {
   return result;
 }
 
+function addLinkedList(l1, l2) {
+  let num1 = '', num2 = '';
+  let zero = new Node(0);
+
+  while(list1 !== zero || list2 !== zero) {
+    num1 = list1.value.toString() + num1;
+    num2 = list2.value.toString() + num2;
+
+    list1 = list1.next || zero;
+    list2 = list2.next || zero;
+  }
+
+  let sum = parseInt(num1) + parseInt(num2);
+  sum = sum.toString().split('');
+
+  let head = new Node(parseInt(sum.pop()));
+  let node = head;
+
+  while(sum.length) {
+    node.next = new Node(parseInt(sum.pop()));
+    node = node.next;
+  }
+  return head;
+}
+
+
 /////////////////////TESTING//////////////////////////////////
-let list1 = new Node(1);
+let list1 = new Node(5);
 list1b = new Node(2);
 list1c = new Node(3);
 list1.next = list1b;

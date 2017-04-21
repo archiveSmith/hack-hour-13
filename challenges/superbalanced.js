@@ -34,16 +34,16 @@ BinaryTree.prototype.add = function (value) {
 
 function superbalanced(tree, left_count, right_count) {
   if(tree.left){
-
+    var what = 'temp';
   }
-
+  return 1;
 }
 
-var binarySearchTree = new BinaryTree(5);
-binarySearchTree.add(2);
-binarySearchTree.add(3);
-binarySearchTree.add(7);
-binarySearchTree.add(6);
-console.log(binarySearchTree);
+// var binarySearchTree = new BinaryTree(5);
+// binarySearchTree.add(2);
+// binarySearchTree.add(3);
+// binarySearchTree.add(7);
+// binarySearchTree.add(6);
+// console.log(binarySearchTree);
 
 module.exports = { BinaryTree: BinaryTree, superbalanced: superbalanced };

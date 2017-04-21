@@ -31,12 +31,11 @@ function addLinkedList(l1, l2) {
   const num1 = Number(str1.split('').reverse().join(''));
   const num2 = Number(str2.split('').reverse().join(''));
   const resultArr = (num1 + num2).toString().split('');
-  let lSum;
-  let temp;
+ 
+  let node = new Node(resultArr.shift());
   resultArr.forEach((n) => {
-    lSum = new Node(n) // next is null
-    temp = lSum; // set temp to node
-    lSum.next = temp; // set next to temp (which is node)
+
+    node.next = node;
   });
   return lSum;
 }

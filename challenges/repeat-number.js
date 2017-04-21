@@ -11,7 +11,10 @@
  */
 
 function repeatNumbers(array) {
-
+  const max = Math.max(...array);
+  let theoreticalTotal = (max * max + max) / 2;
+  let actualTotal = array.reduce((acc, curr) => acc += curr, 0);
+  return actualTotal - theoreticalTotal;
 }
 
 module.exports = repeatNumbers;

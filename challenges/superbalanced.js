@@ -32,7 +32,12 @@ BinaryTree.prototype.add = function (value) {
     }
 };
 
-function superbalanced(tree) {}
+function superbalanced(tree, left_count, right_count) {
+  if(tree.left){
+
+  }
+
+}
 
 var binarySearchTree = new BinaryTree(5);
 binarySearchTree.add(2);

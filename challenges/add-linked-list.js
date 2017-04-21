@@ -10,6 +10,9 @@
  * The 0 is the tens digit (1 + 9, carry the 1).
  * The 8 is the hundreds digit (1 carried over + 5 + 2).
  *
+ * 3 - 1 - 5 - 8
+ * 5 - 9 - 2
+ * 
  */
 
 function Node(val) {
@@ -44,18 +47,18 @@ function addLinkedList(l1, l2) {
   return firstNode;
 }
 
-var n1 = new Node(2);
-var n2 = new Node(1);
-var n3 = new Node(5);
-n1.next = n2;
-n2.next = n3;
+// var n1 = new Node(2);
+// var n2 = new Node(1);
+// var n3 = new Node(5);
+// n1.next = n2;
+// n2.next = n3;
 
-var n4 = new Node(5);
-var n5 = new Node(9);
-var n6 = new Node(2);
-n4.next = n5;
-n5.next = n6;
+// var n4 = new Node(5);
+// var n5 = new Node(9);
+// var n6 = new Node(2);
+// n4.next = n5;
+// n5.next = n6;
 
-console.log(addLinkedList(n1, n4));
+// console.log(addLinkedList(n1, n4));
 
 module.exports = { Node: Node, addLinkedList: addLinkedList };

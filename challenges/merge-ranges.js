@@ -10,16 +10,18 @@
  */
 
  function mergeRanges(array) {
-   return array.sort((a, b) => a[0] - b[0]).reduce((a, b) => {
+   return array.length ? array.sort((a, b) => a[0] - b[0]).reduce((a, b) => {
      if (b[0] > a[a.length-1][0] && b[0] <= a[a.length-1][1]) {
-       a[a.length-1] = [a[a.length-1][0], b[1]];
+       if (b[1] >= a[a.length-1][1]) {
+         a[a.length-1] = [a[a.length-1][0], b[1]];
+       }
      } else {
        if (a[a.length-1] !== b) {
          a.push(b);
        }
      }
      return a;
-   }, [array[0]]);
+   }, [array[0]]) : null;
  }
 
 module.exports = mergeRanges;

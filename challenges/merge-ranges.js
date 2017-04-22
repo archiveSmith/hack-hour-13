@@ -14,7 +14,8 @@ function mergeRanges(array) {
   array.sort((a, b) => {
     return a[0] - b[0];
   });
-  let result = [[0, 0]];
+  if (array.length === 0) return null;
+  let result = [array[0]];
   for (let i = 0; i < array.length - 1; i += 1) {
     let lower = array[i][0];
     let upper = array[i][1];

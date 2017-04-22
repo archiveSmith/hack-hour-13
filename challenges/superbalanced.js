@@ -13,21 +13,15 @@ function BinaryTree(value) {
   this.right = null;
 }
 
+function height(tree) {
+  if (tree === null) return 0;
+  else return 1 + Math.max(height(tree.left), height(tree.right));
+}
+
 function superbalanced(tree) {
-  let lh;
-  let rh;
-
-  !tree ? 0 : lh = superbalanced(tree.left);
-  if (lh === -1) return -1;
-
-  !tree ? 0 : rh = superbalanced(tree.right);
-  if (rh === -1) return -1;
-
-  if (Math.abs(lh - rh) > 1) {
-    return false;
-  } else {
-    return true;
-  }
+  if (tree === null) return true;
+  return Math.abs(height(tree.left) - height(tree.right)) <=
+  1 && superbalanced(tree.left) && superbalanced(tree.right);
 }
 
 superbalanced(new BinaryTree(12));

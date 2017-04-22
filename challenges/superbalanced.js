@@ -14,6 +14,18 @@ function BinaryTree(value) {
   this.right = null;
 }
 
+function getHeight(bst) {
+  if (!bst) return 0;
+  return 1 + Math.max(getHeight(bst.right), getHeight(bst.left));
+}
+
+function superbalanced2(tree) {
+  if (!tree) return true;
+
+  return Math.abs(getHeight(tree.left) - getHeight(tree.right)) <= 1 && superbalanced(tree.left) && superbalanced(tree.right);
+}
+
+
 function superbalanced(tree) {
   let rightLevels = 0;
   let leftLevels = 0;
@@ -44,14 +56,16 @@ function superbalanced(tree) {
 //////////////////////TESTING///////////////////////////////
 let tree = new BinaryTree(10);
 tree.left = new BinaryTree(6);
-//tree.left.left = new BinaryTree(2);
+tree.left.left = new BinaryTree(2);
+tree.left.right = new BinaryTree(8);
+tree.left.left.left = new BinaryTree(1);
 tree.right = new BinaryTree(14);
 tree.right.right = new BinaryTree(16);
-tree.right.left = new BinaryTree(12);
-tree.right.right.right = new BinaryTree(20);
+//tree.right.left = new BinaryTree(12);
+//tree.right.right.right = new BinaryTree(20);
 //-----------------------------------------------------------
-console.log( superbalanced(tree) );
-
+//console.log( superbalanced2(tree) );
+console.log(tree);
 /*
 traverse the tree on each side(recursion)
 go until no more nodes

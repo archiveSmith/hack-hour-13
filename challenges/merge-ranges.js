@@ -20,6 +20,9 @@ function mergeRanges(array) {
     let upper = array[i][1];
     if (result[result.length - 1][1] >= lower) {
       lower = result[result.length - 1][0];
+      if (result[result.length - 1][1] >= upper) {
+        upper = result[result.length - 1][1];
+      }
       result.pop();
     }
     if (upper >= array[i + 1][0] && upper < array[i + 1][1]) {

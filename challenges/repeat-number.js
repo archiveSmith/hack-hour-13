@@ -1,3 +1,4 @@
+
 /**
  * I have an array where every number in the range 1...n appears once except for 
  * one number which appears twice.
@@ -25,9 +26,29 @@ function repeatNumbers(array) {
   return duplicate;
 }
 
+//O(n) time; O(n) space
+function repeatNumbers2(array) {
+  const cache = {};
+
+  for (let i = 0; i < array.length; i += 1) {
+    if (cache[array[i]]) return array[i];
+    cache[array[i]] = true;
+  }
+}
+
+//triangular numbers sum formula (sum of the ranges)
+function repeatNumbers3(array) {
+  const expected = (array.length * (array.length -1)) / 2
+  let actual = 0;
+
+  for (let i = 0; i < array.length; i += 1) {
+    actual += array[i];
+  }
+  return actual - expected
+}
 ////////////////TESTING//////////////////////////////
 
-console.log( repeatNumbers([3,4,3,5,8,0,99,-8,]) )
+console.log( repeatNumbers2([3,4,3,5,8,0,99,-8,]) )
 
 /*
 make object holding all the values

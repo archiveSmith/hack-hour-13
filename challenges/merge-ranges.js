@@ -12,16 +12,23 @@
 
 function mergeRanges(array) {
   let sorted = array.sort((a, b) => a[0] - b[0]);
-  let ranges = []
-  for(let i = 0; i < sorted.length - 1; i += 1) {
-    if ((sorted[i][0] < sorted[i + 1][0]) && (sorted[i][1] < sorted[i + 1][1]) && (sorted[i][1] >= sorted[i + 1][0])) {
-      let range = [sorted[i][0], sorted[i + 1][1]];
-      ranges = ranges.concat([range]);
-      i += 1;
-    } else
-       ranges = ranges.concat([sorted[i]]);
-    }
-    return ranges;
+  //start by putting first one in array:
+  let ranges = [sorted[0]];
+ 
+  for (let i = 1; i < sorted.length; i += 1) {
+    //handles overlapping times
+    if ((ranges[ranges.length - 1][0] < sorted[i][0]) && (ranges[ranges.length - 1][1] < sorted[i][1]) && (ranges[ranges.length - 1][1] >= sorted[i][0])) {
+        let merge = [ranges[ranges.length - 1][0], sorted[i][1]];
+        ranges[ranges.length - 1] = merge;
+    //skips over inclusive times
+    } else if ((ranges[ranges.length - 1][0] < sorted[i][0]) && (ranges[ranges.length - 1][1] > sorted[i][0]) && (ranges[ranges.length - 1][1] > sorted[i][1])) {
+        continue;
+    //adds them to array if neither
+    } else {
+        ranges = ranges.concat([sorted[i]]);
+    }  
+  }
+  return ranges;
 }
 
 module.exports = mergeRanges;

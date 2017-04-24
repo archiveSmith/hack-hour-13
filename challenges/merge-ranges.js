@@ -12,14 +12,17 @@
 
 function mergeRanges(array) {
   let result = [];
+  let extras = [];
   array.sort((a, b) => a[0] - b[0])
   .reduce((a, b) => {
     if (a[1] >= b[0]) {
-      result.push([a[0], b[1]]);
+      extras.push([a[0], b[1]]);
       return [a[0], b[1]];
     }
+    result.push(a);
     return b;
   }, [0, 0]);
+  result.push(extras[extras.length-1]);
   return result;
 }
 

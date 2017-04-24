@@ -32,8 +32,16 @@ var Node = function(value) {
   this.next = null;
 }
 
-function hasCycle(head) {
-
+function hasCycle(node) {
+  const store = {};
+  store[node] = node;
+  while (node) {
+    if (store[node.next]) {
+      return true;
+    }
+    node = node.next;
+  }
+  return false;
 }
 
 module.exports = {Node: Node, hasCycle: hasCycle}

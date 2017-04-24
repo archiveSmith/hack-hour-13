@@ -31,5 +31,20 @@ function superbalanced(tree) {
   const rightBalanced = superblanced(tree.right)
   return (leftBalanced && rightBalanced)
 }
+// SOLUTION
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 module.exports = { BinaryTree: BinaryTree, superbalanced: superbalanced };

@@ -33,6 +33,7 @@ var Node = function(value) {
 }
 
 function hasCycle(head) {
+  if (!head) {return false;}
   const cache = {};
   while(head) {
     if (cache[head.value]) {

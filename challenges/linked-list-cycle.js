@@ -42,12 +42,14 @@ function hasCycle(head) {
   const cache = {};
   let currentNode = head;
 
+  if (!currentNode.next) return false;
+
   while (currentNode) {
+    if (currentNode === undefined) return false;
     if (cache[currentNode.value]) return true;
     cache[currentNode.value] = true;
     currentNode = currentNode.next;
   }
-  return false;
 }
 
 // var node1 = new Node('1');

@@ -33,7 +33,32 @@ var Node = function(value) {
 }
 
 function hasCycle(head) {
+  //Floyd's cycle-finding algorithm!
+  //Make two pointers and have them move at different speeds. Move one forward
+  //by one node and the other forward by two nodes.
+  //If the list has a loop, they will definitely meet,
+  //else faster pointer.next will become null and there is no loop.
+  if (head === null) return false;
+  let pointerSlow, pointerFast;
+  pointerSlow = pointerFast = head;
+  
+  while(true) {
+    //1 hop
+    pointerSlow = pointerSlow.next;
 
+    //2 hops
+    if (pointerFast.next !== null)
+      pointerFast = pointerFast.next.next;
+    else 
+      //next node is null so there is no loop.
+      return false;
+
+    //if either hits null...no loop
+    if (pointerSlow === null || pointerFast === null) return false;
+
+    //if the two ever meet...we must have a loop.
+    if (pointerSlow === pointerFast) return true;
+  }
 }
 
 module.exports = {Node: Node, hasCycle: hasCycle}

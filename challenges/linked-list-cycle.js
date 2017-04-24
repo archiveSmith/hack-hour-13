@@ -33,6 +33,8 @@ var Node = function (value) {
 }
 
 function hasCycle(head, arr = []) {
+  if (arguments.length === 0) return false;
+  if (head === null) return false;
   if (head.next === null) return false;
   for (let i = 0; i < arr.length; i += 1) {
     if (Object.is(arr[i], head)) return true;

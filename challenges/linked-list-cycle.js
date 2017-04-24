@@ -33,6 +33,11 @@ var Node = function (value) {
 }
 
 function hasCycle(head) {
+  // returns false if there is no linked list
+  if (!head) {
+    return false;
+  }
+
   let slow = head;
   let fast = head;
 

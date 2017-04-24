@@ -33,7 +33,15 @@ var Node = function(value) {
 }
 
 function hasCycle(head) {
+  const isNodeCyclical = {};
+  let currNode = head.next;
 
+  while (currNode) {
+    if (!isNodeCyclical[currNode.value]) isNodeCyclical[currNode.value] = currNode;
+    else return true;
+    currNode = currNode.next;
+  }
+  return false;
 }
 
 module.exports = {Node: Node, hasCycle: hasCycle}

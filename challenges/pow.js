@@ -13,12 +13,13 @@ function pow(base, power) {
   }
 }
 
+
 function tester(base, power) {
   console.log('my way', pow(base,power))
   console.log('standard', Math.pow(base,power))
 }
 
-tester(13, -4);
+tester(2, -2);
 
 
 module.exports = pow;

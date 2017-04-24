@@ -43,7 +43,7 @@ function hasCycle(head) {
     }
     head = head.next;
   }
-  return false;å
+  return false;
 }
 
 module.exports = {Node: Node, hasCycle: hasCycle}

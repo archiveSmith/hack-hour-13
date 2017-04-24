@@ -9,9 +9,18 @@
  * Do not assume the ranges are in order
  */
 
-
 function mergeRanges(array) {
+	//sort them first
+	array.sort((a, b) => a[0] - b[0]);
+	let newTimes = [];
 
+	array.forEach(function(pair){
+		if(!newTimes.length || pair[0] > newTimes[newTimes.length - 1][1]){
+			newTimes.push(pair);
+		}
+		else newTimes[newTimes.length-1][1] = pair[1];
+	});
+	return newTimes;
 }
 
 module.exports = mergeRanges;

@@ -32,8 +32,19 @@ var Node = function(value) {
   this.next = null;
 }
 
-function hasCycle(head) {
+function hasCycle(sll) {
+  var slowPointer = sll.head, 
+       fastPointer = sll.head;
 
+   while(slowPointer && fastPointer && fastPointer.next){
+     slowPointer = slowPointer.next;
+     fastPointer = fastPointer.next.next;
+
+     if(slowPointer == fastPointer){
+        return true;
+     }
+   }
+   return false;
 }
 
 module.exports = {Node: Node, hasCycle: hasCycle}

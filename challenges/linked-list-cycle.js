@@ -33,22 +33,16 @@ var Node = function(value) {
 }
 
 function hasCycle(head) {
+  const cache = {};
+  while(head) {
   if (cache[head.value] === head) {
     return true;
   } else {
     cache[head.value] = head;
   }
   head = head.next;
-  // const cache = {};
-  // while(head) {
-  //   if (cache[head.value] === head.next) {
-  //     return true;
-  //   } else {
-  //     cache[head.value] = head.next;
-  //   }
-  //   head = head.next;
-  // }
-  // return false;
+  }
+  return false;
 }
 
 module.exports = {Node: Node, hasCycle: hasCycle}

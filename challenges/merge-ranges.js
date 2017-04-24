@@ -36,6 +36,6 @@ function mergeRanges(array) {
   return result;
 }
 
-mergeRanges(times);
+// mergeRanges(times);
 
 module.exports = mergeRanges;

@@ -32,8 +32,12 @@ var Node = function(value) {
   this.next = null;
 }
 
-function hasCycle(head) {
-
+//linear time, linear space, no original node mutation
+function hasCycle(head, cache = new WeakMap()) {
+  if (!head) return false;
+  if (cache.has(head)) return true;
+  cache.set(head, true);
+  return hasCycle(head.next, cache);
 }
 
 module.exports = {Node: Node, hasCycle: hasCycle}

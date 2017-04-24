@@ -33,7 +33,6 @@ var Node = function(value) {
 }
 
 function hasCycle(head) {
-  if (!head) {return false;}
   const cache = {};
   while(head) {
     if (cache[head.value]) {
@@ -43,7 +42,7 @@ function hasCycle(head) {
     }
     head = head.next;
   }
-  return false;å
+  return false;
 }
 
 module.exports = {Node: Node, hasCycle: hasCycle}

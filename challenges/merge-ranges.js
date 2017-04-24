@@ -9,14 +9,14 @@
  * Do not assume the ranges are in order
  */
 
-let times = [[0, 1], [3, 5], [4, 8], [10, 12], [9, 10]];
+// let times = [[0, 1], [3, 5], [4, 8], [10, 12], [9, 10]];
 
 function mergeRanges(array) {
   if (!Array.isArray(array)) return console.log('invalid input');
 
   // sort the array of ranges
   array.sort((a, b) => {
-    return a[0] - b[0];
+    return a[0] - b[0] || a[1] - b[1];
   });
 
   const result = [];
@@ -32,7 +32,10 @@ function mergeRanges(array) {
       result[result.length - 1][1] = range[1];
     }
   });
+  // console.log(result);
   return result;
 }
+
+mergeRanges(times);
 
 module.exports = mergeRanges;

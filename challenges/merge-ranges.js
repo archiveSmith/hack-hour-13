@@ -11,6 +11,10 @@
 
 
 function mergeRanges(array) {
+  // i'll call each array item a meeting, defined by start and end
+  // meetings are mergeable if one meeting's start or end
+  // is within the range (inclusive) of the other's times
+  // the new meeting's start and end becomes the earliest and latest times, respectively
 
 }
 

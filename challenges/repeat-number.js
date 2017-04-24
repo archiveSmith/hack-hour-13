@@ -11,6 +11,7 @@
  */
 
 function repeatNumbers(array) {
+<<<<<<< HEAD
 	let arr = [];
 	for (let i = 0; i < array.length; i++) {
 		if (arr.includes(array[i])) {
@@ -19,6 +20,9 @@ function repeatNumbers(array) {
 		arr.push(array[i]);
 	}
 	return undefined;
+=======
+
+>>>>>>> c2d38f0015935c6b49db0f63bf4b854eda4613f6
 }
 
 module.exports = repeatNumbers;

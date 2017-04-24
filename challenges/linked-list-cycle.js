@@ -34,11 +34,11 @@ var Node = function(value) {
 
 function hasCycle(head) {
   const cache = {};
-  while(head) {
-    if (cache[head.value]) {
+  while(head.next) {
+    if (cache[head.value] === head.next.value) {
       return true;
     } else {
-      cache[head.value] = true;
+      cache[head.value] = head.next.value;
     }
     head = head.next;
   }

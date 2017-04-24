@@ -27,13 +27,40 @@
  *
  */
 
-var Node = function(value) {
+var Node = function (value) {
   this.value = value;
   this.next = null;
 }
 
 function hasCycle(head) {
+  let slow = head;
+  let fast = head;
 
+  while (fast) {
+    // if fast gets to the end of linked list without circling, return false
+    if (fast.next === null) {
+      return false;
+    }
+
+    // iterate fast once
+    fast = fast.next;
+
+    // check again to see if fast ends without circling
+    if (fast.next === null) {
+      return false;
+    }
+
+    // iterate fast again
+    fast = fast.next;
+
+    // if they are a linked list, eventually, fast will catch up with slow and they will equal each other
+    if (fast === slow) {
+      return true;
+    }
+
+    // slow moves one
+    slow = slow.next;
+  }
 }
 
-module.exports = {Node: Node, hasCycle: hasCycle}
+module.exports = { Node: Node, hasCycle: hasCycle }

@@ -33,16 +33,26 @@ var Node = function(value) {
 }
 
 function hasCycle(head) {
-  const cache = {};
+  const cache = [];
   while(head) {
-    if (cache[head.value] === head.next) {
+    if (cache.includes(head)) {
       return true;
     } else {
-      cache[head.value] = head.next;
+      cache.push(head);
     }
     head = head.next;
   }
   return false;
+  // const cache = {};
+  // while(head) {
+  //   if (cache[head.value] === head.next) {
+  //     return true;
+  //   } else {
+  //     cache[head.value] = head.next;
+  //   }
+  //   head = head.next;
+  // }
+  // return false;
 }
 
 module.exports = {Node: Node, hasCycle: hasCycle}

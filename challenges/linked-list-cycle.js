@@ -36,6 +36,8 @@ function hasCycle(head) {
   let current = head;
   let count = 0;
 
+  if (!head) return false;
+  
   while(current.next && count <= 20) {
     current = current.next;
     count += 1;

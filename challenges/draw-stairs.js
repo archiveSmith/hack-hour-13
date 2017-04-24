@@ -22,10 +22,10 @@ function drawStairs(n) {
     result += '*'.repeat(i);
     result += '\r';
   }
-  console.log(result); 
+  return result; 
 }
 
- //console.log(drawStairs(13))
+ console.log(drawStairs(13))
 
 // function drawStairs(n) {
 //   var result = '';

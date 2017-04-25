@@ -29,14 +29,16 @@ function repeatNumbers1(array) {
 // by finding the difference
 // between the total of 1 thru n-1
 // and the actual of the array to get the duplicate num
+
+// O(n) time, O(1) space
 function repeatNumbers2(array) {
   const n = array.length;
   // total of 1 thru n-1
-  const rangeTotal = n*(n+1)/2;
+  const rangeTotal = n*(n-1)/2;
   // array total
-  const actualTotal = array.reduce(sum, num => num);
+  const actualTotal = array.reduce((sum, num) => sum + num);
   // calculate difference b/w totals to find duplicate
-  return rangeTotal - actualTotal;
+  return actualTotal - rangeTotal;
 }
 
 module.exports = repeatNumbers2;

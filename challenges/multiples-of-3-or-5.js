@@ -26,7 +26,7 @@ function sumMultiplesXOrYBelowZ(x, y, z) {
       sum += i; 
     }
   }
-  return console.log(sum); 
+  return sum; 
 }
 
 sumMultiplesXOrYBelowZ(5, 3, 10)

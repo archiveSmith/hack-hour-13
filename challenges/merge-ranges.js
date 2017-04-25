@@ -13,13 +13,9 @@
 
 function mergeRanges(array) {
   if (!Array.isArray(array)) return console.log('invalid input');
-
-  // sort the array of ranges
-  array.sort((a, b) => {
-    return a[0] - b[0] || a[1] - b[1];
-  });
-
   const result = [];
+  // sort the array of ranges
+  array.sort((a, b) => a[0] - b[0]);
   // iterate through array
   // if result array is empty or if first index of current array is greater than
   // the last array's second index in result array then push range to result.

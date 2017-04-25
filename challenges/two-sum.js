@@ -33,6 +33,21 @@ function twoSum3(arr, n) {
   return false;
 }
 
+function twoSum4(arr, n) {
+  function inner(arr, n) {
+    while (arr.length > 0) {
+      let remainder = n - arr.shift()
+      for (let i = 0; i < arr.length; i += 1) {
+        if (remainder - arr[i] === 0) return true;
+      }
+      return inner(arr, n)
+    }
+    return false;
+  }
+  return inner(arr, n)
+}
+
+
 /*
 loop to check each number in array 
 slice out number checking and add that number to each other to see if equal n 

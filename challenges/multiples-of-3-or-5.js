@@ -10,9 +10,10 @@ const sumMultiples3Or5Below1000 = () => sumMultiplesXOrYBelowZ(3,5,1000);
 // extension make it dynamic function that takes input x,y,z
 // and returns the sum of multiples of x and y below z
 function sumMultiplesXOrYBelowZ(x, y, z) {
+  const args = Array.prototype.slice.call(arguments);
   if (
     // non-numbers, nonpositive numbers, or non-integers not allowed
-    arguments.some(arg => isNaN(arg) || arg <= 0 || arg % 1)
+    args.some(arg => isNaN(arg) || arg <= 0 || arg % 1)
   ) {
     throw Error('Invalid argument(s)');
   }

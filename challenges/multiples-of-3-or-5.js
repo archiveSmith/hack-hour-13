@@ -8,8 +8,13 @@
 function sumMultiples3Or5Below1000() {
   let sum = 0;
 
+  for(let i = 0; i < 1000; i += 5) {
+    if (i % 3 === 0) sum += i;
+  }
+
   return sum;
 }
+
 
 
 // extension make it dynamic function that takes input x,y,z
@@ -17,8 +22,14 @@ function sumMultiples3Or5Below1000() {
 function sumMultiplesXOrYBelowZ(x, y, z) {
   let sum = 0;
 
+  for(let i = 0; i < z; i += Math.max(x,y)) {
+    if (i % Math.min(x,y) === 0) sum += i;
+  }
+
   return sum;
 }
+
+console.log(sumMultiplesXOrYBelowZ(3,5,1000));
 
 const objectToExport = {
   sumMultiples3Or5Below1000,

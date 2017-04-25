@@ -29,8 +29,61 @@ function mergeRanges(array) {
     }
   }
   return inner(array[i], array[j])
-  
 }
+//--------------------------------
+
+ function mergeRanges2(array) {
+   array.sort((a, b) => a[0] - b[0]);
+   let i = 0;
+   while (i < array.length - 1) {
+     if (array[i][1] >= array[i + 1][0]) {
+       if (array[i][1] < array[i + 1][1]) {
+         array[i][1] = array[i + 1][1];
+       }
+       array.splice(i + 1, 1);
+     } else {
+       i++;
+     }
+   }
+   return array;
+ }
+
+ //----------------------------
+
+  function mergeRanges3(array) {
+   array = array.sort((a, b) => a[0] - b[0]);
+   const result = [];
+   for (let i = 0; i < array.length; i++) {
+     const curr = array[i];
+     const last = result[result.length - 1];
+     if (result.length > 0) {
+       if (curr[0] <= last[1]) {
+         if (curr[1] > last[1]) {
+           last[1] = curr[1];
+         }
+         continue;
+       }
+     }
+     result.push(curr);
+   }
+   return result;
+ }
+//---------------------------------
+const mergeRanges4 = (array) => array.sort((a, b) => a[0] - b[0])
+  .reduce((a, b) => {
+    if (a.length >= 1) {
+      if (a[a.length - 1][1] >= b[0]) {
+        if (a[a.length - 1][1] <= b[1]) {
+          a.push([a.pop()[0], b[1]]);
+          return a;
+        }
+        return a;
+      }
+    }
+    a.push(b);
+    return a;
+  }, []);
+
 //////////////////TESTING//////////////////////////
 
 var times = [ [0, 1], [3, 5], [4, 8], [9, 10], [10, 12], [13, 19]];

@@ -7,7 +7,7 @@
 
 function sumMultiples3Or5Below1000(sum = 0, currNum = 1) {
   if (currNum % 3 === 0 || currNum % 5 === 0) sum += currNum;
-  return currNum >= 9 ? sum : sumMultiples3Or5Below1000(sum, currNum + 1);
+  return currNum >= 999 ? sum : sumMultiples3Or5Below1000(sum, currNum + 1);
 }
 
 

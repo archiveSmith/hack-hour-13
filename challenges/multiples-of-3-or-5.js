@@ -8,7 +8,7 @@
 function sumMultiples3Or5Below1000() {
   let sum = 0;
 
-  for (let i = 1; i <= 1000; i += 1) {
+  for (let i = 1; i < 1000; i += 1) {
     if (i % 3 === 0 || i % 5 === 0) {
       sum += i;
     }
@@ -23,13 +23,13 @@ function sumMultiples3Or5Below1000() {
 function sumMultiplesXOrYBelowZ(x, y, z) {
 
   if (!(Number.isInteger(x) && Number.isInteger(y) && Number.isInteger(z) 
-  && x <= 1000 && x >= 0 && y <= 1000 && y >= 0 && z <= 1000 && z >= 0)) {
+  && x < 1000 && x >= 0 && y < 1000 && y >= 0 && z < 1000 && z >= 0)) {
     return false;
   }
 
   let sum = 0;
 
-  for (let i = 1; i <= 1000; i += 1) {
+  for (let i = 1; i < 1000; i += 1) {
     if (i % x === 0 || i % y === 0 || i % z === 0) {
       sum += i;
     }

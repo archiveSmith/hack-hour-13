@@ -33,12 +33,13 @@ var Node = function (value) {
 }
 
 function hasCycle(head) {
+  if (!head || !head.next) return false;
   let nodeA = head;
-  let nodeB = currNode.next;
+  let nodeB = nodeA.next;
   while (nodeB !== null) {
     nodeA = nodeA.next;
 
-    if (nodeB.next == null) {
+    if (nodeB.next === null) {
       return false;
     } else {
       nodeB = nodeB.next.next;

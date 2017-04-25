@@ -27,12 +27,17 @@
  *
  */
 
+<<<<<<< HEAD
 var Node = function (value) {
+=======
+var Node = function(value) {
+>>>>>>> 8ba43c714516ac5a4af3081b21679579408033e9
   this.value = value;
   this.next = null;
 }
 
 function hasCycle(head) {
+<<<<<<< HEAD
   if (!head || !head.next) return false;
   let nodeA = head;
   let nodeB = nodeA.next;
@@ -52,3 +57,9 @@ function hasCycle(head) {
 }
 
 module.exports = { Node: Node, hasCycle: hasCycle }
+=======
+
+}
+
+module.exports = {Node: Node, hasCycle: hasCycle}
+>>>>>>> 8ba43c714516ac5a4af3081b21679579408033e9

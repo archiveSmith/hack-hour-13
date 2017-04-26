@@ -28,7 +28,7 @@
 
 function applyIt(func, args) {
   let funcStr = 'func(';
-  const argList = args.map((element, i) => `args[${i}]`);
+  const argList = args.map((_, i) => `args[${i}]`);
   funcStr += argList.join(',') + ');';
   return function inner() {
     return eval(funcStr);

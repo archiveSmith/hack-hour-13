@@ -8,7 +8,24 @@
  */
 
 function maxSubarray(arr) {
-
+  let sum = 0;
+  let subArr = [];
+  for (let i = 0; i < arr.length; i += 1) {
+    for (let j = i + 1; j <= arr.length; j += 1) {
+      subArr.push(arr.slice(i,j))
+    }
+  }
+  const result = subArr.reduce((a, b) => {
+    sum = 0;
+    b.forEach((value) => {
+      sum += value;
+    })
+    if (sum > a) return sum
+    else return a
+  }, 0);
+  return result;
 }
 
 module.exports = maxSubarray;
+
+

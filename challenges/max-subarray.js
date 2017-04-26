@@ -8,11 +8,13 @@
  */
 
 function maxSubarray(arr) {
-  let max = 0;
+  let max = arr.slice(0, 2).reduce((a,c) => a + c);
+  if(arr.length === 1) return arr[0]
 
   for(let i = 0; i < arr.length; i += 1) {
     for(let j = i + 1; j < arr.length; j += 1) {
-      let maxContest = arr.slice(i,j +1).reduce((a,c) => a + c);
+      let maxContest = arr.slice(i,j +1).reduce((a,c) => a + c)
+      console.log(arr.slice(i, j + 1))
       if( maxContest > max ) {
         max = maxContest;
       }

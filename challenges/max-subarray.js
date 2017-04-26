@@ -12,9 +12,9 @@ function maxSubarray(arr) {
     return arr.reduce((acc, cur) => { return acc + cur }, 0);
   }
   let start = 0;
-  let end = 1;
+  let end = 0;
   let result = 0;
-  for (let i = 1; i < arr.length; i += 1) {
+  for (let i = 0; i < arr.length; i += 1) {
     if (sumArray(arr.slice(start, end)) >= result && sumArray(arr.slice(end, arr.length - 1)) > 0) {
       result = sumArray(arr.slice(start, end));
       end += 1;

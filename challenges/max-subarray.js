@@ -6,9 +6,16 @@
  *              maxSubarray([15,20,-5,10])  -> 40
  *
  */
-
 function maxSubarray(arr) {
-
+  let maxSum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    let currentSet = arr[i];
+    for (let j = i + 1; j < arr.length; j++) {
+      currentSet += arr[j]
+      if(currentSet > maxSum) maxSum = currentSet; 
+    }
+  }
+  return maxSum;
 }
-
+maxSubarray([15,20,-5,10])
 module.exports = maxSubarray;

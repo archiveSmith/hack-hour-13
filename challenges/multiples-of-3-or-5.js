@@ -6,6 +6,9 @@
 // below 1000 and return that sum.
 
 function sumMultiples3Or5Below1000() {
+  let GCM = Math.floor(1000 / 3); 
+
+
   let sum = 0;
   for(let i = 3; i < 1000; i++){
     if(i % 3 === 0 || i % 5 === 0 ){

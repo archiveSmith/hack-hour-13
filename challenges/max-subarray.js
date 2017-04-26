@@ -8,7 +8,21 @@
  */
 
 function maxSubarray(arr) {
-
+	let finalSum = Math.min.apply(null,arr);
+	let currentSum;
+	let subArray = [];
+	for(let i=0; i<arr.length-1; i+=1){
+		subArray.push(arr[i]);
+		for(let j=i+1; j<arr.length; j+=1){
+			subArray.push(arr[j]);
+			currentSum = subArray.reduce((acum, next) => acum + next);
+			if(currentSum > finalSum){
+				finalSum = currentSum;
+			}
+		}
+		subArray=[];
+	}
+	return finalSum;
 }
 
 module.exports = maxSubarray;

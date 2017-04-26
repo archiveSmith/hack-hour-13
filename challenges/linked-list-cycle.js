@@ -29,11 +29,22 @@
 
 var Node = function(value) {
   this.value = value;
+  this.visited = false;
   this.next = null;
 }
 
 function hasCycle(head) {
+  curr = head;
 
+  while(curr) {
+    if(curr.next) {
+      if (curr.visited === true) return true;
+      curr.visited = true;
+      curr = curr.next;
+    } else {
+      return false;
+    }
+  }
 }
 
 module.exports = {Node: Node, hasCycle: hasCycle}

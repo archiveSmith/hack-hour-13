@@ -8,17 +8,25 @@
  */
 
 function maxSubarray(arr) {
-<<<<<<< HEAD
-  let maxSoFar = arr[0];
-  let maxEndings = arr[0];
-  arr.slice(1, arr.length).forEach(el => {
-    maxEndings = Math.max(el, maxEndings + el);
-    maxSoFar = Math.max(maxSoFar, maxEndings);
-  });
-  return maxSoFar;
-=======
+  // let maxSoFar = arr[0];
+  // let maxEndings = arr[0];
+  // arr.slice(1, arr.length).forEach(el => {
+  //   maxEndings = Math.max(el, maxEndings + el);
+  //   maxSoFar = Math.max(maxSoFar, maxEndings);
+  // });
+  // return maxSoFar;
 
->>>>>>> a8f13add647764d605db22ac47fc5d5776360a1e
+  let currSum = arr[0];
+  let maxSum = arr[0];
+  for (let j = 1; j < arr.length; j++) {
+    if (currSum > maxSum) {
+      maxSum = currSum;
+    }
+    if (arr[j] > maxSum) {
+      maxSum = arr[j];
+      currSum = arr[j];
+    }
+  }
 }
 
 module.exports = maxSubarray;

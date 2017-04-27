@@ -8,26 +8,29 @@
  */
 
 function maxSubarray(arr) {
-  function sumArray(arr) {
-    return arr.reduce((acc, cur) => { return acc + cur }, 0);
-  }
-  let start = 0;
-  let end = 0;
-  let result = 0;
-  for (let i = 0; i < arr.length; i += 1) {
-    if (sumArray(arr.slice(start, end)) >= result && sumArray(arr.slice(end, arr.length - 1)) > 0) {
-      result = sumArray(arr.slice(start, end));
-      end += 1;
+  let currSum = arr[0];
+  let maxSum = currSum;
+
+  for (let i = 1; i < arr.length; i += 1) {
+    currSum += arr[i];
+    if (currSum > maxSum) {
+      maxSum = currSum;
     }
-    if (sumArray(arr.slice(start, end)) < result && sumArray(arr.slice(end, arr.length)) > 0) {
-      start += 1;
-      end += 1;
-    }
-    if (sumArray(arr.slice(end, arr.length)) <= 0 || (end += 1) === arr.length) {
-      end += 1;
-      return sumArray(arr.slice(start, end));
+    if (arr[i] > maxSum) {
+      maxSum = arr[i];
+      currSum = arr[i];
     }
   }
+  return maxSum;
+
+  // let currentMax = Number.NEGATIVE_INFINITY;
+  // let finalMax = Number.NEGATIVE_INFINITY;
+
+  // for (let i = 0; i < arr.length; i += 1) {
+  //   currentMax = Math.max(arr[i], currentMax + arr[i]);
+  //   finalMax = Math.max(finalMax, currentMax);
+  // }
+  // return finalMax;
 }
 
 module.exports = maxSubarray;

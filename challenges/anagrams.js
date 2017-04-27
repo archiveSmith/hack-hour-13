@@ -13,7 +13,17 @@
   */
 
 function anagrams(string) {
-
+  if (string.length === 1) return string;
+  let result = [];
+  for (let i = 0; i < string.length; i += 1) {
+    let start = string[0];
+    let holder = anagrams(string.substr(1));
+    for (let j = 0; j < holder.length; j += 1) {
+      result.push(holder[j] + start);
+    }
+    string = string.substr(1) + start;
+  }
+  return result;
 }
 
 module.exports = anagrams;

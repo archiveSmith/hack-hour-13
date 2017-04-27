@@ -8,6 +8,7 @@
  */
 
 function maxSubarray(arr) {
+<<<<<<< HEAD
   let maxSoFar = arr[0];
   let maxEndings = arr[0];
   arr.slice(1, arr.length).forEach(el => {
@@ -15,6 +16,9 @@ function maxSubarray(arr) {
     maxSoFar = Math.max(maxSoFar, maxEndings);
   });
   return maxSoFar;
+=======
+
+>>>>>>> a8f13add647764d605db22ac47fc5d5776360a1e
 }
 
 module.exports = maxSubarray;

@@ -25,8 +25,17 @@ function anagrams(string) {
   for (let first = 0; first < string.length; first += 1) {
     const firstChar = string[first];
     
+    // first part of string before current letter
+    const firstOtherChars = string.slice(0, first);
+    // if firstChar already encountered in first part before current letter
+    // , skip since would create duplicates
+    if (firstOtherChars.includes(firstChar)) continue;
+    
+    // next half of other chars
+    const lastOtherChars = string.slice(first + 1);
+    
     // new string w/o firstChar
-    const otherChars = string.slice(0, first) + string.slice(first + 1);
+    const otherChars = firstOtherChars + lastOtherChars;
     
     // permutations using other chars after first letter
     const otherPerms = anagrams(otherChars);

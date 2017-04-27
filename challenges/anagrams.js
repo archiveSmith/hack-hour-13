@@ -13,18 +13,19 @@
   */
 
 function anagrams (string, begOfStr = '') {
-  if (string.length === 0) return [''];  
+  if (string.length === 0) return [''];
   if (string.length === 1) return begOfStr + string;
   let strPerms = [];
   for (let i = 0; i < string.length; i += 1) {
     // add to begOfStr the first letter of string
     let restOfStr = string.slice(0, i) + string.slice(i + 1);
-    // iterate through restOfStr, and have it append all combinations of itself
     // send down the currently working letter in restOfStr and
     // add to begOfStr
     strPerms = strPerms.concat(anagrams(restOfStr, begOfStr + string[i]));
   }
-  return strPerms;
+  return strPerms.reduce((acc, curr) => {
+    return !acc.includes(curr) ? acc.concat(curr) : acc;
+  }, []);
 }
 
 module.exports = anagrams;

@@ -10,25 +10,27 @@
 function maxSubarray(arr) {
   let max = 0;
   if (arr.length === 0) {return max}
-  let entireArraySum = arr.reduce((a,b) => a + b)
-  if (entireArraySum > max) {
-    max = entireArraySum
-  }
-  
-  function inner(arr) {
-    if (arr.length === 0) {return max}
-    let subset = arr.reduce((a,b) => a + b)
-    if (subset > max) {
-      max = subset;
-    }
-    inner(arr.slice(1))
-  }  
-  inner(arr.slice(1));
 
+  function inner(arr) {
+    if (arr.length === 0) {return}
+
+    let curr = arr.reduce((a,b) => a + b, 0)
+    if (curr > max) {
+      max = curr;
+    }
+    arr.pop();
+    inner(arr)
+  }
+  //make new arrays with beginning shifted off and use them in inner function 
+  for (let i = 0; i < arr.length; i += 1) {
+    let newArr = arr.slice(i);
+    inner(newArr)
+  }
+ 
   return max; 
 }
 
-console.log( maxSubarray([3,3,4,-10,1]))
+console.log( maxSubarray([3,3,0,-10,13]))
 /*
 input: array of pos and neg numbers;
 output: max sum of all subarrays(selection of consecutive elements)

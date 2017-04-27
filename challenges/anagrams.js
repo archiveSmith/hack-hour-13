@@ -13,7 +13,7 @@
   */
 
 function anagrams(string) {
-  if (string === '') return [];
+  if (string === '') return [''];
   if (string.length === 1) return string;
 
   const anas = [];

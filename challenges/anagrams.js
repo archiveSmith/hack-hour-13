@@ -13,6 +13,7 @@
   */
 
 function anagrams(string) {
+  if (string === '') return [];
   if (string.length === 1) return string;
 
   const anas = [];
@@ -29,7 +30,13 @@ function anagrams(string) {
     string = string.substr(1, string.length - 1) + s;
     console.log(string, 'string after J loop finish each loop');
   }
-  return anas;
+
+  let uniqAnas = [];
+
+  anas.forEach(element => {
+    if (uniqAnas.indexOf(element) === -1) uniqAnas.push(element);
+  })
+  return uniqAnas;
 }
 
 module.exports = anagrams;

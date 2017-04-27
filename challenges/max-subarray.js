@@ -22,23 +22,23 @@
 function maxSubarray(arr) {
   /**
    * I want to find the sequence of nums within arr that add up to the highest positive sum.
-   * --> get max diff b/w a negative sum and the highest sum after it but before a new negative sum
+   * --> get max subarray length after any occurrences of negative sum
    */
 
   let
-    // curr minimum sum
-    currMinSum = 0,
     // current overall sum
     currSum = 0,
     // current maximum subarray sum
-    currMaxSum = 0;
+    currMaxSum = -Infinity;
 
-  arr.forEach((num, idx) => {
+  arr.forEach((num) => {
     currSum += num;
-    // replace currMin if sum lower than currMin
-    currMinSum = Math.min(currMinSum, currSum);
+    
     // replace maxSum with highest sum - lowest sum so far
-    currMaxSum = Math.max(currMaxSum, currSum - currMinSum);
+    currMaxSum = Math.max(currMaxSum, currSum);
+    
+    // if sum becomes negative, check for a new subarray after it
+    if (currSum < 0) currSum = 0;
   });
 
   return currMaxSum;

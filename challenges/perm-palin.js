@@ -65,6 +65,7 @@ function permPalin2(str) {
 
 }
 
+//////////////////////TESTING///////////////////////////
 console.log( permPalin2('abbaba') )
 
 

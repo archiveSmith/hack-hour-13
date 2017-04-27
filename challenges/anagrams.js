@@ -23,8 +23,10 @@ function anagrams(string) {
 
   let result = [];
 
-  if(string.length === 0) return result;
+  result.push(string);
   
+  if(string.length === 0) return result;
+
   string = string.split('');
 
   for (let i = 0; i < string.length; i += 1) {

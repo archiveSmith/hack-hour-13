@@ -45,25 +45,31 @@ function hasCycle(head) {
   }
 }
 
-//add property to list called visited; if has visited, then return true;
+//add property to list called visited; if has visited, then return true; LINEAR TIME, CONSTANT SPACE, but mutates original nodes
 function hasCycle2(head) {
-  
+  while(head) {
+    if (head.visited) {return true}
+    head.visited = true;
+    head = head.next;
+  }
+  return false;
 }
  
 //tortise and hare: hare moves 2 spaces for every one tortise, if they meet up then you know it is cyclical
 function hasCycle3(head) {
-  if (head === null || head.next === null) {return false}
+  if (!head || !head.next) {return false}
   
   let tortise = head; 
   let hare = head.next;
-  while (tortise.value !== hare.value) {
-    if (hare.next === null || hare === null) {return false}
+  //keep going until reach end
+  while (hare && hare.next) {
+    if (hare === tortise) {return true}
   
     torise = tortise.next;
     hare = hare.next.next;
   }
 
-  return true;
+  return false;
 }
 
 

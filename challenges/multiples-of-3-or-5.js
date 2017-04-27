@@ -9,11 +9,12 @@ function sumMultiples3Or5Below1000() {
   let sum = 0;
   for (let i = 0; i < 1000; i += 1) {
     if (i % 3 === 0 || i % 5 === 0) {
-      sum += i
+      sum += i;
     }
   }
   return sum;
 }
+
 
 //////////////////////TESTING///////////////////////////////
 //console.log( sumMultiples3Or5Below1000() )

@@ -13,20 +13,23 @@
   */
 
 function anagrams(string) {
+  if (string.length === 1) return string;
 
-  const anagrams = [];
+  const anas = [];
 
   for (let i = 0; i < string.length; i++) {
-    let char = string[i];
-    let remaining = string.slice(0, i) + string.slice(i + 1);
-    console.log(string.slice(i, i + 1), 'slice 0 i');
-    console.log(string.slice(i + 1, string.length), 'i + 1, str length');
-
-    for (let items in remaining) {
-      anagrams.push(char + remaining);
+    let s = string[0];
+    console.log(s, 'im s');
+    let rest = anagrams(string.slice(1, string.length));
+    console.log(rest, 'im rest');
+    for (let j = 0; j < rest.length; j++) {
+      anas.push(s + rest[j]);
+      //console.log(anas, 'anas in J loop');
     }
+    string = string.substr(1, string.length - 1) + s;
+    console.log(string, 'string after J loop finish each loop');
   }
-  return anagrams;
+  return anas;
 }
 
 module.exports = anagrams;

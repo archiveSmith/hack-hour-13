@@ -13,6 +13,7 @@
   */
 
 function anagrams (string, begOfStr = '') {
+  if (string.length === 0) return [''];  
   if (string.length === 1) return begOfStr + string;
   let strPerms = [];
   for (let i = 0; i < string.length; i += 1) {

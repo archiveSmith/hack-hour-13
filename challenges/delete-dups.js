@@ -16,10 +16,10 @@ function Node(val) {
 }
 
 function deleteDups(head) {
+  let prevNode;
   for (let i = head; i; i = i.next) {
     for (let j = i; j; j = j.next) {
       // set a previous node
-      let prevNode;
 
       // make sure that i and j are not the same node, then check if the values are the same
       // if they are, then take out the duplicate node and relink the list
@@ -34,6 +34,19 @@ function deleteDups(head) {
 
   return head;
 }
+
+// var a = new Node(1);
+// var b = new Node(2);
+// var c = new Node(3);
+// var d = new Node(1);
+// var e = new Node(4);
+
+// a.next = b;
+// b.next = c;
+// c.next = d;
+// d.next = e;
+
+// deleteDups(a);
 
 module.exports = {
   deleteDups,

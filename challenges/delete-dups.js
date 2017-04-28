@@ -12,8 +12,15 @@
 
 
 
-function deleteDups(head) {
-
+function deleteDups(head, prev = null, cache = []) {
+  if (!head) return null;
+  if (cache.includes(head.value)) {
+    return deleteDups(head.next, prev, cache);
+  } else {
+    cache.push(head.value);
+    head.next = deleteDups(head.next, head, cache);
+  }
+  return head;
 }
 
 module.exports = deleteDups;

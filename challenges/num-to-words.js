@@ -34,11 +34,8 @@ function numToWords(num) {
     let wordNum;
 
     for (let i = 0; i < num; i+=1) {
-        if 
+        
     }
-
-
-
 }
 
 module.exports = numToWords;

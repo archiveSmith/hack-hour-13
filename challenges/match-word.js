@@ -7,10 +7,8 @@
 // matchWord('%%$@$while  try ! yrt  for if_fi rof #*#  elihw');  -> true
 // matchWord('');  -> true
 
-<<<<<<< HEAD
-
 function matchWord(str) {
- 
+
 
   if (typeof str !== 'string') return 'Please give me a valid string';
   if (str === '') return true;
@@ -39,10 +37,6 @@ function matchWord(str) {
 
   // If wordStack is empty, all matches were found! Otherwise, all words were not matched.
   return !wordStack.length;
-=======
-function matchWord(str) {
-
->>>>>>> b95a68f37cd4a57e4722ac9f4605e2b3aebcf3d4
 }
 
 module.exports = matchWord;

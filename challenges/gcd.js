@@ -8,16 +8,9 @@
  */
 
 function gcd(a, b) {
-<<<<<<< HEAD
   if (!b) return a;
 
   return gcd(b, a % b);
 }
 
-
-=======
-
-}
-
->>>>>>> ad3da829b2309194f0aabe33886c7aa140efb800
 module.exports = gcd;

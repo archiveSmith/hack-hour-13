@@ -9,7 +9,7 @@
 
 function countTwos(num) {
   let counter = 0;
-  
+
   for (let i = 0; i <= num; i++) {
     let numStr = i.toString();
     for (let j = 0; j < numStr.length; j++) {

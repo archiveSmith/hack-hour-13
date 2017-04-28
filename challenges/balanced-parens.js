@@ -24,39 +24,35 @@
  *
  */
 
-function balancedParens(input){
-<<<<<<< HEAD
-    let stack = [];
-    let last;
-    const closing = {
-      '(': ')',
-      '[': ']',
-      '{': '}'
-    }
+function balancedParens(input) {
+  let stack = [];
+  let last;
+  const closing = {
+    '(': ')',
+    '[': ']',
+    '{': '}'
+  }
 
-    input = input.replace(/[^()\{\}\[\]]/gi, "");
+  input = input.replace(/[^()\{\}\[\]]/gi, "");
 
-    for (var i = 0; i < input.length; i++) {
-        if (input[i] === '(' || input[i] === '[' || input[i] === '{') {
-            stack.push(input[i]);
-            console.log(stack);
-        }
-        else {
-            last = stack.pop();
-            console.log(closing[last]);
-            if (input[i] !== closing[last]) {
-                return false;
-            }
-        }
+  for (var i = 0; i < input.length; i++) {
+    if (input[i] === '(' || input[i] === '[' || input[i] === '{') {
+      stack.push(input[i]);
+      console.log(stack);
     }
-    
-    if (stack.length !== 0) {
-      return false;
+    else {
+      last = stack.pop();
+      console.log(closing[last]);
+      if (input[i] !== closing[last]) {
+        return false;
+      }
     }
-    return true;
-=======
->>>>>>> 982b5f4f0fadd6f168ccde4257e9a17882ddc00a
+  }
 
+  if (stack.length !== 0) {
+    return false;
+  }
+  return true;
 }
 
 module.exports = balancedParens;

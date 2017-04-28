@@ -12,8 +12,40 @@
   * console.log(result); // [ 'abc', 'acb', 'bac', 'bca', 'cab', 'cba' ]
   */
 
-function anagrams(string) {
+  const permutator = (inputArr) => {
+  let result = [];
 
+  const permute = (arr, m = []) => {
+    if (arr.length === 0) {
+      result.push(m)
+    } else {
+      for (let i = 0; i < arr.length; i++) {
+        let curr = arr.slice();
+        let next = curr.splice(i, 1);
+        permute(curr.slice(), m.concat(next))
+     }
+   }
+ }
+
+ permute(inputArr)
+
+ return result;
+}
+function anagrams(string) {
+  let result = []; 
+  if(string.length < 2) return string; 
+  function myFunc()
+  for(let i =0; i < string.length; i++){
+    let char = string[i]
+ 
+    let remainingString = string.slice(0,i) + string.slice(i + 1, string.length);
+
+    anagrams(remainingString)
+      result.push(char + remainingString)
+  }
+  
+  return console.log("this", result);
 }
 
+anagrams("abc");
 module.exports = anagrams;

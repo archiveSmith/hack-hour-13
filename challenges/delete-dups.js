@@ -24,6 +24,7 @@ function deleteDups(head) {
     }
     arr.push(i.next.value);
   }
+  return head;
 }
 
 module.exports = deleteDups;

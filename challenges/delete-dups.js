@@ -16,7 +16,7 @@ function deleteDups(head) {
   let arr = [];
   if (!this.head) return undefined;
   for (let i = head; i; i = i.next) {
-    if (i = head) {
+    if (i === head) {
       arr.push(i.value);
     }
     if (arr.includes(i.next.value)) {

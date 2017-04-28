@@ -13,8 +13,9 @@
   */
 
 function anagrams(string) {
+  if (string.length === 0) return string;
   const arr = string.split('').filter(char => char.toLowerCase() !== char.toUpperCase());
-  if (arr.length === 1) return arr;
+  if (arr.length = 1) return arr;
   const output = [];
   for (let i = 0; i < arr.length; i += 1) {
     for (let j = arr.length - 1; j > 0; j -= 1) {
@@ -27,3 +28,5 @@ function anagrams(string) {
 }
 
 module.exports = anagrams;
+
+console.log(''.split(''))

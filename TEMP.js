@@ -1,53 +1,21 @@
-
-/*
- * write a function that takes a string of text and returns true if
- * the parentheses are balanced and false otherwise.
+/* You are given an array of integers with both positive and negative numbers. Write a function to
+ * find the maximum sum of all subarrays. A subarray is a section of consecutive elements from the
+ * original array. The whole array can be considered a sub array of itself.
  *
- * Example:
- *   balancedParens('(');  // false
- *   balancedParens('()'); // true
- *   balancedParens(')(');  // false
- *   balancedParens('(())');  // true
- *
- * Step 2:
- *   make your solution work for all types of brackets
- *
- * Example:
- *  balancedParens('[](){}'); // true
- *  balancedParens('[({})]');   // true
- *  balancedParens('[(]{)}'); // false
- *
- * Step 3:
- * ignore non-bracket characters
- * balancedParens(' var wow  = { yo: thisIsAwesome() }'); // true
- * balancedParens(' var hubble = function() { telescopes.awesome();'); // false
- *
+ * For example: maxSubarray([1, -2, 3, 10, -4, 7, 2, -5]) -> 18 from [3, 10, -4, 7, 2]
+ *              maxSubarray([15,20,-5,10])  -> 40
  *
  */
 
-function balancedParens(input) {
-  let cleared = input.replace(/[^\(\)\{\}\[\]]/g, '')
-  let parens = {'(': ')', '[': ']', '{':'}'}
-  let stack = [];
-  for (let i = 0; i < cleared.length; i += 1) {
-    if (parens[cleared[i]] !== stack[stack.length -1] || stack.length === 0) {
-      stack.push(parens[cleared[i]]);
-    } else {
-      stack.pop();
-    }
+function maxSubarray(arr) {
+  let max = -Infinity;
+  let temp = -Infinity;
+
+  for (let i = 0; i < arr.length; i += 1) {
+    temp = Math.max(arr[i], temp + arr[i]);
+    max = Math.max(max, temp); 
   }
-  return stack;
-  return stack.length === 0;
+  return max;
 }
 
-
-//---------------------TESTING----------------------------------
-//console.log(balancedParens('testing(hi}]['));  
-//console.log(balancedParens('('));  // false
-console.log(balancedParens('()')); // true
-// console.log(balancedParens(')('));  // false
-// console.log(balancedParens('(())'));  // true
-// console.log('----------')
-// console.log(balancedParens('[](){}')); // true
-// console.log(balancedParens('[({})]'));   // true
-// console.log(balancedParens('[(]{)}')); // false
+console.log( maxSubarray([1, -2, 3, 10, -4, 7, 2, -5]) )

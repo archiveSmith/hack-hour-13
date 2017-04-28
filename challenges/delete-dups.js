@@ -16,16 +16,18 @@
    const arrVals = [];
    let prev = null;
    while (currNode) {
-     // check if the current value of head is stored inside arrVals
+     // check if the current value of currNode is stored inside arrVals
      if (arrVals.includes(currNode.value)) {
-       // if not set the next of the previous node to what is the current nodes next
+      // if not set the next of the previous node to what is the current nodes next
        prev.next = currNode.next;
+       currNode = currNode.next;
+     } else {
+    // store the current value of currNode to arrVals, and then set the node
+    // to previous.  After this is done, move to the next Node.
+       arrVals.push(currNode.value);
+       prev = currNode;
+       currNode = currNode.next;
      }
-     // store the current value of currNode to arrVals, and then set the node
-     // to previous.  After this is done, move to the next Node.
-     arrVals.push(currNode.value);
-     prev = currNode;
-     currNode = currNode.next;
    }
    return head;
  }

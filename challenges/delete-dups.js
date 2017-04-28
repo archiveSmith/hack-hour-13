@@ -23,7 +23,6 @@ function deleteDups(head) {
       prev.next = current;
     } else {
       values[current.value] = current.value;
-      // console.log('values: ', values);
       prev = current;
       current = current.next;
     }
@@ -31,6 +30,6 @@ function deleteDups(head) {
   return head;
 }
 
-let newList = { value: "4", next: { value: "4", next: { value: "4", next: { value: "6", next: null } } } };
-console.log(deleteDups(newList));
+//let newList = { value: "4", next: { value: "4", next: { value: "4", next: { value: "6", next: null } } } };
+//console.log(deleteDups(newList));
 module.exports = deleteDups;

@@ -27,7 +27,7 @@
  *
  */
 
-function Node (value) {
+function Node(value) {
   this.value = value;
   this.next = null;
 }
@@ -50,4 +50,4 @@ function hasCycle(head) {
   return false;
 }
 
-module.exports = {Node: Node, hasCycle: hasCycle}
+module.exports = { Node: Node, hasCycle: hasCycle }

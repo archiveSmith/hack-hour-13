@@ -14,11 +14,11 @@
  */
 
 function binToDec(binary) {
-  
-    if (typeof binary === 'string') {
-      return parseInt(binary, 2);
-    }
-    return decToBin(binary);
+
+  if (typeof binary === 'string') {
+    return parseInt(binary, 2);
+  }
+  return decToBin(binary);
 }
 
 //Solution not utilizing helpers
@@ -33,7 +33,7 @@ function binToDec(binary) {
 // }
 
 
-function decToBin (decimal) {
+function decToBin(decimal) {
   return decimal.toString(2);
 }
 

@@ -14,24 +14,23 @@ function BinaryTree(value) {
 }
 
 function superbalanced(tree) {
-<<<<<<< HEAD
-  
- let depthLeft = [];
- let depthRight = [];
+
+  let depthLeft = [];
+  let depthRight = [];
   const recursion = (tree, leftLevel = 0, rightLevel = 0) => {
     if (tree === null) return true;
     // if (!tree.left && !tree.right) return true;
-    
+
     if (tree.left) {
-    //leftLevel++;
-    depthLeft.push(leftLevel);
-    recursion(tree.left, leftLevel, rightLevel);
-  }
-  if (tree.right) {
-    //rightLevel++;
-    depthRight.push(rightLevel);
-    recursion(tree.right, leftLevel, rightLevel);
-  }
+      //leftLevel++;
+      depthLeft.push(leftLevel);
+      recursion(tree.left, leftLevel, rightLevel);
+    }
+    if (tree.right) {
+      //rightLevel++;
+      depthRight.push(rightLevel);
+      recursion(tree.right, leftLevel, rightLevel);
+    }
   }
   recursion(tree);
   if (Math.abs(depthLeft.length - depthRight.length) > 1) return false;
@@ -50,9 +49,3 @@ function superbalanced(tree) {
 // superbalanced(tree);
 
 module.exports = { BinaryTree: BinaryTree, superbalanced: superbalanced };
-=======
-
-}
-
-module.exports = {BinaryTree: BinaryTree, superbalanced: superbalanced};
->>>>>>> 6a27eb23ac8fdbd43025d02751fd0f3e74d97a01

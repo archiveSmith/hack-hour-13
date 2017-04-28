@@ -27,6 +27,7 @@ function anagrams(str) {
     } else {
       for (var i = 0; i < n; i += 1) {
         generate(n - 1);
+        //if odd, first # in swap is 0, otherwise it is i;  
         swap(n % 2 ? 0 : i, n - 1);
       }
     }

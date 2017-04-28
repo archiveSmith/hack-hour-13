@@ -63,7 +63,7 @@ function maxSubarray3(arr) {
   return finalMax;
 }
 
-console.log( maxSubarray([3,3,0,-10,13]))
+console.log( maxSubarray3([3,3,0,-10,1,9,]))
 /*
 input: array of pos and neg numbers;
 output: max sum of all subarrays(selection of consecutive elements)

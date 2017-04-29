@@ -27,18 +27,18 @@
  *
  */
 
-var Node = function(value) {
+const Node = function(value) {
   this.value = value;
   this.next = null;
 }
 
 function hasCycle(node) {
   const store = {};
-  store[node] = node;
   while (node) {
     if (store[node.next]) {
       return true;
     }
+    store[node] = node;
     node = node.next;
   }
   return false;

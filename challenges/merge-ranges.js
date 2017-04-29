@@ -10,20 +10,20 @@
  */
 
 
-function mergeRanges(array) {
-  let result = [];
-  let extras = [];
+const mergeRanges = (array) => {
   array.sort((a, b) => a[0] - b[0])
-  .reduce((a, b) => {
-    if (a[1] >= b[0]) {
-      extras.push([a[0], b[1]]);
-      return [a[0], b[1]];
+  let i = 0;
+  while (i < array.length - 1) {
+    if (array[i][1] >= array[i + 1][0]) {
+      if (array[i][1] < array[i + 1][1]) {
+        array[i][1] = array[i + 1][1];
+      }
+      array.splice(i + 1, 1);
+    } else {
+      i += 1;
     }
-    result.push(a);
-    return b;
-  }, [0, 0]);
-  result.push(extras[extras.length-1]);
-  return result;
-}
+  }
+  return array;
+};
 
 module.exports = mergeRanges;

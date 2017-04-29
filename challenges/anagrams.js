@@ -13,17 +13,21 @@
   */
 
 function anagrams(string) {
-  let collect = [];
-  let combo = '';
+  const array = str.split('');
   
-  if (collect.length === str.length * (str.length - 1)) 
-    return collect;
-    
-  for (var i = 0; i < str.length; i++) {
-    combo = str[i] + str.slice(0, i) + str.slice(i + 1);
-    collect.push(combo);
+  function again (letters) {
+    let results = [];
+    if (letters.length <= 1) {
+      return results.concat(letters);
+    }
+    for (var i = 0; i < letters.length; i++) {
+      const front = letters[i];
+      const theRest = letters.slice(0, i).concat(letters.slice(i + 1));
+      results = results.concat(again(theRest).map(str => front + str));
+    }
+    return results;
   }
-  return collect;
+  return again(array);
 }
 
 module.exports = anagrams;

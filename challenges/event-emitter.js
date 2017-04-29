@@ -3,13 +3,6 @@
  * Make an EventEmitter that
  *
  * Example:
- * var instance = new EventEmitter();
- * var counter = 0;
- * instance.on('increment', function() {
- *   counter++;
- * }); // counter should be 0
- * instance.trigger('increment'); // counter should be 1
- * instance.trigger('increment'); // counter should be 2
  *
  *
  * Caveats:
@@ -23,17 +16,28 @@
 
 function EventEmitter() {
   this.callFunc;
-  this.triggerFunc;
 }
 
 EventEmitter.prototype.on = function(funcName, func) {
-  callFunc = func;
+  this.callFunc = func;
 };
 
 EventEmitter.prototype.trigger = function(funcName, ...args) {
   if(funcName = this.callFunc){
-    this.triggerFunc(...argsß)
+    this.callFunc(args)
   }
 };
+
+ var instance = new EventEmitter();
+ var counter = 0;
+ instance.on('increment', function() {
+  counter++;
+}); // counter should be 0
+console.log(counter)
+ instance.trigger('increment');
+ console.log(counter) // counter should be 1
+  instance.trigger('increment');
+  console.log(counter) // counter should be 2
+
 
 module.exports = EventEmitter;

@@ -51,6 +51,7 @@
 
 
 function anagrams(string) {
+  if(string === '') return [''];
   const arr = string.split('');
   function recurse(letters) {
     let results = [];

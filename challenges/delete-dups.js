@@ -20,7 +20,7 @@ function deleteDups(head) {
   let curr = head;
   
   // check if curr isn't null
-  while (curr && curr.next) {
+  while (curr) {
     // peeker node to see if any duplicate values after it
     let peeker = curr;
     // checks if linked list is just one node
@@ -29,15 +29,16 @@ function deleteDups(head) {
       // node to compare against curr
       let compare = peeker.next;
       // remove any found duplicate node(s)
-      if (curr.value === compare.value) {
+      while (compare && curr.value === compare.value) {
         // make skipper skip over found duplicate
         peeker.next = compare.next;
+        compare = peeker.next;
       }
       // move peeker
       peeker = peeker.next;
     }
     // move curr node
-    if (curr.next) curr = curr.next;
+    if (curr) curr = curr.next;
   }
   
   return head;

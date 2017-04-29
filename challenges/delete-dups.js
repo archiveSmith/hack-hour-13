@@ -10,8 +10,6 @@
  * How would you solve this problem if a temporary buffer is not allowed?
  */
 
-
-
 function deleteDups(head) {
   const buffer = [];
   while (head) {

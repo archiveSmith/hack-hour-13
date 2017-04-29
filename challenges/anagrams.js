@@ -12,22 +12,45 @@
   * console.log(result); // [ 'abc', 'acb', 'bac', 'bca', 'cab', 'cba' ]
   */
 
+// function anagrams(str) {
+//   if (str.length === 1) {
+//     return str;
+//   }
+
+//   let permut = [];
+
+//   for (let i = 0; i < str.length; i++) {
+//     let s = str[0];
+//     let _new = anagrams(str.slice(1, str.length));
+//     for (let j = 0; j < _new.length; j++) {
+//       permut.push(s + _new[j]);
+//     }
+//     str = str.substr(1, str.length - 1) + s;
+//   }
+//   return permut;
+// }
+
 function anagrams(str) {
-  if (str.length === 1) {
-    return str;
-  }
+  const arr = string.split('');
 
-  let permut = [];
+  function recurse(letters) {
+    let results = [];
 
-  for (let i = 0; i < str.length; i++) {
-    let s = str[0];
-    let _new = anagrams(str.slice(1, str.length));
-    for (let j = 0; j < _new.length; j++) {
-      permut.push(s + _new[j]);
+    if (letters.length === 1) {
+      return results.concat(letters);
     }
-    str = str.substr(1, str.length - 1) + s;
+
+    for (let i = 0; i < letters.length; i += 1) {
+      const front = letters[i];
+      const restOfLetters = letters.slice(0, i).concat(letters.slice(i + 1));
+      
+      results = results.concat(recurse(restOfLetters).map(str => front + str));
+    }
+
+    return results;
   }
-  return permut;
+
+  return recurse(arr);
 }
 
 module.exports = anagrams;

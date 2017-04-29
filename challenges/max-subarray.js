@@ -6,8 +6,17 @@
  *              maxSubarray([15,20,-5,10])  -> 40
  *
  */
-
+//http://www.geeksforgeeks.org/largest-sum-contiguous-subarray/
 function maxSubarray(arr) {
+  var maxSoFar = 0;
+  var maxEndingHere = 0;
+
+  for(var i = 0; i < arr.length; i++){
+    maxEndingHere = maxEndingHere + arr[i];
+    if(maxEndingHere > maxSoFar){
+
+    }
+  }
 
 }
 

@@ -30,19 +30,34 @@ EventEmitter.prototype.on = function (funcName, func) {
 };
 
 EventEmitter.prototype.trigger = function (funcName, ...args) {
+  this.triggerCache = {};
+
   if (this.cache[funcName]) {
-    return this.cache[funcName](args);
+    return this.triggerCache[funcName] = this.cache[funcName](...args);
   }
+
+  for (let key in this.triggerCache) {
+    return this.triggerCache[key](...args);
+  }
+
 };
 
 var instance = new EventEmitter();
 var counter = 0;
+var counter1 = 0;
 instance.on('increment', function () {
   counter++;
 }); // counter should be 0
+
+instance.on('increment1', function () {
+  counter1++;
+});
+
 instance.trigger('increment'); // counter should be 1
-//console.log(counter);
+// console.log(counter);
 instance.trigger('increment'); // counter should be 2
-//console.log(counter);
+// console.log(counter);
+instance.trigger('increment1');
+// console.log(counter1);
 
 module.exports = EventEmitter;

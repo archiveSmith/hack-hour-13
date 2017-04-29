@@ -10,10 +10,16 @@
  * How would you solve this problem if a temporary buffer is not allowed?
  */
 
-
-
-function deleteDups(head) {
-
-}
+const deleteDups = (node) => {
+  const store = {};
+  while (node) {
+    if (store[node.next]) {
+      node.next = node.next.next;
+    }
+    store[node] = node;
+    node = node.next;
+  }
+  return false;
+};
 
 module.exports = deleteDups;

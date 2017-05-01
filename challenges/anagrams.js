@@ -37,7 +37,7 @@ function anagrams(str) {
   return permutations;
 }    
 
-//-------------------------
+//------heap's (basically same as above)------------------
 
 
 function swap(a, b) {

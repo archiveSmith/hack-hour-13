@@ -15,6 +15,7 @@ function Node(val) {
   this.next = null;
 }
 
+// my solution
 function deleteDups(head) {
   for (let i = head; i; i = i.next) {
     for (let j = i; j; j = j.next) {
@@ -35,4 +36,42 @@ function deleteDups(head) {
   return head;
 }
 
-module.exports = deleteDups;
+// jimmy's solution using a cache. this is faster
+function deleteDups(head) {
+  let cache = {};
+
+  let j;
+
+  for (let i = head; i; i = i.next) {
+    if (!cache[i.value]) {
+      cache[i.value] = true;
+      j = i;
+    } else {
+      j.next = i.next
+    }
+  }
+
+  return head;
+}
+
+// jimmy's other solution, this is slower and same as my solution
+function deleteDups(head) {
+  for (let i = head; i; i = i.next) {
+    let j = i;
+    while(j.next) {
+      if (j.next.value === i.value) {
+        j.next = j.next.next;
+      }
+      else {
+        j = j.next;
+      }
+    }
+  }
+  
+  return head;
+}
+
+module.exports = {
+  deleteDups,
+  Node
+}

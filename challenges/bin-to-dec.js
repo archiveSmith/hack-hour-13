@@ -14,7 +14,18 @@
  */
 
 function binToDec(binary) {
+  const binArr = binary.split('').map(Number);
+  const base = 2;
+  let exp = 0;
+  let sum = 0;
 
+  for (let i = binArr.length - 1; i >= 0; i -= 1) {
+    if (binArr[i] === 1) {
+      sum += (base ** exp);
+    }
+    exp += 1;
+  }
+  return sum;
 }
 
 module.exports = binToDec;

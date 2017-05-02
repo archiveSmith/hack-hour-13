@@ -16,7 +16,15 @@ function isSubstring(s1, s2) {
 }
 
 function stringRotation(s1, s2) {
+  const s1Concat = s1 + s1;
 
+  if (typeof s1 !== 'string' || typeof s2 !== 'string') return 'argument not type of string';
+
+  if (s1.length !== s2.length) {
+    return false;
+  } else {
+    return isSubstring(s1Concat, s2);
+  }
 }
 
 module.exports = {isSubstring: isSubstring, stringRotation: stringRotation};

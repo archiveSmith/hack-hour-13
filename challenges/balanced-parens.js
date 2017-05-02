@@ -24,8 +24,29 @@
  *
  */
 
-function balancedParens(input){
+function balancedParens(input) {
+    input = input.replace(/[^()\{\}\[\]]/gi, "");
+    let holder = [];
+    const parens = {
+        '(': ')',
+        '[': ']',
+        '{': '}'
+    };
 
+    for (let i = 0; i < input.length; i += 1) {
+        if (input[i] === '(' || input[i] === '[' || input[i] === '{') {
+            holder.push(input[i]);
+        } else {
+            let last = holder.pop();
+            if (input[i] !== parens[last]) {
+              return false;
+            }
+        }
+    }
+    if (holder.length !== 0) {
+        return false;
+    }
+    return true;
 }
 
 module.exports = balancedParens;

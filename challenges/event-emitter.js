@@ -23,35 +23,21 @@
 
 function EventEmitter() {
   this.events = {};
-  this.subscribe = function(eventName, func) {
-    // check if the event is in our events object.
-    // if not add it as a key and value of empty array
-    if (!this.events[eventName]) {
-      this.events[eventName] = [];
-    }
-    // if it is push the callback func
-    this.events[eventName].push(func);
-
-    return () => {
-      this.events[eventName] = this.events[eventName].filter(eventFunc => func !== eventFunc);
-    };
-  }
-  // this.emit = function(eventName, data) {
-  //   const event = this.events[eventName];
-  //   if (event) {
-  //     event.forEach(func => {
-  //       func.call(null, data);
-  //     });
-  //   }
-  // }
 }
 
 EventEmitter.prototype.on = function(funcName, func) {
-  this.subscribe(funcName, func);
+  if (!this.events[funcName]) {
+    this.events[eventName] = [];
+  }
+  this.events[eventName].push(func);
+
+  return () => {
+    this.events[funcName] = this.events[funcName].filter(eventFunc => func !== eventFunc);
+  };
 };
 
 EventEmitter.prototype.trigger = function(funcName, ...args) {
-  this.subscribe(funcName, ...args);
+
 };
 
 let instance = new EventEmitter();

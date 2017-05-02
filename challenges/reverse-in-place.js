@@ -14,7 +14,19 @@
  */
 
 function reverseInPlace(array) {
+  if (!Array.isArray(array)) return;
 
+  for (let i = 0; i <= Math.ceil(array.length - 1) / 2; i += 1) {
+    let save = array[i];
+    array[i] = array[array.length - 1 - i];
+    array[array.length - 1 - i] = save;
+  }
+  return array;
 }
+
+// console.log(reverseInPlace([1,2,3,4,5,6,7,8,9,10]));
+
+// Destructuring
+// [array[i], array[array.length - 1 - i]] = [array[array.length - 1 - i], array[i]];
 
 module.exports = reverseInPlace;

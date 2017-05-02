@@ -13,7 +13,23 @@
   */
 
 function anagrams(string) {
-  console.log(string);
+  const arr = string.split('');
+
+  function recurse(letters) {
+    let results = [];
+
+    if (letters.length <= 1) return results.concat(letters);
+
+    for (let i = 0; i < letters.length; i++) {
+      const front = letters[i];
+      const restOfLetters = letters.slice(0, i).concat(letters.slice(i + 1));
+      results = results.concat(recurse(restOfLetters).map(str => front + str));
+    }
+
+    return result;
+  }
+
+  return recurse(arr);
 }
 
 module.exports = anagrams;

@@ -10,21 +10,51 @@
  * How would you solve this problem if a temporary buffer is not allowed?
  */
 
+<<<<<<< HEAD
+function deleteDups(head) {
+  // let arr = [];
+  // if (!head) return undefined;
+  // for (let i = head; i; i = i.next) {
+  //   if (i === head) {
+  //     arr.push(i.value);
+  //   }
+  //   if (arr.includes(i.next.value)) {
+  //     i.next = i.next.next;
+  //   }
+  //   arr.push(i.next.value);
+  // }
+  // return head;
+
+  // const cache = {};
+  // let j;
+
+  // for (let i = head; i; i=i.next) {
+  //   if (!cache[i.value]) {
+  //     cache[i.value] = true;
+  //     j = 1;
+  //   } else {
+  //     j.next = i.next;
+  //   }
+  // }
+  // return head;
+
+  // for (let i = head; i; i = i.next) {
+  //   let j = i;
+  //   while(j.next) {
+  //     if (j.next.value) {
+  //       j.next = j.next.next;
+  //     } else {
+  //       j = j.next;
+  //     }
+  //   }
+  // }
+  // return head;
+=======
 
 
 function deleteDups(head) {
-  let arr = [];
-  if (!this.head) return undefined;
-  for (let i = head; i; i = i.next) {
-    if (i = head) {
-      arr.push(i.value);
-    }
-    if (arr.includes(i.next.value)) {
-      i.next = i.next.next;
-    }
-    arr.push(i.next.value);
-  }
-  return head;
+
+>>>>>>> 3fbf75f4c00ddda8e0d0443fef4fc9be8e655a01
 }
 
 module.exports = deleteDups;

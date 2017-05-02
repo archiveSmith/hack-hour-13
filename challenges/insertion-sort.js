@@ -16,6 +16,7 @@
 // }
 
 function insertionSort(arr) {  
+  if(arr.length < 1) return [];
   //iterate through the array
     for (var i = 1; i < arr.length; i++) {
       //copy the current element in the array
@@ -29,6 +30,7 @@ function insertionSort(arr) {
         //in sorted part. 
         arr[j + 1] = tmp;
     }
+    return arr;
 }
 
 const myArr = [5,3,1,2,4]

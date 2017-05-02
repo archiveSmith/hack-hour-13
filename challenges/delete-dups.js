@@ -10,6 +10,7 @@
  * How would you solve this problem if a temporary buffer is not allowed?
  */
 
+<<<<<<< HEAD
 function deleteDups(head) {
   // let arr = [];
   // if (!head) return undefined;
@@ -48,6 +49,12 @@ function deleteDups(head) {
   //   }
   // }
   // return head;
+=======
+
+
+function deleteDups(head) {
+
+>>>>>>> 3fbf75f4c00ddda8e0d0443fef4fc9be8e655a01
 }
 
 module.exports = deleteDups;

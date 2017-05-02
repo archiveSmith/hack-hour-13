@@ -22,21 +22,27 @@
  */
 
 function EventEmitter() {
-
+  this.listeners = [];
+  this.functions = [];
 }
 
 EventEmitter.prototype.on = function(funcName, func) {
-  //if call funcName, then func will run
-  //need to pass func down to any funcName that calls it
-  // return funcName(func); 
-  
+  this.listeners.push(funcName);
+  this.functions.push(func);
 };
 
 EventEmitter.prototype.trigger = function(funcName, ...args) {
-  //calls .on func with args
-  this.funcName = funcName;
-  this.args = args;
-  return this.funcName;
+  this.listeners.forEach((listener, i) => {
+    if (listener === funcName) {
+      this.functions[i]();
+    }
+  });
+  //let args = [...arguments];  //use this if want all arguments
+  let args2 = args;  //use this if only want ...args
+  //start at 1 if use ...arguments b/c funcName is first arg
+  for (let i = 0; i < args2.length; i += 1) {
+    this.listeners.push(args2[i]);
+  }
 };
 
 ////////////////////////////////////////////////////
@@ -47,7 +53,7 @@ EventEmitter.prototype.trigger = function(funcName, ...args) {
    counter++;
    console.log(counter);
  }); // counter should be 0
- instance.trigger('increment'); // counter should be 1
+ instance.trigger('increment', 'hi', 'i am'); // counter should be 1
  instance.trigger('increment'); // counter should be 2
 
 

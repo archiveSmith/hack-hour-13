@@ -15,6 +15,12 @@
 
 function reverseInPlace(array) {
 
+    return array.reduce(function(all,item,index){
+        all.unshift(item);
+        return all;
+    },[]);
+
 }
 
+// console.log(reverseInPlace([1,2,3]));
 module.exports = reverseInPlace;

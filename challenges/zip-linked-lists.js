@@ -11,6 +11,21 @@ function Node(val) {
 }
 
 function zip(l1, l2) {
+
+
+  currentNode = l1;
+  var tempHead1 = l1.next;
+  currentNode.next = l2;
+  var tempHead2 = l2.next;
+  currentNode = currentNode.next;
+  currentNode.next = tempHead1;
+  currentNode.next = tempHead2;
 };
 
+
+var n1 = new Node(1);
+var n3 = new Node(3);
+n1.next = n3;
+
+console.log(n1);
 module.exports = {Node: Node, zip: zip};

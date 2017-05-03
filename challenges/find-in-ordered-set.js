@@ -27,6 +27,14 @@ function findInOrderedSet(arr, target) {
   return false;
 }
 
+function findInOrderedSet(arr, target) {
+  if (!arr || arr.length === 0) {
+    return false;
+  }
+  let mid = Math.floor(arr.length/2);
+
+}
+
 var nums = [1, 4, 6, 7, 9, 17, 45];
 console.log(findInOrderedSet(nums, 4));
 console.log(findInOrderedSet(nums, 2));

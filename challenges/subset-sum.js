@@ -9,7 +9,25 @@
  */
 
 function subsetSum(array, target) {
-
+  array = array.sort();
+  console.log(array);
+  var n = array.length;
+  var pointerA = i;
+  var pointerB = n - 1;
+  for (var i = 0; i < array.length; i++) {
+    sum = array[pointerA] + array[pointerB];
+    if (sum < target) {
+      pointerB--
+    }else if(sum > target){
+      pointerA++
+    }else if(sum == target){
+      return true;
+    }else{
+      return false;
+    }
+    console.log(sum);
+  }
 }
 
+console.log(subsetSum([3, 34, 4, 12, 5, 12], 32));
 module.exports = subsetSum;

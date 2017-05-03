@@ -17,7 +17,27 @@
  */
 
 function rotateGrid(grid, n) {
+  // initialize new grid
+  var newGrid = [];
 
+  // how a 3x3 array will fit
+  newGrid[0][n] = grid[0][0]; //1
+  newGrid[n - 1][n] = grid[0][n - 1]; //2
+  newGrid[n][n] = grid[0][n] //3
+  newGrid[0][n - 1] = grid[n - 1][0]; //4
+  newGrid[n - 1][n - 1] = grid[n - 1][n - 1]; //5
+  newGrid[n][n - 1] = grid[n - 1][n]; //6
+  newGrid[0][0] = grid[n][0]; //7
+  newGrid[n - 1][0] = grid[n][n - 1]; //8
+  newGrid[n][0] = grid[n][n]; //9
+}
+
+for (var i = 0; i < n; i += 1) {
+  for (var j = 0; j < n; j += 1) { 
+    newGrid[i][n-j] = grid[i][j];
+  }
 }
 
 module.exports = rotateGrid;
+
+// http://www.geeksforgeeks.org/inplace-rotate-square-matrix-by-90-degrees/

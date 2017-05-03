@@ -10,7 +10,16 @@
  *
  */
 function uniqueNumber(array) {
-
+  const cache = {};
+  let total = 0;
+  array.forEach((value) => {
+    if (cache[value]) total -= value
+    else {
+      cache[value] = true;
+      total += value;
+    }
+  });
+  return total;
 }
 
 module.exports = uniqueNumber;

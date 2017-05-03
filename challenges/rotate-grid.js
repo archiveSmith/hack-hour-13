@@ -27,13 +27,13 @@ function rotateGrid(grid, n) {
   grid = temp;
   return grid;
 }
-
+/////////////TESTING/////////////////////////
 const grid =  [ [1, 2, 3], [4, 5, 6], [7, 8, 9] ]
 
 console.log( rotateGrid2(grid, 3) )
 
-///////////////////////////////////////////////////////////////////////////////
 
+//----------------CODE SMITH WAY 
 function rotateGrid2(grid, n) {
   var newGrid = [];
   for(var i = 0; i < n; i++) {

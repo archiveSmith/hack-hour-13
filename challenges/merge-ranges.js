@@ -84,6 +84,21 @@ const mergeRanges4 = (array) => array.sort((a, b) => a[0] - b[0])
     return a;
   }, []);
 
+  //---------------------------
+  function mergeRanges5(array) {
+  let sorted = array.sort((a,b) => a[0] - b[0])
+  let merged = [];
+  for (let i = 0; i < sorted.length; i += 1) {
+    if (sorted[i + 1] && sorted[i][1] >= sorted[i + 1][0]) {
+      merged.push([sorted[i][0], sorted[i + 1][1]])
+      sorted.splice(i + 1, 1);
+    } else {
+      merged.push(sorted[i])
+    }
+  }
+  return merged;
+}
+
 //////////////////TESTING//////////////////////////
 
 var times = [ [0, 1], [3, 5], [4, 8], [9, 10], [10, 12], [13, 19]];

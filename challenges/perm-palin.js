@@ -10,7 +10,15 @@
  */
 
 function permPalin(str) {
-	
+	// track the number of each char inside of string
+	const charTable = str.reduce((a, c) => {
+		if (!a.hasOwnProperty(c)) {
+			a.c = 1;
+		} else {
+			a.c = a.c += 1;
+		}
+	}, {});
+	return charTable;
 }
 
 module.exports = permPalin;

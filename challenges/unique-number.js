@@ -11,11 +11,11 @@
  */
  function uniqueNumber(array) {
    // const cacheFreq = {};
-   let uniq = {};
+   let uniq = 0;
    for (let i = 0; i < array.length; i += 1) {
-     uniq[array[i]] ? delete uniq[array[i]] : uniq[array[i]] = 1;
+     uniq ^= array[i];
    }
-   return +Object.keys(uniq)[0];
+   return uniq;
  }
 
 module.exports = uniqueNumber;

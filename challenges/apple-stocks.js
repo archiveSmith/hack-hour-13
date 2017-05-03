@@ -13,7 +13,35 @@
  */
 
 function bestProfit(stock_prices_yesterday) {
+  console.log('                ', stock_prices_yesterday);
+  let maxProfit = 0;
+  let lowest;
 
+  if (stock_prices_yesterday.constructor === Array) {
+    for (let time = 0; time < stock_prices_yesterday.length; time += 1) {
+      if (lowest === undefined || lowest > stock_prices_yesterday[time]) {
+        lowest = stock_prices_yesterday[time];
+      } else if (lowest < stock_prices_yesterday[time]) {
+        let newProfit = stock_prices_yesterday[time] - lowest;
+        if (maxProfit < newProfit) {
+          maxProfit = newProfit;
+        }
+      }
+    }
+  }
+  return maxProfit;
 }
+
+// var stock1 = [200, 100, 300, 1000, 50]; // 900
+// var stock2 = [10, 20, 5, 0, 200, 500]; // 500
+// var stock3 = [30, 50, 20, 10, 400, 20]; // 390
+// var stock4 = [1000, 20, 20, 20, 20]; // 0
+// var stock5 = {}; // 0
+
+// console.log(bestProfit(stock1));
+// console.log(bestProfit(stock2));
+// console.log(bestProfit(stock3));
+// console.log(bestProfit(stock4));
+// console.log(bestProfit(stock5));
 
 module.exports = bestProfit;

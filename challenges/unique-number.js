@@ -10,7 +10,17 @@
  *
  */
 function uniqueNumber(array) {
-
+  const once = {};
+  const twice = {};
+  array.forEach((n) => {
+    if (once[n]) {
+      twice[n] = n;
+      delete once[n];
+    } else {
+      once[n] = n;
+    }
+  });
+  return Object.keys(once)[0];
 }
 
 module.exports = uniqueNumber;

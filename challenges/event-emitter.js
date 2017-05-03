@@ -23,15 +23,21 @@
 
 class EventEmitter {
   constructor() {
-
+    this.events = {};
   }
 
-  on(funcName, func) {
-    funcName = func;
+  on(listener, func) {
+    listener = func;
+    this.events[listener] = func;
   }
 
-  trigger(funcName, ...args) {
-    funcName(...args);
+  trigger(listener, ...args) {
+    Object.keys(this.events).forEach((event) => {
+      if ()
+    });
+    for (let i = 0; i < args.length; i += 1) {
+
+    }
   }
 
 }

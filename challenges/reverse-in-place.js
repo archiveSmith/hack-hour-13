@@ -14,7 +14,12 @@
  */
 
 function reverseInPlace(array) {
-
+    if (Array.isArray(array)) {
+        for (let i = 0; i < array.length; i += 1) {
+            array.splice(i, 0, array.pop());
+        }
+        return array;
+    } else return 'Input is not array!';
 }
 
 module.exports = reverseInPlace;

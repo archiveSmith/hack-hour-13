@@ -1,21 +1,13 @@
-/* You are given an array of integers with both positive and negative numbers. Write a function to
- * find the maximum sum of all subarrays. A subarray is a section of consecutive elements from the
- * original array. The whole array can be considered a sub array of itself.
- *
- * For example: maxSubarray([1, -2, 3, 10, -4, 7, 2, -5]) -> 18 from [3, 10, -4, 7, 2]
- *              maxSubarray([15,20,-5,10])  -> 40
- *
- */
+function gcd(a, b) {
+  a = Math.abs(a);
+  b = Math.abs(b);
 
-function maxSubarray(arr) {
-  let max = -Infinity;
-  let temp = -Infinity;
+  if (a < b) {[a, b] = [b, a]}
 
-  for (let i = 0; i < arr.length; i += 1) {
-    temp = Math.max(arr[i], temp + arr[i]);
-    max = Math.max(max, temp); 
+  while(true) {
+    if (b === 0) {return a}
+    a = a % b;
+    if (a === 0) {return b}
+    b = b % a;
   }
-  return max;
 }
-
-console.log( maxSubarray([1, -2, 3, 10, -4, 7, 2, -5]) )

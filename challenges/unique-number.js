@@ -9,8 +9,13 @@
  * Complete the challenge in O(1) space
  *
  */
-function uniqueNumber(array) {
-
-}
+ function uniqueNumber(array) {
+   // const cacheFreq = {};
+   let uniq = {};
+   for (let i = 0; i < array.length; i += 1) {
+     uniq[array[i]] ? delete uniq[array[i]] : uniq[array[i]] = 1;
+   }
+   return +Object.keys(uniq)[0];
+ }
 
 module.exports = uniqueNumber;

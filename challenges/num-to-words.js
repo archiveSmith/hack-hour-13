@@ -13,6 +13,15 @@
  */
 
 function numToWords(num) {
+    //base name for other numbers
+    let listNum = [20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0];
+    let incrementNum = [1000000, 1000, 100];
+
+    let listStr = ['Twenty', 'Nineteen', 'Eighteen', 'Seventeen', 'Sixteen', 'Fifteen', 'Fourteen', 'Thirteen', 'Twelve', 'Eleven', 'Ten', 'Nine', 'Eight', 'Seven', 'Six', 'Five', 'Four', 'Three', 'Two', 'One', 'Zero'];
+    let incrementStr = ["Million, 'Thousand", "Hundred"];
+
+    //will have to append hundred, thousand, billion, etc to back of the liststr and work from index 1 and down...
+
 
 }
 

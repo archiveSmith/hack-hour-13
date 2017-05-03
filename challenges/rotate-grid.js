@@ -17,7 +17,22 @@
  */
 
 function rotateGrid(grid, n) {
-
+  //new grid, new holder
+  let result = [];
+  let vessel = [];
+  
+  //while loop to determin number of time required to rotate
+  while (n !== 0) {
+    //take the first indexes of the original and move it to make it rotate 90 degrees
+    // pop will make sure that we always take off the first item, and first item changes every loop
+    for (let i = grid.length - 1; i >= 0; i -= 1) {
+      vessel.push( grid[i].shift() );
+    }
+    result.push(vessel)
+    vessel = [];
+    n -= 1;
+  }
+  return result;
 }
 
 module.exports = rotateGrid;

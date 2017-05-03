@@ -1,7 +1,7 @@
 {
   "name": "hack-hour-13",
   "version": "1.0.0",
-  "description": "",
+  "description": "Hack hours are a series of algorithm problems to refine your problem solving skills. You will be presented a new algorithm problem every day starting after the algorithm unit.",
   "main": "index.js",
   "engines": {
     "node": ">= 5.5.0"
@@ -27,5 +27,18 @@
     "type": "git",
     "url": "git+https://github.com/CodesmithLLC/hack-hour-13.git"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^3.17.0",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.0"
+  },
+  "bugs": {
+    "url": "https://github.com/CodesmithLLC/hack-hour-13/issues"
+  },
+  "homepage": "https://github.com/CodesmithLLC/hack-hour-13#readme",
+  "keywords": [],
+  "author": ""
 }

@@ -10,7 +10,14 @@
  *
  */
 function uniqueNumber(array) {
-
+  let myObj = {};
+  array.forEach((el) =>{
+    if(!myObj[el]) myObj[el] = 1; 
+    else delete myObj[el]
+  })
+  return Object.keys(myObj)[0]
 }
+
+uniqueNumber([5,4,6,8,5,4,6])
 
 module.exports = uniqueNumber;

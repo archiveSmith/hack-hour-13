@@ -19,6 +19,9 @@ function findInOrderedSet2(arr, target) {
 }
 
 function findInOrderedSet3(arr, target) {
+  //take care of edge cases, where there is no array, etc.
+  if (!arr || arr.length === 0) {return false}
+
   let halfIndex = Math.floor(arr.length / 2)
   let halfValue = arr[halfIndex];
   if (target === halfValue) {return true}
@@ -27,8 +30,11 @@ function findInOrderedSet3(arr, target) {
     findInOrderedSet3(arr.slice(0, halfIndex), target) :
     findInOrderedSet3(arr.slice(halfIndex), target) 
 }
+
+
+
 ///////////////////////////////////////////////////
-console.log( findInOrderedSet3([1, 4, 7, 9, 13, 21], 13) )
+console.log( findInOrderedSet4([1, 4, 7, 9, 13, 21], 13) )
 // console.log( findInOrderedSet('4 he', 4) )
 
 

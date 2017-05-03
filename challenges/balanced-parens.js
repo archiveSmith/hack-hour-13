@@ -24,8 +24,28 @@
  *
  */
 
-function balancedParens(input){
-
+function balancedParens(input) {
+    let openParens = ['[','(','{'];
+    let closedParens = [']',')','}'];
+    let testArr = [];
+    for (let i = 0; i < input.length; i++){
+        if (openParens.indexOf(input[i]) !== -1) {
+            testArr.push(input[i])
+        }else if(closedParens.indexOf(input[i]) !== -1){
+            if (openParens[closedParens.indexOf(input[i])] === testArr[testArr.length -1]){
+                testArr.pop();
+            }else{
+                return false;
+            }
+        }
+    }
+    if(testArr.length > 0 )return false;
+    return true;
 }
+
+//
+
+
+console.log(balancedParens(' var wow  = { yo: thisIsAwesome() }'))
 
 module.exports = balancedParens;

@@ -18,7 +18,24 @@
  */
 
 function romanNumeral(n) {
+ let roman = ["I", "V", "X", "L", "C", "D", "M"]
+ let nums =  [1, 5, 10, 50, 100, 500, 1000]
+ let result = '';
+ let number = n.toString()
+ for(let i = 1; i <= number.length; i++){
+    let temp = (number.slice(-i))
+    for(let j = 0; j < nums.length; j ++){
+        console.log(nums[j])
+        if(nums[j].toString().length === temp.length){
+            if(nums[j].toString().charAt(0) < temp.charAt(0) && nums[j + 1].toString().charAt(0) > temp.charAt(0)){
+                console.log(nums[j+1])
 
+            }
+        }
+    }
+ }
+ 
 }
 
+romanNumeral(4986)
 module.exports = romanNumeral;

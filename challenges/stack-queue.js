@@ -4,7 +4,14 @@
 
 
 function Stack() {
+  const storage = [];
 
+  this.push = function() {
+      storage.push.apply(storage, arguments);
+  };
+  this.pop = function() {
+      return storage.pop.apply(storage, arguments);
+  };
 }
 
 
@@ -14,7 +21,19 @@ function Stack() {
 
 
 function Queue() {
+  const inbox = new Stack();
+  const outbox = new Stack();
 
+  this.eneque = function() {
+      inbox.push.apply(inbox, arguments);
+  };
+  this.dequeue = function() {
+      if (outbox.length === 0) {
+          while (inbox.length)
+              outbox.push(inbox.pop());
+      }
+      return outbox.pop();
+  };
 }
 
 module.exports = {Stack: Stack, Queue: Queue};

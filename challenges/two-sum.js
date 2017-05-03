@@ -3,7 +3,14 @@
  */
 
 function twoSum(arr, n) {
-
+  if (!Array.isArray(arr) || typeof n !== 'number') return 'Invalid input';
+  let output = false;
+  for (let i = 0; i < arr.length - 1; i += 1) {
+    for (let j = i; j < arr.length; j += 1) {
+      if (arr[i] + arr[j] === n) output = true;
+    }
+  }
+  return output;
 }
 
 module.exports = twoSum;

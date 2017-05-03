@@ -10,7 +10,21 @@
  *
  */
 function uniqueNumber(array) {
+  const counterObj = {};
 
+  for(let i = 0; i < array.length; i += 1) {
+    if( !counterObj.hasOwnProperty(array[i]) ) {
+      counterObj[array[i]] = 1;
+    } else if( counterObj.hasOwnProperty(array[i]) && counterObj[array[i]] === 1) {
+      counterObj[array[i]] = 2;
+    }
+  }
+
+  for(let x in counterObj) {
+    if(counterObj[x] === 1) {
+      return Number(x)
+    }
+  }
 }
 
 module.exports = uniqueNumber;

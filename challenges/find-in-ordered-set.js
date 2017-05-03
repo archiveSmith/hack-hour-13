@@ -9,11 +9,11 @@ findInOrderedSet(nums, 2);  -> false
 
 
 function findInOrderedSet(arr, target) {
-  if (arr.length === 0) return false;
+  if (!arr || arr.length === 0) return false;
   let middle = Math.floor(arr.length / 2);
   if (target === arr[middle]) return true;
   if (arr.length === 1) return false;
-  if (target > arr[middle]) return findInOrderedSet(arr.slice(middle, arr.length), target)
+  if (target > arr[middle]) return findInOrderedSet(arr.slice(middle + 1, arr.length), target)
   if (target < arr[middle]) return findInOrderedSet(arr.slice(0, middle), target);
 }
 

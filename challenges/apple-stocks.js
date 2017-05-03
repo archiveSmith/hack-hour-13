@@ -12,8 +12,36 @@
  *  Return 0 if no profit is possible OR if input is invalid.
  */
 
-function bestProfit(stock_prices_yesterday) {
+  //  if (stock_prices_yesterday.length === 0) {
+  //    return 0;
+  //  }
+  //  // store best profit you can make
+  //  var best = 0;
+  //  // iterate through stock_prices_yesterday and find the best one
+  //  for (var i=0; i <= stock_prices_yesterday.length - 1; i++){
+  //    for (var j=i+1; j <= stock_prices_yesterday.length - 1; j++) {
+  //      var div = stock_prices_yesterday[j] - stock_prices_yesterday[i];
+  //      best = Math.max(best, div);
+  //    }
+  //  }
+  //  return best;
+  function bestProfit(stock_prices_yesterday) {
+  // if stock_prices_yesterday is empty return 0
+  if (stock_prices_yesterday.length === 0) {
+    return 0;
+  }
+  // declare cheapest and best profit
+  var cheapest = stock_prices_yesterday[0];
+  var profit = 0;
 
+  for (var i=0; i <= stock_prices_yesterday.length - 1; i++){
+    cheapest = Math.min(cheapest, stock_prices_yesterday[i]);
+    var div = stock_prices_yesterday[i] - cheapest;
+    profit = Math.max(profit, div);
+  }
+  return profit;
 }
+
+
 
 module.exports = bestProfit;

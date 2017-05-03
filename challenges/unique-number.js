@@ -9,7 +9,23 @@
  * Complete the challenge in O(1) space
  *
  */
+
 function uniqueNumber(array) {
+	let counter= {};
+	for(let number of array){
+		if(counter[number]){
+			counter[number] += 1;
+		}
+		else{
+			counter[number] =1;
+		}
+		
+	}
+	for(let key in counter){
+		if(counter[key] === 1){
+			return key
+		}
+	}
 
 }
 

@@ -9,9 +9,19 @@
  *
  */
 
+ function modemean(array, memo = {}) {
+   const mean = Math.floor((array.reduce((accum, curr) => accum + curr)) / array.length);
 
-function modemean(array) {
+   for (let i = 0; i < array.length; i++) {
+     if(memo.hasOwnProperty(memo[array[i]])) {
+       memo[array[i]]++;
+     } else {
+     memo[array[i]] = 1;
+     }
+   }
 
-}
+   const mode = Number(Object.keys(memo).reduce((accum, curr) => memo[accum] > memo[curr] ? accum : curr));
+   return mode === mean;
+ }
 
 module.exports = modemean;

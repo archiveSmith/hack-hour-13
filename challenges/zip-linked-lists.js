@@ -11,6 +11,12 @@ function Node(val) {
 }
 
 function zip(l1, l2) {
+  //case when l1 or l2 does not exist
+  if(!l1) return l2;
+  if(!l2) return l1;
+
+  
+
 };
 
 module.exports = {Node: Node, zip: zip};

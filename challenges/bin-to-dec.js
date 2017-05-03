@@ -14,7 +14,27 @@
  */
 
 function binToDec(binary) {
-
+  //stores final result and value o be added depending on 0 or 1
+  let result = 0;
+  let digitMover = 1;
+  
+  //set initial condition
+  if (binary.charAt(binary.length) === '1') {
+    result = 1;
+  }
+  
+  //loop from 1st digit the move up, see if 1 or 0.
+  for (let i = binary.length-1; i >=0; i -= 1) {
+    
+  //if next digit is 1, add the value of 1 in that digit placement. If 0, just increase the next value's digit placement 
+  if (binary.charAt(i) === '1') {
+      result += digitMover;
+      digitMover *= 2;
+    } else if (binary.charAt(i) === '0') {
+      digitMover *= 2;
+    }
+  }
+  return result;
 }
 
 module.exports = binToDec;

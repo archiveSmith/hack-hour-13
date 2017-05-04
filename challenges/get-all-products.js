@@ -9,8 +9,24 @@
  * do not use division, becuase zero might be in the array and you cannot divide by zero
  */
 
-function getAllProducts(array) {
-
+function getAllProducts(chars) {
+var result = [];
+  var f = function(prefix, chars) {
+    for (var i = 0; i < chars.length; i++) {
+      result.push(prefix + chars[i]);
+      f(prefix + chars[i], chars.slice(i + 1));
+    }
+  }
+  f('', chars);
+  result = result.filter(numbers => numbers.length === chars.length-1)
+  return result.map(function(e){
+  	
+  	return e.split('').reduce(function(acum, next){
+  		return acum * +next
+  	})
+  });
+  
+  
 }
 
 module.exports = getAllProducts;

@@ -104,7 +104,7 @@ const mergeRanges4 = (array) => array.sort((a, b) => a[0] - b[0])
 var times = [ [0, 1], [3, 5], [4, 8], [9, 10], [10, 12], [13, 19]];
 var times2 = [ [0, 4], [6, 8], [10, 12], [9, 10], [3, 5]];
 
-console.log( mergeRanges(times2) )
+console.log( mergeRanges5(times) )
 
 /*
 input: array containing arrays

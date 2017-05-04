@@ -17,6 +17,14 @@ function insertionSort(arr) {
   return arr;
 }
 
+function insertionSort2(arr) {
+  for (let sorted = 0; sorted < arr.length; sorted += 1) {
+    for (let swap = sorted + 1; array[swap] < array[swap - 1]; swap -= 1) {
+      [array[swap - 1], array[swap]] = [array[swap], array[swap - 1]];
+    }
+  }
+}
+
 ////////////////////////////////////////////
 console.log( insertionSort([44,5,6,3,9,1,13,11,0]) )
 

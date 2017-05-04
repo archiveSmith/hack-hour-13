@@ -11,10 +11,11 @@
 
  function getAllProducts(array) {
    if (!array) return [];
+   if (array.length === 0) return 0;
    if (array.length === 1) return array;
    const result = [];
    for (let i = 0; i < array.length; i += 1) {
-     var newArr = array.slice(0, i).concat(array.slice(i+1));
+     const newArr = array.slice(0, i).concat(array.slice(i + 1));
      const product = newArr.reduce((a, b) => a * b);
      result.push(product);
    }

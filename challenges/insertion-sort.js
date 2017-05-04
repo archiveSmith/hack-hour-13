@@ -15,22 +15,36 @@
 //   }
 // }
 
-function insertionSort(arr) {  
-  if(arr.length < 1) return [];
-  //iterate through the array
-    for (var i = 1; i < arr.length; i++) {
-      //copy the current element in the array
-        var tmp = arr[i]; 
-        /*Check through the sorted part and compare with the number in tmp. If large, shift the number*/
-        for (var j = i - 1; j >= 0 && (arr[j] > tmp); j--) {
-            //Shift the number
-            arr[j + 1] = arr[j];
-        }
-        //Insert the copied number at the correct position
-        //in sorted part. 
-        arr[j + 1] = tmp;
+// function insertionSort(arr) {  
+  // if(arr.length < 1) return [];
+  // //iterate through the array
+  //   for (var i = 1; i < arr.length; i++) {
+  //     //copy the current element in the array
+  //       var tmp = arr[i]; 
+  //       /*Check through the sorted part and compare with the number in tmp. If large, shift the number*/
+  //       for (var j = i - 1; j >= 0 && (arr[j] > tmp); j--) {
+  //           //Shift the number
+  //           arr[j + 1] = arr[j];
+  //       }
+  //       //Insert the copied number at the correct position
+  //       //in sorted part. 
+  //       arr[j + 1] = tmp;
+  //   }
+  //   return arr;
+// }
+
+//SOLUTION
+function insertionSort(array){
+  for (let sorted = 0; sorted < array.length; sorted += 1) {
+    for(let swap = sorted +1; array[swap]< array[swap - 1]; swap -= 1){
+      // [array[swap - 1], array[swap]] = [array[swap], array[swap -1]]
+      //Commented out solution is the same as :
+      const temp = array[swap]
+      array[swap] = array[swap - 1];
+      array[swap -1] = temp;
     }
-    return arr;
+  }
+  return array;
 }
 
 const myArr = [5,3,1,2,4]

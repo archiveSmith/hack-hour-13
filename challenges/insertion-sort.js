@@ -5,15 +5,21 @@
 
 
 function insertionSort(array) {
-  for (let i = 1; i < array.length; i += 1) {
-    let j = i - 1;
-    let temp = array[i];
-    while (j >= 0) {
-      if (temp < array[j]) {
-        array[j + 1] = array[j];
-        array[j] = temp;
-      }
-      j -= 1;
+  // for (let i = 1; i < array.length; i += 1) {
+  //   let j = i - 1;
+  //   let temp = array[i];
+  //   while (j >= 0) {
+  //     if (temp < array[j]) {
+  //       array[j + 1] = array[j];
+  //       array[j] = temp;
+  //     }
+  //     j -= 1;
+  //   }
+  // }
+  // return array;
+  for (let sorted = 0; sorted < array.length; sorted += 1) {
+    for (let swap = sorted + 1; array[swap] < array[swap - 1]; swap -= 1) {
+      [array[swap - 1], array[swap]] = [array[swap], array[swap - 1]];
     }
   }
   return array;

@@ -9,8 +9,17 @@
  * do not use division, becuase zero might be in the array and you cannot divide by zero
  */
 
-function getAllProducts(array) {
-
-}
+ function getAllProducts(array) {
+   let allProds = [];
+   // iterate through the array
+   // at each element, concat to allProds
+   // when there is one element, find the product of the last 3 elements in allProds
+   // for the base case, have it for when array is at a length of 1
+   for (let i = 0; i < array.length; i += 1) {
+     let restOfNums = array.slice(0,i).concat(array.slice(i+1));
+     allProds.push(restOfNums.reduce((acc,curr) => acc *= curr));
+   }
+   return allProds;
+ }
 
 module.exports = getAllProducts;

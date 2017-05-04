@@ -10,7 +10,7 @@
  */
 
 function getAllProducts(array) {
-
+  return array.map((num, idx) => array.slice(0, idx).concat(array.slice(idx + 1).reduce((accum, curr) => accum * curr, 1)))
 }
 
 module.exports = getAllProducts;

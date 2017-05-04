@@ -6,10 +6,11 @@
  * this is done via:
  * [7*3*4, 1*3*4, 1*7*4, 1*7*3]
  *
- * do not use division, becuase zero might be in the array and you cannot divide by zero
+ * do not use division, because zero might be in the array and you cannot divide by zero
  */
 
 function getAllProducts(array) {
+  if (array.length === 0) return [0];
   let result = [];
   for (let i = 0; i < array.length; i += 1) {
     let count = 1;

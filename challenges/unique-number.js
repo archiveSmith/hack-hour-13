@@ -10,6 +10,7 @@
  *
  */
 
+//------not O(n) space b/c made a cache ---------------------
 function uniqueNumber(array) {
   let cache = array.reduce((obj, curr) => {
     obj[curr] ? obj[curr]++ : obj[curr] = 1;
@@ -20,7 +21,7 @@ function uniqueNumber(array) {
   })
 }
 
-//------------sort/filter still O(n) time? yes
+//-----O(n) space-------sort/filter still O(n) time? yes
 function uniqueNumber2(array) {
   return array.sort((a,b) => a - b)
     .filter((n, i, arr) =>

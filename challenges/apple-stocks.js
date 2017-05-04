@@ -67,7 +67,22 @@ function bestProfit2(prices) {
   return profit;
 }
 
+//-----------slowest due to O(n^2)------quadratic
+function bestProfit3(arr) {
+  if (arr.length === 0 || !arr || !Array.isArray(arr)) return 0;
 
+  let maxDiff = 0;
+
+  for (let i = 0; i < arr.length; i += 1) {
+    for (let j = i + 1; j < arr.length; j += 1) {
+      let currDiff = arr[j] - arr[i]
+      if (currDiff > maxDiff){
+        maxDiff = currDiff
+      }
+    }
+  }
+  return maxDiff;
+}
 
 
 

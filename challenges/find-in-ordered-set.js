@@ -29,5 +29,19 @@ function findInOrderedSet(arr, target) {
 
 }
 
+function findInOrderedSet2(arr, targert) {
+    //check for undefined or empty array
+    if(!arr || arr.length === 0) return false;
+
+    //find middle index of array
+    let mid = Math.floor(arr.length/2);
+
+    //if middle index has target return true
+    if(arr[mid] === target) return true;
+
+    //examine a slice of the array conditioned by target's comp
+    return arr[mid] > target ? findInOrderedSet(arr.slice(0, mid), target) : findInOrderedSet(arr.slice(mid +1), target);
+}
+
 
 module.exports = findInOrderedSet;

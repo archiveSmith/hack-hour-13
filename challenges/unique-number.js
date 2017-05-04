@@ -9,6 +9,19 @@
  * Complete the challenge in O(1) space
  *
  */
+
+//O(n) time, O(n) space
+function uniqueNumber(array) {
+    let obj = {};
+    for(let i = 0; i < array.length; i += 1) {
+        if(!obj[array[i]]) obj[array[i]] = 1;
+        else delete obj[array[i]];
+    }
+    return Number(Object.keys(obj).join(''));
+}
+
+// console.log(uniqueNumber([1,2,1,3,3]));
+
 function uniqueNumber(array) {
 
 }

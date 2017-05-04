@@ -1,3 +1,5 @@
+// DONE - Angela
+
 /**
  * Write a function that will take an array of integers, all of which will appear exactly twice,
  * except for one integer that will appear exactly once. Return the integer that appears once.

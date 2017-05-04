@@ -1,3 +1,5 @@
+// DONE - Angela
+
 /* You have two numbers represented by linked lists. Each node contains a single digit. The digits
  * are stored in reverse order, such that the 1's digit is at the head of the list. Write
  * a function that adds the two numbers and returns the sum as a linked list with the same
@@ -47,18 +49,18 @@ function addLinkedList(l1, l2) {
   return firstNode;
 }
 
-// var n1 = new Node(2);
-// var n2 = new Node(1);
-// var n3 = new Node(5);
-// n1.next = n2;
-// n2.next = n3;
+var n1 = new Node(2);
+var n2 = new Node(1);
+var n3 = new Node(5);
+n1.next = n2;
+n2.next = n3;
 
-// var n4 = new Node(5);
-// var n5 = new Node(9);
-// var n6 = new Node(2);
-// n4.next = n5;
-// n5.next = n6;
+var n4 = new Node(5);
+var n5 = new Node(9);
+var n6 = new Node(2);
+n4.next = n5;
+n5.next = n6;
 
-// console.log(addLinkedList(n1, n4));
+console.log(addLinkedList(n1, n4));
 
 module.exports = { Node: Node, addLinkedList: addLinkedList };

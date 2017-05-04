@@ -10,7 +10,19 @@
  */
 
 function getAllProducts(array) {
+  let arrOfProducts = [];
+  for (let i = 0; i < array.length; i++) {
+    let tempArr = array.slice(0, array.length);
+    tempArr.splice(i, 1);
+    arrOfProducts.push(findProduct(tempArr));
+  }
+  return arrOfProducts;
+}
 
+function findProduct(array) {
+  return array.reduce((total, num) => {
+    return total * num;
+  });
 }
 
 module.exports = getAllProducts;

@@ -13,9 +13,9 @@
   */
 
 function anagrams(string) {
-  const array = str.split('');
+  const array = string.split('');
   
-  function again (letters) {
+  function again(letters) {
     let results = [];
     if (letters.length <= 1) {
       return results.concat(letters);

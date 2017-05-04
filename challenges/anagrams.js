@@ -13,21 +13,25 @@
   */
 
 function anagrams(string) {
+  if (!string) return [''];
   const array = string.split('');
   
-  function again(letters) {
+  function again (letters) {
     let results = [];
     if (letters.length <= 1) {
       return results.concat(letters);
     }
-    for (var i = 0; i < letters.length; i++) {
+    for (let i = 0; i < letters.length; i++) {
       const front = letters[i];
       const theRest = letters.slice(0, i).concat(letters.slice(i + 1));
       results = results.concat(again(theRest).map(str => front + str));
     }
     return results;
   }
-  return again(array);
+  //last resort to get rid of duplicates: should be done somehow above
+  return final = again(array).filter((item, index) => {
+    return again(array).indexOf(item) === index;
+  })
 }
 
 module.exports = anagrams;

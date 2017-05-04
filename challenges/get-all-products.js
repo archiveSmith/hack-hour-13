@@ -10,6 +10,7 @@
  */
 
 function getAllProducts(array, productArr = []) {
+  if (array.length === 0) return 0; 
   if(array.length === productArr.length) return productArr;
   let product = 1;
   for(let i = 0; i < array.length -1; i ++){
@@ -20,6 +21,6 @@ function getAllProducts(array, productArr = []) {
   let myArr = array.slice(1, array.length).concat(array.slice(0, 1))
   return getAllProducts(myArr, productArr);
 }
-getAllProducts([1, 7, 3, 4]); //->  [84, 12, 28, 21]
+getAllProducts([]); //->  [84, 12, 28, 21]
 
 module.exports = getAllProducts;

@@ -10,6 +10,8 @@
  */
 
  function getAllProducts(array) {
+   if (!array.length) return [0];
+   if (array.length === 1) return array;
    let allProds = [];
    // iterate through the array
    // at each element, concat to allProds

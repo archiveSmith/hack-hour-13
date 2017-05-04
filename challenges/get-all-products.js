@@ -10,9 +10,10 @@
  */
 
 function getAllProducts(array) {
+  if(array.length === 0 ) return [0];
   let result = [];
-  for(let i = 0; i < array.length; i += 1){
-    result.push( array.filter((element,index) => index !== i).reduce((accum,curr) => accum*curr));
+  for(let i = 0; i < array.length; i += 1) {
+    result.push( array.filter((element,index) => index !== i).reduce((a,c) => a * c) );
   }
   return result;
 }

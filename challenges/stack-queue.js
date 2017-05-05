@@ -20,7 +20,7 @@ function Queue() {
 	let stack2 = [];
 
 	this.enqueue = () => {
-		if (stack1.length = 0) stack1.push(item);
+		if (stack1.length === 0) stack1.push(item);
 		if (stack1.length !== 0) {
 			let j = 0;
 			let i = 0;

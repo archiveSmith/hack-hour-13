@@ -18,16 +18,24 @@ Adds a node to the end of the list
  */
 LinkedList.prototype.add = function (val) {
   // create new Node that will go at the end of list, then reassign the values
-  let newTail = new Node(val);
-  newTail.prev = this.tail;
-  this.tail.next = newTail;
-  this.tail = newTail;
+  let newNode = new Node(val);
+
+  if (!this.head) {
+    this.head = newNode;
+    this.tail = newNode;
+  } else {
+    newNode.prev = this.tail;
+    this.tail.next = newNode;
+    this.tail = newNode;
+  }
 };
 
 /*
 Removes the first node with the inputted value
  */
 LinkedList.prototype.remove = function (val) {
+  if (!this.head) return
+
   for (let i = this.head; i; i = i.next) {
     if (i.val === val) {
       // if the value that is being removed is the first value, only reassign the head

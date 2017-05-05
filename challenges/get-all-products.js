@@ -10,7 +10,7 @@
  */
 
 function getAllProducts(array) {
-
+  return array.map((n, i) => array.filter((el, j) => i !== j).reduce((a, b) => a * b));
 }
 
 module.exports = getAllProducts;

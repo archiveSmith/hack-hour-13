@@ -11,7 +11,7 @@
  */
 
 //O(n) time, O(n) space
-function uniqueNumber(array) {
+function uniqueNumber1(array) {
     let obj = {};
     for(let i = 0; i < array.length; i += 1) {
         if(!obj[array[i]]) obj[array[i]] = 1;
@@ -23,7 +23,12 @@ function uniqueNumber(array) {
 // console.log(uniqueNumber([1,2,1,3,3]));
 
 function uniqueNumber(array) {
-
+    let result = 0;
+    for (let i = 0; i < array.length; i += 1) {
+        result = result ^ array[i];
+    }
+    return result;
 }
+
 
 module.exports = uniqueNumber;

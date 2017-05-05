@@ -8,7 +8,14 @@
 // matchWord('');  -> true
 
 function matchWord(str) {
-
+  console.log(str.split(/[.\-_\[\]\{\}/))
+  //console.log(str.split(/[A-Z]/gi))
 }
 
 module.exports = matchWord;
+ matchWord('__END_DNE-----'); // -> true
+ matchWord('__ENDDNE__'); // -> false       (not separated by a space)
+ matchWord('IF()()fi[]'); // -> true        (should be case-insensitive)
+ matchWord('for__if__rof__fi'); // -> false     not properly closed. like ( [) ] 
+ matchWord('%%$@$while  try ! yrt  for if_fi rof #*#  elihw'); // -> true
+ matchWord('');//  -> true

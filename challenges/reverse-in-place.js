@@ -14,7 +14,15 @@
  */
 
 function reverseInPlace(array) {
+    let originLen = array.length;
+    for(let i = array.length-1; i >= 0; i--){
+        array.push(array[i])
+    }
+    return (array.splice(-originLen))
+
 
 }
 
+
+reverseInPlace(['puppy', 'kitten', 'penguin', 'shark', 'soup', 'silly', 'string‰'])
 module.exports = reverseInPlace;

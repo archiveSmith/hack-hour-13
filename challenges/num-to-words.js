@@ -12,8 +12,32 @@
  * numToWords(92120000000000000) -> 'NintyTwoQuadrillionOneHundredTwentyTrillion'
  */
 
-function numToWords(num) {
-
+let onesDigits = {
+  1: "one", 
+  2: "two", 
+  3: "three", 
+  4: "four", 
+  5: "five", 
+  6: "six",
+  7: "seven",
+  8: "eight", 
+  9: "nine"
+}
+let tensDigits = {
+  10: "ten", 
+  11: "eleven", 
+  12: "twelve", 
+  13: "thirteen", 
+  15: "fifteen", 
+  20: "twenty",
+  30: "thirty", 
+  40: "forty", 
+  50: "fifty",
 }
 
+function numToWords(num) {
+  if(typeof num !== 'number') return "Please Submit a Number";
+  let stringNum = (num).toString();
+}
+console.log((1000).toString().charAt(0))
 module.exports = numToWords;

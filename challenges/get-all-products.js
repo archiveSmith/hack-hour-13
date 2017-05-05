@@ -10,17 +10,18 @@
  */
 
 function getAllProducts(array) {
-  if (array.length === 0) return [0];
-  let result = [];
-  for (let i = 0; i < array.length; i += 1) {
-    let count = 1;
-    for (let j = 0; j < array.length; j += 1) {
-      if (i === j) continue;
-      count *= array[j];
-    }
-    result.push(count);
-  }
-  return result;
+  // if (array.length === 0) return [0];
+  // let result = [];
+  // for (let i = 0; i < array.length; i += 1) {
+  //   let count = 1;
+  //   for (let j = 0; j < array.length; j += 1) {
+  //     if (i === j) continue;
+  //     count *= array[j];
+  //   }
+  //   result.push(count);
+  // }
+  // return result;
+  return array.map((num, i , a) => a.slice(0, i).concat(a.slice(i + 1)).reduce((acc, cur) => acc * cur));
 }
 
 module.exports = getAllProducts;

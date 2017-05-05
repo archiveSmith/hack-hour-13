@@ -14,7 +14,12 @@
  */
 
 function binToDec(binary) {
+  let output = 0;
+  const myBinaryArray = [1,2,4,8,16,32,64,128,256,512,1024,2048, 4096]
 
+  for(let i = 0; i < binary.length; i += 1) {
+    output += parseInt(binary[i]) * myBinaryArray[binary.length - i - 1]
+  }
+  return output;
 }
-
 module.exports = binToDec;

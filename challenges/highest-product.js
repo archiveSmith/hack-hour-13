@@ -3,8 +3,10 @@
  */
 
 function highestProduct(array) {
-
+  if (array.length < 3) return 0;
+  let arr = array.sort((a, b) => {
+    return b - a;
+  })
+  return Math.max((arr[0] * arr[1] * arr[2]), (arr[0] * arr[arr.length - 1] * arr[arr.length - 2]))
 }
-
-
 module.exports = highestProduct;

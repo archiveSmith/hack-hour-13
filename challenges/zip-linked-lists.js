@@ -11,6 +11,46 @@ function Node(val) {
 }
 
 function zip(l1, l2) {
+  if (!l2) return l1;
+  if (!l1) return l2;
+  let node = new Node(l1.value);
+  node.next = new Node(l2.value);
+  let curr = node.next;
+  let currL1 = l1.next;
+  let currL2 = l2.next;
+  while (currL1 && currL2) {
+    curr.next = new Node(currL1.value);
+    curr.next.next = new Node(currL2.value);
+    curr = curr.next.next;
+    currL1 = currL1.next;
+    currL2 = currL2.next;
+  }
+  console.log(node)
+  return node;
 };
+
+const linked = {
+  value: 1,
+  next: {
+    value: 2,
+    next: {
+      value: 3,
+      next: null
+    }
+  }
+};
+
+const linked2 = {
+  value: 'A',
+  next: {
+    value: 'B',
+    next: {
+      value: 'C',
+      next: null
+    }
+  }
+};
+
+zip(linked, linked2);
 
 module.exports = {Node: Node, zip: zip};

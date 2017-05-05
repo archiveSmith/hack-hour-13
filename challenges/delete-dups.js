@@ -13,7 +13,19 @@
 
 
 function deleteDups(head) {
-
+  let curr = head;
+  const val = [];
+  while (curr) {
+    if (!val.includes(curr.value)) {
+      val.push(curr.value);
+      curr = curr.next;
+    } else {
+      curr.value = curr.next.value;
+      curr.next = curr.next.next;
+    }
+  }
+  return head;
 }
+
 
 module.exports = deleteDups;

@@ -8,7 +8,14 @@
 // matchWord('');  -> true
 
 function matchWord(str) {
+  var arrClose = [];
+  var words = str.match(/([a-zA-Z])/ig);
+  // for (let i = 0; i < str.length; i++){
+  //   if()
+  // }
+  console.log(words);
 
 }
 
+matchWord('__END_DNE-----');
 module.exports = matchWord;

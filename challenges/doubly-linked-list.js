@@ -16,7 +16,7 @@ function Node(val) {
 /*
 Adds a node to the end of the list
  */
-LinkedList.prototype.add = function(val) {
+LinkedList.prototype.add = function (val) {
   const node = new Node(val);
   if (!this.head) {
     this.head = node;
@@ -31,15 +31,23 @@ LinkedList.prototype.add = function(val) {
 /*
 Removes the first node with the inputted value
  */
-LinkedList.prototype.remove = function(val) {
+LinkedList.prototype.remove = function (val) {
   if (!this.head) return undefined;
   for (let i = this.head; i; i = i.next) {
     if (i.val === val) {
-      i.prev.next = i.next;
-      i.next.prev = i.prev;
+      if (i === this.head) {
+        this.head = i.next;
+        this.head.prev = null;
+      } else if (i === this.tail) {
+        this.tail = i.prev;
+        this.tail.next = null;
+      } else {
+        i.prev.next = i.next;
+        i.next.prev = i.prev;
+      }
     }
+    break;
   }
-  return undefined;
 };
 
 module.exports = LinkedList;

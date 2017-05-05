@@ -10,7 +10,7 @@
  *
  */
 
-//------not O(n) space b/c made a cache ---------------------
+//------not O(n) space b/c made a cache but O(n) time---------------------
 function uniqueNumber(array) {
   let cache = array.reduce((obj, curr) => {
     obj[curr] ? obj[curr]++ : obj[curr] = 1;
@@ -21,7 +21,7 @@ function uniqueNumber(array) {
   })
 }
 
-//-----O(n) space-------sort/filter still O(n) time? yes
+//-----O(n) space------- O(n log n) time b/c had to use sort
 function uniqueNumber2(array) {
   return array.sort((a,b) => a - b)
     .filter((n, i, arr) =>
@@ -29,9 +29,13 @@ function uniqueNumber2(array) {
     )
 }
 
-//-----double for loop (would have O(n) space but not O(n) time 
+//-----bonus solution---------------bitwise (x or operator) exclusive OR (think dominos)
 function uniqueNumber3(array) {
-
+  var result = 0;
+  for (let i = 0; i < array.length; i += 1) {
+    result = result ^ array[i];
+  }
+  return result;
 }
 
 ////////////////TESTING/////////////////////

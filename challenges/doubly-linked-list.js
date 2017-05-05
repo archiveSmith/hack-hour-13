@@ -47,7 +47,7 @@ LinkedList.prototype.remove = function (val) {
 
       return;
     }
-    traverse(node.next);
+    return traverse(node.next);
   }
   traverse(this.head);
 };

@@ -30,22 +30,20 @@ function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
     return {'x': x, 'y': y[i], 'r': r[i]}
   })
 
-  console.log('test', circleCountry)
-
   for(let i = 0; i < circleCountry.length; i += 1) {
     // compute start and end points from the center of the circle
-    const distFromEnd = Math.sqrt(Math.pow(circleCountry.x - end_x, 2) + Math.pow(circleCountry.y - end_y, 2));
-    const distFromStart = Math.sqrt(Math.pow(circleCountry.x - start_x, 2) + Math.pow(circleCountry.y - start_y, 2));
-    
+    const distFromEnd = Math.sqrt(Math.pow(circleCountry[i].x - end_x, 2) + Math.pow(circleCountry[i].y - end_y, 2));
+    const distFromStart = Math.sqrt(Math.pow(circleCountry[i].x - start_x, 2) + Math.pow(circleCountry[i].y - start_y, 2));
+
     // if both end and start are inside of the circle, skip
-    if (disFromEnd < circleCountry.r && disFromStart < circleCountry.r) {
+    if (distFromEnd < circleCountry[i].r && distFromStart < circleCountry[i].r) {
       continue;
     }
     
     // add a border if
       // the distance from the end is inside the radius 
       // the distance from the start is inside the radius
-    if (distFromEnd < circleCountry.r || disFromStart < circleCountry.r) {
+    if (distFromEnd < circleCountry[i].r || distFromStart < circleCountry[i].r) {
       numBorders += 1;
     }
   }
@@ -53,21 +51,15 @@ function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
   return numBorders;
 }
 
+// let x = [0];
+// let y = [0];
+// let r = [2];
+// let start_x = 0;
+// let start_y = 1;
+// let end_x = 3;
+// let end_y = 3;
+
+
+// circleCountry(x, y, r, start_x, start_y, end_x, end_y)
+
 module.exports = circleCountry;
-
-
-
-
-
-  // const crossedDistricts = circleCountry.reduce((acc, curr) => {
-  //   // loop through the matricies and remove any positions that do not pertain to this problem
-  //   // if distance from the center of each circle from the start point is greater than the radius, 
-    
-
-
-
-  // // check if the endpoint is inside of a circle
-  // // if it is, check if start point is inside of the same circle
-
-  // // calculate distance from the center of a circle using pythagorean theorm
-  // return crossedDistricts.length;

@@ -28,8 +28,7 @@ function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
     if ((x[i] + r[i] > start_x) && (y[i] + r[i] > start_y)) count += 1;
     if ((x[i] + r[i] > end_x) && (y[i] + r[i] > end_y)) count += 1;
 
-    if ((x[i] + r[i] < start_x) && (y[i] + r[i] < start_y)) count += 1;
-    if ((x[i] + r[i] < end_x) && (y[i] + r[i] < end_y)) count += 1;
+    if ((x[i] + r[i] > start_x) && (y[i] + r[i] > start_y) && (x[i] + r[i] > end_x) && (y[i] + r[i] > end_y)) count -= 1;
   }
   return count;
 }

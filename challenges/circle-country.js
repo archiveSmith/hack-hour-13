@@ -30,6 +30,8 @@ function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
     return {'x': x, 'y': y[i], 'r': r[i]}
   })
 
+  console.log('test', circleCountry)
+
   for(let i = 0; i < circleCountry.length; i += 1) {
     // compute start and end points from the center of the circle
     const distFromEnd = Math.sqrt(Math.pow(circleCountry.x - end_x, 2) + Math.pow(circleCountry.y - end_y, 2));

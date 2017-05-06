@@ -17,39 +17,46 @@ function Node(val) {
 Adds a node to the end of the list
  */
 LinkedList.prototype.add = function (val) {
+  const newNode = new Node(val);
+
   if (!this.head) {
-    this.head = this.tail = new Node(val);
-  } else {
-    let currlast = this.tail;
-    this.tail.next = new Node(val);
-    this.tail = this.tail.next;
-    this.tail.prev = currlast;
-  }
+    this.head = this.tail = newNode;
+    return;
+  } 
+  
+  newNode.prev = this.tail;
+  this.tail.next = newNode;
+  this.tail = newNode;
 };
 
 /*
 Removes the first node with the inputted value
  */
 LinkedList.prototype.remove = function (val) {
-  function traverse(node) {
-    if (!node || node.next === null) return;
-    if (node.val === val) {
-      let previous = node.prev;
-      let next = node.next;
+  let node = this.head;
+  if (!node) return;
 
-      if (previous === null) {
-        this.head = next;
-        next.prev = null;
-      } else {
-        previous.next = next;
-        next.prev = previous;
+  if (node. val === val) {
+    if (node.next) node.next.prev = null;
+    this.head = node.next;
+    delete node;
+    return;
+  }
+
+  while (node) {
+    if (node.val === val) {
+      node.prev.next = node.next;
+      if (node.next) node.next.prev = node.prev;
+      if (node === this. tail) {
+        this.tail = node.prev;
+        this.tail.next = null;
       }
 
+      delete node;
       return;
     }
-    return traverse(node.next);
+    node = node.next;
   }
-  traverse(this.head);
 };
 
 module.exports = LinkedList;

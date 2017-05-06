@@ -37,15 +37,29 @@ Removes the first node with the inputted value
  */
 LinkedList.prototype.remove = function(val) {
   let currentNode = this.head;
-  while(currentNode){
-    if(currentNode.val === val){
-      currentNode = currentNode.next;
-      break;
-    }
+  let previous;
 
+  //case 1: delete the head
+  if(currentNode.value === val){
+    this.head = currentNode.next;
+
+    //if there is only one node then head is null
+    if(this.head){
+      this.head.previous = null;
+    }
+    return;
+  }
+  
+  while(currentNode.next){
+    if(currentNode.val === val){
+      previous.next = currentNode.next;
+      currentNode.next.previous  = previous;
+      return;
+    }
+    previous = currentNode;
     currentNode = currentNode.next;
   }
-  this._length--;
+  return;
 };
 
 module.exports = LinkedList;

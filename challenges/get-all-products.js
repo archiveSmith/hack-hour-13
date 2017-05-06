@@ -21,7 +21,7 @@ function getAllProducts(array) {
   //   result.push(count);
   // }
   // return result;
-  return array.map((num, i , a) => a.slice(0, i).concat(a.slice(i + 1)).reduce((acc, cur) => acc * cur));
+  return array.map((num, i , a) => a.slice(0, i).concat(a.slice(i + 1))).reduce((acc, cur) => acc * cur);
 }
 
 module.exports = getAllProducts;

@@ -28,11 +28,13 @@ function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
     const sxDistSq = (x[i] - start_x)*(x[i] - start_x);
     const syDistSq = (y[i] - start_y)*(y[i] - start_y);
     const sxyDist = Math.sqrt(sxDistSq + syDistSq);
-    const exDistSq = (x[i] - end_x)*(x[i] - end);
-    const eyDistSq = (y[i] - end_y)*(y[i] - end);
+    const exDistSq = (x[i] - end_x)*(x[i] - end_x);
+    const eyDistSq = (y[i] - end_y)*(y[i] - end_y);
     const exyDist = Math.sqrt(exDistSq + eyDistSq);
 
-    if (sxyDist < r || exyDist < r) counter += 1;
+    if (sxyDist < r || exyDist < r) {
+      counter += 1;
+    }
   }
 
   return counter;

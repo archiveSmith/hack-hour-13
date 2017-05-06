@@ -69,4 +69,8 @@ function getAllProducts(array) {
   return result;
 }
 
+// function getAllProducts(array) {
+//   return array.map((num, i, a) => { return a.slice(0, i).concat(a.slice(i + 1)).reduce((acc, curr) => { acc * curr } )})
+// }
+
 module.exports = getAllProducts;

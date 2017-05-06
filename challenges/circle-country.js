@@ -29,7 +29,7 @@ function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
     const syDistSq = (y[i] - start_y)*(y[i] - start_y);
     const sxyDist = Math.sqrt(sxDistSq + syDistSq);
     const exDistSq = (x[i] - end_x)*(x[i] - end);
-    const eyDistSq = (y[i] - end)*(y[i] - end);
+    const eyDistSq = (y[i] - end_y)*(y[i] - end);
     const exyDist = Math.sqrt(exDistSq + eyDistSq);
 
     if (sxyDist < r || exyDist < r) counter += 1;

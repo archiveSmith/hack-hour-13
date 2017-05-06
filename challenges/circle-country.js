@@ -22,8 +22,18 @@
  *
  */
 
+function getDistance(x1,y1,x2,y2){
+ let  distance = Math.sqrt(Math.pow(x1-x2,2) + Math.pow(y1-y2,2))
+ return distance;
+}
 function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
+  let startingPlace = getDistance(start_x, start_y, end_x, end_y)
+  if()
 
+// find starting value and compare to a circle
+// 
+// how many circles you are inside
+// - the shared circle 
 }
 
 module.exports = circleCountry;

@@ -12,9 +12,8 @@
 // input -> an array of integers
 //
 // output -> array of all possible products made by multiplying all but one number
-const result = [];
 
-function getAllProducts(array) {
+function getAllProducts(array, result = []) {
   if (result.length === array.length) return result;
 
   let shifter = array.shift();
@@ -22,7 +21,9 @@ function getAllProducts(array) {
 
   result.push(product);
   array.push(shifter);
-  return getAllProducts(array);
+  return getAllProducts(array, result);
 }
+
+console.log(getAllProducts([1, 7, 3, 4]));
 
 module.exports = getAllProducts;

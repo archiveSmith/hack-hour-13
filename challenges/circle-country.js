@@ -23,49 +23,36 @@
  */
 
  function circleCountry(x, y, r, start_x, start_y, end_x, end_y, disBorders = 0) {
-   // x and y are the center of a border district, while r is the radius
-   // in order to determine what direction to go, take start_x - end_x and same for y
-   // if start_x and end_x is negative, we will have to find the x coordinates closest
-   // to that negative number, and y coordinates closest to that number while also being
-   // within r
-   let args = Array.from(arguments);
-   console.log(args);
-   if (start_x === end_x && start_y === end_y) return disBorders;
 
-   // determine all possible directions of where to go by taking the radii that are within
-   // stepping distance of start_x and start_y
-   let possibleDir = [];
-   let otherDirX = [];
-   let otherDirY = [];
-   let otherDirR = [];
-   for (let i = 0; i < x.length - 1; i += 1) {
-     // if x, y, and r are within reach of start_x and start_y, push it in an array
-     // find this by if start_x - x and start_y - y are less than r
-     let xDistFromR = Math.abs(start_x - x[i]);
-     let yDistFromR = Math.abs(start_y - y[i]);
-     if (xDistFromR < r[i] && yDistFromR < r[i]) possibleDir.push(x[i],y[i],r[i]);
-     else {
-       otherDirX.push(x[i]);
-       otherDirY.push(y[i]);
-       otherDirR.push(r[i]);
-     }
-   }
-   if (!possibleDir.length) return null;
-   // store the most optimal direction of x, y, and r towards end_x, and end_y in an array
-   // to do this, use the pythagorean theorem to find the current distance away from
-   // the end point, and store the direction closest to the end point
-   let optimalDir = possibleDir.reduce((acc, curr) => {
-     let currXDistSqrd = Math.pow(end_x - curr[0], 2);
-     let currYDistSqrd = Math.pow(end_y - curr[1], 2);
+  if (!x.length || !y.length || !r.length) return disBorders;
+  if (start_x >= end_x && start_y >= end_y) return disBorders;
 
-     let currDistFromEnd = Math.sqrt(currXDistSqrd + currYDistSqrd);
-     let pastOptX = Math.pow(end_x - acc[0], 2);
-     let pastOptY = Math.pow(end_y - acc[1], 2);
-     let pastDistFromEnd = Math.sqrt(pastOptX + pastOptY);
-     return currDistFromEnd > pastDistFromEnd ? [curr[0], curr[1], curr[2]] : acc;
-   });
+  let optDir = [[x[0], 0], [y[0], 0], [r[0], 0]];
 
-   return circleCountry(otherDirX, otherDirY, otherDirR, optimalDir[0], optimalDir[1], end_x, end_y, disBorders + 1);
- }
+  for (let i = 1; i < x.length; i += 1) {
+    let currXDistSqrd = Math.pow(end_x - x[i], 2);
+    let currYDistSqrd = Math.pow(end_y - y[i], 2);
+
+    let optX = Math.pow(end_x - optDir[0], 2);
+    let optY = Math.pow(end_y - optDir[1], 2);
+    if (Math.sqrt(currXDistSqrd + currYDistSqrd) > Math.sqrt(optX + optY)) {
+      console.log('went through if statement');
+
+      optDir = [[x[i], i], [y[i], i], [r[i], i]];
+    }
+  }
+
+  x.splice(optDir[0][1], 1);
+  y.splice(optDir[1][1], 1);
+  r.splice(optDir[2][1], 1);
+
+  if (start_x < end_x) start_x += optDir[2][0];
+  else start_x -= optDir[2][0];
+
+  if (start_y < end_y) start_y += optDir[2][0];
+  else start_y -= optDir[2][0];
+
+  return circleCountry(x, y, r, start_x, start_y, end_x, end_y, disBorders + 1);
+}
 
 module.exports = circleCountry;

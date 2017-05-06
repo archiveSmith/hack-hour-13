@@ -6,7 +6,7 @@
  * this is done via:
  * [7*3*4, 1*3*4, 1*7*4, 1*7*3]
  *
- * do not use division, becuase zero might be in the array and you cannot divide by zero
+ * do not use division, because zero might be in the array and you cannot divide by zero
  */
 
 //-------quadratic time since double loop O(n^2)------------------
@@ -20,13 +20,16 @@ function getAllProducts(array) {
   return sum;
 }
 
-//----------linear solution?-----------------------
+//----------same as above but with map-----------------------
 function getAllProducts2(array){
-  return array;
+  return array.map((num, i, arr) => 
+    arr.slice(0, i).concat(arr.slice(i + 1))
+      .reduce((prod, n) => prod * n, 1)
+  )
 }
 
 //////////////////////////////////////////////////////
-console.log( getAllProducts([1,7,3,4]) )
+console.log( getAllProducts2([1,7,3,4]) )
 
 
 /*

@@ -28,13 +28,13 @@ function getDistance(x1, y1, x2, y2) {
 }
 
 function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
-  const crossedCircles = 0;
+  let circledCrossed = 0;
   for (let i = 0; i < x.length; i += 1) {
     const startsInside = getDistance(x[i], y[i], start_x, start_y) < r[i];
     const endsInside = getDistance(x[i], y[i], end_x, end_y) < r[i];
-    if (startsInside ^ endsInside) crossedCircles += 1;
+    if (startsInside ^ endsInside) circledCrossed += 1;
   }
-  return crossedCircles;
+  return circledCrossed;
 }
 
 module.exports = circleCountry;

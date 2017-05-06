@@ -10,6 +10,7 @@
  */
 
 function getAllProducts(array) {
+  if (!array.length) return [0];
   return array.map((n, i) => array.filter((el, j) => i !== j).reduce((a, b) => a * b));
 }
 

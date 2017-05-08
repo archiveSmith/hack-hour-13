@@ -36,7 +36,7 @@ function Queue() {
 		} 
 	}
 	this.dequeue = () => {
-		if (stack1.length = 0) { 
+		if (stack1.length === 0) { 
 			return undefined 
 		} else {
 			return stack1.pop();

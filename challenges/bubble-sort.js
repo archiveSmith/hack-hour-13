@@ -13,9 +13,7 @@ function bubbleSort(array) {
     let k = 0;
     for (let j = k + 1; j < array.length - counter; j += 1, k += 1) {
       if (array[j] < array[k]) {
-        let temp = array[k];
-        array[k] = array[j];
-        array[j] = temp;
+        [array[k], array[j]] = [array[j], array[k]]
       }
     }
     counter++;

@@ -62,16 +62,60 @@ LinkedList.prototype.remove = function(val) {
   
   return removed;
 };
-/*
-*/
+//-------------------------------------------
+LinkedList.prototype.add2 = function(val) {
+  const newNode = new Node(val);
+  if (!this.head) {
+    this.head = this.tail = newNode;
+    return;
+  }
+
+  newNode.prev = this.tail;
+  this.tail.next = newNode;
+  this.tail = newNode;
+};
+
+LinkedList.prototype.remove2 = function(val) {
+  let node = this.head;
+  if (!node) return;
+  //if first node is a match
+  if (node.val === val) {
+    //if there is more than one node
+    if (node.next) {
+      node.next.prev = null;
+    }
+    this.head = node.next;
+    delete node;
+    return;
+  }
+
+  while(node) {
+    if (node.val === val) {
+    //if a middle node or end node
+      node.prev.next = node.next;
+      //if a middle node
+      if (node.next) {
+        node.next.prev = node.prev;
+      }
+      //if the tail node 
+      if (node === this.tail) {
+        this.tail = node.prev;
+        this.tail.next = null;
+      }
+      delete node;
+      return;
+    }
+    node = node.next;
+  }
+}
 
 ///////////////////////////////////////////////////////
 let list = new LinkedList();
-list.add(1);
-// list.add(2);
-// list.add(3);
-list.add(4);
-list.remove(4);
+list.add2(1);
+list.add2(2);
+list.add2(3);
+list.add2(4);
+list.remove2(4);
 //-------------
 console.log(list);
 

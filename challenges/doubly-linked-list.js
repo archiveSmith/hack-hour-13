@@ -44,7 +44,9 @@ LinkedList.prototype.remove = function(val) {
 
   //last node
   if (curr.prev && !curr.next) {
-    curr.prev = this.tail;
+    // curr.prev = this.tail;  why don't i need to set prev?
+    this.tail = curr.prev;
+    this.tail.next = null;
   }
   //first node
   else if (!curr.prev && curr.next) {

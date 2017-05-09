@@ -20,7 +20,6 @@
 */
 
 function drawStairs(n) {
-<<<<<<< HEAD
   // did this on my own
   // for (let i = 0; i < n; i += 1) {
   //   let string = '';
@@ -39,10 +38,5 @@ function drawStairs(n) {
   }
 }
 
-=======
 
-}
-
-
->>>>>>> c095199114a334e809751a77ffe5a1a6b48ebf57
 module.exports = drawStairs;

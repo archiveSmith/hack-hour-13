@@ -34,16 +34,28 @@ LinkedList.prototype.add = function (val) {
   }
 };
 
-// const linked = new LinkedList();
-// linked.add(5);
-// linked.add(4);
-// console.log(linked.head);
+const linked = new LinkedList();
+linked.add(5);
+linked.add(4);
+linked.add(3);
+linked.add(12);
 
 /*
 Removes the first node with the inputted value
  */
 LinkedList.prototype.remove = function (val) {
-  
+  let newNode = new Node(val);
+  let curr = this.head;
+
+  while (curr) {
+    if (curr.val === val) {
+      curr.prev.next = curr.next;
+      return;
+    }
+    curr = curr.next;
+  }
 };
+// linked.remove(3);
+// console.log(linked.head);
 
 module.exports = LinkedList;

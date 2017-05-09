@@ -22,18 +22,23 @@
  *
  */
 
+//pythagorean theorem a^2 + b^2 = c^2 to find longest edge of a right triangle
 function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
+  let circlesToCross = 0;
 
+  for (let i = 0; i < x.length; i += 1) {
+      let distanceStart = 0;
+  }
 }
 
 //////////////////////////////////////////////
-let x = [1,2,3];
-let y = [4,5,6];
-let r = [7,8,9];  //r[i] is radius
-let start_x = 1;  //starting coordinates
+let x = [1,-2,5];  //x[i] is center of each circle
+let y = [2,-4,-3];  //y[i] is center of each circle
+let r = [1,3,2];  //r[i] is radius
+let start_x = -3;  //starting coordinates
 let start_y = 2;
-let end_x = 1;  //ending coordinates
-let end_y = 0;
+let end_x = 5;  //ending coordinates
+let end_y = 2;
 console.log( circleCountry(x, y, r, start_x, start_y, end_x, end_y) )
 
 

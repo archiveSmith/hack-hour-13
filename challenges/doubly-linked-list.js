@@ -42,28 +42,30 @@ LinkedList.prototype.remove = function(val) {
   //values are now the same so we know curr needs to be removed;
   let removed = curr;
 
-  //last node
-  if (curr.prev && !curr.next) {
-    // curr.prev = this.tail;  why don't i need to set prev?
-    this.tail = curr.prev;
-    this.tail.next = null;
+  //only one node 
+  if (!curr.prev && !curr.next) {
+    this.tail = this.head = null;
   }
   //first node
   else if (!curr.prev && curr.next) {
-    curr.next = this.head;
-  }
-  //only one node 
-  else if (!curr.prev && !curr.next) {
-    this.tail = this.head = null;
+    this.head = curr.next;
+    this.head.prev = null;
   }
   //middle node
   else if (curr.prev && curr.next) {
     curr.prev.next = curr.next;
     curr.next.prev = curr.prev;
   }
+  //last node
+  else if (curr.prev && !curr.next) {
+    this.tail = curr.prev;
+    this.tail.next = null;
+  }
   
   return removed;
 };
+
+
 //-------------------------------------------
 LinkedList.prototype.add2 = function(val) {
   const newNode = new Node(val);
@@ -113,11 +115,10 @@ LinkedList.prototype.remove2 = function(val) {
 
 ///////////////////////////////////////////////////////
 let list = new LinkedList();
-list.add2(1);
-list.add2(2);
-list.add2(3);
-list.add2(4);
-list.remove2(4);
+list.add(1);
+list.add(2);
+list.add(3);
+list.remove(2);
 //-------------
 console.log(list);
 

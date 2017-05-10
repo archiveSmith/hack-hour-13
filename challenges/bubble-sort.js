@@ -15,16 +15,28 @@ function bubbleSort(array, n = 0) {
   return bubbleSort(array, n + 1);
 }
 
-//--------------------O(n^2)------------------
+//--------------------------------------
 function bubbleSort2(array) {
-  for (let i = 0; i < array.length; i += 1) {
-    for (let j = 0; j < array.length; j += 1) {
-      if (array[i] > array[i + 1]) {
-        [array[i], array[i + 1]] = [array[i + 1], array[i]]; 
-      }
-    }
+  function swap(arr, in1, in2) {
+    [arr[in1], arr[in2]] = [arr[in2], arr[in1]];
   }
-  return array;
+  const newArr = Array.from(array);  //so don't alter original array;
+  let i = array.length - 1;
+  let changed = true;
+
+  while(i > 0 && changed) {
+    changed = false;
+    let j = 0;
+    while(j < i) {
+      if (newArr[j] > newArr[j + 1]) {
+        swap(newArr, j, j + 1);
+        changed = true;
+      }
+      j += 1;
+    }
+    i -= 1;
+  }
+  return newArr;
 }
 
 console.log( bubbleSort2([4, 3, 9, 1, 99, 45, 1, 88]) );

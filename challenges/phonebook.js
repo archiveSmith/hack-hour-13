@@ -46,6 +46,10 @@ makePhoneBookObject.prototype.add = (name, phonenumber) => {
   this.phonebook[name] = phonenumber;
 }
 
+makePhoneBookObject.prototype.lookup = (name) => {
+  return this.phonebook[name];
+}
+
 makePhoneBookObject.prototype.remove = (name) => {
   const deleted = this.phonebook[name];
   delete this.phonebook[name];

@@ -18,9 +18,7 @@ function countStairs(n) {
 let routes = 0;
 
   const recursion = (n, routes) => {
-    // console.log(routes, 'routes');
-    if (n === 0) return 1;
-    if (n === 1) return 1;
+    if (n <= 1) return 1;
       routes++;
       return recursion (n - 1, routes) + recursion(n - 2, routes);
   }

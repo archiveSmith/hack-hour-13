@@ -47,7 +47,9 @@ makePhoneBookObject.prototype.add = (name, phonenumber) => {
 }
 
 makePhoneBookObject.prototype.remove = (name) => {
+  const deleted = this.phonebook[name];
   delete this.phonebook[name];
+  return deleted;
 }
 
 const jazbook = [

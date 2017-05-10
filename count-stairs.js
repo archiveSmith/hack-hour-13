@@ -22,7 +22,7 @@ function countStairs(n, cache = {}) {
   else if (cache[n]) return cache[n];
 
   // two choices to take: 1 or 2 steps
-  // so need to check total possible steps after those two cases happen
+  // so need to check total possible combinations after those two cases happen
   const result = countStairs(n-1, cache) + countStairs(n-2, cache);
   // cache result
   cache[n] = result;

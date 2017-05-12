@@ -37,7 +37,7 @@ LinkedList.prototype.remove = function(val) {
   // assign a currNode to the head of the LL for traversing through the LL
   let currNode = this.head;
 
-  if (currNode.val === val && currNode === this.head) {
+  if (currNode.val === val) {
      this.head = currNode.next;
      this.head.prev = null;
      return;

@@ -15,7 +15,7 @@ function findInOrderedSet(arr, target) {
   let middle = Math.floor(arr.length / 2);
   if (target > arr[middle]) return findInOrderedSet(arr.slice(middle), target);
   if (target < arr[middle]) return findInOrderedSet(arr.slice(0, middle), target);
-  return target === arr[middle];
+  return true;
 }
 
 var nums = [1, 4, 6, 7, 9, 17, 45];

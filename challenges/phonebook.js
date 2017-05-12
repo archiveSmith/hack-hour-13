@@ -30,6 +30,15 @@ function findName(arr, name) {
   return false;
 }
 
+const jazbook = [
+  ['alex','301-844-3421'],
+  ['jae','301-844-1211'],
+  ['david','301-844-0978'],
+  ['travis','301-844-8505'],
+  ['jasmine','1800-974-4539'],
+];
+
+// return an object literal representing the jazbook
 function sort(arr) {
   return arr.sort((a, b) => b[0] < a[0]);
 }
@@ -47,14 +56,6 @@ function makePhoneBookObject(arr) {
   const newArr = mergeSort(arr);
   return newArr.reduce((acc, curr) => { acc[curr[0]] = curr[1]; return acc; }, {});
 }
-
-const jazbook = [
-  ['alex','301-844-3421'],
-  ['jae','301-844-1211'],
-  ['david','301-844-0978'],
-  ['travis','301-844-8505'],
-  ['jasmine','1800-974-4539'],
-];
 
 const objectToExport = {
   findName,

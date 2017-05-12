@@ -58,6 +58,4 @@ function newIntersections(x, y){
   return 1;
 }
 
-newIntersections([0, 3, -1, 1, 1, 2, 2, 1], [2, 2, 0, 1, -1, 0, -2]);
-
 module.exports = newIntersections;

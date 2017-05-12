@@ -10,8 +10,17 @@
 //  example input:
 // var str = "(4 5)"
 
-function knightjumps(str) {
+function canMove(arr1, arr2) {
+  return arr1[0] + arr2[0] >= 1 && arr1[0] + arr2[0] <= 8 && arr1[1] + arr2[1] >= 1 && arr1[1] + arr2[1] <= 8
+}
 
+function knightjumps(str) {
+  const noParens = str.substring(1, str.length - 1);
+  const coords = noParens.split(' ').map(str => parseInt(str));
+  const possibleMoves = [[1, 2], [1, -2], [2, 1], [2, -1], [-1, 2], [-1, -2], [-2, 1], [-2, -1]];
+  return possibleMoves.reduce((accum, curr) => {
+    return canMove(curr, coords) ? accum + 1 : accum;
+  }, 0)
 }
 
 module.exports = knightjumps;

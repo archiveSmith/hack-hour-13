@@ -19,8 +19,8 @@
 
  // find number of NEW points that can be placed with OLD points above, below,
  // to the right, and to the left.
-const x = [1, 4, 2, 3, 5];
-const y = [5, 3, 6, 4, 1];
+// const x = [1, 4, 2, 3, 5];
+// const y = [5, 3, 6, 4, 1];
 
 function newIntersections(x, y) {
   let length = x.length;
@@ -33,9 +33,10 @@ function newIntersections(x, y) {
   let sortedPoints = newPoints.sort((a, b) => {
     return a[0] > b[0];
   });
+
   return sortedPoints;
 }
 
-console.log(newIntersections(x, y));
+// console.log(newIntersections(x, y));
 
 module.exports = newIntersections;

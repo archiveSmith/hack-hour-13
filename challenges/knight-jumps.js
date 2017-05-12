@@ -29,14 +29,14 @@ function knightjumps(str) {
   const x = Number(arr[0]);
   const y = Number(arr[1]);
   console.log(arr);
-  if (canMove(x - 1, y - 3)) possibilities += 1;
-  if (canMove(x - 1, y + 3)) possibilities += 1;
-  if (canMove(x + 1, y + 3)) possibilities += 1;
-  if (canMove(x + 1, y - 3)) possibilities += 1;
-  if (canMove(x - 3, x - 1)) possibilities += 1;
-  if (canMove(x - 3, x + 1)) possibilities += 1;
-  if (canMove(x + 3, y - 1)) possibilities += 1;
-  if (canMove(x + 3, y + 1)) possibilities += 1;
+  if (canMove(x - 1, y - 2)) possibilities += 1;
+  if (canMove(x - 1, y + 2)) possibilities += 1;
+  if (canMove(x + 1, y + 2)) possibilities += 1;
+  if (canMove(x + 1, y - 2)) possibilities += 1;
+  if (canMove(x - 2, x - 1)) possibilities += 1;
+  if (canMove(x - 2, x + 1)) possibilities += 1;
+  if (canMove(x + 2, y - 1)) possibilities += 1;
+  if (canMove(x + 2, y + 1)) possibilities += 1;
   return possibilities;
 };
 // var str = "(6 6)"

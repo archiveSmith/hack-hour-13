@@ -32,6 +32,7 @@ function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
 
   for(let i = 0; i < circleCountry.length; i += 1) {
     // compute start and end points from the center of the circle
+    // can use Math.hypot
     const distFromEnd = Math.sqrt(Math.pow(circleCountry[i].x - end_x, 2) + Math.pow(circleCountry[i].y - end_y, 2));
     const distFromStart = Math.sqrt(Math.pow(circleCountry[i].x - start_x, 2) + Math.pow(circleCountry[i].y - start_y, 2));
 
@@ -49,6 +50,20 @@ function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
   }
 
   return numBorders;
+}
+
+// functional programming approach
+function circleCountry (x, y, r, start_x, start_y, end_x, end_y) {
+  var total = 0;
+  for (var i = 0; i < x.length; i++){
+    var d1 = Math.hypot(x[i]-start_x, y[i]-start_y);
+    var d2 = Math.hypot(x[i]-end_x, y[i]-end_y);
+    var radius = r[i];
+    if (d1 < radius && d2 > radius || d1 > radius && d2 < radius){
+      total++;
+    }
+  }
+  return total;
 }
 
 // let x = [0];

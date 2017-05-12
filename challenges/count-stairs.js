@@ -29,3 +29,7 @@ console.log(countStairs(4))
 console.log(countStairs(2))
 console.log(countStairs(1))
 module.exports = countStairs;
+
+
+
+module.exports = countStairs;

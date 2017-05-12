@@ -21,5 +21,5 @@ function countStairs(n) {
     }
     return step(n);
 }
-
+ 
 module.exports = countStairs;

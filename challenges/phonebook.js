@@ -27,23 +27,49 @@
 function findName(jazbook, name) {
   if(!Array.isArray(jazbook) || !jazbook.length || typeof name !== 'string') return false;
 
-  for (let i = 0; i < jazbook.length; i += 1) {
-    if (jazbook[i][0] === name) return jazbook[i][1];
-  }
-  return false;
+  jazbook.sort((a, b) => {return a[0] > b[0]});
+
+  let mid = Math.floor(jazbook.length / 2);
+
+  if (jazbook[mid] === undefined) return false;
+
+  if (jazbook[mid][0] === name) return jazbook[mid][1];
+
+  return jazbook[mid][0] > name ? findName(jazbook.slice(0, mid), name) : findName(jazbook.slice(mid + 1), name);
+
+  // for (let i = 0; i < jazbook.length; i += 1) {
+  //   if (jazbook[i][0] === name) return jazbook[i][1];
+  // }
+  // return false;
 }
 
 // return an object literal representing the jazbook
-function makePhoneBookObject(jazbook) {
-  return jazbook.reduce((jazbookObj, subarray) => {
-    jazbookObj[subarray[0]] = subarray[1];
-    return jazbookObj;
-  }, {});
+function PhoneBook(jazbook) {
+  this.phonebook = {};
+  jazbook.forEach(individual => {
+    this.phonebook[individual[0]] = individual[1];
+  });
+  // return jazbook.reduce((jazbookObj, subarray) => {
+  //   jazbookObj[subarray[0]] = subarray[1];
+  //   return jazbookObj;
+  // }, {});
+}
+
+PhoneBook.prototype.add = function(name, number) {
+  this.phonebook[name] = number;
+}
+
+PhoneBook.prototype.lookup = function(name) {
+  return this.phonebook[name];
+}
+
+PhoneBook.prototype.remove = function(name) {
+  delete this.phonebook[name];
 }
 
 const objectToExport = {
   findName,
-  makePhoneBookObject,
+  PhoneBook,
 };
 
 module.exports = objectToExport;

@@ -1,3 +1,5 @@
+// Done, time complexity problem so i can be done better
+
 /*
 How quickly could we check if a given integer is in the array?
 Assume the array is sorted.

@@ -1,3 +1,5 @@
+// should be done?
+
 /*
  * Given an array of numbers, determine if the mode and mean of the array are equivalent
  *

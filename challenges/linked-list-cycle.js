@@ -1,3 +1,5 @@
+// Done, good to practice again
+
 /**
  * We are familar with linked lists being linear and terminating:
  *

@@ -1,3 +1,5 @@
+// not done
+
 /* You are given an array of integers with both positive and negative numbers. Write a function to
  * find the maximum sum of all subarrays. A subarray is a section of consecutive elements from the
  * original array. The whole array can be considered a sub array of itself.

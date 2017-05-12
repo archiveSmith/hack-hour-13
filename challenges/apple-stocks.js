@@ -1,4 +1,4 @@
-// DONE - Angela
+// DONE - will do again
 
 /**
  *  I have an array stock_prices_yesterday where:

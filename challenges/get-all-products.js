@@ -1,3 +1,5 @@
+// done, goot practice with callback functions
+
 /* Accepts an array of integers and returns an array of all the possible products made by
  * multiplying all but one number. In other words, find all the products of multiplying any
  * array.length-1 numbers in the array.
@@ -23,6 +25,16 @@ function findProduct(array) {
   return array.reduce((total, num) => {
     return total * num;
   });
+}
+
+function getAllProducts2(array) {
+  return array
+    .map((num, i, a) => {
+      a.slice(0, i).concat(a.slice(i + 1));
+    })
+    .reduce((acc, cur) => {
+      acc * cur;
+    });
 }
 
 module.exports = getAllProducts;

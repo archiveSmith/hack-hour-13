@@ -32,23 +32,62 @@
   ];
 
 
-function findName(book, name){
-  for(let i = 0; i < book.length; i++){
-    if(book[i][0] === name) return book[i][1]
-  }
-  return false;
+// function findName(book, name){
+//   for(let i = 0; i < book.length; i++){
+//     if(book[i][0] === name) return book[i][1]
+//   }
+//   return false;
+// }
+
+// console.log(findName(jazbook, 'jasmine'))
+
+// function makePhoneBookObject(jazbook){
+//   let myObj = {};
+//   for(let i =0; i < jazbook.length; i++){
+//     myObj[jazbook[i][0]] = jazbook[i][1] 
+//   }
+//   return myObj;
+// }
+// console.log(makePhoneBookObject(jazbook))
+
+
+//SOLUTION
+function findName(jazbook, name){
+  jazbook.sort((a,b) => (a[0] > b[0]));
+  let mid = Math.floor(jazbook.length/2);
+  if(jazbook[mid] === undefined) return false;
+  if(jazbook[mid][0] === name) return jazbook[mid][1];
+  return jazbook[mid][0] > name ? findName(jazbook.slice(0, mid), name) : findName(jazbook.slice(mid +1), name);
 }
 
-console.log(findName(jazbook, 'jasmine'))
-
-function makePhoneBookObject(jazbook){
-  let myObj = {};
-  for(let i =0; i < jazbook.length; i++){
-    myObj[jazbook[i][0]] = jazbook[i][1] 
-  }
-  return myObj;
+function makePhoneBookObject(){
+  this.book = {};
+  jazbook.forEach(record => this.book[record[0]] = record[1]);
 }
-console.log(makePhoneBookObject(jazbook))
+
+PhoneBook.prototype.add = function(name, number){
+  this.book[name] = number;
+}
+
+PhoneBook.prototype.lookup = function(name){
+  return this.book[name];
+}
+
+PhoneBook.prototype.remove = function(name){
+  let record = this.book[name];
+  delete this.book[name];
+  return record;
+}
+
+
+
+
+
+
+
+
+
+
 //  return the number associated with the name in the jazbook
 // function findName(jazbook, name) {
 //   if(!Array.isArray(jazbook) || !jazbook.length || typeof name !== 'string') return false;

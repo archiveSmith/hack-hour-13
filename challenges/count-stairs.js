@@ -15,6 +15,7 @@
  */
 
 function countStairs(n) {
+
 let routes = 0;
 
   const recursion = (n, routes) => {
@@ -25,5 +26,4 @@ let routes = 0;
   return recursion(n, routes);
 }
 
-// console.log(countStairs(6));
 module.exports = countStairs;

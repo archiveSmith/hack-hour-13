@@ -11,7 +11,35 @@
 // var str = "(4 5)"
 
 function knightjumps(str) {
+  let totalMoves = 0;
+  // max num of moves is 8
+  const x = Number(str[1]), y = Number(str[3]);
+  
+  // checks left side of the knight
+  if (x - 2 >= 1) {
+    if (y - 1 >= 1) totalMoves++;
+    if (y + 1 <= 8) totalMoves++; 
+  }
+  
+  // checks right side of the knight
+  if (x + 2 <= 8) {
+    if (y - 1 >= 1) totalMoves++;
+    if (y + 1 <= 8) totalMoves++; 
+  }
 
+  // checks top of the knight
+  if (y + 2 <= 8) {
+    if (x - 1 >= 1) totalMoves++;
+    if (x + 1 <= 8) totalMoves++; 
+  }
+
+  // checks bottom of the knight
+  if (y - 2 >= 1) {
+    if (x - 1 >= 1) totalMoves++;
+    if (x + 1 <= 8) totalMoves++; 
+  }
+
+  return totalMoves;
 }
 
 module.exports = knightjumps;

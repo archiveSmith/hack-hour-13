@@ -11,6 +11,32 @@
 // var str = "(4 5)"
 
 function knightjumps(str) {
+  // 8 points are:
+  // x - 1, y + 3
+  // x + 1, y + 3
+  // x - 1, y - 3
+  // x + 1, y - 3
+
+  // x - 3, y + 1
+  // x - 3, y - 1
+  // x + 3, y + 1
+  // x + 3, y - 1
+
+  let nums = str.split('');
+  let x = Number(nums[1]);
+  let y = Number(nums[3]);
+  let result = 0;
+  
+  if (x - 1 > 0 && y + 3 <= 8) result += 1;
+  if (x + 1 <= 8 && y + 3 <= 8) result += 1;
+  if (x - 1 > 0 && y - 3 > 0) result += 1;
+  if (x + 1 <= 8 && y - 3 > 0) result += 1;
+  
+  if (x - 3 > 0 && y + 1 <= 8) result += 1;
+  if (x - 3 > 0 && y - 1 > 0) result += 1;
+  if (x + 3 <= 8 && y + 1 <= 8) result += 1;
+  if (x + 3 <= 8 && y - 1 > 0) result += 1;
+  return result;
 
 }
 

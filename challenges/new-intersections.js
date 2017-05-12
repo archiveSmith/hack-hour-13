@@ -56,13 +56,7 @@ function findIntersectionRanges(arr1, arr2) {
   }, {});
 }
 
-// see if given 
-function checkIfInRange() {}
-
 function newIntersections(x, y) {
-  // EDGE CASE(S): 
-  // duplicate points (in regards to x-, y-coords, or both)
-  
   // objects of ranges in which the other dimension/coordinate intersects
   const x_intersectRanges = findIntersectionRanges(x,y);
   const y_intersectRanges = findIntersectionRanges(y,x);
@@ -71,8 +65,16 @@ function newIntersections(x, y) {
   return Object.keys(x_intersectRanges).reduce((totalIntersects, x_val) => {
     // see how many y_vals fit in current x-intersect range
     Object.keys(y_intersectRanges).forEach((y_val) => {
-      
+      const x_range = y_intersectRanges[y_val];
+      const y_range = x_intersectRanges[x_val];
+
+      // adds 1 if x and y w/in each's ranges
+      totalIntersects += (
+        x_val >= x_range.min && x_val <= x_range.max && 
+        y_val >= y_range.min && y_val <= y_range.max
+      )
     });
+    return totalIntersects;
   }, 0);
 }
 

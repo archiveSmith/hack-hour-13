@@ -17,6 +17,7 @@
  * 	 
  */
 
+<<<<<<< HEAD
 function newIntersections(x, y) {
   // check to see if arrays are valid 
   if (x.constructor !== Array || y.constructor !== Array || x.length !== y.length) {
@@ -67,3 +68,10 @@ function newIntersections(x, y) {
 // newIntersections([1,2,2,3,4,3], [2,1,3,2,3,4]) ===> 2
 
 module.exports = newIntersections;
+=======
+function newIntersections(x, y){
+
+}
+
+module.exports = newIntersections;
+>>>>>>> af4457979a6e36e8dae56be83dd063a624266d5f

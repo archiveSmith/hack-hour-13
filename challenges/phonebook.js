@@ -23,6 +23,7 @@
 * complete with methods to add new names and look up and remove existing entries
 */
 
+//---------CODESMITH SOLUTION---------------------------
 //  return the number associated with the name in the jazbook
 function findName1(jazbook, name) {
   if(!Array.isArray(jazbook) || !jazbook.length || typeof name !== 'string') return false;
@@ -41,7 +42,7 @@ function makePhoneBookObject1(jazbook) {
   }, {});
 }
 
-//------------------------------------------------
+//------------MY SOLUTION-------------------------
 //  return the number associated with the name in the jazbook
 function findName(jazbook, name) {
   return jazbook.filter(arr => arr[0] === name)[0][1];
@@ -68,6 +69,18 @@ Phonebook.prototype.remove = function(name) {
   this.phonebook = this.phonebook.filter(listing => 
     listing.name !== name
   );
+}
+
+//--------------------------CODESMITH WAY-------------------
+//start search from middle after sorting
+function findName(jazbook, name) {
+  jazbook.sort((a,b) => a[0 > b[0]]);
+  let mid = Math.floor(jazbook.length/2); 
+  //if there is no middle fail
+  if(jazbook[mid] === undefined) return false;
+  //return number if found correct name
+  if (jazbook[mid][0] === name) return jazbook[mid][1];
+  return jazbook[mid][0] > name ? findName(jazbook.slice(0, mid), name) : findName(jazbook.slice(mid + 1), name);
 }
 
 ///////////////////////////////////////////////

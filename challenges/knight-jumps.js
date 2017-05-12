@@ -11,7 +11,19 @@
 // var str = "(4 5)"
 
 function knightjumps(str) {
-
+  const start = str.match(/\d+/g).map(d => Number(d));
+  let counter = 0;
+  const moves = [
+    [2, 1], [1, 2], [-1, 2], [-2, 1], [-2, -1], [-1, -2], [1, -2], [2, -1],
+  ];
+  moves.forEach((move) => {
+    const end = move.map((n, i) => n + start[i]);
+    if ((end[0] >= -8 && end[0] <= 8)
+      && (end[1] >= -8 && end[1] <= 8)) {
+      counter += 1;
+    }
+  });
+  return counter;
 }
 
 module.exports = knightjumps;

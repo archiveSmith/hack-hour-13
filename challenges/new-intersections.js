@@ -17,61 +17,102 @@
  * 	 
  */
 
-<<<<<<< HEAD
-function newIntersections(x, y) {
-  // check to see if arrays are valid 
-  if (x.constructor !== Array || y.constructor !== Array || x.length !== y.length) {
-    return false;
-  }  
+// understood the problem wrong lol...
+// function newIntersections(x, y) {
+//   // check to see if arrays are valid 
+//   if (x.constructor !== Array || y.constructor !== Array || x.length !== y.length) {
+//     return false;
+//   }  
   
-  // if there is less than 4 points in the array return 0 
-  if (x.length < 4) return 0;
+//   // if there is less than 4 points in the array return 0 
+//   if (x.length < 4) return 0;
 
-  // create a counter that keeps track of how many points found
-  let totalNewPoints = 0;
+//   // create a counter that keeps track of how many points found
+//   let totalNewPoints = 0;
 
-  // create a new array with x and y co-ordinates for easier reading
-  const coords = x.map((xIndex, index) => {
-    return { 'x': xIndex, 'y': y[index] }
-  })
+//   // create a new array with x and y co-ordinates for easier reading
+//   const coords = x.map((xIndex, index) => {
+//     return { 'x': xIndex, 'y': y[index] }
+//   })
 
-  // find all of the x's that are the same value
-  for (let i = 0; i < coords.length; i += 1) {
-    const currCoord = coords[i];
-    for (let j = i; j < coords.length; j += 1) {
-      let doBothExist = 0;
-      // find the next x that has the same value
-      if (coords[j].x === currCoord.x) {
-        // check to see if the larger y minus the smaller y is distance of 2 away from each other (abs val)
-        if (Math.abs(coords[j].y - currCoord.y === 2)) {
-          // check to see if compliments of x and y exist in array
-          for (let k = 0; k < coords.length; k += 1) {
-            if (coords[k].x === coords[j].y || coords[k].x === currCoord.y) {
-              if (coords[k].y === coords[j].x || coords[k].y === currCoord.x) {
-                doBothExist += 1;
-              }
-            }
-          }
-        }
-      }
-      if (doBothExist === 2) {
-        totalNewPoints += 1;
-      }
-      doBothExist = 0;
-    }
-  }
-  // check to see if the compliments of x and y exist
-  // if they do, add one to the counter
-  return totalNewPoints;
-}
+//   // find all of the x's that are the same value
+//   for (let i = 0; i < coords.length; i += 1) {
+//     const currCoord = coords[i];
+//     for (let j = i; j < coords.length; j += 1) {
+//       let doBothExist = 0;
+//       // find the next x that has the same value
+//       if (coords[j].x === currCoord.x) {
+//         // check to see if the larger y minus the smaller y is distance of 2 away from each other (abs val)
+//         if (Math.abs(coords[j].y - currCoord.y === 2)) {
+//           // check to see if compliments of x and y exist in array
+//           for (let k = 0; k < coords.length; k += 1) {
+//             if (coords[k].x === coords[j].y || coords[k].x === currCoord.y) {
+//               if (coords[k].y === coords[j].x || coords[k].y === currCoord.x) {
+//                 doBothExist += 1;
+//               }
+//             }
+//           }
+//         }
+//       }
+//       if (doBothExist === 2) {
+//         totalNewPoints += 1;
+//       }
+//       doBothExist = 0;
+//     }
+//   }
+//   // check to see if the compliments of x and y exist
+//   // if they do, add one to the counter
+//   return totalNewPoints;
+// }
 
 // newIntersections([1,2,2,3,4,3], [2,1,3,2,3,4]) ===> 2
 
-module.exports = newIntersections;
-=======
 function newIntersections(x, y){
+  let yCounts, horizontals = {},
+      xCounts, verticals = {};
+  
+  // Object that will store the number of occurences of each value
+  xCounts = count(x);
+  yCounts = count(y);
 
+  // Loope through counts, create an object that holds x-value as key 
+  for (var coor in xCounts) {
+    if (xCounts[coor] > 1) {
+      for (var i in x) {
+        if (x[i] = coor) {
+          verticals[coor] = (verticals[coor] || []).concat(y[i]);
+        }
+      }
+    }
+  }
+
+  // Loop for the y as well
+  for (var coor in yCounts) {
+    if (yCounts[coor] > 1) {
+      for (var i in y) {
+        if (y[i] === coor) {
+          horizontals[coor] = (horizontals[coor] || []).concat(x[i]);
+        }
+      }
+    }
+  }
+
+  rangify(verticals);
+  rangify(horizontals);
+
+  var newPoints = 0;
+  for (var yCoor in horizontals) {
+    var xRange = horizontals[yCoor];
+    for (var xCoor in verticals) {
+      var yRange = verticals[xCoor];
+      if (xRange.contains(xCoor) && yRange.contains(yCoor)) {
+        newPoints++;
+      }
+    }
+  }
+
+  return newPoints;
 }
 
 module.exports = newIntersections;
->>>>>>> af4457979a6e36e8dae56be83dd063a624266d5f
+

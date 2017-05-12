@@ -17,6 +17,7 @@
  * 	 
  */
 
+
 // [2, 1, 4, 2]
 // [1, 2, 2, 3]
 //   *   x
@@ -70,3 +71,4 @@ const y = [1, 2, 2, 3];
 console.log(newIntersections(x, y))
 
 module.exports = newIntersections;
+

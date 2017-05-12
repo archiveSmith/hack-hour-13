@@ -33,27 +33,23 @@
 //
 // const name = 'travis';
 //
-function phoneBook(book, name) {
-  let bookCache = {};
+function Jazbook(array) {
+  this.phoneBook = {};
 
-  for (let i = 0; i < book.length; i += 1) {
-    bookCache[book[i][0]] = book[i][1];
+  for (let i = 0; i < array.length; i += 1) {
+    this.phoneBook[array[i][0]] = this.phoneBook[array[i][1]];
   }
-
-  if (bookCache[name]) return bookCache[name]
-  return false;
 }
 
-function PhoneBook() {
-  this.book = {};
+JazBook.prototype.add = function(name, number) {
+  this.phoneBook[name] = number;
 }
 
-PhoneBook.prototype.findName = function(name) {
-  const book = this.book;
-
+JazBook.prototype.lookup = function(name) {
+  return this.phoneBook[name];
 }
 
-PhoneBook.prototype.makePhoneBookObject = function() {
-
+JazBook.prototype.remove = function(name) {
+  delete this.phoneBook[name];
 }
 module.exports = objectToExport;

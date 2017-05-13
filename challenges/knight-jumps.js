@@ -10,8 +10,47 @@
 //  example input:
 // var str = "(4 5)"
 
+/*
+
+Could use this for lots of else if cases; not DRY
+Must be a better way 
+X   Y 
+-2  1
+-2 -1
+-1  2
+-1  -2
+1  2
+1  -2
+2  1
+2  -1
+*/
+
+//BRUTE FORCE METHOD 
 function knightjumps(str) {
+  let position = 0;
+  const numArr = str.split(" ");
+  const x = numArr[0] * 1;
+  const y = numArr[1] * 1;
+  if(0 < x - 2 <= 8 && 0 < y + 1 <= 8) position +=1;
+  if(0 < x - 2 <= 8 && 0 < y - 1 <= 8) position +=1;
+  if(0 < x - 1 <= 8 && 0 < y + 2 <= 8) position +=1; 
+  if(0 < x - 1 <= 8 && 0 < y - 2 <= 8) position +=1;
+  if(0 < x + 1 <= 8 && 0 < y + 2 <= 8) position +=1;
+  if(0 < x + 1 <= 8 && 0 < y - 2 <= 8) position +=1;
+  if(0 < x + 2 <= 8 && 0 < y + 1 <= 8) position +=1;
+  if(0 < x + 2 <= 8 && 0 < y - 1 <= 8) position +=1;
+
+return position
+}
+
+function knightjumps(str){
+
+
 
 }
 
+
+
+
+console.log(knightjumps('4 5'))
 module.exports = knightjumps;

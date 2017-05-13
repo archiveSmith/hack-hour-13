@@ -18,7 +18,32 @@
  */
 
 function newIntersections(x, y){
+  var yCounts, horizontals = {}, 
+      xCounts, verticals = {};
 
+//Objects that will sotre the number of occurances of each value
+    xCounts = count(x);
+    yCounts = count(y);
+
+//loop through counts, create an object hat holds x-value and array of y-value at that val
+//find vertical lines and place into an object. The keys are the x-coordiantes where the line is at 
+    for(var corr in xCounts) {
+      if(xCounts[corr] > 1){
+        for(var i in x) {
+          if(x[i] == corr){ //only check for a line if there are multiple points at this value
+            verticals[corr] = (verticals[corr] || []).concat(y[i]); //add it to list of coordinates
+          }
+        }
+      }
+    }
+
+    //find horizontal lines and place into an object, just like the previous xvalues
+    for(var corr in yCounts){
+      if(yCounts[coor] > 1){
+
+      }
+
+    }
 }
-
+let x = [2, 2, 2, 5, 8]
 module.exports = newIntersections;

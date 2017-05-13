@@ -24,7 +24,7 @@ function fizzbuzz(num) {
       if (i % 5 === 0) {
         result.push('fizzbuzz');
       } else {
-        result.push('fizzz');
+        result.push('fizz');
       }
     } else {
       if (i % 5 === 0) result.push('buzz');

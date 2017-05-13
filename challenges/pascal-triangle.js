@@ -33,17 +33,16 @@
 */
 
 function pascalTriangle(numRows) {
-  const result = [[1]]; // result array to hold all sub arrays
-  let prevArr = [1, 1]; // array to hold previous values
-  result.push(prevArr);
+  const result = []; // result array to hold all sub arrays
+  let prevArr = [1]; // array to hold previous values
   for (let i = 0; i < numRows; i += 1) { // continue till we reach number of rows
     const newArr = [prevArr[0]];
+    result.push(prevArr);
     for (let j = 0; j < prevArr.length - 1; j += 1) {
       newArr.push(prevArr[j] + prevArr[j + 1]);
     }
     newArr.push(prevArr[prevArr.length - 1]);
     prevArr = newArr;
-    result.push(newArr);
   }
   return result;
 }

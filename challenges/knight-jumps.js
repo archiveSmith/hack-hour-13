@@ -8,10 +8,28 @@
 // For example: if str is "(4 5)" then your program should output 8 because the knight can move to 8 different spaces
 // from position x = 4 and y = 5.
 //  example input:
-// var str = "(4 5)"
+var str = "(4 5)";
+
+const board = [
+  ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'],
+  ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'],
+  ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'],
+  ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'],
+  ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'],
+  ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'],
+  ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'],
+  ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x']
+]
 
 function knightjumps(str) {
+  const x = Number(str[1]);
+  const y = Number(str[3]);
+  let knight = 'K';
 
+  board[x - 1][y - 1] = knight;
+  console.log(board);
 }
+
+console.log(knightjumps(str));
 
 module.exports = knightjumps;

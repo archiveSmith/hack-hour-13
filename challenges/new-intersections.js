@@ -1,0 +1,123 @@
+/**
+ *
+ * You are given an array x and an array y that represent the coordinates of several OLD points
+ * 
+ *   - x is the array of x-coordinates and y is the array of y-coordinates 
+ *   - (x[i], y[i]) correspond to coordinates of the i'th OLD point
+ *
+ * Write an algorithm to find the number of NEW points that can be placed 
+ * such that there are OLD points above, below, to the left, and to the right of the NEW point
+ *
+ *   - 'OLD directly above NEW' means the NEW x-coordinate = OLD x-coordinate & NEW y-coordinate < OLD y-coordinate
+ *
+ * Constraints and Notes:
+ *
+ * 	 - x and y will contain the same number of elements
+ *   - if a new point is bounded by old points and lands on an old point, then count it
+ * 	 
+ */
+
+function Range(arr) {
+  this.contents = [Math.min.apply(this, arr), Math.max.apply(this, arr)];
+}
+
+// method to tell us if a number is between the range
+Range.prototype.contains = function(num) {
+  return this.contents[0] < num && num < this.contents[1];
+}
+
+function newIntersections(x, y){
+  // let top = [x[0], y[0]];
+  // let right = [x[0], y[0]];
+  // let bottom = [x[0], y[0]];
+  // let left = [x[0], y[0]];
+  // for (let i = 1; i < x.length; i += 1) {
+  //   if (y[i] > top[1]) top = [x[i], y[i]];
+  //   if (x[i] > right[0]) right = [x[i], y[i]];
+  //   if (y[i] < bottom[1]) bottom = [x[i], y[i]];
+  //   if (x[i] < left[0]) left = [x[i], y[i]];
+  // }
+  // let area = (top[0] * right[1] - right[0] * top[1]) + (right[0] * bottom[1] - bottom[0] * right[1]) + (bottom[0] * left[1] - left[0] * bottom[1]) + (left[0] * top[1] - top[0] * left[1]);
+  // area = Math.abs(area/2);
+  // return area;
+  var yCounts, horizontals = {},
+      xCounts, verticals = {};
+
+  // Objects that will store the number of occurences of each value
+  xCounts = count(x);
+  yCounts = count(y);
+
+
+  // Loop through counts, create an object that holds x-value as key and array of y-values at that x as value
+  // find vertical lines and place into an object. The keys are the x-coordinates where the line is at and the values are arrays of y-coordinates along that line
+  for (var coor in xCounts) {
+    if (xCounts[coor] > 1) { // only check for a line if there are multiple points at this value
+      for (var i in x) {
+        if (x[i] == coor) {
+          verticals[coor] = (verticals[coor] || []).concat(y[i]); // add it to list of coordinates
+        }
+      }
+    }
+  }
+
+  // find horizontal lines and place into an object. The keys are the y-coordinates where the line is at and the values are arrays of x-coordinates along that line
+  for (var coor in yCounts) {
+    if (yCounts[coor] > 1) {
+      for (var i in y) {
+        if (y[i] == coor) {
+          horizontals[coor] = (horizontals[coor] || []).concat(x[i]);
+        }
+      }
+    }
+  }
+  // console.log('before vert', verticals);
+  // console.log('before horiz', horizontals);
+
+  // Find the max and min x and y values for the y and x coordinates with multiple points
+  rangify(verticals);
+  rangify(horizontals);
+
+  // console.log('v', verticals);
+  // console.log('h', horizontals);
+
+  var newPoints = 0;
+
+  for (var yCoor in horizontals) {
+    var xRange = horizontals[yCoor];
+    console.log('x-range', xRange);
+    for (var xCoor in verticals) {
+      var yRange = verticals[xCoor];
+      console.log('xcoor', xCoor);
+      if (xRange.contains(xCoor) && yRange.contains(yCoor)) {
+        newPoints++;
+      }
+    }
+  }
+  return newPoints;
+}
+
+// count the number of elements in the array and return an object 
+function count(arr) {
+  return arr.reduce((counts, num) => {
+    counts[num] = (counts[num] + 1) || 1;
+    return counts;
+  }, {});
+}
+/*
+[3, 3, 1, 4, 4, 4, 4, 4] will return
+{
+  '3': 2,
+  '1': 1,
+  '4': 5
+}
+*/
+
+// take the arrays of coordinates and turn them into ranges (find min and max values)
+function rangify(lines) {
+  for (var coor in lines) {
+    var arr = lines[coor];
+    lines[coor] = new Range(arr);
+  }
+}
+
+module.exports = newIntersections;

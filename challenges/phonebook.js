@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 // done, good to review
 
+=======
+>>>>>>> af4457979a6e36e8dae56be83dd063a624266d5f
 /**
 * Part 1:
 * You are given an array of arrays.  The subarrays are first names and phone numbers.
@@ -19,6 +22,10 @@
 * returns the persons phone number. If the person does not exists, return false.
 *
 * How efficient can you make this?
+<<<<<<< HEAD
+=======
+
+>>>>>>> af4457979a6e36e8dae56be83dd063a624266d5f
 * Part 2: 
 * Why are we storing names and phone numbers in an array?
 * develop a function that takes in the poorly constructed jazbook and returns a proper phonebook 
@@ -27,6 +34,7 @@
 
 //  return the number associated with the name in the jazbook
 function findName(jazbook, name) {
+<<<<<<< HEAD
   //sort the phonebook
   jazbook.sort((a, b) => {
     a[0] > b[0];
@@ -77,6 +85,19 @@ let book = new Phonebook();
 const objectToExport = {
   findName,
   makePhoneBookObject
+=======
+
+}
+
+// return an object literal representing the jazbook
+function makePhoneBookObject(jazbook){
+
+}
+
+const objectToExport = {
+  findName,
+  makePhoneBookObject,
+>>>>>>> af4457979a6e36e8dae56be83dd063a624266d5f
 };
 
 module.exports = objectToExport;

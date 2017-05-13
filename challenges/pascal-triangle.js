@@ -33,7 +33,7 @@
 */
 
 function pascalTriangle(numRows) {
-  if(numRows < 0) return false;
+  if(numRows < 0 || !Number.isInteger(numRows)) return false;
   let triangle = [[1]];
   for(let i = 1; i < numRows; i++){
     let lastLine = triangle[triangle.length - 1]
@@ -44,7 +44,6 @@ function pascalTriangle(numRows) {
       else {
         innerLine.push(lastLine[j] + lastLine[j + 1]); 
       }
-      
     }
     triangle.push(innerLine);
   }
@@ -52,7 +51,7 @@ function pascalTriangle(numRows) {
 }
 
 
-  console.log(pascalTriangle(3))
+ console.log(pascalTriangle("turtle"))
   // [
   //   [1],
   //   [1,1],

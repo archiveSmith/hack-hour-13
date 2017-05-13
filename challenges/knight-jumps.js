@@ -10,8 +10,74 @@
 //  example input:
 // var str = "(4 5)"
 
-function knightjumps(str) {
+// function knightjumps(str, cache = {str: 1}, count = 0) {
+//   let x = +str[1];
+//   let y = +str[3];
+//   let topR = `(${x += 1} ${y += 2})`;
+//   let topL = `(${x -= 1} ${y += 2})`;
+//   let bottomR = `(${x += 1} ${y -= 2})`;
+//   let bottomL = `(${x -= 1} ${y -= 2})`;
 
+//   if (x + 1 <= 8 && y + 2 <= 8 && !cache[topR]) {
+//     cache[topR] = 1;
+//     count += 1;
+//     x += 1;
+//     y += 2;
+//   }
+//   else if (x - 1 >= 0 && y + 2 <= 8 && !cache[topL]) {
+//     cache[topL] = 1;
+//     count += 1;
+//     x -= 1;
+//     y += 2;
+//   }
+//   else if (x + 1 <= 8 && y - 2 >= 0 && !cache[bottomR]) {
+//     cache[bottomR] = 1;
+//     count += 1;
+//     x += 1;
+//     y -= 2;
+//   }
+//   else if (x - 1 >= 0 && y - 2 >= 0 && !cache[bottomL]) {
+//     cache[bottomL] = 1;
+//     count += 1;
+//     x -= 1;
+//     y -= 2;
+//   }
+//   else return count;
+
+//   console.log(`(${x} ${y})`);
+//   return knightjumps(`(${x} ${y})`, cache, count);
+// }
+
+function knightjumps(str) {
+  let count = 0;
+  let x = +str[1];
+  let y = +str[3];
+
+  if (x + 1 <= 8 && y + 2 <= 8) {
+    count += 1;
+  }
+  else if (x - 1 >= 0 && y + 2 <= 8) {
+    count += 1;
+  }
+  else if (x + 1 <= 8 && y - 2 >= 0) {
+    count += 1;
+  }
+  else if (x - 1 >= 0 && y - 2 >= 0) {
+    count += 1;
+  }
+  else if (y + 1 <= 8 && x + 2 <= 8) {
+    count += 1;
+  }
+  else if (y - 1 >= 0 && x + 2 <= 8) {
+    count += 1;
+  }
+  else if (y + 1 <= 8 && x - 2 >= 0) {
+    count += 1;
+  }
+  else if (y - 1 >= 0 && x - 2 >= 0) {
+    count += 1;
+  }
+  else return count;
 }
 
 module.exports = knightjumps;

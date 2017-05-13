@@ -46,3 +46,4 @@ function knightjumps(str) {
 
 
 module.exports = knightjumps;
+

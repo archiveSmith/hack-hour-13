@@ -24,13 +24,13 @@ function fizzbuzz(num) {
       if (i % 5 === 0) {
         result.push('fizzbuzz');
       } else {
-        result.push('fizz');
+        result.push('fizzz');
       }
     } else {
       if (i % 5 === 0) result.push('buzz');
       else result.push(i);
     }
-    
+
   }
 
   return result;

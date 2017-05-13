@@ -14,21 +14,21 @@ function knightjumps(str) {
     let coords = str.replace(/[() ]/g, '').split('').map(v => parseInt(v));
     let count = 0;
 
-    if (coords[0] - 3 > 0) {
+    if (coords[0] - 2 > 0) {
         if (coords[1] - 1 > 0) count += 1
         if (coords[1] + 1 <= 8) count += 1;
     }
 
-    if (coords[0] + 3 <= 8) {
+    if (coords[0] + 2 <= 8) {
         if (coords[1] - 1 > 0) count += 1
         if (coords[1] + 1 <= 8) count += 1;
     }
 
-    if (coords[1] + 3 <= 8) {
+    if (coords[1] + 2 <= 8) {
         if (coords[0] - 1 > 0) count += 1
         if (coords[0] + 1 <= 8) count += 1;
     }
-    if (coords[1] - 3 > 0) {
+    if (coords[1] - 2 > 0) {
         if (coords[0] - 1 > 0) count += 1
         if (coords[0] + 1 <= 8) count += 1;
     }

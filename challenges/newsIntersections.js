@@ -16,8 +16,57 @@
  *   - if a new point is bounded by old points and lands on an old point, then count it
  * 	 
  */
+function Range(arr) {
+  this.contents = [Math.min.apply(this, arr), Math.max.apply(this, arr)];
+}
 
-function newIntersections(x, y){
+function count(arr) {
+  return arr.reduce((counts, num) => {
+    
+  })
+}
+function newIntersections(x, y) {
+  let yCounts, horizontals = {},
+    xCounts, verticals = {};
+
+  xCounts = count(x);
+  yCounts = count(y);
+
+  for (var coor in xCounts) {
+    if (xCounts[coor] > 1) {
+      for (var i in x) {
+        if (x[i] === coor) {
+          verticals[coor] = (verticals[coor] || []).concat(y[i]);
+        }
+      }
+    }
+  }
+
+  for (var coor in yCounts) {
+    if (ycounts[coor] > 1) {
+      for (var i in y) {
+        if (y[i] === coor) {
+          horizontals[coor] = (horizontals[coor] || []).concat(x[i]);
+        }
+      }
+    }
+  }
+
+  rangify(certicals);
+  rangify(horizontals);
+
+  let newPoints = 0;
+
+  for (let yCoor in horizontals) {
+    let xRange = horizontals[yCoor];
+    for (let xCoor in verticals) {
+      let yRane = veticals[xCoors];
+      if (xRange.contains(xCoors) && yRange.contains(yCoor)) {
+        newPoints += 1;
+      }
+    }
+  }
+  return newPoints;
 
 }
 

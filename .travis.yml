@@ -8,6 +8,6 @@ before_install:
   - travis_retry wget https://www.dropbox.com/s/heja4ryn45bd5wt/test.tar.gz?dl=0 -O test.tar.gz && tar xfvz test.tar.gz
 env:
   global:
-    - secure: "RR/IeChI7ouT9rJrRXuTigrJQYFOa506NlMuhnOUvlcy/PbwyTuFxz38ozsYoaqM6G/oMelEtRcdi/me0HO8NNf44LDvceN8l7PEdBYYp/6LUbyAPFpHBhOHjnoC1gWORPukSxlJkZ2ac43iGMHmpzR31fcSVvMabYVmAxnoOAQQFVRRMFWmtjLoO+zBJ4bbOwWfLklSsDpxEVtWqpjB82Okl4x+uj3c8wxAqjo0PgN6Rx9R5TbSKE+aU8j1c1UE8uZ624VTdJkamfbaV/7m4K/wyS5MONyMVp6yUrLBxdy0XUaY0RSIm1/cZv20hCiI+i3ezA4O5MOqg1bfvA/F7tsKZYBBIikrLzzfp0ua8N/n2RDXdttf6hTF6mgCPd7kECepBjxAqXHAXvRFS82AlvqmXedfWkT7MBTSm+R4Nlz/nAh5VYo0A7j7Ss7DvzRECTMi4NjQakYXpDzWFrHe98gjEiDU2g0Gal3VKy/W1LH8FSuIlMROIDqOdJeEx8re2fv5hjdLFBWQF2Idc+4Ya/cT4qfq5BzDq9p9R8qx5ETU9k/yJ7nBF5YDJDYQu6q8H/0Ns5TpgmM5U8JD+2GUQWc4e+5agq0Ejs+Pd4ACp8f3gEceUV9gB+k/mg8oSeRZVLBaKZEoa4o/QSLv8rXDSP8AGefxfkqrK3TyuyEnETY="
+    - MERGE_TOKEN=872c194d635f08bfda7c4805e70f082f152be65b
 script:
   - npm test

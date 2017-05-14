@@ -8,7 +8,7 @@
 
 
 function countTwos(num) {
-
+  return 0;
 }
 
 module.exports = countTwos;

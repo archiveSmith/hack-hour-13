@@ -8,7 +8,7 @@
  */
 
 function gcd(a, b) {
-  return b;
+  return a;
 }
 
 module.exports = gcd;

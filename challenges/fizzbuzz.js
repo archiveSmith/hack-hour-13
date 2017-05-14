@@ -22,7 +22,7 @@ function fizzbuzz(num) {
   for (let i = 1; i <= num; i++) {
     if (i % 3 === 0) {
       if (i % 5 === 0) {
-        result.push('fizzbuzz');
+        result.push('fizzuzz');
       } else {
         result.push('fizz');
       }

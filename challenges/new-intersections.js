@@ -22,3 +22,95 @@ function newIntersections(x, y){
 }
 
 module.exports = newIntersections;
+
+//Jons solution:
+// function Range(arr) {
+//   this.contents = [Math.min.apply(this, arr), Math.max.apply(this, arr)];
+// }
+
+// // method to tell us if a number is between the range
+// Range.prototype.contains = function(num) {
+//   return this.contents[0] < num && num < this.contents[1];
+// }
+
+
+// function newIntersections(x, y){
+//   var yCounts, horizontals = {},
+//       xCounts, verticals = {};
+
+//   // Objects that will store the number of occurences of each value
+//   xCounts = count(x);
+//   yCounts = count(y);
+
+
+//   // Loop through counts, create an object that holds x-value as key and array of y-values at that x as value
+//   // find vertical lines and place into an object. The keys are the x-coordinates where the line is at and the values are arrays of y-coordinates along that line
+//   for (var coor in xCounts) {
+//     if (xCounts[coor] > 1) { // only check for a line if there are multiple points at this value
+//       for (var i in x) {
+//         if (x[i] == coor) {
+//           verticals[coor] = (verticals[coor] || []).concat(y[i]); // add it to list of coordinates
+//         }
+//       }
+//     }
+//   }
+
+//   // find horizontal lines and place into an object. The keys are the y-coordinates where the line is at and the values are arrays of x-coordinates along that line
+//   for (var coor in yCounts) {
+//     if (yCounts[coor] > 1) {
+//       for (var i in y) {
+//         if (y[i] == coor) {
+//           horizontals[coor] = (horizontals[coor] || []).concat(x[i]);
+//         }
+//       }
+//     }
+//   }
+//   // console.log('before vert', verticals);
+//   // console.log('before horiz', horizontals);
+
+//   // Find the max and min x and y values for the y and x coordinates with multiple points
+//   rangify(verticals);
+//   rangify(horizontals);
+
+//   // console.log('v', verticals);
+//   // console.log('h', horizontals);
+
+//   var newPoints = 0;
+
+//   for (var yCoor in horizontals) {
+//     var xRange = horizontals[yCoor];
+//     console.log('x-range', xRange);
+//     for (var xCoor in verticals) {
+//       var yRange = verticals[xCoor];
+//       console.log('xcoor', xCoor);
+//       if (xRange.contains(xCoor) && yRange.contains(yCoor)) {
+//         newPoints++;
+//       }
+//     }
+//   }
+//   return newPoints;
+// }
+
+// // count the number of elements in the array and return an object 
+// function count(arr) {
+//   return arr.reduce((counts, num) => {
+//     counts[num] = (counts[num] + 1) || 1;
+//     return counts;
+//   }, {});
+// }
+// /*
+// [3, 3, 1, 4, 4, 4, 4, 4] will return
+// {
+//   '3': 2,
+//   '1': 1,
+//   '4': 5
+// }
+// */
+
+// // take the arrays of coordinates and turn them into ranges (find min and max values)
+// function rangify(lines) {
+//   for (var coor in lines) {
+//     var arr = lines[coor];
+//     lines[coor] = new Range(arr);
+//   }
+// }

@@ -25,6 +25,37 @@
   //range helper func will delete points that are betwen the max and min points b/c we don't care about middle points in a line, only where it starts and stops 
   //if a x key is contained in the y [range] and the y key is inside the x [range], then it is an intersected point;  
 
+
+function newIntersections(x, y) {
+  // Get all vertical lines and their max/min
+  const exes = x.reduce((accum, xCoord, index) => {
+    if (!accum[xCoord]) accum[xCoord] = { max: y[index], min: y[index] }
+    accum[xCoord].max = Math.max(accum[xCoord].max, y[index])
+    accum[xCoord].min = Math.min(accum[xCoord].min, y[index])
+    return accum
+  }, {})
+
+  // Get all horizontal lines and their max/min
+  const whys = y.reduce((accum, yCoord, index) => {
+    if (!accum[yCoord]) accum[yCoord] = { max: x[index], min: x[index] }
+    accum[yCoord].max = Math.max(accum[yCoord].max, x[index])
+    accum[yCoord].min = Math.min(accum[yCoord].min, x[index])
+    return accum
+  }, {})
+
+  // Count # of intersections
+  let intersections = 0
+  for (let xCoord in exes) {
+    for (let yCoord in whys) {
+      if (exes[xCoord].max > yCoord && yCoord > exes[xCoord].min
+        && whys[yCoord].max > xCoord && xCoord > whys[yCoord].min) intersections++
+    }
+  }
+  return intersections
+}
+
+
+//----------REALLY LONG WAY-----------------------------------------------
 function Range(arr) {
   this.contents = [Math.min.apply(this, arr), Math.max.apply(this, arr)];
 }
@@ -115,6 +146,9 @@ function rangify(lines) {
     lines[coor] = new Range(arr);
   }
 }
+//--------------------------------------------------------------------------------
+
+
 
 
 

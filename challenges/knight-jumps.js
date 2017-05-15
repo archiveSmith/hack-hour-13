@@ -33,8 +33,13 @@ function knightjumps(str) {
   if (xDiff > 1 && yDiff > 1) {numOfMoves = 8;}
   
   return numOfMoves;
-  // return yDiff;
 
+}
+
+
+//-----------------------------
+function knightjumps2(str) {
+  
 }
 
 ////////////////////////////

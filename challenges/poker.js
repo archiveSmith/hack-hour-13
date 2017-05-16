@@ -52,9 +52,10 @@ const evalHand = (hand) => {
   }
   if (handArr.length === 5) {
     let isStraight = true;
-    for (let i = 1; i < handArr.length - 1; i += 1) {
+    for (let i = 1; i < handArr.length; i += 1) {
       let prevCardObj = handArr[i - 1]
       let currCardObj = handArr[i];
+      // console.log(Number(Object.keys(currCardObj)[0]))
       if (Number(Object.keys(currCardObj)[0]) - 1 !== Number(Object.keys(prevCardObj)[0])) isStraight = false
     }
     if (isStraight === true) return { 'straight': handArr }
@@ -65,7 +66,7 @@ const evalHand = (hand) => {
   }
 }
 
-// console.log(evalHand([2, 3, 4, 5, 6]));
+// console.log(evalHand([4,11,5,2,3]));
 
 const winOrder = {
   '4-kind': 7,
@@ -102,4 +103,4 @@ function poker(hand1, hand2) {
 
 module.exports = poker;
 
-// console.log(poker([3,3,3,2,2], [4,4,4,3,3]));
+// console.log(poker([3,3,6,5,2], [4,11,5,2,3]));

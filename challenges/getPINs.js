@@ -47,19 +47,37 @@ const pad = {
 
 
 
-function getPINs(observed, results = []) {
-  //iterate though each number in observed
-  //add the adjacent numbers to each element in the array 
+// function getPINs(observed, results = []) {
+//   //iterate though each number in observed
+//   //add the adjacent numbers to each element in the array 
 
 
-  if(!observed) return results;
-  let len = observed.length
-  let curr = pad[observed[0]]
-  console.log(curr)
-  observed = observed.slice(1)
-  }
+//   if(!observed) return results;
+//   let len = observed.length
+//   let curr = pad[observed[0]]
+//   console.log(curr)
+//   observed = observed.slice(1)
+//   }
  
-  
+  //SOLUTION
+  function getPINs(observed){
+
+
+    function getCombos(observed){
+      if(observed.lengh <= 1){
+        return pad(observed)
+      }
+      const remaining = getCombo(observed.slice(1))
+
+      let combo = [];
+      for(let i = 0; i < pad[observed[0]].length; i += 1){
+        for(let j = 0; j < remaining.length; j += 1){
+          combos.push(pad[observed[0]][i].concat(remaining[j]));
+        }
+      }
+      return combos;
+    }
+  }
   
 }
 

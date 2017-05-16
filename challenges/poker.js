@@ -19,6 +19,13 @@
 */
 
 function poker(hand1, hand2) {
+  hand1 = hand1.sort((a,b) => { return a - b});
+  hand2 = hand2.sort((a,b) => {return a -b});
+  for(let i = 0; i < hand1.length; i ++){
+    
+  }
+
+
 
 }
 

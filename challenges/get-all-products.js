@@ -10,6 +10,9 @@
  */
 
 function getAllProducts(array) {
+
+    if (!array || array === []) return [0];
+
     let res = [];
 
     for (let i = 0; i < array.length; i++) {
@@ -22,14 +25,6 @@ function getAllProducts(array) {
     return res;
 }
 
-// function getAllProducts(array) {
-//     let res = [];
-
-//     for (let i = 0; i < array.length; i += 1) {
-//         res.push()
-//     }
-// }
-
-console.log(getAllProducts([0, 7, 3, 4]));
+// console.log(getAllProducts([1, 7, 3, 4]));
 
 module.exports = getAllProducts;

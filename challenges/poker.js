@@ -18,7 +18,26 @@
 * Example: poker([3,5,5,5,2], [4,6,7,8,8]) -> "Player 1 wins"
 */
 
+function calcHand(hand) {
+  const sortedHand = hand.sort((a, b) => b - a);
+  for (let i = 0; i < hand.length; i += 1) {
+    if (sortedHand[i] === sortedHand[i + 3]) return '4-of-a-kind';
+    if ((sortedHand[i] === sortedHand[i + 2] && sortedHand[i + 3] === sortedHand[i + 4]) ||
+      (sortedHand[i] === sortedHand[i + 1] && sortedHand[i + 2] === sortedHand[i + 4])) {
+      return 'full-house';
+    }
+    if (sortedHand[i] === sortedHand[i + 2]) return '3-of-a-kind';
+    if (sortedHand[i] === sortedHand[i + 1] && (sortedHand[i + 2] === sortedHand[i + 3] ||
+      sortedHand[i + 3] === sortedHand[i + 4])) return '2-pair';
+    if (sortedHand[i] === sortedHand[i + 1]) return 'pair';
+  }
+  return 'high-card';
+}
+
 function poker(hand1, hand2) {
+  if (calcHand(hand1) > calcHand(hand2)) return 'Player 1 wins';
+  if (calcHand(hand1) < calcHand(hand2)) return 'Player 2 wins';
+  if (calcHand(hand1) === calcHand(hand2)) 
 
 }
 

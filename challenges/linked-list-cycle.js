@@ -32,8 +32,28 @@ var Node = function(value) {
   this.next = null;
 }
 
-function hasCycle(head) {
-
+// using WeakMap
+// O(n) time and space
+function hasCycle1(head) {
+  // map to keep track of seen objects
+  const nodeMap = new WeakMap;
+  
+  // curr pointer to traverse linked list
+  let curr = head;
+  while (curr) {
+    // node has been seen
+    if (nodeMap.get(curr)) {
+      return true;
+    }
+    
+    // add node to nodeMap w/ dummy value
+    nodeMap.set(curr, true);
+    
+    // move to next node
+    curr = curr.next;
+  }
+  
+  return false;
 }
 
-module.exports = {Node: Node, hasCycle: hasCycle}
+module.exports = {Node: Node, hasCycle: hasCycle1}

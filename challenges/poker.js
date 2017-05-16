@@ -18,6 +18,11 @@
 * Example: poker([3,5,5,5,2], [4,6,7,8,8]) -> "Player 1 wins"
 */
 
+// generates random hand
+function handGenerator() {
+  return new Array(5).map()
+}
+
 function poker(hand1, hand2) {
 
 }

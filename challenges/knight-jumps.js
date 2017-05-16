@@ -10,8 +10,34 @@
 //  example input:
 // var str = "(4 5)"
 
-function knightjumps(str) {
+// parses string and returns point object
+function parseStr(str) {
+  const match = str.match(/\((\d)\s+(\d)\)/);
+  return match && {
+    x: +match[1],
+    y: +match[2],
+  }
+}
 
+function knightjumps(str) {
+  const start = parseStr(str);
+  // get points that are w/in board
+  return [
+    {x: 1, y: 2},
+    {x: 1, y: -2},
+    {x: -1, y: -2},
+    {x: -1, y: 2},
+    {x: 2, y: 1},
+    {x: 2, y: -1},
+    {x: -2, y: -1},
+    {x: 2, y: -1},
+  ].reduce((validPts, point) => {
+    const new_x = start.x + point.x;
+    const new_y = start.y + point.y;
+
+    // check if inbounds
+    return validPts + (new_x >= 1 && new_x <= 8 && new_y >= 1 && new_x <= 8);
+  }, 0);
 }
 
 module.exports = knightjumps;

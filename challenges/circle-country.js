@@ -23,7 +23,35 @@
  */
 
 function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
+  // helper function to determine whether point is inside given circle
+  // determine in circle if (x-x_c)^2 + (y-y_c)^2 - r^2 < 0
+  function isInsideCircle(x, y, x_c, y_c, r_c) {
+    // x, y - point in question
+    // x_c, y_c - circle's center
+    // r_c - circle radius
+    return Math.pow(x-x_c, 2) + Math.pow(y-y_c, 2) - Math.pow(r_c, 2) < 0;
+  }
 
+  // counts how many circle borders need to cross
+  let borders = 0;
+
+  // where x/y/r_c are the dimensions of the current circle during iteration
+  for (let i = 0; i < x.length; i++) {
+    const x_c = x[i],
+          y_c = y[i],
+          r_c = r[i];
+
+    // find how many circles start and end are exclusively in
+    if (
+      isInsideCircle(start_x, start_y, x_c, y_c, r_c)
+      ^
+      isInsideCircle(end_x, end_y, x_c, y_c, r_c)
+    ) {
+      borders += 1;
+    }
+  }
+
+  return borders;
 }
 
 module.exports = circleCountry;

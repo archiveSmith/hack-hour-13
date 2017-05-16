@@ -50,8 +50,51 @@ function pascalTriangle(numRows) {
   }
   return result;
 }
+
+//---------------cleaner solution------------------------
+
+function pascalTriangle2(numRows){
+  if (!numRows || numRows < 1) {return []}
+  const triangle = [[1]];
+  let row; 
+
+  for (let i = 0; i < numRows - 1; i += 1) {
+    row = [1];
+    for (let j = 1; j < triangle[i].length; j += 1) {
+      row[j] = triangle[i][j] + triangle[i][j - 1];
+    }
+    row.push(1);
+    triangle.push(row);
+  }
+  return triangle;
+}
+
+//-------------------recursive way ------------------------------
+
+function pascalTriangle3(n, triangle = [[1]]) {
+  if (!n || n < 1) return [];
+
+  // base case : n is 1. Return whatever our triangle is at that point.
+  if (n === 1) return triangle;
+
+  // recursive case: start by creating new row - initial value is 1
+  const row = [1];
+  const prevRow = triangle[triangle.length - 1];
+
+  for (let i = 1; i < prevRow.length; i += 1) {
+    row.push(prevRow[i] + prevRow[i - 1]);
+  }
+  row.push(1);
+  triangle.push(row);
+
+  // at the end of the recursive case, make the recursive call with n-1
+  // keep in mind, n is only used as a counter. we build from triangle, which
+  // will start from [[1]]
+  return pascalTriangle(n - 1, triangle);
+}
+
 //////////////////////////////////////////////////////
-console.log(pascalTriangle(5));
+console.log(pascalTriangle2(5));
 
 
 ///////////////////////////////////////////////////

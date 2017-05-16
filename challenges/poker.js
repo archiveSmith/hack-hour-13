@@ -129,8 +129,9 @@ function poker(hand1, hand2) {
 
   // compare the values from those keys against one another to determine winner
   if (value1 === value2) {
+    if (res1[0] === res2[0]) return 'Draw';
     if (res1[0] > res2[0]) return "Player 1 wins";
-    else return "Player 2 wins";
+    return "Player 2 wins";
   }
 
   if (value1 > value2) return "Player 1 wins";

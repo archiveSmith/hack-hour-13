@@ -91,8 +91,8 @@ function poker(hand1, hand2) {
   hand2Arr = hand2Obj[Object.keys(hand2Obj)[0]]
   console.log('1 ' + hand1Eval)
   console.log('2 ' + hand2Eval)
-  if (winOrder[hand1Eval] > winOrder[hand2Eval]) return 'Player 1 wins!'
-  if (winOrder[hand1Eval] < winOrder[hand2Eval]) return 'Player 2 wins!'
+  if (winOrder[hand1Eval] > winOrder[hand2Eval]) return 'Player 1 wins'
+  if (winOrder[hand1Eval] < winOrder[hand2Eval]) return 'Player 2 wins'
   if (winOrder[hand1Eval] === winOrder[hand2Eval]) {
     if (Number(Object.keys(hand1Arr[hand1Arr.length-1])[0]) > Number(Object.keys(hand2Arr[hand2Arr.length-1])[0])) return 'Player 1 wins!'
     if (Number(Object.keys(hand1Arr[hand1Arr.length-1])[0]) < Number(Object.keys(hand2Arr[hand2Arr.length-1])[0])) return 'Player 2 wins!'
@@ -102,4 +102,4 @@ function poker(hand1, hand2) {
 
 module.exports = poker;
 
-console.log(poker([3,3,3,2,2], [4,4,4,3,3]));
+// console.log(poker([3,3,3,2,2], [4,4,4,3,3]));

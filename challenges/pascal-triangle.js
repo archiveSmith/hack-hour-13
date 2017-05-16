@@ -51,7 +51,22 @@ function pascalTriangle(numRows) {
 }
 
 
- console.log(pascalTriangle("turtle"))
+
+//RECURSIVE SOLUTION
+function pascalTriangle(n, triange){
+  if(!n || n < 1) return [];
+  triangle = triangle ||[[1]];
+
+  if(n < 2) return triangle;
+  var row = [1];
+  var prevRow = triangle(triangle.length -1);
+  for(var i = 1; i < prevRow.length; i++){
+    row.push(prevRow[i] + prevRow(i-1))
+  }//DIDN't GET A CHANCE TO FINISH SOLUTION
+}
+
+
+ console.log(pascalTriangle('turtle'))
   // [
   //   [1],
   //   [1,1],

@@ -128,11 +128,10 @@ function poker(hand1, hand2) {
   let value2 = hands[res2[res2.length - 1]];
 
   // compare the values from those keys against one another to determine winner
-  // if (value1 === value2) {
-  //   if (res1[0] > res2[0]) return "Player 1 wins";
-  //   else if (res1[0] < res2[0]) return "Player 2 wins";
-  //   else return "Draw";
-  // }
+  if (value1 === value2) {
+    if (res1[0] > res2[0]) return "Player 1 wins";
+    else return "Player 2 wins";
+  }
 
   if (value1 > value2) return "Player 1 wins";
   else if (value1 < value2) return "Player 2 wins";

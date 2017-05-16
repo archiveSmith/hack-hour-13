@@ -38,7 +38,7 @@ function hasCycle(head) {
   let currNode = head.next;
 
   while (currNode) {
-    if (!isNodeCyclical[currNode.value]) isNodeCyclical[currNode.value] = currNode;
+    if (!isNodeCyclical[currNode]) isNodeCyclical[currNode] = true;
     else return true;
     currNode = currNode.next;
   }

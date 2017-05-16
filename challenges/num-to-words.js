@@ -13,7 +13,29 @@
  */
 
 function numToWords(num) {
+    // const digits = ['One', 'Two', 'Three', 'Four', 'Five', 'Six' ,'Seven', 'Eight', 'Nine'];
+    // const tens = ['Ten', 'Eleven', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen'];
+    // const twentyPlus = ['Twenty', 'Thirty', 'Fourty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
+    // const hundredPlus = ['Hundred', 'Thousand', 'Million', 'Billion', 'Trillion'];
 
+
+    const numbers = {
+        1: 'One',
+        2: 'Two',
+        3: 'Three',
+        4: 'Four',
+        5: 'Five',
+        6: 'Six',
+        7: 'Seven',
+        8: 'Eight',
+        9: 'Nine',
+    }
+
+    let wordNum;
+
+    for (let i = 0; i < num; i+=1) {
+        
+    }
 }
 
 module.exports = numToWords;

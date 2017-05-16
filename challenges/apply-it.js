@@ -26,7 +26,9 @@
  */
 
 function applyIt(func, args) {
+  let argsArr = Array.prototype.slice.call(arguments, 1);
 
+  return func(argsArr[0][0], argsArr[0][1], argsArr[0][2]);
 }
 
 module.exports = applyIt;

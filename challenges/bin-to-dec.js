@@ -15,6 +15,26 @@
 
 function binToDec(binary) {
 
+  if (typeof binary === 'string') {
+    return parseInt(binary, 2);
+  }
+  return decToBin(binary);
+}
+
+//Solution not utilizing helpers
+// function binToDec(binary) {
+//     var len = binary.length;
+//     var dec = 0;
+//     var BASE = 2;
+//     for (var i = 0; i < len; i += 1) {
+//         dec+=binary[i] * Math.pow(BASE, len-1-i);
+//     }
+//     return dec;
+// }
+
+
+function decToBin(decimal) {
+  return decimal.toString(2);
 }
 
 module.exports = binToDec;

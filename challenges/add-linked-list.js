@@ -18,7 +18,40 @@ function Node(val) {
 }
 
 function addLinkedList(l1, l2) {
+  let newNode = new Node();
 
+  let temp1;
+  let temp2;
+  let current;
+  let prev;
+
+  while (l1 && l2) {
+    temp1 = l1.value;
+    temp2 = l2.value;
+
+    if (current === undefined) {
+      current = newNode(temp1 + temp2);
+      prev = current;
+    }
+    else {
+      if (temp1 + temp2 >= 10) {
+        current.value = prev.value += 1;
+        let tempHolder = temp1 + temp2 + '';
+        let newTemp = tempHolder[tempHolder.length - 1];
+        current.next = newNode(newTemp);
+      }
+      else {
+        current.next = newNode(temp1 + temp2);
+      }
+    }
+    l1 = l1.next;
+    l2 = l2.next;
+  }
+
+  if (l1) current.next = l1;
+  if (l2) current.next = l2;
+
+  return current;
 }
 
-module.exports = {Node: Node, addLinkedList: addLinkedList};
+module.exports = { Node: Node, addLinkedList: addLinkedList };

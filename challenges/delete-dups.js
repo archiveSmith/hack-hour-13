@@ -13,7 +13,23 @@
 
 
 function deleteDups(head) {
+  const values = {};
+  let prev;
+  let current = head;
 
+  while (current) {
+    if (values[current.value]) {
+      current = current.next;
+      prev.next = current;
+    } else {
+      values[current.value] = current.value;
+      prev = current;
+      current = current.next;
+    }
+  }
+  return head;
 }
 
+//let newList = { value: "4", next: { value: "4", next: { value: "4", next: { value: "6", next: null } } } };
+//console.log(deleteDups(newList));
 module.exports = deleteDups;

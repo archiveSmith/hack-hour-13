@@ -11,6 +11,20 @@
 
 function getAllProducts(array) {
 
+    if (!array || array === []) return [0];
+
+    let res = [];
+
+    for (let i = 0; i < array.length; i++) {
+        let newArray = array.slice(0, i).concat(array.slice(i + 1, array.length));
+        res.push(newArray.reduce((acc, el) => {
+            acc *= el;
+            return acc;
+        }));
+    }
+    return res;
 }
+
+// console.log(getAllProducts([1, 7, 3, 4]));
 
 module.exports = getAllProducts;

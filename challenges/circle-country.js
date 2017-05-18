@@ -22,8 +22,37 @@
  *
  */
 
-function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
+ function circleCountry(x, y, r, start_x, start_y, end_x, end_y, disBorders = 0) {
 
+  if (!x.length || !y.length || !r.length) return disBorders;
+  if (start_x >= end_x && start_y >= end_y) return disBorders;
+
+  let optDir = [[x[0], 0], [y[0], 0], [r[0], 0]];
+
+  for (let i = 1; i < x.length; i += 1) {
+    let currXDistSqrd = Math.pow(end_x - x[i], 2);
+    let currYDistSqrd = Math.pow(end_y - y[i], 2);
+
+    let optX = Math.pow(end_x - optDir[0], 2);
+    let optY = Math.pow(end_y - optDir[1], 2);
+    if (Math.sqrt(currXDistSqrd + currYDistSqrd) > Math.sqrt(optX + optY)) {
+      console.log('went through if statement');
+
+      optDir = [[x[i], i], [y[i], i], [r[i], i]];
+    }
+  }
+
+  x.splice(optDir[0][1], 1);
+  y.splice(optDir[1][1], 1);
+  r.splice(optDir[2][1], 1);
+
+  if (start_x < end_x) start_x += optDir[2][0];
+  else start_x -= optDir[2][0];
+
+  if (start_y < end_y) start_y += optDir[2][0];
+  else start_y -= optDir[2][0];
+
+  return circleCountry(x, y, r, start_x, start_y, end_x, end_y, disBorders + 1);
 }
 
 module.exports = circleCountry;

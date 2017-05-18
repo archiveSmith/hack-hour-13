@@ -14,6 +14,23 @@
 
 function numToWords(num) {
 
+  const numStr = num.toString();
+  let numWord = '';
+
+  const arrNumSingles = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
+  const arrNumTeens = ['Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen'];
+  const arrNumTens = ['Twenty', 'Thirty', 'Fourty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
+  const arrNumZeros = ['Zero', 'Hundred', 'Thousand', 'Million', 'Billion', 'Trillion', 'Quadrillion', 'Quintillion'];
+
+  for (let i = 0; i < numStr.length; i += 1) {
+    // if numStr length equals one (when i equals 0), concatenate it's string equivalent to numWord
+    if (i === 0) { console.log(+(numStr.slice(-1)) - 1);
+      numWord += arrNumSingles[+numStr.slice(-2, -1) - 1];
+    } else if (i === 0) {
+      numWord += arrNumSingles[+numStr.slice(-1) - 1];
+    }
+  }
+  return numWord;
 }
 
 module.exports = numToWords;

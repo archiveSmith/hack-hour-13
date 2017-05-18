@@ -11,7 +11,25 @@
 // var str = "(4 5)"
 
 function knightjumps(str) {
-
+  // split the string for x and y and store each coordinate as a variable
+  const coordinates = str.split(/\D/);
+  const x = +coordinates[1];
+  const y = +coordinates[2];
+  // find all the possibilities of where the knight can go
+  let directions = 0;
+  // add 2 to y, and -1 to x, add 2 to y and +1 to x
+  // add 1 to y, and 2 to x, add -1 to y and 2 to x
+  // add -2 to y, and 1 to x, add -2 to y, and -1 to x
+  // add 1 to y, and -2 to x, add -1 to y, and 2 to x
+  if (y + 2 < 9 && y + 2 > 0 && x - 1 < 9 && x - 1 > 0) directions++;
+  if (y + 2 < 9 && y + 2 > 0 && x + 1 < 9 && x + 1 > 0) directions++;
+  if (y + 1 < 9 && y + 1 > 0 && x + 2 < 9 && x + 2 > 0) directions++;
+  if (y - 1 < 9 && y - 1 > 0 && x + 2 < 9 && x + 2 > 0) directions++;
+  if (y - 2 < 9 && y - 2 > 0 && x + 1 < 9 && x + 1 > 0) directions++;
+  if (y - 2 < 9 && y - 2 > 0 && x - 1 < 9 && x - 1 > 0) directions++;
+  if (y + 1 < 9 && y + 1 > 0 && x - 2 < 9 && x - 2 > 0) directions++;
+  if (y - 1 < 9 && y - 1 > 0 && x - 2 < 9 && x - 2 > 0) directions++;
+  return directions;
 }
 
 module.exports = knightjumps;

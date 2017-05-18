@@ -7,8 +7,18 @@
  *
  */
 
-function maxSubarray(arr) {
+ function maxSubarray(arr, subArrSums = []) {
+   if (arr.length === 1) return arr[0];
 
-}
+   for (let i = arr.length; i > 0; i -= 1) {
+     let tempSubArr = arr.slice(0, i);
+     console.log(tempSubArr);
+     subArrSums.push(maxSubarray(tempSubArr.slice(i - 1), subArrSums.push(tempSubArr.reduce((curr, acc) => curr + acc))));
+   }
+
+   return Math.max(...subArrSums);
+ }
+
+ maxSubarray([1, 2]);
 
 module.exports = maxSubarray;

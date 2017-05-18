@@ -13,8 +13,17 @@ function BinaryTree(value) {
   this.right = null;
 }
 
-function superbalanced(tree) {
+function branchDepth (tree, depth = 1) {
+  if (!tree) return depth;
+  return Math.max(branchDepth(tree.left, depth + 1), branchDepth(tree.right, depth + 1));
+}
 
+function superbalanced(tree) {
+  // create a left depth and a right depth and have them equal
+  // the total depth for when tree is finally null
+  const leftDepth = branchDepth(tree.left);
+  const rightDepth = branchDepth(tree.right);
+  return Math.abs(leftDepth - rightDepth) <= 1;
 }
 
 module.exports = {BinaryTree: BinaryTree, superbalanced: superbalanced};

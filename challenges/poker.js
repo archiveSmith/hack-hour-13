@@ -1,7 +1,7 @@
 /*Build a function that takes in two arrays of five elements, with each
 * array representing a player's hand and each element
 * representing a card from a standard deck of cards:
-* 52 cards, 2 - Ace, NO suits. (Jack = 11, Queen = 12, King = 13, Ace = 14)
+* 52 cards, 2 through Ace, NO suits. (Jack = 11, Queen = 12, King = 13, Ace = 14)
 *
 * The function should return either the string "Player 1 wins", "Player 2 wins", or "Draw"
 *  based on the two player's hands:
@@ -19,7 +19,20 @@
 */
 
 function poker(hand1, hand2) {
+  //find highest count of a number
+  function most(hand) {
+    countCache = {};
+    for (let i = 0; i < hand.length; i += 1) {
+      if (!countCache[i]) {
+        countCache[i] = countCache[i] + 1;
+      }
+    }
+    return countCache;
+  }
+most(hand1);
 
 }
 
 module.exports = poker;
+
+poker([3,5,5,5,2], [4,6,7,8,8]);

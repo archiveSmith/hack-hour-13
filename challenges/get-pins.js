@@ -25,7 +25,7 @@ expectations = {
 }
 */
 
-function getPINs(observed) {
+function getPINs1(observed) {
   let arrays = [];
   observed.split('').forEach(n => {
     if (+n === 0) {arrays.push(["8"])}
@@ -48,9 +48,101 @@ function getPINs(observed) {
   // return arrays;
   return result;
 }
+//--------------new after lecture-----------------------
+function getPINs2(observed) {
+  const adj = {
+    0: ['8', '0'],
+    1: ['1', '2', '4'],
+    2: ['1', '2', '3', '5'],
+    3: ['2', '3', '6'],
+    4: ['1', '4', '5', '7'],
+    5: ['2', '4', '5', '6', '8'],
+    6: ['3', '5', '6', '9'],
+    7: ['4', '7', '8'],
+    8: ['5', '7', '8', '9', '0'],
+    9: ['6', '8', '9']
+  }
+  let result = [];
+  while (observed.length > 1) {
+    for (let i = 0; i < arrays[0].length; i += 1) {
+      for (let j = 0; j < arrays[1].length; j += 1) {
+        result.push(arrays[0][i] + arrays[1][j])
+      }
+    }
+    arrays = arrays.slice(2); 
+    arrays.push(result);
+  }
+  // return arrays;
+  return result;
+
+}
+
+
+//----------------------CODESMITH----------------------
+
+function getPINs3(observed) {
+  const adj = {
+    0: ['8', '0'],
+    1: ['1', '2', '4'],
+    2: ['1', '2', '3', '5'],
+    3: ['2', '3', '6'],
+    4: ['1', '4', '5', '7'],
+    5: ['2', '4', '5', '6', '8'],
+    6: ['3', '5', '6', '9'],
+    7: ['4', '7', '8'],
+    8: ['5', '7', '8', '9', '0'],
+    9: ['6', '8', '9']
+  }
+  
+  // If there is only one observed digit, return array of possibilities from the object above.
+  if (observed.length === 1) return adj[observed]
+
+  // Get the remaining possibilities from remaining digits.
+  const theRest = getPINs(observed.slice(1))
+
+  // Place each possible digit from current observed digit and place it front of every possibility from
+  // above array of possibilities (based on remaining observed digits). Return big array of possibilities.
+  return adj[observed[0]].reduce((accum, num) => [...accum, ...theRest.map(pins => num.concat(pins))], [])
+}
+
+
+//------------CHRIS' WAY ONLY PARTIAL SOLUTION-----------------------------------------------
+
+//adjacents is an object with what numbers to use (if statement from above); 
+
+function getPINs4(observed) {
+  const adjacents = {
+    0: ['8', '0'],
+    1: ['1', '2', '4'],
+    2: ['1', '2', '3', '5'],
+    3: ['2', '3', '6'],
+    4: ['1', '4', '5', '7'],
+    5: ['2', '4', '5', '6', '8'],
+    6: ['3', '5', '6', '9'],
+    7: ['4', '7', '8'],
+    8: ['5', '7', '8', '9', '0'],
+    9: ['6', '8', '9']
+  }
+
+  function getCombos(observed) {
+    if (observed.length <= 1) {
+      return adjacents[observed];
+    }
+  
+    const remaining = getCombos(observed.slice(1)); 
+    let combos = [];
+    for (let i = 0; i < adjacents[observed[0]].length; i += 1) {
+      for (let j = 0; j < remaining.length; j += 1) {
+        combos.push(adjacents[observed[0][i]].concat(remaining[j]));
+      }
+    }
+    return combos;
+  }
+  return getCombos(observed)
+}
 
 //////////////////////////TESTING///////////////////////////////////////////
-console.log(getPINs('111'))
+console.log(getPINs4('111'))
 
 
 /*

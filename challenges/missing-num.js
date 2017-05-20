@@ -40,6 +40,39 @@ function missingNum2(array) {
   ).join('') - 1;
 }
 
+//---------------------------O(n^2)---space complexity: 1------------
+function missingNum3(array) {
+  //iterate thru array where i<= array.length
+  //look for index + 1 in array
+  for(let i = 1; i < array.length + 1; i += 1) {
+    if (array.indexOf(i) === -1) return i;
+  }
+  //if not found, you found the missing number;
+}
+
+//------------O(n) time -----space: 3-------------
+function missingNum4(array) {
+  var actualCount = 0;
+  var expectedTotal = 1;
+
+  for (var i = 0; i < array.length; i++) {
+    actualCount += array[i];
+    expectedTotal += i + 2;
+  }
+
+  return expectedTotal - actualCount;
+}
+
+//  n(n+1) / 2 --------O(n)----space: 1-----------------
+function missingNum5(array) {
+  //get sum of all integers from 1 to (N+1) including missing element
+  //using sum of linear series of number: n*(n+1)/2, n = Array.length + 1
+  const sum = (array.length + 1) * (array.length + 2) / 2;
+  //subtract all present integers from sum to find missing element 
+  return array.reduce((acc, num) => acc - num, sum); 
+}
+
+
 ///////////////////////////////////////////////////
 console.log(missingNum2([3,4,1,2,6]))
 

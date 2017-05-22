@@ -30,8 +30,8 @@ function maxSubarray(arr) {
  
   return max; 
 }
-///////------------------------------------------------
 
+///////------------------------------------------------
 function maxSubarray2(arr) {
   let currSum = arr[0];
   let maxSum = currSum;
@@ -50,6 +50,7 @@ function maxSubarray2(arr) {
   return maxSum
 }
 
+//---------------------------------------------
 function maxSubarray3(arr) {
   var currMax =  -Infinity
   var finalMax = -Infinity

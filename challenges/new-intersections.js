@@ -17,8 +17,65 @@
  * 	 
  */
 
-function newIntersections(x, y){
+// Looks for range of one dimension when there are intersections in the other dimension
+function findIntersectionRanges(arr1, arr2) {
+  // reduce arr1 to the ranges at which there are multiple instances of a value in arr2
+  // ranges have to have a min and max value but are initialized w/ a min
+  const unfilteredRanges = arr1.reduce((ranges, val1, idx) => {
+    // if encounter duplicate, add the max property or update it
+    
+    // corresponding value from other dimension
+    const val2 = arr2[idx];
 
+    // current range
+    const range = ranges[val1];
+
+    if (range) {
+      // update min and max of range
+      // for max, will check if first value (min) is greater and will update accordingly
+      range.min = Math.min(val2, range.min);
+      range.max = (range.max === undefined)
+        ? Math.max(val2, range.min)
+        : Math.max(val2, range.max);
+    }
+    // if encountered first, initialize range object
+    else {
+      ranges[val1] = { min: val2 };
+    }
+    return ranges;
+  },{});
+
+  // return valid ranges
+  return Object.keys(unfilteredRanges).reduce((validRanges, key) => {
+    // valid range
+    const currRange = unfilteredRanges[key];
+    if (currRange.max !== undefined) {
+      validRanges[key] = currRange;
+    }
+    return validRanges;
+  }, {});
+}
+
+function newIntersections(x, y) {
+  // objects of ranges in which the other dimension/coordinate intersects
+  const x_intersectRanges = findIntersectionRanges(x,y);
+  const y_intersectRanges = findIntersectionRanges(y,x);
+
+  // find total times at which those ranges intersect
+  return Object.keys(x_intersectRanges).reduce((totalIntersects, x_val) => {
+    // see how many y_vals fit in current x-intersect range
+    Object.keys(y_intersectRanges).forEach((y_val) => {
+      const x_range = y_intersectRanges[y_val];
+      const y_range = x_intersectRanges[x_val];
+
+      // adds 1 if x and y w/in each's ranges
+      totalIntersects += (
+        x_val >= x_range.min && x_val <= x_range.max && 
+        y_val >= y_range.min && y_val <= y_range.max
+      )
+    });
+    return totalIntersects;
+  }, 0);
 }
 
 module.exports = newIntersections;

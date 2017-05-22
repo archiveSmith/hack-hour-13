@@ -9,8 +9,5 @@
  * do not use division, becuase zero might be in the array and you cannot divide by zero
  */
 
-function getAllProducts(array) {
-
-}
-
-module.exports = getAllProducts;
+// b/c one liners
+module.exports = array => (array.length <= 1) ? [0] : array.map((_, excludeIdx) => array.filter((_, idx) => idx !== excludeIdx).reduce((product, num) => product * num));

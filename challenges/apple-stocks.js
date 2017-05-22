@@ -13,7 +13,52 @@
  */
 
 function bestProfit(stock_prices_yesterday) {
+  if (!Array.isArray(stock_prices_yesterday)) return 0;
 
+  let lowest;
+  let maxProfit = 0; //final value placeholder
+  let current; //tracks current stock price
+  let length = stock_prices_yesterday.length; //length of the array
+
+  for (let i = 0; i < length; i += 1) {
+    if (lowest === undefined || lowest > stock_prices_yesterday[i]) {
+      lowest = stock_prices_yesterday[i];
+    }
+    else {
+      current = stock_prices_yesterday[i] - lowest;
+      if (maxProfit < current) {
+        maxProfit = current;
+      }
+    }
+  }
+  return maxProfit;
 }
+
+//original double looped solution before refactoring
+
+// function bestProfit(stock_prices_yesterday) {
+//     if (!Array.isArray(stock_prices_yesterday)) return 0;
+
+//     let currentProfit;
+//     let purchase;   //tracks purchase price
+//     let maxProfit = 0; //final value placeholder
+//     let current; //tracks current stock price
+//     let length = stock_prices_yesterday.length; //length of the array
+
+//     for (let i = 0; i < length; i+= 1) {
+//         for (let j = 1; j < length; j+= 1) {
+//             purchase = stock_prices_yesterday[i];
+//             current = stock_prices_yesterday[j];
+
+//             if (current > purchase) {
+//                 currentProfit = current - purchase;
+//                 if (currentProfit > maxProfit) {
+//                     maxProfit = currentProfit;
+//                 }
+//             }
+//         }
+//     }
+//     return maxProfit;
+// }
 
 module.exports = bestProfit;

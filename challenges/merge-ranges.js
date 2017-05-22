@@ -9,9 +9,23 @@
  * Do not assume the ranges are in order
  */
 
-
 function mergeRanges(array) {
+  let res = [];
 
+  array.sort((function (index) {
+    return function (a, b) {
+      return (a[index] === b[index] ? 0 : (a[index] < b[index] ? -1 : 1));
+    };
+  })(0));
+
+
+  for (let i = 1; i < array.length; i++) {
+    if (array[i - 1][1] > array[i][0]) {
+      array[i - 1][1] = array[i][1];
+    }
+    res.push(array[i]);
+  }
+  return res;
 }
 
 module.exports = mergeRanges;

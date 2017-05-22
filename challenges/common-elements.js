@@ -11,6 +11,8 @@
 
 function commonElements(array1, array2, array3, array4){
   const newArr = [];
+  const args = Array.from(arguments);
+  console.log(args);
   // find the array with the longest length, and iterate through that array
   const lenOfArs = Math.max(...[array1.length, array2.length, array3.length, array4.length]);
   const longArr = (() => {
@@ -22,10 +24,8 @@ function commonElements(array1, array2, array3, array4){
 
   for (let i = 0; i < longArr.length; i += 1) {
     // if element is included in the other 3 arrays, push to newArr
-    if (array2.includes(longArr[i]) && array3.includes(longArr[i])
-        && array4.includes(longArr[i]) && !newArr.includes(longArr[i])) {
+    if (args.every(e => e.includes(longArr[i])) && !newArr.includes(longArr[i]))
       newArr.push(longArr[i]);
-    }
   }
   return newArr.length ? newArr : 'Nothing in Common!';
 }

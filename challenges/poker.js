@@ -7,6 +7,7 @@
 *  based on the two player's hands:
 *
 * 4-of-a-kind > full house > straight > 3-of-a-kind > 2-pair > 1-pair > high card.
+* 2222          33322           6789-10 44412           22331   11 345
 * (keeping in mind how cards out-rank eachother and possible draws)
 *
 * Start by hard-coding the array/hand inputs, but if there is time also
@@ -19,6 +20,7 @@
 */
 
 function poker(hand1, hand2) {
+    //
 
 }
 

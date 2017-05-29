@@ -8,7 +8,31 @@
   solveKnapsack(items, 5); // returns 9 (from items[1] and items[2])
 */
 function solveKnapsack(items, weightAvailable) {
+  //initialize storage of current greatest value;
+  let value = -Infinity;
+ 
+  function recurse (log, inventory) {
+    //if weightAvailable is surpassed forfeit config
+    if (log.weight > weightAvailable) return;
+    //if config has a greater value than is currently held record it
+    if (log.value > value) value = log.value;
   
+    //for each item in our curr inventory recursively build a configuration
+    inventory.forEach((item, i, inventory) => {
+      //store the deviation of the current item being put in the sack 
+      let changeLog = {
+        weight: log.weight + item.weight,
+        value: log.value + item.value
+      }
+      //make our recursive call with the curr elenment taken out of the inventory
+      recurse(changeLog, inventory.slice(i + 1));
+    });
+  }
+
+  //start first call to recursive 
+  recurse({value: 0, weight: 0}, items); 
+  return value;
+
 };
  /////////////////////////////////////////////////////////////// 
 let items = [{weight: 1, value : 3}, {weight: 3, value : 5}, {weight: 2, value : 4}];

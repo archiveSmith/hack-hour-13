@@ -12,54 +12,37 @@
   * console.log(result); // [ 'abc', 'acb', 'bac', 'bca', 'cab', 'cba' ]
   */
 
-//heaps permutation algorithm
-function anagrams(str) {
-  var arr = str.split('');
-  let permutations = [];   
 
-  function swap(a, b) {
-    [arr[a], arr[b]] = [arr[b], arr[a]]
-  }
+ 
 
-  function generate(n) {
-    if (n === 1) {
-      permutations.push(arr.join(',').replace(/,/g, ''));
-    } else {
-      for (var i = 0; i < n; i += 1) {
-        generate(n - 1);
-        //if odd, first # in swap is 0, otherwise it is i;  
-        swap(n % 2 ? 0 : i, n - 1);
-      }
-    }
-  }
+//------heaps permutation algorithm------------------
 
-  generate(arr.length);
-  return permutations;
-}    
-
-//------heap's (basically same as above)------------------
-
-
-function swap(a, b) {
-  [arr[a], arr[b]] = [arr[b], arr[a]]
+function swap(arr, a, b) {
+  [arr[a], arr[b]] = [arr[b], arr[a]];
 }
 
-function heapsPermute (array, output, n) {
-  n = n || array.length; // set n default to array.length
-  if (n === 1) {
-    output(array);
-  } else {
-    for (var i = 1; i <= n; i += 1) {
-      heapsPermute(array, output, n - 1);
-      if (n % 2) {
+function anagram(str) {
+  let arr = str.split('');
+  let perms = [];
+
+  function heaps(arr, n) {
+    if (n === 1) perms.push(arr.join(''))
+
+    for (let i = 1; i <= n; i += 1) {
+      heaps(arr, n - 1); 
+
+      if (n % 2 !== 0){
         var j = 1;
       } else {
         var j = i;
       }
-      swap(array, j - 1, n - 1); // -1 to account for javascript zero-indexing
+      swap(arr, j - 1, n - 1);
     }
   }
-};
+  heaps(arr, arr.length);
+  return perms;
+}
+
 
 //------codesmith way (a little slower)--------------------------------
 

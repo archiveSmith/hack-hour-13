@@ -66,7 +66,7 @@ LinkedList.prototype.remove = function(val) {
 };
 
 
-//-------------------------------------------
+//-------------CODESMITH SOLUTION------------------------------
 LinkedList.prototype.add2 = function(val) {
   const newNode = new Node(val);
   if (!this.head) {
@@ -113,12 +113,46 @@ LinkedList.prototype.remove2 = function(val) {
   }
 }
 
+//----------------------------------------------
+List.prototype.remove3 =  function (value) {
+  //check if only one exists
+  if (this.head.value === value) {
+    let removed = this.head;
+    if (!this.head.next) {
+      delete this.head;
+      delete this.tail;
+    //first one but others follow
+    } else {
+      this.head = this.head.next
+      this.head.prev = null;
+    }
+    return removed;
+  //if last, then need special case for that too;
+  } else if (this.tail.value === value) {
+    let removed = this.tail;
+    this.tail = this.tail.prev;
+    this.tail.next = null;
+    return removed;
+  } else {
+  //loop til find it, then remove; 
+    let curr = this.head;
+    while (curr.next && curr.value !== value) {
+      curr = curr.next;
+    }
+    let removed = curr;
+    curr.prev.next = curr.next;
+    curr.next.prev = curr.prev;
+    return removed;
+  }
+  return undefined;
+}
+
 ///////////////////////////////////////////////////////
 let list = new LinkedList();
 list.add(1);
 list.add(2);
 list.add(3);
-list.remove(2);
+// list.remove(2);
 //-------------
 console.log(list);
 

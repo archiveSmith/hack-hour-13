@@ -24,13 +24,13 @@ function solveKnapsack(items, weightAvailable) {
         weight: log.weight + item.weight,
         value: log.value + item.value
       }
-      //make our recursive call with the curr elenment taken out of the inventory
+      //make our recursive call with the curr element taken out of the inventory
       recurse(changeLog, inventory.slice(i + 1));
     });
   }
 
   //start first call to recursive 
-  recurse({value: 0, weight: 0}, items); 
+  recurse({weight: 0, value: 0}, items); 
   return value;
 
 };

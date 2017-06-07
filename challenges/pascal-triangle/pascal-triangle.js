@@ -33,12 +33,13 @@
 */
 
 function pascalTriangle(numRows, a) {
-  // edge cases
-  if (!numRows || numRows < 1) return [];
-  // hardcode the first row
-  if (!a) a = [1];
   // base condition
+  if (!a) a = [1];
+  console.log("numRows is", numRows);
+  console.log("a is", a);
   if (numRows < 2) {
+    console.log("hi");
+    console.log("what is a?", a);
     return a;
   }
 
@@ -56,6 +57,29 @@ function pascalTriangle(numRows, a) {
   return pascalTriangle(numRows - 1, a);
 }
 
-console.log(pascalTriangle(4));
+let rows = 3;
+let resultTriangle = pascalTriangle(rows);
 
-module.exports = pascalTriangle;
+// https://codereview.stackexchange.com/questions/110666/javascript-implementation-of-pascals-triangle
+
+var html = "";
+for (let a = 0; a < rows; a++) {
+  html += '<div class ="row">';
+  for (let b = 0; b < rows; b++) {
+    if (resultTriangle[a][b] === 0) {
+      continue;
+    }
+    html += '<div class="cell">' + resultTriangle[a][b] + "</div>";
+  }
+  html += "</div>";
+}
+var page = document.getElementById("container");
+
+console.log("page is");
+console.log(page);
+
+console.log("html is");
+console.log(html);
+
+document.getElementById("container").innerHTML += html;
+

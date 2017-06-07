@@ -18,7 +18,8 @@
  */
 
 function newIntersections(x, y){
-
+// create two objects that stores values of x and y and the number of times each value occurs
+//
 }
 
 module.exports = newIntersections;

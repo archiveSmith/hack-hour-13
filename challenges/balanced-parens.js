@@ -1,4 +1,4 @@
-// Not done
+// DONE!
 
 /*
  * write a function that takes a string of text and returns true if
@@ -27,10 +27,10 @@
  */
 
 function balancedParens(input) {
-  var matches = { '[': ']', '{': '}', '(': ')' };
-  var brackets = [];
-  for (var i = 0; i < input.length; i++) {
-    var char = input[i];
+  const matches = { '[': ']', '{': '}', '(': ')' };
+  const brackets = [];
+  for (let i = 0; i < input.length; i += 1) {
+    const char = input[i];
     if (char in matches) {
       brackets.push(char);
     } else if (char === ']' || char === ')' || char === '}') {
@@ -42,5 +42,10 @@ function balancedParens(input) {
   return !brackets.length;
 }
 
-console.log(balancedParens(('()({()}')));
+console.log(balancedParens(('[](){}')));
+console.log(balancedParens(('[({})]')));
+console.log(balancedParens(('[(]{)}')));
+// balancedParens('[](){}'); // true
+// balancedParens('[({})]');   // true
+// balancedParens('[(]{)}'); // false
 module.exports = balancedParens;

@@ -49,4 +49,5 @@ function knightjumps(x, y) {
   return counter;
 }
 
+console.log(knightjumps(1, 1));
 module.exports = knightjumps;

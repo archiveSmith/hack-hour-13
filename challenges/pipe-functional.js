@@ -89,7 +89,7 @@ function pipe(functions) {
 
 }
 
-console.log( pipe([e,l,l,o])('Y') )
+console.log( pipe2([e,l,l,o])('Y') )
 // OR
 
 // const pipe = (functions) =>;
@@ -144,6 +144,14 @@ function letterGenerator(letter) {
 
 const letterGenerator2 = (letter) => (letters) => letters === undefined ? letter: letter + letters;
 
+
+console.log(pipe2([
+  letterGenerator('h'),
+  letterGenerator('e'),
+  letterGenerator('l'),
+  letterGenerator('l'),
+  letterGenerator('o'),
+])())
 
 
 ///////////////////////////////////////////////////////////////

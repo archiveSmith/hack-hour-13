@@ -46,7 +46,10 @@ function makePhoneBookObject1(jazbook) {
 //------------MY SOLUTION-------------------------
 //  return the number associated with the name in the jazbook
 function findName(jazbook, name) {
-  return jazbook.filter(arr => arr[0] === name)[0][1];
+  let number = jazbook.filter(arr => 
+    arr[0] === name
+  )
+  return number.length > 0 ? number[0][1] : undefined;
 }
 
 // return an object literal representing the jazbook

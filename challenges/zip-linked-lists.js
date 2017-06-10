@@ -42,7 +42,7 @@ function zip(list1, list2) {
     temp = temp.next;
   }
   //if one is empty take the other and add it to the merged list 
-  temp.next = list1 ? list1 : list2; 
+  temp.next === list1 ? list1 : list2; 
 
   return head; 
 }

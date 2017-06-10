@@ -1,7 +1,27 @@
 // Some languages have "if" statements that are closed by "fi" instead of curly brackets. Or they close a "case" with "esac", i.e. the same keyword backwards. for this problem we'll check that all words in a string are "closed". Write a function that takes a string and returns true if every word is closed by its backwards counterpart. Words must be separated by space or punctuation.
 
 
+
 function matchWord(str) {
+  if (str.length === 0) return true; 
+  let words = str.match(/[a-z]+/gi);
+  let stack = [];
+  
+  words.forEach(word => {
+    word = word.toLowerCase();
+    let reversed = word.split('').reverse().join('');
+    if (stack[stack.length - 1] !== word) {
+      stack.push(reversed);
+    } else if (stack[stack.length - 1] === word) {
+      stack.pop();
+    }
+  });
+
+  return stack.length === 0;
+}
+
+//--------------------------------------
+function matchWord1(str) {
   let words = str.match(/[a-z]*/gi).filter(x => x.length > 0).map(x => x.toLowerCase()); 
   let stack = [];
   let stored = {};
@@ -19,7 +39,7 @@ function matchWord(str) {
 }
 
 
-
+//---------------------------------------------
 function matchWord2(str) {
   function isChar(el) {
     return (el >= 'A' && el <= 'Z' || el >= 'a' && el <= 'z');

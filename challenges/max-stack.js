@@ -12,11 +12,19 @@ function Stack() {
   this.index = 0;
 }
 
-Stack.prototype.push = function(value) {
-  this.storage[this.index] = value; 
-  this.index++;
-  return this.index;
+Stack.prototype.push = function(...value) {
+  value.forEach(val => {
+    this.stack[this.length] = val;
+    this.length++;
+  })
+  return this.length;
 }
+
+// Stack.prototype.push = function(value) {
+//   this.storage[this.index] = value; 
+//   this.index++;
+//   return this.index;
+// }
 
 Stack.prototype.pop = function() {
   let removed = this.storage[this.index -1];

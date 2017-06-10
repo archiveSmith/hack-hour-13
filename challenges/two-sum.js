@@ -58,9 +58,9 @@ repeat that process til get true; if don't return false at bottom
 
 /////////////////////TESTING/////////////////////////////////////
 
-console.log('TRUE__', twoSum([3,1,2,6], 9) )
-console.log('FALSE__', twoSum([3,1,2,3], 9) )
-console.log('TRUE__', twoSum([1,3,3,10], 6) )
+console.log('TRUE__', twoSum2([3,1,2,6], 9) )
+console.log('FALSE__', twoSum2([3,1,2,3], 9) )
+console.log('TRUE__', twoSum2([1,3,3,10], 6) )
 
 
 module.exports = twoSum;

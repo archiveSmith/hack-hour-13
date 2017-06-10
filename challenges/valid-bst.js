@@ -4,7 +4,6 @@
  *      at any given node, the value of all the nodes in its right tree must be > its value
  */
 
-
 function BinaryTree(val) {
   this.value = val;
   this.left = null;
@@ -20,19 +19,69 @@ function validBST(BST) {
     if (tree.value <= min || tree.value >= max) return false;
     
     let left = recurse(tree.left, min, tree.value)
-    let left = recurse(tree.right, tree.value, max)
+    let right = recurse(tree.right, tree.value, max)
 
     return left && right;
   }
   return recurse(BST, -Infinity, Infinity); 
 }
 
+//----------------------------------O(n) time, O(n) space-
+function validBST1(tree) {
+  function makeArray(node) {
+    if (!node) return [];
+    return [...makeArray(node.left), node.value, ...makeArray(node.right)];
+  }
+  
+  const entireArray = makeArray(tree);
+  for (let i = 1; i < entireArray.length; i++) {
+    if (entireArray[i] < entireArray[i - 1]) return false;
+  }
+  
+  return true;
+}
+
+//----------------------------O(n) time, O(1) space----------
+function validBST2(BST) {
+  if (BST instanceof BinaryTree === false) return 'bad input';
+  
+  /* Create validation helper function
+   * INPUT: tree, min, max
+   * OUTPUT: boolean
+   */
+  function isValid(tree, min, max) {
+    // Base case: if tree is null, return true as we have reached a leaf successfully
+    if (!tree) return true;
+
+    // Current value must be greater than minimum handed down from previous call
+    if (tree.value > min &&
+        
+        // Current value must be less than maximum handed down from previous call
+        tree.value < max &&
+      
+        // If both previous checks pass, run isValid on left branch with same min but max = current value
+        isValid(tree.left, min, tree.value) &&
+        
+        // If both previous checks pass, run isValid on left branch with same max but min = current value
+        isValid(tree.right, tree.value, max)) {
+    
+        // If all recursive calls return true, then entire tree is valid, so return true!
+        return true;
+    }
+    // If a single comparison fails, return false.
+    return false;
+  }
+  // Begin recursive search with BST, -Infinity and Infinity
+  return isValid(BST, -Infinity, Infinity);
+}
+
 //////////////////////TESTING////////////////////////////////////
-let tree = new BinaryTree(10);
-tree.left = new BinaryTree(7);
-tree.right = new BinaryTree(12);
-//console.log('MY TREE', tree);
-console.log( '*******', validBST(tree) )
+let BST = new BinaryTree(4);
+BST.right = new BinaryTree(8);
+BST.right.left = new BinaryTree(7);
+BST.left = new BinaryTree(2);
+BST.left.right = new BinaryTree(3);
+console.log( '*******', validBST(BST) )
 
 //////////////////////////////////////////////////////////////////////////
 /*

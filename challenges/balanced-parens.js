@@ -24,7 +24,25 @@
  *
  *
  */
+function balancedParens (str) {
+  //make object to show paren and their opposite
+  let parens = {'(':')', '[':']', '{': '}', '}': false, ']': false, ')':false};
+  //make stack and push onto it and then pop off when opposite arrives
+  let stack = [];
 
+  str.split('').forEach(paren => {
+    if ( stack[stack.length - 1] === paren ) {
+      stack.pop();
+    } else {
+      if ( parens[paren]) {
+        stack.push(parens[paren]);
+      }
+    }
+  })
+  return stack.length === 0;
+}
+
+//--------------------------
 function balancedParens2(input) {
   const brackets = {  '(': ')', '{': '}', '[': ']', ')': false, '}': false, ']': false  }
   const stack = [];

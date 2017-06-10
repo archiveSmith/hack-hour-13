@@ -17,32 +17,55 @@ function Node(val) {
   this.next = null;
 }
 
-function addLinkedList1(l1, l2) {
-  let sum = l1.value + l2.value;
-  let remainder = sum >= 10 ? sum - 10 : null
-  if (remainder) {
-    sum = remainder;
-    l1.next.value += remainder; 
-  }
-  let result = new Node(sum)
-  while(l1.next && l2.next) {
+//-----------------my way that works-----------------------
+function addLinkedList(l1, l2) {
+  if (!l1 && !l2) {return "no lists given"}
+  if (!l1) {return l2}
+  if (!l2) {return l1}
+  // separate final answer from new list nodes being formed; otherwise will overwrite
+  let answer = list = new Node(l1.value + l2.value);
+  let remainder = 0;
+  while (l1.next && l2.next) {
     l1 = l1.next;
     l2 = l2.next;
-    //console.log(l1)
-    let sum = l1.value + l2.value;
-    let remainder = sum >= 10 ? sum - 10 : null;
-    if (remainder && l1.next) {
-      sum = remainder;
-      l1.next.value += remainder; 
-    }
-    result.next = new Node(sum);
-    //result.next = result.next.next;
- 
+    let sum = l1.value + l2.value > 9 ? 0 : l1.value + l2.value;
+    list.next = new Node(sum + remainder);
+    l1.value + l2.value > 9 ? remainder = 1 : remainder = 0;
+    console.log('LIST----', list);
+    list = list.next;
   }
-  return result;
+  return answer;
 }
 
-function addLinkedList(l1, l2) {
+//------------------------------------------------------
+var zero = new Node(0);
+zero.next = zero;
+
+function addLinkedList1(num1, num2, carryover) {
+  var node1 = num1, node2 = num2, ansNode;
+  var ansList = ansNode = new Node(node1.value + node2.value);
+  while (node1 || node2) {
+    node1 = node1.next || zero;
+    node2 = node2.next || zero;
+    if (node1 === zero && node2 === zero) break;
+    ansNode.next = new Node(node1.value + node2.value);
+    ansNode = ansNode.next;
+  }
+  //handle the carry-overs. this loop handles all but the last digit
+  for (ansNode = ansList; ansNode.next; ansNode = ansNode.next) {
+    ansNode.next.value += Math.floor(ansNode.value / 10);
+    ansNode.value %= 10;
+  }
+  //handle the last digit
+  if (ansNode.value >= 10) {
+    ansNode.next = new Node(1);
+    ansNode.value %= 10;
+  }
+  return ansList;
+}
+ 
+//--------------------------------------------------------------
+function addLinkedList2(l1, l2) {
   let num1 = '', num2 = '';
   let zero = new Node(0);
 
@@ -67,6 +90,47 @@ function addLinkedList(l1, l2) {
   return head;
 }
 
+//-----------------------------------------------
+function addLinkedList3(num1, num2, carryover) {
+  var current1  = num1.next
+  var current2  = num2.next
+  var tempvalue;
+  var answerlist;
+
+  answerlist = new Node((num1.value + num2.value)%10);
+  carryover = (num1.value + num2.value)/10<1 ? 0 : 1;
+
+  while(current1 || current2 || carryover===1){
+    var currentanswer = answerlist
+    while(currentanswer.next){
+      currentanswer = currentanswer.next
+    }
+    if (!current1 && !current2){
+      currentanswer.next = new Node(carryover);
+      carryover = 0;
+    }
+    else if (!current2){
+      tempvalue = current1.value + carryover;
+      currentanswer.next = new Node(tempvalue%10);
+      carryover = tempvalue/10<1 ? 0 : 1;
+      current1 = current1.next;
+    }
+    else if (!current1){
+      tempvalue = current2.value + carryover;
+      currentanswer.next = new Node(tempvalue%10);
+      carryover = tempvalue/10<1 ? 0 : 1;
+      current2 = current2.next;
+    }
+    else{
+      tempvalue = current1.value + current2.value + carryover;
+      currentanswer.next = new Node(tempvalue%10);
+      carryover = tempvalue/10<1 ? 0 : 1;
+      current1 = current1.next;
+      current2 = current2.next;
+    }
+  }
+  return answerlist;
+}
 
 /////////////////////TESTING//////////////////////////////////
 let list1 = new Node(5);
@@ -76,11 +140,11 @@ list1.next = list1b;
 list1b.next = list1c;
 let list2 = new Node(5);
 list2b = new Node(6);
-list2c = new Node(7);
+list2c = new Node(1);
 list2.next = list2b;
 list2b.next = list2c;
 //----------------------------------------
-console.log( addLinkedList(list1, list2) )
+console.log( addLinkedList1(list1, list2) )
 //addLinkedList(list1, list2)
 
 /*
@@ -97,4 +161,4 @@ if greater than 10, take extra and add it to the curr.next
 
 
 
-module.exports = {Node: Node, addLinkedList: addLinkedList};
+// module.exports = {Node: Node, addLinkedList: addLinkedList};

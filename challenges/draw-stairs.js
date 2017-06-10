@@ -13,18 +13,29 @@
 
 */
 
-function drawStairs(n) {  
-  let answer = '';
-  const symbol = '*';
-  let space = ' ';
-  const newLine = '\n';
-  let whiteSpaces;
-  for (let i = 1; i <= n; i += 1) {
-    whiteSpaces = n - i;
-    answer += space.repeat(whiteSpaces) + symbol.repeat(i) + newLine;
+
+
+
+
+
+// function drawStairs(n) {  
+//   let answer = '';
+//   const symbol = '*';
+//   let space = ' ';
+//   const newLine = '\n';
+//   let whiteSpaces;
+//   for (let i = 1; i <= n; i += 1) {
+//     whiteSpaces = n - i;
+//     answer += space.repeat(whiteSpaces) + symbol.repeat(i) + newLine;
+//   }
+//   console.log(answer)
+//  }
+// drawStairs(8)
+
+function drawStairs(num){
+  for(let i = 1; i <= num; i += 1) {
+    console.log(''.repeat(num - i) + '*'.repeat(i))
   }
-  console.log(answer)
- }
-drawStairs(8)
+}
 
 module.exports = drawStairs;

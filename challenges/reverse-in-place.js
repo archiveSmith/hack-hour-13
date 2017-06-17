@@ -13,19 +13,40 @@
  * DO NOT USE THE BUILT IN REVERSE METHOD
  */
 
- function reverseInPlace(array) {
-   if (!array[0] || !Array.isArray(array)) return "Incorrect input";
+// Input
+  // array
 
-   let temp = [];
+// Output
+  // input array reversed ("in place")
+  // no new objects are created in memory
 
-   for (let i = array.length - 1; i >= 0; i -= 1) {
-     temp.push(array[i]);
-   }
+// Edge Cases
+  // if the input is not an array return "Invalid input"
 
-   for (let i = 0; i < temp.length; i += 1) {
-     array[i] = temp[i];
-   }
-   return array;
- }
+// Temporary swaphalf solution
+
+// Initialize left and right variables setting them eqaul to null
+// Initialize a length variable set equal to input array.length
+// Use a for loop to iterate through the array (half of length)
+// and swap left and right elements of the array
+// Each iteration initialize a variable temp to hold the array[left] element value
+
+// let array = [1, 2, 3, 4, 5, 6];
+
+function reverseInPlace(array) {
+  if (!Array.isArray(array)) return 'invalid input';
+
+  let left = null;
+  let right = null;
+  const length = array.length;
+
+  for (left = 0; left < length / 2; left += 1) {
+    right = length - 1 - left;
+    const temp = array[left];
+    array[left] = array[right];
+    array[right] = temp;
+  }
+  return array;
+}
 
 module.exports = reverseInPlace;

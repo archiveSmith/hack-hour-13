@@ -15,17 +15,16 @@ let input = [3, 5, 7, 8, 4, 5, 2];
 
 function insertionSort(array) {
   for (let i = 1; i < array.length; i += 1) {
-    let x = array[i];
-    let j = i - 1;
-    while (j >= 0 && array[j] > x) {
+    let currIndex = array[i];
+    let j;
+    for (j = i - 1; j >= 0 && array[j] > currIndex; j -= 1) {
       array[j + 1] = array[j];
-      j = j - 1;
     }
-    array[j + 1] = x
+    array[j + 1] = currIndex;
   }
   return array;
 }
 
-insertionSort(input);
+console.log(insertionSort(input));
 
 module.exports = insertionSort;

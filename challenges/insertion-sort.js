@@ -2,16 +2,22 @@
 
 // https://en.wikipedia.org/wiki/Insertion_sort
 
-// iterate through array starting at index 1
-// initialize variable x to equal current index value
-// initialize variable j to equal current index - 1
-// if j is greater than or equal to 0 && value at array of j is greater than x
-  // enter while loop and set array of j - 1 = to array of j
-  // set j = j - 1
-// if while loop condition isn't met set array of j + 1 = x
+// Input
+  // array
+
+// Output
+  // input array sorted using the insertion sort algorithm
+
+// Iterate through array starting at index 1 (i = 1)
+// Initialize variable currIndex and set equal array[i] (current index)
+// create another for loop
+  // Set j = i - 1
+  // Condition: if j is greater than or equal to 0 && value at array of j is greater than currIndex
+  // Decrement j by 1 until above condition isn't met
+// If for loop condition isn't met set array of j + 1 equal to currIndex
 // return array
 
-let input = [3, 5, 7, 8, 4, 5, 2];
+const input = [3, 5, 7, 8, 4, 2];
 
 function insertionSort(array) {
   for (let i = 1; i < array.length; i += 1) {

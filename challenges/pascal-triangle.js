@@ -32,25 +32,44 @@
   ]
 */
 
-function pascalTriangle(numRows) {
-  let result = [];
-      result[0] = [1];
-      result[1] = [1,1];
-  for (let row = 2; row < numRows; row += 1){
-      result[row] = [1];
-      for (let col = 1; col <= row -1; col += 1){
-          result[row][col] = result[row-1][col] + result[row-1][col-1];
-          result[row].push(1);
-      }
-  }
-  return result;
-  }
+// Input: is the number of rows
+// Output: an array
 
-  for (let i = 0; i < pascalTriangle(10).length; i += 1){
-      console.log(pascalTriangle(10)[i]+"<br>");
+// Edge Case: if input doesn't exist or is less than 1 return and empty array.
+
+// Edges of the triangle should be 1
+// Each number is the numbers directly above it added together
+
+// Iterative approach - pseudocode
+  // Start the triangle with hard coded nested arrays
+  // Iterate until at point where previous row ends
+  // On each iteration add the two values from the previous row
+  // Push the trailing 1 to complete the row
+
+
+function pascalTriangle(numRows) {
+  if (!numRows || numRows < 1) return [];
+
+  // There is at least one row - go ahead and add it
+  const triangle = [[1]];
+  let row;
+  // j will be the index of the previous row in the triangle
+  for (let j = 0; j < numRows - 1; j += 1) {
+    // row will be the current row, and all rows begin with a 1
+    row = [1];
+    // k will be the index of each element in a given row
+    // start from k = 1 because the index 0 has already been added
+    // we iterate until the previous row ends
+    // on each iteration add two values from the previous row
+    for (let k = 1; k < triangle[j].length; k += 1) {
+      row[k] = triangle[j][k] + triangle[j][k - 1];
+    }
+    row.push(1);
+    triangle.push(row);
   }
+  return triangle;
 }
 
-pascalTriangle(5);
+// console.log(pascalTriangle(6));
 
 module.exports = pascalTriangle;

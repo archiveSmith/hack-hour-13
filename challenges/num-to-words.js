@@ -12,40 +12,60 @@
  * numToWords(92120000000000000) -> 'NintyTwoQuadrillionOneHundredTwentyTrillion'
  */
 
-// Input - number
-// Output - string, number input represented as a word (Camel Case, and spaces aren't necessary)
+ // Input - number
+ // Output - string, number input represented as a word (Camel Case, and spaces aren't necessary)
 
-// Look for any patterns
-  // What patterns do you recognize?
-  // Numbers are read in chuncks of Three
+ // Look for any patterns
+   // What patterns do you recognize?
+   // Numbers are read in chuncks of Three
 
-// Psuedocode
-// Convert the input number to a string
-  // Should be able to break up into threes
-  // Add zeros to front of string until it's divisible by 3
-// Break string into and array of number strings chunked into threes
-// Input: Array of number strings
-  // Convert every string of numbers to its name
-  // Add 'thousand' etc. as necessary
-// Output : Translated string
-// Input : String of 3 numbers
-  // Convert each number in the String to its name
-  // If the first element is not zero, append 'Hundred' to its name
-// Output: String the translated names together
+ // Psuedocode
+
+ // Initialize ONES array
+ // Initialize TENS array
+ // Initialize PLACES array
+
+ // Helper Function (convertToString)
+  // Convert the input number to a string
+    // Should be able to break up into threes
+    // Add zeros to front of string until it's divisible by 3
+
+ // Helper Function (chunkInThrees)
+  // Break string into and array of number strings chunked into threes
+
+ // Helper Function (parseChunk)
+  // Takes in one chunk and parses it
+  // Convert each number in the String to its corresponding English word representation
+  // If the first element is not '0' we want to append 'Hundred' to its name
+  // Output: English word representaion of chunk
+
+ // Helper Function (parseChunksArray)
+  // Takes in array of chunks and parses it
+  // Passes each chunk into parseChunk helper function
+  // Adds correct PLACE value to each passed in chunk
+  // Output : English word representation of the input number
+
+ // numToWords
+  // Initalize variables equal to the return value of each helper function
+    // Input number as a string
+    // String as an array of chunks
+  // Return value of final helper function
 
 const ONES = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
 const TENS = ['', 'Ten', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
 const PLACES = ['', 'Thousand', 'Million', 'Billion', 'Trillion', 'Quadrillion', 'Quintillion', 'Sextillion', 'Septillion', 'Octillion', 'Nonillion'];
 
+// Convert the input number to a string (must be divisible by 3)
 function convertToString(num) {
   num = String(num);
-  // Add zeros to string until it's divisible by 3
+
   while (num.length % 3 !== 0) {
     num = `0${num}`;
   }
   return num;
 }
 
+// Chunk number string into chunks of three and push each chunk to an array
 function chunkInThrees(string) {
   const chunksArray = [];
 
@@ -55,6 +75,7 @@ function chunkInThrees(string) {
   return chunksArray;
 }
 
+// Parse given chunk of chunkArray
 function parseChunk(chunk) {
   let parsedChunk = '';
 
@@ -63,24 +84,24 @@ function parseChunk(chunk) {
   parsedChunk += ONES[chunk[2]];
 
   return parsedChunk
-   .replace('TenOne', 'Eleven')
-   .replace('TenTwo', 'Twelve')
-   .replace('TenThree', 'Thirteen')
-   .replace('TenFour', 'Forteen')
-   .replace('TenFive', 'Fifteen')
-   .replace('TenSix', 'Sixteen')
-   .replace('TenSeven', 'Seventeen')
-   .replace('TenEight', 'Eighteen')
-   .replace('TenNine', 'Nineteen');
+  .replace('TenOne', 'Eleven')
+  .replace('TenTwo', 'Twelve')
+  .replace('TenThree', 'Thirteen')
+  .replace('TenFour', 'Forteen')
+  .replace('TenFive', 'Fifteen')
+  .replace('TenSix', 'Sixteen')
+  .replace('TenSeven', 'Seventeen')
+  .replace('TenEight', 'Eighteen')
+  .replace('TenNine', 'Nineteen');
 }
 
+// Parse the array of chunked strings into respective words
 function parseChunksArray(array) {
   let parsedString = '';
 
   for (let i = 0; i < array.length; i += 1) {
-    // Placement will give us the correct index for the value in our PLACES array
     const placement = array.length - i - 1;
-    // Pass in the chunk concatonated with our place
+
     parsedString += parseChunk(array[i]) + PLACES[placement];
   }
   return parsedString;
@@ -95,6 +116,6 @@ function numToWords(num) {
   return parseChunksArray(chunksArr);
 }
 
-// console.log(numToWords(0));
+// console.log(numToWords(2154));
 
 module.exports = numToWords;

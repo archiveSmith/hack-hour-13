@@ -13,7 +13,26 @@
  */
 
 function bestProfit(stock_prices_yesterday) {
+ 
+  if (!Array.isArray(stock_prices_yesterday) || !stock_prices_yesterday.length) return 0;
 
+  let maxProfit = 0, minPrice = stock_prices_yesterday[0];
+  
+ //iterate through array
+  for (let i = 1; i < stock_prices_yesterday.length; i += 1) {
+    let currPrice = stock_prices_yesterday[i];
+    
+    minPrice = Math.min(currPrice, minPrice)
+    
+    //figure profit
+    let profit = currPrice - minPrice;
+    
+    //set maxProfit to higher between itself and newest profit figured.
+    maxProfit = Math.max(maxProfit, profit);
+  }
+  
+  return maxProfit;
 }
+
 
 module.exports = bestProfit;

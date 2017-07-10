@@ -23,8 +23,8 @@ function knightjumps(str) {
   // x + 3, y - 1
 
   let nums = str.split('');
-  let x = Number(nums[1]); // or x = +nums[1]
-  let y = Number(nums[3]);
+  let x = +nums[1]; // turn into number
+  let y = +nums[3];
   let result = 0;
   
   if (x - 1 > 0 && y + 3 <= 8) result += 1; // refactor to 4 conditionals with 2nd half being two conditionals of same first halfs.

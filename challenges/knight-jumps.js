@@ -27,15 +27,15 @@ function knightjumps(str) {
   let y = +nums[3];
   let result = 0;
   
-  if (x - 1 > 0 && y + 3 <= 8) result += 1; // refactor to 4 conditionals with 2nd half being two conditionals of same first halfs.
-  if (x + 1 <= 8 && y + 3 <= 8) result += 1;
-  if (x - 1 > 0 && y - 3 > 0) result += 1;
-  if (x + 1 <= 8 && y - 3 > 0) result += 1;
+  if (x - 1 > 0 && y + 2 <= 8) result += 1; // refactor to 4 conditionals with 2nd half being two conditionals of same first halfs.
+  if (x + 1 <= 8 && y + 2 <= 8) result += 1;
+  if (x - 1 > 0 && y - 2 > 0) result += 1;
+  if (x + 1 <= 8 && y - 2 > 0) result += 1;
   
-  if (x - 3 > 0 && y + 1 <= 8) result += 1;
-  if (x - 3 > 0 && y - 1 > 0) result += 1;
-  if (x + 3 <= 8 && y + 1 <= 8) result += 1;
-  if (x + 3 <= 8 && y - 1 > 0) result += 1;
+  if (x - 2 > 0 && y + 1 <= 8) result += 1;
+  if (x - 2 > 0 && y - 1 > 0) result += 1;
+  if (x + 2 <= 8 && y + 1 <= 8) result += 1;
+  if (x + 2 <= 8 && y - 1 > 0) result += 1;
   return result;
 
 }

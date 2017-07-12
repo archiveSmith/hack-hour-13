@@ -15,6 +15,20 @@
 
 function mergeArrays(arr1, arr2) {
 
+  let merge = [];
+  let j = 0, k = 0;
+  const length = arr1.length + arr2.length;
+  for (let i = 0; i < length; i += 1) {
+    
+      if (k <= arr1.length && (arr1[k] < arr2[j] || j >= arr2.length)) {
+        merge.push(arr1[k]);
+        k++;
+      } else {
+          merge.push(arr2[j]);
+          j++;
+      }
+  }
+  return merge;
 }
 
 module.exports = mergeArrays;

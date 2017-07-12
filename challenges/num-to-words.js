@@ -116,6 +116,6 @@ function numToWords(num) {
   return parseChunksArray(chunksArr);
 }
 
-// console.log(numToWords(2154));
+console.log(numToWords(2154));
 
 module.exports = numToWords;

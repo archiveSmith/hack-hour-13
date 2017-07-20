@@ -13,7 +13,7 @@ function BinaryTree(val) {
 
 function validBST(tree) {
 	function makeArray(node) {
-		if (!tree) return [];
+		if (!node) return [];
 		return [...makeArray(node.left), node.value, ...makeArray( node.right)];
 	}
 

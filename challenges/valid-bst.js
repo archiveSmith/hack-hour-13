@@ -12,19 +12,34 @@ function BinaryTree(val) {
 }
 
 function validBST(tree) {
-	if (tree.left) {
-    if (tree.left <= tree.value) {
-      validBST(tree);
-    } else return false;	
-	} else if (tree.right) {
-			if (tree.right > tree.value) {
-				validBST(tree);
-			} else return false;
+	function makeArray(node) {
+		if (!tree) return [];
+		return [...makeArray(node.left), node.value, ...makeArray( node.right)];
+	}
+
+	const entireArray = makeArray(tree);
+	for (let i = 1; i < entireArray.length; i += 1) {
+		if (entireArray[i] < entireArray[i -1]) return false;
 	}
 	return true;
 }
 
 module.exports = {BinaryTree: BinaryTree, validBST: validBST};
 
+//alternative using recursive helper function:
+
+// function validBST(BST) {
+// 	if (BST instanceof BinaryTree === false) return 'bad input';
+
+// 	function isValid (tree, min, max) {
+// 		if (!tree) return true;
+
+// 		if (tree.value > min && tree.value < max && isValid(tree.left, min, tree.value) && isValid(tree.right, tree.value, max)) {
+// 			return true;
+// 		}
+// 		return false;
+// 	}
+// 	return isValid(BST, -Infinity, Infinity);
+// }
 
  

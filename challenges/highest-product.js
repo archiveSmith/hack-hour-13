@@ -3,8 +3,8 @@
  */
 
 function highestProduct(array) {
-  if (array.length < 3) return 0;
-  
+  if (!Array.isArray(array) || array.length < 3) return 0;
+
   let high = Math.max(array[0], array[1]);
   let low = Math.max(array[0], array[1]);
 

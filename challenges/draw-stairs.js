@@ -19,12 +19,9 @@ function drawStairs(n) {
     return 'Forgive me, but I cannot climb that many stairs.';
   }
 
-  let line = '';
-
   for (let i = 1; i <= n; i++) {
-  	line += ' '.repeat(n - i) + '*'.repeat(n - (n - i)) + '\n';
+  	console.log(' '.repeat(n - i) + '*'.repeat(i));
   }
-  console.log(line);
 }
 
 

@@ -16,8 +16,7 @@
 function drawStairs(n) {
   
   if (n > 100) {
-    console.log("Forgive me, but I cannot climb that many stairs.");
-    return;
+    return 'Forgive me, but I cannot climb that many stairs.';
   }
 
   let line = '';

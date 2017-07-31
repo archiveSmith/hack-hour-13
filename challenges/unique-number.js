@@ -10,7 +10,23 @@
  *
  */
 function uniqueNumber(array) {
+  const uniqNum = {};
+  let num;
 
+  for (let i = 0; i < array.length; i += 1) {
+    if (!uniqNum[array[i]]) {
+      uniqNum[array[i]] = 1;
+    } else {
+      uniqNum[array[i]] += 1;
+    }
+  }
+
+  let keyArr = Object.keys(uniqNum);
+
+  for (let j = 0; j < keyArr.length; j += 1) {
+    if (uniqNum[keyArr[j]] === 1) num = keyArr[j];
+  }
+  return num;
 }
 
 module.exports = uniqueNumber;

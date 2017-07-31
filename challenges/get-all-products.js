@@ -9,8 +9,21 @@
  * do not use division, becuase zero might be in the array and you cannot divide by zero
  */
 
-function getAllProducts(array) {
+// input -> an array of integers
+//
+// output -> array of all possible products made by multiplying all but one number
 
+function getAllProducts(array, result = []) {
+  if (result.length === array.length) return result;
+
+  let shifter = array.shift();
+  let product = array.reduce((a, b) => a * b);
+
+  result.push(product);
+  array.push(shifter);
+  return getAllProducts(array, result);
 }
+
+console.log(getAllProducts([1, 7, 3, 4]));
 
 module.exports = getAllProducts;

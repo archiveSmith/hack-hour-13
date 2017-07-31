@@ -7,7 +7,57 @@
  */
 
 function Stack() {
-  // body...
+  this.stac = {};
+  this.index = 0;
+
+  this.pop = () => {
+    if (this.index === 0) return undefined;
+    const elem = this.stac[this.index - 1];
+    delete this.stac[this.index - 1];
+    this.index -= 1;
+    return elem;
+  };
+
+  this.push = (val) => {
+    this.stac[this.index] = val;
+    this.index += 1;
+    return this.index;
+  };
+
+  this.getMax = () => {
+    const arr = Object.values(this.stac);
+    const max = Math.max(...arr);
+    return max;
+  };
 }
 
 module.exports = Stack;
+
+// function Stack() {
+//   this.stac = {};
+//   this.index = 0;
+//   this.max;
+//
+//   this.pop = () => {
+//     if (this.index === 0) return undefined;
+//     const elem = this.stac[this.index - 1];
+//     delete this.stac[this.index - 1];
+//     this.index -= 1;
+//     return elem;
+//   };
+//
+//   this.push = (val) => {
+//     if (this.stac[this.index - 1][this.max] < val) {
+//       this.stac[this.index - 1] = this.max = val;
+//     } else {
+//       this.stac[this.index] = this.max
+//     }
+//     this.stac[this.index] = this.max = val;
+//     this.index += 1;
+//     return this.index;
+//   };
+//
+//   this.getMax = () => {
+//     this.max;
+//   };
+// }

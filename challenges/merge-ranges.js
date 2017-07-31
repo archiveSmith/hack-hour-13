@@ -9,9 +9,29 @@
  * Do not assume the ranges are in order
  */
 
+// let times = [[0, 1], [3, 5], [4, 8], [10, 12], [9, 10]];
 
 function mergeRanges(array) {
-
+  if (!Array.isArray(array)) return console.log('invalid input');
+  const result = [];
+  // sort the array of ranges
+  array.sort((a, b) => a[0] - b[0]);
+  // iterate through array
+  // if result array is empty or if first index of current array is greater than
+  // the last array's second index in result array then push range to result.
+  // otherwise the last array's last element in result set equal to current array's
+  // last index value.
+  array.forEach((range) => {
+    if (!result.length || range[0] > result[result.length - 1][1]) {
+      result.push(range)
+    } else {
+      result[result.length - 1][1] = range[1];
+    }
+  });
+  // console.log(result);
+  return result;
 }
+
+// mergeRanges(times);
 
 module.exports = mergeRanges;

@@ -15,6 +15,22 @@
 
 function mergeArrays(arr1, arr2) {
 
+    let mergedArr = [];
+    let i=0, j = 0;
+
+    while (arr1[i] && arr2[j]) {
+        if (arr1[i] < arr2[j]) {
+            mergedArr.push(arr1[i]);
+            i += 1;
+        } else {
+            mergedArr.push(arr2[j]);
+            j += 1;
+        }
+    }
+    return arr1[i] ? mergedArr.concat(arr1.slice(i)) : mergedArr.concat(arr2.slice(j));
 }
+
+
+console.log(mergeArrays([1, 3, 4, 5], [1, 3, 6, 7, 14, 61]))
 
 module.exports = mergeArrays;

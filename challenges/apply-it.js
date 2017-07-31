@@ -25,8 +25,65 @@
  *  DO NOT USE THE BUILT IN APPLY METHOD OR THE SPREAD OPERATOR
  */
 
-function applyIt(func, args) {
+var jasmine = function (name, age) {
+    if (!age) {
+        return "We don't know how old " + name + " is!";
+    }
 
+    else {
+        return name + " is " + age + " years old!";
+    }
+};
+
+var jmoney = applyIt(jasmine, ["Jasmine"]);
+
+function applyIt1(func, args) {
+
+
+    if (args.length === 0) {
+        return func();
+    }
+
+    if (args.length === 1) {
+        return func(args[0]);
+    }
+
+    if (args.length === 2) {
+        return func(args[0], args[1]);
+    }
+
+    if (args.length === 3) {
+        return func(args[0], args[1], args[2]);
+    }
+
+    if(args.length === 4) {
+        return func(args[0], args[1], args[2], args[3]);
+    }
 }
+
+
+
+//solution
+
+function applyIt2 (func, args) {
+    return function () {
+        return func(...args);
+    }
+}
+
+function applyIt (func, args) {
+    let funcStr = 'func(';
+
+    const argList = args.map(function (element, i){
+        return `args[${i}]`
+    });
+    funcStr += argList.join(',') + ');';
+
+    return function () {
+        return eval(funcStr);
+    }
+}
+
+
 
 module.exports = applyIt;

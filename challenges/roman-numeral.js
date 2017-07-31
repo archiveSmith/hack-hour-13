@@ -19,6 +19,21 @@
 
 function romanNumeral(n) {
 
+    let numConv = [1000,900,500,400,100,90,50,40,10,9,5,4,1]
+    let romConv =  ['M','CM','D','CD','C','XC','L','XL','X','IX','V','IV','I']
+
+    let result = '';
+
+    for(let i = 0; i<numConv.length; i+=1){
+        while(n>=numConv[i]){
+            n -= numConv[i];
+            result += romConv[i];
+        }
+    }
+    return result;
 }
+
+
+// console.log(romanNumeral(2006));
 
 module.exports = romanNumeral;

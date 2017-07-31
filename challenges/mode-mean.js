@@ -11,7 +11,27 @@
 
 
 function modemean(array) {
+    let mean = Math.floor(array.reduce(function(all,item,index){
+         all += item;
+         return all;
+    })/array.length);
 
+    let modeObj = array.reduce(function(all,item,index){  
+       if(!all[item]){
+            all[item] = 0;
+       }
+        all[item]++
+        return all;
+    },{});
+    
+    let mode = Object.keys(modeObj).sort(function(a,b){
+        if(modeObj[b] === modeObj[a]){
+            return Math.max(b,a);
+        }
+        return modeObj[b] - modeObj[a]
+    })
+    return Number(Object.keys(modeObj)) === mean
 }
 
-module.exports = modemean;
+console.log(modemean([1]));
+// module.exports = modemean;

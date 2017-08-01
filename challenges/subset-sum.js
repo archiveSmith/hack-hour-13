@@ -9,24 +9,41 @@
  */
 
 function subsetSum(array, target) {
-	//doesn't quite work yet
-//edge case
-  if(array === 'undefined' || array.length === 0) return false;
-  
-  array.sort(function(a,b) {
-    return a - b;
-  });
-  
-target = target - array[0];
+  if(!array || !target) return false;
+  // power set
+  let sets = [[]];
 
- if (target === 0) {
-   return true;
- }
- 
-  array.shift();
-  
- return subsetSum(array, target);
-
+  // generate the power set and for each new set
+  // check if the temporary sum equals our sum above
+  for (let i = 0; i < array.length; i++) {
+    for (let j = 0, len = sets.length; j < len; j++) { //we set len = sets.length, because we don't want it to update until the loop is done (which it would if we used sets.length because we are pushing into it)
+      let temp = sets[j].concat(array[i]);
+      sets.push(temp);
+      let sum = temp.reduce((p, c) => p + c);
+      if (sum === target) return true;
+    }
+  }
+  return false;
+         
 }
+
+//edge case
+//   if(array === 'undefined' || array.length === 0) return false;
+  
+//   array.sort(function(a,b) {
+//     return a - b;
+//   });
+  
+// target = target - array[0];
+
+//  if (target === 0) {
+//    return true;
+//  }
+ 
+//   array.shift();
+  
+//  return subsetSum(array, target);
+
+// }
 
 module.exports = subsetSum;

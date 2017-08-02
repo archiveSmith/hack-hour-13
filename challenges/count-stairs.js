@@ -13,7 +13,7 @@
  *
  * That is a total of 8 different ways to take 5 steps, given that you can take 1 or 2 steps at a time.
  */
-<<<<<<< HEAD
+
 function countStairs(n) {
   function fib(n) {
     if (n <= 1) return n;
@@ -23,11 +23,4 @@ function countStairs(n) {
 }
 
 module.exports = countStairs;
-=======
 
-function countStairs(n) {
-
-}
-
-module.exports = countStairs;
->>>>>>> 8f3a9ffd16961f6aca0af64381152a7a23988fc2

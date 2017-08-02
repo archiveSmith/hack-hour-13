@@ -15,7 +15,7 @@
 
 function reverseInPlace(array) {
   if (!array) return [];
-  
+
   let i = 0;
   let j = array.length - 1;
   
@@ -29,7 +29,7 @@ function reverseInPlace(array) {
 
 module.exports = reverseInPlace;
 
-//like this one better:
+//like above one better.
 
 // for (let i = 0; i < array.length/2; i += 1) {
 //           let temp = array[i];

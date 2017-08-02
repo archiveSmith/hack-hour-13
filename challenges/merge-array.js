@@ -32,3 +32,5 @@ function mergeArrays(arr1, arr2) {
 }
 
 module.exports = mergeArrays;
+
+console.log(mergeArrays([3,8,12,14], [4,5,13,15,16]));

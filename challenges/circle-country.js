@@ -1,7 +1,11 @@
 /**
  *  Circle Country is a country that contains several circular-shaped districts.
- *  Some districts may be situated inside other districts, but their borders do not intersect or touch.
- *  Tyus is a resident of Circle Country. When he travels between two locations, he always tries to cross the fewest number of district borders as possible.
+
+ *  Some districts may be situated inside other districts, but their borders do not
+    intersect or touch.
+
+ *  Tyus is a resident of Circle Country. When he travels between two locations,
+    he always tries to cross the fewest number of district borders as possible.
  *
  *  You are given an array x, an array y, and an array r
  *
@@ -9,26 +13,48 @@
  *
  *  In addition to the arrays, you are also given the numbers start_x, start_y, end_x, and end_y
  *
- *    - (start_x, start_y) are Tyus' starting coordinates and (end_x, end_y) are Tyus' destination coordinates
+ *    - (start_x, start_y) are Tyus' starting coordinates and (end_x, end_y) are Tyus'
+        destination coordinates
  *
  *
- *  Write an efficient algorithm for finding the minimum number of district borders Tyus must cross in order to get from
+ *  Write an efficient algorithm for finding the minimum number of district borders
+    Tyus must cross in order to get from
  *  (start_x, start_y) to (end_x, end_y)
  *
  *  Constraints:
  *    - x, y and r will each contain the same number of elements
  *    - (start_x, start_y) and (end_x, end_y) will never lie on a circle's border
  *    - no circle borders intersect/touch (but they can be nested)
- *
+ */
+ /*
+  Input -> Three arrays (x, y, r), start point(numbers), end point(numbers)
+
+  Output -> How many times Tyus has to cross a border to get to an end point.
+
+  Breakdown:
+  - When does he have to cross a border?
+  - When he must go from outside a circle to inside or inside a circle to outside.
+  - What is outside a circle, and what is inside a circle?
+  - Outside a circle is being farther from the center of a circle than the radius.
+  - Inside a circle is being closer to the center of a circle than the radius.
+  - So we want to know how many times he must go from being farther from the center
+    of a circle than its radius to closer than the radius, or from being closer to
+    the center of a circle than its radius to farther than the radius.
+
+  Psuedocode:
+  - Iterate through all circles, reducing to a count of # of times a border was crossed.
+  - Distance from current circle center at the start.
+  - Distance from current circle center at the end.
+  - If radius is in between startDistance and endDistance, increase counter.
  */
 
-// const X = [-1, 0, 0, 4];
-// const Y = [0, 0, 0, 4];
-// const R = [1, 3, 6, 0.1];
-// const START_X = 1;
-// const START_Y = 0;
-// const END_X = 4;
-// const END_Y = 4;
+const X = [-1, 0, 0, 4];
+const Y = [0, 0, 0, 4];
+const R = [1, 3, 6, 0.1];
+const START_X = 1;
+const START_Y = 0;
+const END_X = 4;
+const END_Y = 4;
 
 function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
   return r.reduce((acc, rad, i) => {
@@ -38,6 +64,6 @@ function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
   }, 0);
 }
 
-// console.log(circleCountry(X, Y, R, START_X, START_Y, END_X, END_Y));
+console.log(circleCountry(X, Y, R, START_X, START_Y, END_X, END_Y));
 
 module.exports = circleCountry;

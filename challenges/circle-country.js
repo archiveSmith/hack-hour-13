@@ -22,12 +22,22 @@
  *
  */
 
+// const X = [-1, 0, 0, 4];
+// const Y = [0, 0, 0, 4];
+// const R = [1, 3, 6, 0.1];
+// const START_X = 1;
+// const START_Y = 0;
+// const END_X = 4;
+// const END_Y = 4;
+
 function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
   return r.reduce((acc, rad, i) => {
-    const startDistance = Math.hypot(x[i] - start_x, y[i] - start_y)
-    const endDistance = Math.hypot(x[i] - end_x, y[i] - end_y)
-    return (startDistance > rad && rad > endDistance || (startDistance < rad && rad < endDistance) ? ++acc : acc
+    const startDistance = Math.hypot(x[i] - start_x, y[i] - start_y);
+    const endDistance = Math.hypot(x[i] - end_x, y[i] - end_y);
+    return (startDistance > rad && rad > endDistance) || (startDistance < rad && rad < endDistance) ? ++acc : acc;
   }, 0);
 }
+
+// console.log(circleCountry(X, Y, R, START_X, START_Y, END_X, END_Y));
 
 module.exports = circleCountry;

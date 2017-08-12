@@ -42,7 +42,7 @@ function addLinkedList(l1, l2) {
   return head;
 }
 
-module.exports = {Node: Node, addLinkedList: addLinkedList};
+module.exports = { Node: Node, addLinkedList: addLinkedList };
 
 function addLinkedList(l1, l2) {
   let l1Arr = [];

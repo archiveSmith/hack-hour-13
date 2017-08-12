@@ -13,40 +13,42 @@
  * DO NOT USE THE BUILT IN REVERSE METHOD
  */
 
-// Input
-  // array
+/*
+Input
+  array
 
-// Output
-  // input array reversed ("in place")
-  // no new objects are created in memory
+Output
+  input array reversed ("in place")
+  no new objects are created in memory
 
-// Edge Cases
-  // if the input is not an array return "Invalid input"
+Edge Cases
+  if the input is not an array return "Invalid input"
 
-// Temporary swaphalf solution
+###### Temporary swaphalf solution ######
 
-// Initialize left and right variables setting them eqaul to null
-// Initialize a length variable set equal to input array.length
-// Use a for loop to iterate through the array (half of length)
-// and swap left and right elements of the array
-// Each iteration initialize a variable temp to hold the array[left] element value
+Initialize left and right variables setting them eqaul to null
+Initialize a length variable set equal to input array.length
+Use a for loop to iterate through the array (half of length)
+and swap left and right elements of the array
+Each iteration initialize a variable temp to hold the array[left] element value
 
-// let array = [1, 2, 3, 4, 5, 6];
+###### Push and Splice solution ######
+loop through the input array
+Set i equal to array.length - 2 (second to the last element in the array)
+Loop until iterator (i) is greater than or equal to 0
+Each iteration decrement i by one
+Each iteration push array[i] on to input array
+Each iteration splice element at index i
+return array
+
+###### Array destructuring solution ######
+*/
+
+let array = [1, 2, 3, 4, 5, 6];
 
 function reverseInPlace(array) {
   if (!Array.isArray(array)) return 'invalid input';
 
-  let left = null;
-  let right = null;
-  const length = array.length;
-
-  for (left = 0; left < length / 2; left += 1) {
-    right = length - 1 - left;
-    const temp = array[left];
-    array[left] = array[right];
-    array[right] = temp;
-  }
-  return array;
 }
 
 module.exports = reverseInPlace;

@@ -10,24 +10,73 @@
  *  and 1 sale of 1 Apple stock yesterday
  *
  *  Return 0 if no profit is possible OR if input is invalid.
+ *
+ * ################################################################################################
+ *
+ *  Input:
+ *    - Array of stock prices
+ *
+ *  Output:
+ *    - Best profit possible from 1 purchase and 1 sale of 1 Apple stock
+ *
+ *  Edge Cases:
+ *    - Input not an array or empty array, return 0.
+ *
  */
 
- function bestProfit(stock_prices_yesterday) {
-   if (stock_prices_yesterday.length <= 1) return 0;
+ /* ##### First Solution #####
+     Handle edge cases
+       - Input not an array or empty array, return 0.
+      Declare a variable best and initialize it to 0 (use this to store the best profit).
+      Iterate through input stock prices (outer for loop)
+        - Initialize i at 0, increment i by 1 each iteration
+      Iterate through input stock prices (inner for loop)
+        - Initialize j at 1, increment j by 1 each iteration
+        - Each iteration set best eqaul to the max between:
+          - best
+          - stock_prices_yesterday[i] - stock_prices_yesterday[j]
+      Return best
 
-   const prices = stock_prices_yesterday;
-   let diff = 0;
+      [1, 6, 15, 4, 9, 3, 22]
+ */
+ // function bestProfit(prices) {
+ //   if (!Array.isArray(prices) || !prices.length) return 0;
+ //
+ //   let best = 0;
+ //
+ //   for (let i = 0; i < prices.length; i++) {
+ //     for (let j = 1; j < prices.length; j++) {
+ //       best = Math.max(best, prices[j] - prices[i]);
+ //     }
+ //   }
+ //   return best;
+ // }
 
-   for (let i = 0; i < prices.length - 1; i += 1) {
-     for (let j = 1; j < prices.length; j += 1) {
-       if (prices[j] - prices[i] > diff && prices[j] - prices[i] > 0) {
-         diff = prices[j] - prices[i];
-       }
-     }
+ /* ##### Better Solution #####
+    Handle edge cases
+      - Input not an array or empty array, return 0.
+    Use first price to initialize lowest price to buy.
+    Initialize highest profit as 0.
+    Iterate through input array.
+      - If we see a price lower than our lowest price so far, set our lowest price
+      so far to that lowest price.
+      - Set profit to highest between itself and newest price minus lowest price.
+    Return profit value at the end.
+ */
+
+ function bestProfit(prices) {
+   if (!Array.isArray(prices) || !prices.length) return 0;
+
+   let buy = prices[0];
+   let profit = 0;
+
+   for (let i = 0; i < prices.length; i++) {
+     buy = Math.min(buy, prices[i]);
+     profit = Math.max(profit, prices[i] - buy);
    }
-
-   if (diff <= 0) return 0;
-   return diff;
+   return profit;
  }
+
+ // console.log(bestProfit([1, 6, 15, 4, 9, 3, 22]));
 
 module.exports = bestProfit;

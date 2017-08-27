@@ -12,7 +12,7 @@
   * console.log(result); // [ 'abc', 'acb', 'bac', 'bca', 'cab', 'cba' ]
   */
 
-function anagrams(str) {
+function anagramsB(str) {
 var arr = str.split(''),
     len = arr.length, 
     perms = [],
@@ -39,5 +39,11 @@ var arr = str.split(''),
     }
    return perms;
 }
+function anagrams(str) {
+    
+}
+let result = anagrams('a');
+console.log('check the result' ,result); // [ 'abc', 'acb', 'bac', 'bca', 'cab', 'cba' ]
+
 
 module.exports = anagrams;

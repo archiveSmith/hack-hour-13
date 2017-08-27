@@ -24,4 +24,14 @@ function reverseInPlace(array) {
  	 return array;
 }
 
+// SECOND SOLUTION
+function reverseInPlace(array) {
+ if(!array || array.length === 0) return [];	
+ let len = array.length-1;
+ for(let start=0, end=len; end > start; start++, end--){
+ 	[array[start], array[end]] = [array[end], array[start]];
+ }
+ return array;
+}
+
 module.exports = reverseInPlace;

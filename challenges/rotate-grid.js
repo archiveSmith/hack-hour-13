@@ -20,4 +20,29 @@ function rotateGrid(grid, n) {
 
 }
 
+function transpose(matrix) {
+  return matrix[0].map((number, col) => { 
+  	return matrix.map( (row) => { 
+  		return row[col];
+  	}).reverse();
+  });
+}
+
+// better explained
+function rotate(matrix) {
+  var result = [],
+      rowLength = matrix.length, // row length
+      columnLength = matrix[0].length, // column lenght aka n by m
+      i, j, row;
+  
+  for (i = 0; i < columnLength; ++i) {
+    row = [];
+    for (j = 0; j < rowLength; ++j) {
+      row.push(matrix[rowLength - j - 1][i]); // start by pushing (into row []) the first element in the last row, then the first element in the second row, and the first element in the first row
+    }
+    result.push(row);
+  }  
+  return result;
+}
+
 module.exports = rotateGrid;

@@ -16,9 +16,15 @@ function countTwos(n) {
 		if(str.includes('2')){
 			twoCount += str.match(/2/gi).length;
 		}
-		
 	}
 	return twoCount;
 }
 
 module.exports = countTwos;
+
+
+let result = countTwos(1000);  //-> 0
+console.log('the result is ,', result);
+// countTwos(3); // -> 1
+// countTwos(13); // -> 2
+// countTwos(1000); // -> 300

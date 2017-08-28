@@ -14,6 +14,7 @@ function Node(value) {
 }
 
 function reverseLinkedList(n1) {
+	if(!n1) return undefined;
 	var currentNode = n1;
 	let collection = [];
 	while(currentNode){

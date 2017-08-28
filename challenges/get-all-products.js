@@ -28,5 +28,7 @@ var result = [];
   
   
 }
+let result = getAllProducts([1, 7, 3, 4]); //->  [84, 12, 28, 21]
+console.log('the result ', result);
 
 module.exports = getAllProducts;

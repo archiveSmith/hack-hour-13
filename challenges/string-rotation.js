@@ -34,5 +34,20 @@ function stringRotation(s1, s2) {
 		return s1 === ans;
 	}
 }
+//Improved solution
+function stringRotation(s1, s2) {
+	if(s1.length !== s2.length) return false;
+	if(s1 === "" || s2 === "") return false;
+	let index = s2.indexOf(s1[0]);
+	let firstChunk = s2.slice(index);
+	let lastChunk = s2.slice(0, index);
+}
+
+//From codesmith
+// without rearranging
+function stringRotation(s1, s2) {
+  if (s1.length !== s2.length) return false;
+  return isSubstring(s1 + s1, s2);
+}
 
 module.exports = {isSubstring: isSubstring, stringRotation: stringRotation};

@@ -20,9 +20,9 @@ Adds a node to the end of the list
 LinkedList.prototype.add = function(val) {
   let newNode = new Node(val);
   if(this._length){
-    this.tail.next = newNode;
-    newNode.prev = this.tail;
-    this.tail = newNode;
+    this.tail.next = newNode;//
+    newNode.prev = this.tail;//
+    this.tail = newNode;//
   } else{
     this.head = newNode;
     this.tail = newNode;

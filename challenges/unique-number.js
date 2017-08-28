@@ -10,6 +10,7 @@
  *
  */
 
+ // o(n) time and o(n) space
 function uniqueNumber(array) {
 	let counter= {};
 	for(let number of array){
@@ -25,6 +26,10 @@ function uniqueNumber(array) {
 		if(counter[key] === 1){
 			return key
 		}
+	}
+// o(n)time, and  O(1) space with the XOR operator
+	function uniqueNumber(array) {
+		return array.reduce((res, num) => res ^ num);
 	}
 
 }

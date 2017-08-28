@@ -32,19 +32,66 @@ var Node = function(value) {
   this.next = null;
 }
 
-function hasCycle(sll) {
-  var slowPointer = sll.head, 
-       fastPointer = sll.head;
+function hasCycle(linkedlist) {
+  if (linkedlist) {
+     var curr = linkedlist;
 
-   while(slowPointer && fastPointer && fastPointer.next){
-     slowPointer = slowPointer.next;
-     fastPointer = fastPointer.next.next;
+     // Cycle through linked list
+     while (curr) {
 
-     if(slowPointer == fastPointer){
-        return true;
+         // When we reach one we've visited before, 
+         // exit the cycle and return true
+         if (curr.visited) {
+            return true;
+         }
+         curr.visited = true;
+         curr = curr.next;
      }
-   }
-   return false;
+  }
+
+  // If we make it to the end of the linked list, return false
+  return false;
 }
+
+// Implementation with tortois and hare
+// here we set two nodes at different sppeds. If there is a cycle, then both nodes will be trapped in it, and at some
+// point they will overlap
+function hasCycleB(head) {
+  
+      // check if there's anything to set to tortoise and hare
+      if (!head || !head.next) {
+        return false;
+      }
+  
+      //set tortoise and hare
+      var tortoise = head;
+      var hare = head.next;
+  
+      // keep going if hare hasn't reached end
+      while (hare && hare.next) {
+  
+          // if hare laps tortoise there was a cycle
+          if (tortoise === hare) {
+              return true;
+          }
+          tortoise = tortoise.next;
+          hare = hare.next.next;
+      }
+  
+      return false;
+  }
+
+let n1 = new Node(1);
+let n2 = new Node(2);
+let n3 = new Node(3);
+let n4 = new Node(4);
+
+n1.next = n2;
+n2.next = n3;
+n3.next = n4;
+n4.next = n2;
+
+let result = hasCycle(n1);
+console.log('the reuslt,', result );
 
 module.exports = {Node: Node, hasCycle: hasCycle}

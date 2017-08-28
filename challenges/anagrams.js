@@ -40,9 +40,20 @@ var arr = str.split(''),
    return perms;
 }
 function anagrams(str) {
-    
+    if(str < 2) return [str];
+    let permutations = [];
+    for(let i=0; i<str.length; i++) {
+        var char = str[i];
+
+        if(str.indexOf(char) !== i) continue;
+        let remainingString = str.slice(0, i) + str.slice(i+1, str.length);
+        for(let subPerm of anagrams(remainingString)) {
+            permutations.push(char + subPerm);
+        }
+    }
+    return permutations;
 }
-let result = anagrams('a');
+let result = anagrams('abc');
 console.log('check the result' ,result); // [ 'abc', 'acb', 'bac', 'bca', 'cab', 'cba' ]
 
 

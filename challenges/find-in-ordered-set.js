@@ -13,5 +13,22 @@ function findInOrderedSet(arr, target) {
 	return arr.includes(target);
 }
 
+//binary search is logaritmic so better than linear
+function binSearch(arr, toSearch) {
+  low = 0;
+  high = arr.length - 1;
+  while (low <= high) {
+    med = Math.floor((low + high) / 2);
+    if (arr[med] == toSearch) {
+      return med; // or true
+    } else if (arr[med] < toSearch) {
+      low = med + 1; // your low point moves to the right
+    } else {
+      high = med - 1; // your high point moves to the left
+    }
+  }
+  return -1; // or false
+}
+
 
 module.exports = findInOrderedSet;

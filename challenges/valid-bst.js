@@ -11,36 +11,26 @@ function BinaryTree(val) {
     this.right = null;
 }
 
-
-// binary search trees are great ways of searching through lists
-// Easily organize your list by greater and less than values
-//Values that are greater go down the right side of the tree 
-// Values that are lesser go down the left side of the tree
-
-function validBST(val) {
-    let originalTree = val; 
-    //   check to see if the end of the tree has been reached 
-    //   break case in the recursive solution 
-    (function makeRecurse(tree){
-    if (tree === null) return true;
-    //check if the tree has a left and if the value of the left is greater than the tree value this is incorrect
-    //greater values should be on the right of the tree. The tree is incorrect 
-    if (tree.left !== undefined && tree.left.value > tree.value || tree.left.value > val.value) {
-        return false;
+function vBST(tree) {
+    function arrayBST(node) {
+        if (!node) return [];
+        return arrayBST(node.left).concat(node.value).concat(arrayBST(node.right))
+        //return [...arrayBST(node.left), node.value, ...arrayBST(node.right)];
     }
-    //check if the tree has a right value and if the right value is less than or equal to the current value
-    //less than values should be to the left. The tree is incorrect. Exit and return false
-    if (tree.right !== undefined && tree.right.value <= tree.value || tree.right.value <= val.value) {
-        return false;
+    const arrayTree = arrayBST(tree);
+    console.log(arrayTree)
+    //iterate through array and check if values are in order from least to greatest 
+    for (let i = 1; i < arrayTree.length; i++) {
+        if (arrayTree[i] < arrayTree[i - 1]) return false;
     }
-    // make a recursive call to move down the tree
-    return makeRecurse(tree.left) && makeRecurse(tree.right);
-    }(originalTree));
+    return true;
 }
 
 
 
-module.exports = { BinaryTree: BinaryTree, validBST: validBST };
+
+
+// module.exports = { BinaryTree: BinaryTree, validBST: validBST };
 
 //     function validBST(tree) {
 //         if (tree === null) return true;
@@ -53,3 +43,12 @@ module.exports = { BinaryTree: BinaryTree, validBST: validBST };
 //         return isBST(tree.left) && isBST(tree.right);
 //     }
 // }
+
+let tree = new BinaryTree(10);
+tree.left = new BinaryTree(5);
+tree.left.left = new BinaryTree(3);
+tree.left.right = new BinaryTree(6);
+tree.right = new BinaryTree(14);
+console.log(vBST(tree)) //return true 
+tree.left.left.left = new BinaryTree(4);
+console.log(vBST(tree)) //return false;

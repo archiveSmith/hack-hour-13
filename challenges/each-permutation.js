@@ -24,40 +24,30 @@ function logPerm(perm) {
   console.log(perm);
 }
 
-// Parameters:
-// arr (given array to find permutations of),
-// built (array being built up)
-// perms (storage object that will be passed to successive recursive calls by reference)
+// #### SOLUTION ONE ####
+// function eachPermutation(arr, callback) {
+//
+// }
 
-// inefficient because it must make two new arrays for each function call
-function eachPermutation(arr, callback) {
+// #### SOLUTION TWO ####
+function eachPermutation(arr, callback, built = [], perms = {}) {
+  console.log('############################');
+  console.log('Array', arr);
+  console.log('Built', built);
+  console.log('Perms', perms);
+  // If arr is empty, then this particular array is complete. Save in object as key and perform callback.
+  // Successive identical arrays will not result in performing the callback.
+  // Slicing the input array which eventually will become an empty array.
+  if (!arr.length && !(built in perms)) perms[built] = callback(built);
 
-  const indexesUsed = [];
-
-   // can't repeat elements, so keep track of the indexes of the elements we've already used
-
-  for (let i = 0; i < arr.length; i++) {
-    indexesUsed.push(false);
-  }
-
-  permUtil([], indexesUsed);
-
-  function permUtil(path, indexesUsed) {
-    // base case. done building up path
-    if (path.length === arr.length) {
-      return callback(path);
-    }
-
-    for (let i = 0; i < arr.length; i++) {
-      let indexesUsedClone;
-      if (indexesUsed[i] === false) {
-        indexesUsedClone = indexesUsed.slice();
-        indexesUsedClone[i] = true;
-    // the concat method creates a new array, rather than pushing to the existing array
-        permUtil(path.concat(arr[i]), indexesUsedClone);
-      }
-    }
-  }
+  // Else, give each remaining element a turn being in front of the rest.
+  else arr.forEach((e, i) => eachPermutation(
+      [...arr.slice(0, i), ...arr.slice(i + 1)], // use the spread operator and concat
+      callback,
+      [...built, e], // spreading the built array and adding the next element
+      perms
+    )
+  );
 }
 
 console.log(eachPermutation([1, 2, 3], logPerm));

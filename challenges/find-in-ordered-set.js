@@ -14,7 +14,7 @@ function findInOrderedSet(arr, target) {
     
     let mid = Math.floor((start + end) / 2); //can't use array.length here b/c mid must adjust either down or up as we look at smaller pieces of array.
     if (arr[mid] === target) return true;
-    if (start + 1 > end) return false; 
+    if (start >= end) return false; //this works, but if (start === end) does not work for numbers below first one
     
     if (target < arr[mid]) {
       return searchHalf(start, mid - 1);

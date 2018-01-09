@@ -10,11 +10,13 @@
  */
 
 function permPalin(str) {
+	
 	if (!str) return false;
 	if (str === str.split('').reverse().join('')) return true;
-	
+	console.log('here');
 	for (let i = 0; i < str.length; i+= 1) {
-	  let test = str.charAt(i);
+		let test = str.charAt(i);
+			
 	  for (let j = i + 1; j < str. length; j += 1) {
 	    test += str.charAt(j);
 	    if (test === test.split('').reverse().join('')) return true;
@@ -23,4 +25,5 @@ function permPalin(str) {
   return false;
 }
 
-module.exports = permPalin;
+//module.exports = permPalin;
+permPalin('oxoxo');

@@ -21,7 +21,7 @@ function solveKnapsack(items, weightTarget, totalValue = 0) {
   //base case
   if (!items.length) return totalValue;
   //keep track of max
-  let currMax = 0;
+  let currMax = -Infinity;
   //iterate through items getting remainder of weight needed
   for (let i = 0; i < items.length; i++) {    
     const item = items[i];
@@ -37,7 +37,7 @@ function solveKnapsack(items, weightTarget, totalValue = 0) {
   return currMax;
 };
 
-// this version is if can use multiple items of same weight:
+// this version is if can use items of same weight multiple times: 'unbounded knapsack problem'
 // function solveKnapsack(items, weightAvailable) {
 //   const capacities = [];
 //   for (let i = 0; i <= weightAvailable; i++) {

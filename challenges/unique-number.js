@@ -15,4 +15,25 @@ function uniqueNumber(array) {
   //about how this works.
 }
 
+// also this:
+// function uniqueNumber(array) {
+//   var result = 0;
+//   for (var i = 0; i < array.length; i++) {
+//     result = result ^ array[i];
+//   }
+//   return result;
+// }
+
+// and this:
+// function uniqueNumber(array) {
+//   const store = {};
+//   for (let i = 0; i < array.length; i++) {
+//     if (array[i] in store) {
+//       delete store[array[i]];
+//     } else
+//       store[array[i]] = true;
+//   }
+//   return Object.keys(store)[0];
+// }
+
 module.exports = uniqueNumber;

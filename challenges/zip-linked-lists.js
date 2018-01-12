@@ -10,26 +10,49 @@ function Node(val) {
   this.next = null;
 }
 
-function zip(l1, l2) {
-	// if one list is empty
-  if (!l1) return l2;
-  else if (!l2) return l1;
+//this one is better:
+function zip(l1,l2) {
+	if (!l1) return l2;
+	if (!l2) return l1;
+
+	let head = l1;
+	let temp = l1;
+
+	l1 = l1.next;
+
+	while(l1 && l2) {
+		temp.next = l2;
+		l2 = l2.next;
+		temp = temp.next;
+		temp.next = l1;
+		l1 = l1.next;
+		temp = temp.next;
+	}
+
+	temp.next = l2 ? l2 : l1;
+	return head;
+}
+
+// function zip(l1, l2) {
+// 	// if one list is empty
+//   if (!l1) return l2;
+//   else if (!l2) return l1;
   
-  let curr1 = l1;
-  let curr2 = l2;
-  let temp1 = l1.next;
-	let temp2 = l2.next;
+//   let curr1 = l1;
+//   let curr2 = l2;
+//   let temp1 = l1.next;
+// 	let temp2 = l2.next;
 	 
-  while (curr1 && curr2) {
-    curr1.next = curr2;
-    if (temp1) curr2.next = temp1;
-    curr1 = temp1;
-    curr2 = temp2;
-    if (temp1) temp1 = temp1.next;
-    if (temp2) temp2 = temp2.next;
-  }
-  return l1;
-};
+//   while (curr1 && curr2) {
+//     curr1.next = curr2;
+//     if (temp1) curr2.next = temp1;
+//     curr1 = temp1;
+//     curr2 = temp2;
+//     if (temp1) temp1 = temp1.next;
+//     if (temp2) temp2 = temp2.next;
+//   }
+//   return l1;
+// };
 
 //test:
 // const A = new Node('A');

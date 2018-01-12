@@ -11,26 +11,61 @@ function Node(val) {
 }
 
 function zip(l1, l2) {
-	let l3 = new Node;
-
-while (l1.next) {
-
-	let temp1 = l1.next;
-
-	l3.next = l1;
-
+	// if one list is empty
+  if (!l1) return l2;
+  else if (!l2) return l1;
+  
+  let curr1 = l1;
+  let curr2 = l2;
+  let temp1 = l1.next;
 	let temp2 = l2.next;
-
-	l3.next = l2;
-
-	l3.next = temp1;
-
-	l3.next = temp2;
-}
-
-	//I have no idea
+	 
+  while (curr1 && curr2) {
+    curr1.next = curr2;
+    if (temp1) curr2.next = temp1;
+    curr1 = temp1;
+    curr2 = temp2;
+    if (temp1) temp1 = temp1.next;
+    if (temp2) temp2 = temp2.next;
+  }
+  return l1;
 };
+
+//test:
+// const A = new Node('A');
+// const B = new Node('B');
+// const C = new Node('C');
+// const D = new Node('D');
+// const E = new Node('E');
+
+// A.next = B;
+// B.next = C;
+// C.next = D;
+// D.next = E;
+
+// const M = new Node('M');
+// const N = new Node('N');
+// const O = new Node('O');
+// const P = new Node('P');
+// const Q = new Node('Q');
+
+// M.next = N;
+// N.next = O;
+// O.next = P;
+// P.next = Q;
+
+// let result = zip(A, M);
+
+// function printList(node) {
+//    var curr = node;
+//    while (curr) {
+//      console.log(curr.value);
+//      curr = curr.next;
+//    }
+//  }
+ 
+// printList(result);
 
 module.exports = {Node: Node, zip: zip};
 
-// and how to test?
+

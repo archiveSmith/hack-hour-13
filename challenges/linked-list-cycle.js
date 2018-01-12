@@ -61,4 +61,20 @@ function hasCycle(head) {
   }
 }
 
+//simpler:
+function hasCycle(head) {
+  let hare = head;
+  let tortoise = head;
+
+  while(hare && hare.next) {
+    tortoise = tortoise.next;
+    hare = hare.next.next;
+
+    if (hare === tortoise) return true;
+  }
+  return false;
+}
+
+//O(n) time because slow might have to go around full time and fast two times. O(1) space.
+
 module.exports = {Node: Node, hasCycle: hasCycle}

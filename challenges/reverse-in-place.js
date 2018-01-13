@@ -12,7 +12,7 @@
  *
  * DO NOT USE THE BUILT IN REVERSE METHOD
  */
-
+//resubmitting to see if alternate solution.
 function reverseInPlace(array) {
   if (!array) return [];
 

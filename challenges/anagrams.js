@@ -28,10 +28,12 @@ function anagrams(string) {
     }
     return results;
   }
-  //last resort to get rid of duplicates: should be done somehow above
-  return final = again(array).filter((item, index) => {
-    return again(array).indexOf(item) === index;
-  })
+  // //last resort to get rid of duplicates: should be done somehow above
+  // return final = again(array).filter((item, index) => {
+  //   return again(array).indexOf(item) === index;
+  // })
+  return again(array);
 }
 
 module.exports = anagrams;
+//console.log(anagrams('cats'));

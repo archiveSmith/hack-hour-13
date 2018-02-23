@@ -9,21 +9,28 @@
  *
  */
 
+//Using an object:
+// function permPalin(str) {
+// 	if (!str) return false;
+// 	const letters = {}
+// 	for (let i = 0; i < str.length; i++) {
+// 		letters[str[i]] ? delete letters[str[i]] : letters[str[i]] = 1;
+// 	}
+// 	return Object.keys(letters).length <= 1;
+// }
+
 function permPalin(str) {
-	
 	if (!str) return false;
-	if (str === str.split('').reverse().join('')) return true;
-	console.log('here');
-	for (let i = 0; i < str.length; i+= 1) {
-		let test = str.charAt(i);
-			
-	  for (let j = i + 1; j < str. length; j += 1) {
-	    test += str.charAt(j);
-	    if (test === test.split('').reverse().join('')) return true;
-	  }
+	const letters = new Set();
+	for (let i = 0; i < str.length; i++) {
+		if (letters.has(str[i])) {
+			letters.delete(str[i]);
+		} else {
+				letters.add(str[i]);
+		}
 	}
-  return false;
+	return letters.size <= 1;
 }
 
-//module.exports = permPalin;
-permPalin('oxoxo');
+//console.log(permPalin('cbaba'));
+module.exports = permPalin;

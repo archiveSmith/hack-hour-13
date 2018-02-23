@@ -71,10 +71,10 @@ function newIntersections(x, y){
   
     for (var yCoor in horizontals) {
       var xRange = horizontals[yCoor];
-      console.log('x-range', xRange);
+      //console.log('x-range', xRange);
       for (var xCoor in verticals) {
         var yRange = verticals[xCoor];
-        console.log('xcoor', xCoor);
+        //console.log('xcoor', xCoor);
         if (xRange.contains(xCoor) && yRange.contains(yCoor)) {
           newPoints++;
         }

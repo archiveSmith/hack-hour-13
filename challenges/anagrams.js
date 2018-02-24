@@ -34,26 +34,54 @@
 //   // })
 //   return again(array);
 // }
-function anagrams (word) {
-    if (word.length < 2) {
-      return [word];
-    } else {
-      var allAnswers = [];
-      for (var i = 0; i < word.length; i++) {
-        var letter = word[i];
-        var shorterWord = word.substr(0, i) + word.substr(i + 1, word.length - 1);
-        var shortwordArray = anagrams(shorterWord);
-        for (var j = 0; j < shortwordArray.length; j++) {
-          allAnswers.push(letter + shortwordArray[j]);
-        }
-      }
+// function anagrams (word) {
+//     if (word.length < 2) {
+//       return [word];
+//     } else {
+//       var allAnswers = [];
+//       for (var i = 0; i < word.length; i++) {
+//         var letter = word[i];
+//         var shorterWord = word.substr(0, i) + word.substr(i + 1, word.length - 1);
+//         var shortwordArray = anagrams(shorterWord);
+//         for (var j = 0; j < shortwordArray.length; j++) {
+//           allAnswers.push(letter + shortwordArray[j]);
+//         }
+//       }
+//     }
+//     const noRepeats = allAnswers.reduce((obj, val) => {
+//       obj[val] = 0;
+//       return obj;
+//     }, {});
+//     return Object.keys(noRepeats);
+//   }
+
+
+  function anagrams(string) {
+  
+    // base case
+    if (string.length <= 1) {
+    	return new Set(string);
     }
-    const noRepeats = allAnswers.reduce(function(obj, val) {
-      obj[val] = 0;
-      return obj;
-    }, {});
-    return Object.keys(noRepeats);
-  }
+    	
+    const shortChars = string.slice(0, -1);
+    const lastChar = string[string.length - 1];
+    // recursive call: get all possible permutations for all chars except last
+    const combosNoLast = anagrams(shortChars);
+    
+    // put the last char in all possible positions for each of the above permutations
+    const combos = new Set();
+    combosNoLast.forEach(item => {
+    	for (let i = 0; i <= shortChars.length; i++) {
+    	  var combo = item.slice(0, i) + lastChar + item.slice(i);
+        combos.add(combo);
+  	  }
+    });
+    	
+  return combos;
+}
+    	
+anagrams('cats');
+    
   
 
 module.exports = anagrams;

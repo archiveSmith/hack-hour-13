@@ -49,6 +49,13 @@ function anagrams (word) {
       }
       return allAnswers;
     }
-}
+    const noRepeats = allAnswers.reduce(function(obj, val) {
+      obj[val] = 0;
+      return obj;
+    }, {});
+    return Object.keys(noRepeats);
+  }
+  
+
 module.exports = anagrams;
 //console.log(anagrams('cats'));

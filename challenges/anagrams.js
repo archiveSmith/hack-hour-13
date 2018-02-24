@@ -55,34 +55,28 @@
 //     return Object.keys(noRepeats);
 //   }
 
+function anagrams(string) {
+  // base case
+  if (string.length <= 1) {
+    return [string];
+  }
+    	
+  const shortChars = string.slice(0, -1);
+  const lastChar = string[string.length - 1];
 
-  function anagrams(string) {
-  
-    // base case
-    if (string.length <= 1) {
-    	return new Set(string);
-    }
-    	
-    const shortChars = string.slice(0, -1);
-    const lastChar = string[string.length - 1];
-    // recursive call: get all possible permutations for all chars except last
-    const combosNoLast = anagrams(shortChars);
+  // recursive call: get all possible permutations for all chars except last
+  const combosNoLast = anagrams(shortChars);
     
-    // put the last char in all possible positions for each of the above permutations
-    const combos = new Set();
-    combosNoLast.forEach(item => {
-    	for (let i = 0; i <= shortChars.length; i++) {
-    	  var combo = item.slice(0, i) + lastChar + item.slice(i);
-        combos.add(combo);
-  	  }
-    });
-    	
+  // put the last char in all possible positions for each of the above permutations
+  const combos = [];
+  combosNoLast.forEach(item => {
+    for (let i = 0; i <= shortChars.length; i++) {
+    	var combo = item.slice(0, i) + lastChar + item.slice(i);
+      combos.push(combo);
+  	}
+  });	
   return combos;
 }
-    	
-anagrams('cats');
     
-  
-
 module.exports = anagrams;
 //console.log(anagrams('cats'));

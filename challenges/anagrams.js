@@ -42,7 +42,7 @@ function anagrams (word) {
       for (var i = 0; i < word.length; i++) {
         var letter = word[i];
         var shorterWord = word.substr(0, i) + word.substr(i + 1, word.length - 1);
-        var shortwordArray = allAnagrams(shorterWord);
+        var shortwordArray = anagrams(shorterWord);
         for (var j = 0; j < shortwordArray.length; j++) {
           allAnswers.push(letter + shortwordArray[j]);
         }

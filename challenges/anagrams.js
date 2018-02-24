@@ -47,7 +47,6 @@ function anagrams (word) {
           allAnswers.push(letter + shortwordArray[j]);
         }
       }
-      return allAnswers;
     }
     const noRepeats = allAnswers.reduce(function(obj, val) {
       obj[val] = 0;

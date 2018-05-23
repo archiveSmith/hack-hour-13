@@ -75,11 +75,7 @@ function anagrams(string) {
       combos.push(combo);
   	}
   });	
-
-  return combos.filter((item, index) => {
-    return combos.indexOf(item) === index;
-  })
+  return combos;
 }
     
 module.exports = anagrams;
-//console.log(anagrams('cats'));

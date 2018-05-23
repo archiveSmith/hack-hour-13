@@ -56,10 +56,35 @@
 //   }
 
 //this takes fewest steps in python tutor
+//**this is best version but does not pass test because does not use an array**
+// function anagrams(string) {
+//   // base case
+//   if (string.length <= 1) {
+//     return new Set(string);
+//   }
+    	
+//   const shortChars = string.slice(0, -1);
+//   const lastChar = string[string.length - 1];
+
+//   // recursive call: get all possible permutations for all chars except last
+//   const combosNoLast = anagrams(shortChars);
+    
+//   // put the last char in all possible positions for each of the above permutations
+//   const combos = new Set();
+//   combosNoLast.forEach(item => {
+//     for (let i = 0; i <= shortChars.length; i++) {
+//     	const combo = item.slice(0, i) + lastChar + item.slice(i);
+//       combos.add(combo);
+//       console.log(combos.size)
+//   	}
+//   });	
+//   return combos;
+// }
+
 function anagrams(string) {
   // base case
   if (string.length <= 1) {
-    return new Set(string);
+    return [string];
   }
     	
   const shortChars = string.slice(0, -1);
@@ -69,17 +94,24 @@ function anagrams(string) {
   const combosNoLast = anagrams(shortChars);
     
   // put the last char in all possible positions for each of the above permutations
-  const combos = new Set();
+  const combos = [];
   combosNoLast.forEach(item => {
     for (let i = 0; i <= shortChars.length; i++) {
     	const combo = item.slice(0, i) + lastChar + item.slice(i);
-      combos.add(combo);
+      combos.push(combo);
   	}
   });	
-  return combos;
+
+  const noRepeats = combos.reduce((obj, val) => {
+    obj[val] = 0;
+    return obj;
+  }, {});
+
+  return Object.keys(noRepeats);
 }
-    
+   
 module.exports = anagrams;
+console.log(anagrams('jimmy')) 
 
 //'The Set object lets you store UNIQUE values of any type, whether primitive values or object references.' --MDN 
 //(It doesn't store duplicates!!!)

@@ -29,32 +29,12 @@ function highestProduct(array) {
 
 module.exports = highestProduct;
 
-//not complete. Doesn't work for [-2,-1,1,3,4] for example
-
+//alt solution using sort:
 // function highestProduct(array) {
-//   if (!Array.isArray(array)) return 0;
-// 	if (array.length < 3) return 0;
- 
-  
-//   array = array.sort((b, a) => {
-//     return b - a;
-//   })
-  
-//   let posArr = array.filter(n => {
-//     return n >= 0;
-//   })
-  
-//   let negArr = array.filter(n => {
-//     return n < 0;
-//   })
-  
-//   if (negArr.length >= 2 && posArr.length > 0) {
-//     return negArr[0] * negArr[1] * posArr[posArr.length - 1];
-//   } else if (posArr.length >= 3 && negArr.length < 2) {
-//       return posArr[posArr.length - 1] * posArr[posArr.length - 2] * posArr[posArr.length - 3]; 
-//   } else if (posArr.length === 2 && negArr.length > 0) {
-//     return posArr[posArr.length - 1] * posArr[posArr.length - 2] * negArr[negArr.length - 1];
-//   } else {
-//     return negArr[negArr.length - 1] * negArr[negArr.length - 2] * negArr[negArr.length - 3];
-//   }
+//   if (!Array.isArray(array) || !array || array.length < 3) return 0;
+
+//   array.sort((a,b) => a - b);
+//   const useSmalls = array[0] * array[1] * array[array.length - 1];
+//   const useBigs = array[array.length - 1] * array[array.length - 2] * array[array.length - 3];
+//   return Math.max(useSmalls, useBigs);
 // }

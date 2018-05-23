@@ -55,10 +55,11 @@
 //     return Object.keys(noRepeats);
 //   }
 
+//this takes fewest steps in python tutor
 function anagrams(string) {
   // base case
   if (string.length <= 1) {
-    return [string];
+    return new Set(string);
   }
     	
   const shortChars = string.slice(0, -1);
@@ -68,14 +69,17 @@ function anagrams(string) {
   const combosNoLast = anagrams(shortChars);
     
   // put the last char in all possible positions for each of the above permutations
-  const combos = [];
+  const combos = new Set();
   combosNoLast.forEach(item => {
     for (let i = 0; i <= shortChars.length; i++) {
     	const combo = item.slice(0, i) + lastChar + item.slice(i);
-      combos.push(combo);
+      combos.add(combo);
   	}
   });	
   return combos;
 }
     
 module.exports = anagrams;
+
+//'The Set object lets you store UNIQUE values of any type, whether primitive values or object references.' --MDN 
+//(It doesn't store duplicates!!!)

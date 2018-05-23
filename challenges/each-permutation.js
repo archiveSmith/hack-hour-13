@@ -17,7 +17,8 @@ eachPermutation([1, 2, 3], function(perm) {
 */
 
 function eachPermutation(arr, callback) {
-
+  //find each Permuation of array
+  //run each permutation through callback
 }
 
 

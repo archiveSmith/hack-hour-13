@@ -71,11 +71,14 @@ function anagrams(string) {
   const combos = [];
   combosNoLast.forEach(item => {
     for (let i = 0; i <= shortChars.length; i++) {
-    	var combo = item.slice(0, i) + lastChar + item.slice(i);
+    	const combo = item.slice(0, i) + lastChar + item.slice(i);
       combos.push(combo);
   	}
   });	
-  return combos;
+
+  return combos.filter((item, index) => {
+    return combos.indexOf(item) === index;
+  })
 }
     
 module.exports = anagrams;

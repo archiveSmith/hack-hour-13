@@ -27,7 +27,7 @@ function mergeRanges(array) {
        
     // else next meeting starts after last one ends and does not overlap
     } else {
-        ranges.push(sorted[i]);
+        ranges.push(curr);
     }  
   }
   return ranges;

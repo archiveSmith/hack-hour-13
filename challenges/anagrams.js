@@ -111,7 +111,7 @@ function anagrams(string) {
 }
    
 module.exports = anagrams;
-console.log(anagrams('jimmy')) 
+//console.log(anagrams('jimmy')) 
 
 //'The Set object lets you store UNIQUE values of any type, whether primitive values or object references.' --MDN 
 //(It doesn't store duplicates!!!)

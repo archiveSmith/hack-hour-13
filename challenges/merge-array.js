@@ -15,14 +15,16 @@
 
 function mergeArrays(arr1, arr2) {
 
-  let merge = [];
+  const merge = [];
   let j = 0, k = 0;
   const length = arr1.length + arr2.length;
   for (let i = 0; i < length; i += 1) {
-    
+  //OR while (merge.length < length) {
+      //if not at the end of arr1 && arr1 item is smaller OR if nothing left to merge in arr2
       if (k <= arr1.length && (arr1[k] < arr2[j] || j >= arr2.length)) {
         merge.push(arr1[k]);
         k++;
+      //else take from arr2
       } else {
           merge.push(arr2[j]);
           j++;
@@ -33,4 +35,4 @@ function mergeArrays(arr1, arr2) {
 
 module.exports = mergeArrays;
 
-console.log(mergeArrays([3,8,12,14], [4,5,13,15,16]));
+//console.log(mergeArrays([3,8,12,14], [4,5,13,15,16]));

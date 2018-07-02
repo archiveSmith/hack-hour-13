@@ -17,32 +17,73 @@ function Node(val) {
   this.next = null;
 }
 
-function addLinkedList(l1, l2) {
-  let num1 = '', num2 = '';
-  let zero = new Node (0);
+function addLinkedList(num1, num2, carryover) {
+  var current1  = num1.next
+  var current2  = num2.next
+  var tempvalue;
+  var answerlist;
 
-  while (list1 !== zero || list2 !== zero) {
-    num1 = list1.value.toString() + num1;
-    num2 = list2.value.toString() + num2;
+  answerlist = new Node((num1.value + num2.value)%10);
+  carryover = (num1.value + num2.value)/10<1 ? 0 : 1;
 
-    list1=list1.next || zero;
-    list2=list2.next || zero;
+  while(current1 || current2 || carryover===1){
+    var currentanswer = answerlist
+    while(currentanswer.next){
+      currentanswer = currentanswer.next
+    }
+    if (!current1 && !current2){
+      currentanswer.next = new Node(carryover);
+      carryover = 0;
+    }
+    else if (!current2){
+      tempvalue = current1.value + carryover;
+      currentanswer.next = new Node(tempvalue%10);
+      carryover = tempvalue/10<1 ? 0 : 1;
+      current1 = current1.next;
+    }
+    else if (!current1){
+      tempvalue = current2.value + carryover;
+      currentanswer.next = new Node(tempvalue%10);
+      carryover = tempvalue/10<1 ? 0 : 1;
+      current2 = current2.next;
+    }
+    else{
+      tempvalue = current1.value + current2.value + carryover;
+      currentanswer.next = new Node(tempvalue%10);
+      carryover = tempvalue/10<1 ? 0 : 1;
+      current1 = current1.next;
+      current2 = current2.next;
+    }
   }
-  
-  let sum = parseInt(num1) + parseInt(num2);
-  sum = sum.toString().split('');
-
-  let head = new Node(parseInt(sum.pop()));
-  let node = head;
-
-  while(sum.length) {
-    node.next = new Node(parseInt(sum.pop()));
-    node = node.next;
-  }
-
-  return head;
-    
+  return answerlist;
 }
+//yeah, no
+// function addLinkedList(l1, l2) {
+//   let num1 = '', num2 = '';
+//   let zero = new Node (0);
+
+//   while (list1 !== zero || list2 !== zero) {
+//     num1 = list1.value.toString() + num1;
+//     num2 = list2.value.toString() + num2;
+
+//     list1=list1.next || zero;
+//     list2=list2.next || zero;
+//   }
+  
+//   let sum = parseInt(num1) + parseInt(num2);
+//   sum = sum.toString().split('');
+
+//   let head = new Node(parseInt(sum.pop()));
+//   let node = head;
+
+//   while(sum.length) {
+//     node.next = new Node(parseInt(sum.pop()));
+//     node = node.next;
+//   }
+
+//   return head;
+    
+// }
 
 
 

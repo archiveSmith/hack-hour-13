@@ -31,7 +31,7 @@
 // }
 
 
-//this fails: 'should work from the origin with one circle to cross', but passes the rest
+//this passes, but don't think as accurate because not figuring distance from center using hypotenuse.
 function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
   let count = 0;
 
@@ -44,8 +44,8 @@ function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
         let startIn = false;
         let endIn = false;
 
-        if (xCoordS <= r[i] && xCoordE >= r[i]) startIn = true;
-        if (yCoordS >= r[i] && yCoordE <= r[i]) endIn = true;
+        if (xCoordS <= r[i] && yCoordS <= r[i]) startIn = true;
+        if (xCoordE <= r[i] && yCoordE <= r[i]) endIn = true;
 
         if ((startIn && !endIn) || (!startIn && endIn)) count += 1;
 

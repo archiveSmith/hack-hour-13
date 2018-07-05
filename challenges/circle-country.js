@@ -22,35 +22,36 @@
  *    - no circle borders intersect/touch (but they can be nested)
  *
  */
-// function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
-//   return r.reduce((acc, rad, i)=>{
-//     const startDistance = Math.hypot(x[i] - start_x, y[i] - start_y)
-//     const endDistance = Math.hypot(x[i] - end_x, y[i] - end_y)
-//     return (startDistance > rad && rad > endDistance || (startDistance < rad && rad < endDistance)) ? ++acc : acc
-//   },0)
-// }
+//solution:
+function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
+  return r.reduce((acc, rad, i)=>{
+    const startDistance = Math.hypot(x[i] - start_x, y[i] - start_y)
+    const endDistance = Math.hypot(x[i] - end_x, y[i] - end_y)
+    return (startDistance > rad && rad > endDistance || (startDistance < rad && rad < endDistance)) ? ++acc : acc
+  },0)
+}
 
 
 //this passes, but don't think as accurate because not figuring distance from center using hypotenuse.
-function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
-  let count = 0;
+// function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
+//   let count = 0;
 
-    for (let i = 0; i < x.length; i += 1) {
-        let xCoordS = Math.abs(x[i] - start_x);
-        let xCoordE = Math.abs(x[i] - end_x);
-        let yCoordS = Math.abs(y[i] - start_y);
-        let yCoordE = Math.abs(y[i] - end_y);
+//     for (let i = 0; i < x.length; i += 1) {
+//         let xCoordS = Math.abs(x[i] - start_x);
+//         let xCoordE = Math.abs(x[i] - end_x);
+//         let yCoordS = Math.abs(y[i] - start_y);
+//         let yCoordE = Math.abs(y[i] - end_y);
 
-        let startIn = false;
-        let endIn = false;
+//         let startIn = false;
+//         let endIn = false;
 
-        if (xCoordS <= r[i] && xCoordE >= r[i]) startIn = true;
-        if (yCoordS >= r[i] && yCoordE <= r[i]) endIn = true;
+//         if (xCoordS <= r[i] && xCoordE >= r[i]) startIn = true;
+//         if (yCoordS >= r[i] && yCoordE <= r[i]) endIn = true;
 
-        if ((startIn && !endIn) || (!startIn && endIn)) count += 1;
+//         if ((startIn && !endIn) || (!startIn && endIn)) count += 1;
 
-    }
-    return count;
-}
+//     }
+//     return count;
+// }
 
 module.exports = circleCountry;

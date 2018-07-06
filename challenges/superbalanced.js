@@ -12,20 +12,37 @@ function BinaryTree(value) {
   this.left = null;
   this.right = null;
 }
-
-function height(tree) {
-  if (tree === null) {
-      return 0;
-  }
-  return 1 + Math.max(height(tree.left), height(tree.right));
-}
-
 function superbalanced(tree) {
-  if (tree === null) {
-    return true;
+  if (tree.left === null && tree.right === null) return true;
+  let max = 0;
+  let min;
+  const recurse = (tree, level = 0) => {
+    if (tree === null) {
+      if (min === undefined) min = level;
+      if (level > max) max = level;
+      if (level < min) min = level;
+      return level
+    }
+    let left = recurse(tree.left, level + 1);
+    let right = recurse(tree.right, level + 1);
   }
-  return Math.abs(height(tree.left) - height(tree.right)) <= 1 && superbalanced(tree.left) && superbalanced(tree.right);
+  recurse(tree);
+  return Math.abs(max - min) <= 1;
 }
+
+// function height(tree) {
+//   if (tree === null) {
+//       return 0;
+//   }
+//   return 1 + Math.max(height(tree.left), height(tree.right));
+// }
+
+// function superbalanced(tree) {
+//   if (tree === null) {
+//     return true;
+//   }
+//   return Math.abs(height(tree.left) - height(tree.right)) <= 1 && superbalanced(tree.left) && superbalanced(tree.right);
+// }
 
 // function superbalanced(tree) {
 //   let leftCount = 0;

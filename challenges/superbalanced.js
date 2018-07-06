@@ -13,18 +13,20 @@ function BinaryTree(value) {
   this.right = null;
 }
 
-function branchDepth (tree, depth = 1) {
-  if (!tree) return depth;
-  return Math.max(branchDepth(tree.left, depth + 1), branchDepth(tree.right, depth + 1));
-}
+// function branchDepth (tree, depth = 1) {
+//   if (!tree) return depth;
+//   return Math.max(branchDepth(tree.left, depth + 1), branchDepth(tree.right, depth + 1));
+// }
 
-function superbalanced(tree) {
-  // create a left depth and a right depth and have them equal
-  // the total depth for when tree is finally null
-  const leftDepth = branchDepth(tree.left);
-  const rightDepth = branchDepth(tree.right);
-  return Math.abs(leftDepth - rightDepth) <= 1;
-}
+// function superbalanced(tree) {
+//   // create a left depth and a right depth and have them equal
+//   // the total depth for when tree is finally null
+//   const leftDepth = branchDepth(tree.left);
+//   const rightDepth = branchDepth(tree.right);
+//   return Math.abs(leftDepth - rightDepth) <= 1;
+// }
+
+
 // function superbalanced(tree) {
 //   if (tree.left === null && tree.right === null) return true;
 //   let max = 0;
@@ -43,19 +45,20 @@ function superbalanced(tree) {
 //   return Math.abs(max - min) <= 1;
 // }
 
-// function height(tree) {
-//   if (tree === null) {
-//       return 0;
-//   }
-//   return 1 + Math.max(height(tree.left), height(tree.right));
-// }
+function height(tree) {
+  if (tree === null) {
+      return 0;
+  }
+  return 1 + Math.max(height(tree.left), height(tree.right));
+}
 
-// function superbalanced(tree) {
-//   if (tree === null) {
-//     return true;
-//   }
-//   return Math.abs(height(tree.left) - height(tree.right)) <= 1 && superbalanced(tree.left) && superbalanced(tree.right);
-// }
+function superbalanced(tree) {
+  if (tree === null) {
+    return true;
+  }
+  return Math.abs(height(tree.left) - height(tree.right)) <= 1;
+  //&& superbalanced(tree.left) && superbalanced(tree.right);
+}
 
 // function superbalanced(tree) {
 //   let leftCount = 0;

@@ -12,23 +12,36 @@ function BinaryTree(value) {
   this.left = null;
   this.right = null;
 }
-function superbalanced(tree) {
-  if (tree.left === null && tree.right === null) return true;
-  let max = 0;
-  let min;
-  const recurse = (tree, level = 0) => {
-    if (tree === null) {
-      if (min === undefined) min = level;
-      if (level > max) max = level;
-      if (level < min) min = level;
-      return level
-    }
-    let left = recurse(tree.left, level + 1);
-    let right = recurse(tree.right, level + 1);
-  }
-  recurse(tree);
-  return Math.abs(max - min) <= 1;
+
+function branchDepth (tree, depth = 1) {
+  if (!tree) return depth;
+  return Math.max(branchDepth(tree.left, depth + 1), branchDepth(tree.right, depth + 1));
 }
+
+function superbalanced(tree) {
+  // create a left depth and a right depth and have them equal
+  // the total depth for when tree is finally null
+  const leftDepth = branchDepth(tree.left);
+  const rightDepth = branchDepth(tree.right);
+  return Math.abs(leftDepth - rightDepth) <= 1;
+}
+// function superbalanced(tree) {
+//   if (tree.left === null && tree.right === null) return true;
+//   let max = 0;
+//   let min;
+//   const recurse = (tree, level = 0) => {
+//     if (tree === null) {
+//       if (min === undefined) min = level;
+//       if (level > max) max = level;
+//       if (level < min) min = level;
+//       return level
+//     }
+//     let left = recurse(tree.left, level + 1);
+//     let right = recurse(tree.right, level + 1);
+//   }
+//   recurse(tree);
+//   return Math.abs(max - min) <= 1;
+// }
 
 // function height(tree) {
 //   if (tree === null) {

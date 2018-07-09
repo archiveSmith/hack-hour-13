@@ -52,10 +52,13 @@ function kthToLastNode(k, head) {
   let leftPointer = head;
   let rightPointer = head;
   
-	//we have a 'stick' the length of k. We slide it along the list and when the right hand end gets to the end of the list, the left hand end will be at the node we want to return.
+  //we have a 'stick' the length of k. We slide it along the list and 
+  //when the right hand end gets to the end of the list, the left hand end 
+  //will be at the node we want to return.
 	//move the right hand point along the list according to the length of k.
   for (let i = 0; i < k - 1; i += 1) {
-    if (!rightPointer.next) return; //means that k is larger than length of list;
+    if (!rightPointer.next) return; 
+    //^means that k is larger than length of list;
     rightPointer = rightPointer.next;
   }
   

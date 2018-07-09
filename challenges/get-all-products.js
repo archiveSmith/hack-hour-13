@@ -8,7 +8,33 @@
  *
  * do not use division, becuase zero might be in the array and you cannot divide by zero
  */
+//solution with two passes, one array: O(n) and O(1) space.
 function getAllProducts(array) {
+    if (intArray.length < 2) {
+        throw new Error('Getting the product of numbers at other indices requires at least 2 numbers');
+    }
+    var result = [];
+    // for each integer, we find the product of all the integers
+    // before it, storing the total product so far each time
+    var productSoFar = 1;
+    for (var i = 0; i < intArray.length; i++) {
+       result[i] = productSoFar;
+        productSoFar *= intArray[i];
+    }
+    // for each integer, we find the product of all the integers
+    // after it. since each index in products already has the
+    // product of all the integers before it, now we're storing
+    // the total product of all other integers
+    productSoFar = 1;
+    for (var j = intArray.length - 1; j >= 0; j--) {
+        result[j] *= productSoFar;
+        productSoFar *= intArray[j];
+    
+    }
+    return result;
+}
+//my first solution:
+//function getAllProducts(array) {
   // if(array.length < 1) return [0]; 
   // const result = [];
   //   for (let j = 0; j < array.length; j++) {
@@ -24,38 +50,12 @@ function getAllProducts(array) {
   //     result.push(product);
   //   }
   // return result;
-  return array.length < 1 ? [0] : array.length === 1 ? array : array.map((item, i) => array.filter((item, j) => i !== j).reduce((a, b) => a * b));
-}
+//}
 
-module.exports = getAllProducts;
-
-//another solution with two passes, one array: O(n) and O(1) space.
-// if (intArray.length < 2) {
-//         throw new Error('Getting the product of numbers at other indices requires at least 2 numbers');
-//     }
-
-//     var result = [];
-
-//     // for each integer, we find the product of all the integers
-//     // before it, storing the total product so far each time
-//     var productSoFar = 1;
-//     for (var i = 0; i < intArray.length; i++) {
-//        result[i] = productSoFar;
-//         productSoFar *= intArray[i];
-//     }
-//     // for each integer, we find the product of all the integers
-//     // after it. since each index in products already has the
-//     // product of all the integers before it, now we're storing
-//     // the total product of all other integers
-//     productSoFar = 1;
-//     for (var j = intArray.length - 1; j >= 0; j--) {
-//         result[j] *= productSoFar;
-//         productSoFar *= intArray[j];
-    
-//     }
-
-//     return result;
-// }
+//One liner:
+//function getAllProducts(array) {
+//    return array.length < 1 ? [0] : array.length === 1 ? array : array.map((item, i) => array.filter((item, j) => i !== j).reduce((a, b) => a * b));
+//}
 
 //using division, if you could, and if you didn't have zeros:
 // function getAllProducts(array) {
@@ -66,3 +66,4 @@ module.exports = getAllProducts;
 //     return products / curr;
 //   });
 // }
+module.exports = getAllProducts;

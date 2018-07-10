@@ -3,7 +3,7 @@
  */
 
 //more efficient than using indexOf:
-function twoSum (n, array) {
+function twoSum (array, n) {
   const obj = {};
   for (let i = 0; i < array.length; i++) {
     if (obj[array[i]] && (obj[array[i]] != array[i])) return true;

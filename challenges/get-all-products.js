@@ -11,9 +11,9 @@
 //solution with two passes, one array: O(n) and O(1) space.
 function getAllProducts(array) {
     if(array.length < 1) return [0]; 
-    if (array.length < 2) {
-        throw new Error('Getting the product of numbers at other indices requires at least 2 numbers');
-    }
+    // if (array.length < 2) {
+    //     throw new Error('Getting the product of numbers at other indices requires at least 2 numbers');
+    // }
     var result = [];
     // for each integer, we find the product of all the integers
     // before it, storing the total product so far each time

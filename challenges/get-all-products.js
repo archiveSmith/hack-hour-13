@@ -10,25 +10,26 @@
  */
 //solution with two passes, one array: O(n) and O(1) space.
 function getAllProducts(array) {
-    if (intArray.length < 2) {
+    if(array.length < 1) return [0]; 
+    if (array.length < 2) {
         throw new Error('Getting the product of numbers at other indices requires at least 2 numbers');
     }
     var result = [];
     // for each integer, we find the product of all the integers
     // before it, storing the total product so far each time
     var productSoFar = 1;
-    for (var i = 0; i < intArray.length; i++) {
+    for (var i = 0; i < array.length; i++) {
        result[i] = productSoFar;
-        productSoFar *= intArray[i];
+        productSoFar *= array[i];
     }
     // for each integer, we find the product of all the integers
     // after it. since each index in products already has the
     // product of all the integers before it, now we're storing
     // the total product of all other integers
     productSoFar = 1;
-    for (var j = intArray.length - 1; j >= 0; j--) {
+    for (var j = array.length - 1; j >= 0; j--) {
         result[j] *= productSoFar;
-        productSoFar *= intArray[j];
+        productSoFar *= array[j];
     
     }
     return result;
@@ -66,4 +67,5 @@ function getAllProducts(array) {
 //     return products / curr;
 //   });
 // }
-module.exports = getAllProducts;
+//module.exports = getAllProducts;
+console.log(getAllProducts([1, 7, 3, 4])); //->  [84, 12, 28, 21])

@@ -44,7 +44,12 @@ function Node(val) {
 // 	return curr.value;
 // }
 
-//solution 2: could ALSO be almost two passes. Steps are just in a different order. MIGHT be faster if your processor uses a 'least recently used' replacement policy for caching right on the processor, i.e. it replaces data that has been used least recently. The two passes accessing data are closer in time in this approach and data may not have been replaced already in local storage.
+//solution 2: could ALSO be almost two passes. Steps are just in a 
+//different order. MIGHT be faster if your processor uses a 'least recently
+//used' replacement policy for caching right on the processor, i.e. it 
+//replaces data that has been used least recently. The two passes accessing
+//data are closer in time in this approach and data may not have been 
+//replaced already in local storage.
 function kthToLastNode(k, head) {
   //edgecases
   if (!k || !head || k < 1 || !Number.isInteger(k)) return;
@@ -52,10 +57,13 @@ function kthToLastNode(k, head) {
   let leftPointer = head;
   let rightPointer = head;
   
-	//we have a 'stick' the length of k. We slide it along the list and when the right hand end gets to the end of the list, the left hand end will be at the node we want to return.
+  //we have a 'stick' the length of k. We slide it along the list and 
+  //when the right hand end gets to the end of the list, the left hand end 
+  //will be at the node we want to return.
 	//move the right hand point along the list according to the length of k.
   for (let i = 0; i < k - 1; i += 1) {
-    if (!rightPointer.next) return; //means that k is larger than length of list;
+    if (!rightPointer.next) return; 
+    //^means that k is larger than length of list;
     rightPointer = rightPointer.next;
   }
   

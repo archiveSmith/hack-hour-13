@@ -44,7 +44,12 @@ function Node(val) {
 // 	return curr.value;
 // }
 
-//solution 2: could ALSO be almost two passes. Steps are just in a different order. MIGHT be faster if your processor uses a 'least recently used' replacement policy for caching right on the processor, i.e. it replaces data that has been used least recently. The two passes accessing data are closer in time in this approach and data may not have been replaced already in local storage.
+//solution 2: could ALSO be almost two passes. Steps are just in a 
+//different order. MIGHT be faster if your processor uses a 'least recently
+//used' replacement policy for caching right on the processor, i.e. it 
+//replaces data that has been used least recently. The two passes accessing
+//data are closer in time in this approach and data may not have been 
+//replaced already in local storage.
 function kthToLastNode(k, head) {
   //edgecases
   if (!k || !head || k < 1 || !Number.isInteger(k)) return;

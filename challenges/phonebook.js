@@ -41,17 +41,12 @@ function makePhoneBookObject(jazbook) {
     jazbookObj[subarray[0]] = subarray[1];
     return jazbookObj;
   }, {});
-
-
 }
-
-
 
 const objectToExport = {
   findName,
   makePhoneBookObject,
 };
-
 
 module.exports = objectToExport;
 

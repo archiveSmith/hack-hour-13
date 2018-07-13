@@ -9,28 +9,38 @@
   // var array4 = ['ferret',12,12,45,9,66,77,78,2000];
 
 // your output would be [ 12, 'ferret']
-function commonElements(array1, array2, array3, array4){
+// if there are no common numbers or strings return the string "Nothing in Common!"
 
+function commonElements(array1, array2, array3, array4){
   var obj = {};
-  arguments[0].forEach(function(item, index) {
+  arguments[0].forEach(item => {
     obj[item] = 1;
   });
 
   for (var i = 1; i < arguments.length; i++) {
-    arguments[i].forEach(function(item) {
+    arguments[i].forEach(item => {
       if (obj[item] === i) obj[item] = i + 1;
     });
   }
+ 
+  const common = [];
+  for (var k in obj) {
+    //if (obj[key] < 4) delete obj[key];
+    if (obj[k] === 4) {
+      if (isNaN(parseInt(k))) common.push(k);
+      else common.push(parseInt(k));
+    }
+  }
+  if (!common.length) return 'Nothing in Common!'
+  return common;
+}
 
-  for (var key in obj) {
-    if (obj[key] < 4) delete obj[key];
-   }
+//this is part of hh solution but doesn't pass all tests because the numbers are strings from having been keys in obj:
+   // if (Object.keys(obj).length === 0) return "Nothing in Common!"
+   // return Object.keys(obj);
+  
 
-   if (Object.keys(obj).length === 0) return "Nothing in Common!"
-   return Object.keys(obj);
- }
 
-// if there are no common numbers or strings return the string "Nothing in Common!"
 
 // function commonElements(array1, array2, array3, array4){
 //   const objAll = {};

@@ -13,7 +13,27 @@
 // if there are no common numbers or strings return the string "Nothing in Common!"
 
 function commonElements(array1, array2, array3, array4){
-
+  const objAll = {};
+  const arrays = [...arguments];
+  //this loop, basically linear through all arrays, makes obj of all elements, not counting dups
+  for (let i = 0; i < 4;i++) {
+    const obj = {};
+    for (let j = 0; j < arrays[i].length; j++) {
+       obj[arrays[i][j]] ? obj[arrays[i][j]] : obj[arrays[i][j]] = 1;
+    }
+    //this loop makes master obj of all elements, counting how many objs each appears in
+    const keys = Object.keys(obj);
+    keys.forEach(key => {
+      objAll[key] ? objAll[key]++ : objAll[key] = 1;
+    })
+  }
+  //this makes array of any elements appearing 4 times, ie in each array.
+  const result = [];
+  for (const k in objAll) {
+    if (objAll[k] === 4) result.push(k);
+  }
+  if (!result.length) return 'Nothing in Common!'
+  return result;
 }
 
 module.exports = commonElements;
